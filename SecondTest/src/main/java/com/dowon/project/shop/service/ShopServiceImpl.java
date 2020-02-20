@@ -34,6 +34,7 @@ public class ShopServiceImpl implements ShopService{
 	 *  1. pom.xml �뿉 spring-tx dependency  ?��붽�
 	 *  2. servlet-context.xml �뿉 transaction �꽕�젙 ?��붽�
 	 *  3. �듃�젋�젥��?��?�� �쟻�슜�븷 �꽌?��꾩뒪�쓽 硫붿?���뱶�뿉 @Transactional  �뼱�끂��?��?����?��?�� ?��붽� �븳�떎.
+	 *  help... 
 	 */
 
 	//�긽��?? ?��?�엯 泥섎?��?���? �븯�뒗 ?��꾩쫰�땲�뒪 濡쒖�?
