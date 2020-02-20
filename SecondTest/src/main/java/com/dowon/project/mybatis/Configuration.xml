@@ -7,12 +7,15 @@
 	<typeAliases>
 		<typeAlias type="com.dowon.project.member.dto.MemberDto" alias="memberDto"/>
 		<typeAlias type="com.dowon.project.cafe.dto.CafeDto" alias="cafeDto"/>
+		<typeAlias type="com.dowon.project.users.dto.UsersDto" alias="usersDto"/>
+
 	</typeAliases>
 
 	<!-- mapper 설정 -->
 	<mappers>
 		<mapper resource="com/dowon/project/mybatis/MemberMapper.xml"/>
 		<mapper resource="com/dowon/project/mybatis/CafeMapper.xml"/>
+		<mapper resource="com/dowon/project/mybatis/UsersMapper.xml"/>
 	</mappers>
 	
 </configuration>
