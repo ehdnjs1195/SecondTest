@@ -9,14 +9,17 @@
 		<typeAlias type="com.dowon.project.cafe.dto.CafeDto" alias="cafeDto"/>
 		<typeAlias type="com.dowon.project.users.dto.UsersDto" alias="usersDto"/>
 	    <typeAlias type="com.dowon.project.file.dto.FileDto" alias="fileDto"/>
+		<typeAlias type="com.dowon.project.shop.dto.ShopDto" alias="shopDto"/>
+		<typeAlias type="com.dowon.project.shop.dto.OrderDto" alias="OrderDto"/>
 	</typeAliases>
-
+	
 	<!-- mapper 설정 -->
 	<mappers>
 		<mapper resource="com/dowon/project/mybatis/MemberMapper.xml"/>
 		<mapper resource="com/dowon/project/mybatis/CafeMapper.xml"/>
 		<mapper resource="com/dowon/project/mybatis/UsersMapper.xml"/>
 		<mapper resource="com/dowon/project/mybatis/FileMapper.xml"/>
+		<mapper resource="com/dowon/project/mybatis/ShopMapper.xml"/>
 	</mappers>
 </configuration>
 

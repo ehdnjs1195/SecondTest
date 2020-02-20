@@ -48,9 +48,6 @@ public class ExceptionController {
 	 *  
 	 */
 	
-	
-	
-	
 	@ExceptionHandler(DataAccessException.class)
 	public ModelAndView dataAccess(DataAccessException dae){
 		ModelAndView mView=new ModelAndView();
@@ -61,9 +58,9 @@ public class ExceptionController {
 		return mView;
 	}
 	
-	
-	
 }
+	
+
 
 
 

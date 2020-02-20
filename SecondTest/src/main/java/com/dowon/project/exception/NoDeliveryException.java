@@ -2,7 +2,6 @@ package com.dowon.project.exception;
 
 import org.springframework.dao.DataAccessException;
 
-
 public class NoDeliveryException extends DataAccessException{
 	//생성자의 인자로 예외 메세지를 전달 받아서
 	public NoDeliveryException(String msg) {
@@ -11,7 +10,5 @@ public class NoDeliveryException extends DataAccessException{
 		//message 필드에 저장된다.
 		
 	}
-	
-	
 	
 }
