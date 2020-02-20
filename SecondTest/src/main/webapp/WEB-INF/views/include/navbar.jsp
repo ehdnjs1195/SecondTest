@@ -19,6 +19,7 @@
 				<li <c:if test="${param.category eq 'cafe' }">class="active"</c:if> ><a href="${pageContext.request.contextPath }/cafe/list.do">Cafe</a></li>
 				<li <c:if test="${param.category eq 'file' }">class="active"</c:if> ><a href="${pageContext.request.contextPath }/file/list.do">File</a></li>
 				<li <c:if test="${param.category eq 'shop' }">class="active"</c:if> ><a href="${pageContext.request.contextPath }/shop/list.do">Shop</a></li>
+				<li <c:if test="${param.category eq 'member' }">class="active"</c:if> ><a href="${pageContext.request.contextPath }/member/list.do">Member</a></li>
 			</ul>
 			<c:choose>
 				<c:when test="${empty sessionScope.id }">	<!-- sessionScope. 는 생략 가능 -->
