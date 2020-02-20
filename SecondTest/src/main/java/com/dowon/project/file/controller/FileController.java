@@ -28,7 +28,7 @@ public class FileController {
 		mView.setViewName("file/list");
 		return mView;
 	}
-	//파일 업로드 폼 요청 처리
+	//파일 업로드 폼 요청 처리--
 	@RequestMapping("/file/upload_form")
 	public ModelAndView authUploadForm(HttpServletRequest request) {
 		
