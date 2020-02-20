@@ -1,6 +1,6 @@
-package com.dowon.shop.dao;
+package com.dowon.project.shop.dao;
 
-import com.dowon.shop.dto.OrderDto;
+import com.dowon.project.shop.dto.OrderDto;
 
 public interface OrderDao {
 	//배송 ?��보�?? 추�??��?�� 메소?��

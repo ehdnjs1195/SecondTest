@@ -1,12 +1,12 @@
-package com.dowon.shop.dto;
+package com.dowon.project.shop.dto;
 
 public class ShopDto {
-	private int num; //?ƒ?’ˆë²ˆí˜¸
-	private String name; //?ƒ?’ˆëª?
-	private int price; //?ƒ?’ˆê°?ê²?
-	private int remainCount; //?¬ê³? ê°??ˆ˜
-	private String id; //ì£¼ë¬¸? ?•„?´?””
-	//?””?´?Š¸ ?ƒ?„±? 
+	private int num; //?ï¿½ï¿½?ï¿½ï¿½ë²ˆí˜¸
+	private String name; //?ï¿½ï¿½?ï¿½ï¿½ï¿½?
+	private int price; //?ï¿½ï¿½?ï¿½ï¿½ï¿½?ï¿½?
+	private int remainCount; //?ï¿½ï¿½ï¿½? ï¿½??ï¿½ï¿½
+	private String id; //ì£¼ë¬¸?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
+	//?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ 
 	public ShopDto() {}
 	public ShopDto(int num, String name, int price, int remainCount, String id) {
 		super();

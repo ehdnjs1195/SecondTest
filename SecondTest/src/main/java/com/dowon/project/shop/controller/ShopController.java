@@ -1,4 +1,4 @@
-package com.dowon.shop.controller;
+package com.dowon.project.shop.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dowon.shop.service.ShopService;
+import com.dowon.project.shop.service.ShopService;
 
 @Controller
 public class ShopController {

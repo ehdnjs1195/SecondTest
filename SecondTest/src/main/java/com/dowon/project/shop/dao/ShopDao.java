@@ -1,8 +1,8 @@
-package com.dowon.shop.dao;
+package com.dowon.project.shop.dao;
 
 import java.util.List;
 
-import com.dowon.shop.dto.ShopDto;
+import com.dowon.project.shop.dto.ShopDto;
 
 public interface ShopDao {
 	//?��?��?�� 목록?�� 리턴?��주는 메소?��

@@ -1,4 +1,4 @@
-package com.dowon.shop.dao;
+package com.dowon.project.shop.dao;
 
 import java.util.Random;
 
@@ -6,8 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.dowon.shop.dto.OrderDto;
-import com.dowon.exception.NoDeliveryException;
+import com.dowon.project.exception.NoDeliveryException;
+import com.dowon.project.shop.dto.OrderDto;
 
 @Repository
 public class OrderDaoImpl implements OrderDao{

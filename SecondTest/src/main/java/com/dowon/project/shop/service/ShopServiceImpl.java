@@ -1,4 +1,4 @@
-package com.dowon.shop.service;
+package com.dowon.project.shop.service;
 
 import java.util.List;
 import java.util.Random;
@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dowon.exception.NoDeliveryException;
-import com.dowon.shop.dto.OrderDto;
-import com.dowon.shop.dto.ShopDto;
-import com.dowon.shop.dao.OrderDao;
-import com.dowon.shop.dao.ShopDao;
+import com.dowon.project.exception.NoDeliveryException;
+import com.dowon.project.shop.dao.OrderDao;
+import com.dowon.project.shop.dao.ShopDao;
+import com.dowon.project.shop.dto.OrderDto;
+import com.dowon.project.shop.dto.ShopDto;
 
 @Service
 public class ShopServiceImpl implements ShopService{

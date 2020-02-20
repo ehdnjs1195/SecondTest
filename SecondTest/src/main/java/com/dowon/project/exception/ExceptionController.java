@@ -1,4 +1,4 @@
-package com.dowon.exception;
+package com.dowon.project.exception;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;

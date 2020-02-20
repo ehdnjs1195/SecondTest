@@ -1,4 +1,4 @@
-package com.dowon.shop.dao;
+package com.dowon.project.shop.dao;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.dowon.shop.dto.ShopDto;
+import com.dowon.project.shop.dto.ShopDto;
 @Repository
 public class ShopDaoImpl implements ShopDao{
 

@@ -1,10 +1,10 @@
-package com.dowon.shop.dto;
+package com.dowon.project.shop.dto;
 
-//ì£¼ë¬¸ ? •ë³´ë?? ?‹´?„ Dto
+//ì£¼ë¬¸ ?ï¿½ï¿½ë³´ï¿½?? ?ï¿½ï¿½?ï¿½ï¿½ Dto
 public class OrderDto {
 	private int num; //ì£¼ë¬¸ ë²ˆí˜¸
-	private String id; //ì£¼ë¬¸??˜ ?•„?´?””
-	private int code; //?ƒ?’ˆë²ˆí˜¸
+	private String id; //ì£¼ë¬¸?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
+	private int code; //?ï¿½ï¿½?ï¿½ï¿½ë²ˆí˜¸
 	private String addr; //ë°°ì†¡ì£¼ì†Œ
 
 	public OrderDto() {}

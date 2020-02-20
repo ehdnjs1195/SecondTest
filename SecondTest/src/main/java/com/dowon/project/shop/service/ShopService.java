@@ -1,4 +1,4 @@
-package com.dowon.shop.service;
+package com.dowon.project.shop.service;
 
 import javax.servlet.http.HttpServletRequest;
 
