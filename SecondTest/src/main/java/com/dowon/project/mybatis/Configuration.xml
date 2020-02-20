@@ -4,14 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">	<!-- 복붙해서 저장하면 이클립스가 알아서 이 경로를 통해 mybatis를 사용할 준비를 한다. -->
 <configuration>
 	<!-- 자주 사용하는 type 의 별칭 지정하기 -->
-	
 	<typeAliases>
 		<typeAlias type="com.dowon.project.shop.dto.ShopDto" alias="shopDto"/>
 		<typeAlias type="com.dowon.project.shop.dto.OrderDto" alias="OrderDto"/>
 	</typeAliases>
-
 	<!-- mapper 설정 -->
-	
 	<mappers>
 		<mapper resource="com/dowon/project/mybatis/ShopMapper.xml"/>
 	</mappers>
