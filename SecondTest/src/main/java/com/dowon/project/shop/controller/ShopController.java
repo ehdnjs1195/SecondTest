@@ -16,11 +16,14 @@ public class ShopController {
 	
 	@RequestMapping("/shop/list")
 	public ModelAndView list(ModelAndView mView) {
+		service.getList(mView);
 		mView.setViewName("shop/list");
 		return mView;
 	}
+	@RequestMapping("/shop/buy")
 	public ModelAndView authBuy(HttpServletRequest request,ModelAndView mView) {
 		service.buy(request,mView);
+		mView.setViewName("shop/buy");
 		return mView;
 	}
 }

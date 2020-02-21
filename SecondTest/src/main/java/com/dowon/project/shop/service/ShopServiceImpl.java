@@ -6,6 +6,7 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,7 +17,7 @@ import com.dowon.project.shop.dao.ShopDao;
 import com.dowon.project.shop.dto.OrderDto;
 import com.dowon.project.shop.dto.ShopDto;
 
-@Service
+@Repository
 public class ShopServiceImpl implements ShopService{
 	@Autowired
 	private ShopDao shopDao;
