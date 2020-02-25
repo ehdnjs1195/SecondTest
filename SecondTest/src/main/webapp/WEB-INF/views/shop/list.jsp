@@ -16,7 +16,7 @@
 	<h3>상품 목록 입니다.</h3>
 	<div class="row">
 		<c:forEach var="tmp" items="${list }">
-			<div class="col-xs-4">
+			<div class="col-xs-3">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h4>${tmp.name }</h4>
