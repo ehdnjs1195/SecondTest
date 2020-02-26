@@ -47,11 +47,7 @@
             </ol>
 
             <div class="carousel-inner">
-                <div class="item active">
-                    <div class="item">
-                        <jsp:include page="include/movielist.jsp"/>
-                    </div>
-                </div>
+                <jsp:include page="include/movielist.jsp"/>
                 <!-- <div class="item">
                     <div class="items">
                         <img src="images/test5.jpg" />

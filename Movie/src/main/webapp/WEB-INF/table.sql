@@ -6,7 +6,9 @@ releasDate varchar2(100),
 genre varchar2(50),
 director varchar2(100),
 actor varchar2(100),
-fileName varchar2(100)
+fileName varchar2(100),
+starPoint number(3,2),
+videoLink varchar2(100)
 );
 
 create sequence movie_seq;
