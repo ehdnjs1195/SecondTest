@@ -15,6 +15,7 @@
         .items {
             width: 25%;
             float: left;
+            padding: 2px;
         }
 
         .items img {
