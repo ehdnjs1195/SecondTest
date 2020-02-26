@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+/* 상단 navbar 때문에 필요한 css*/
+body{
+   padding-top: 60px;
+   background-color: #2d3436;
+}
+
+html, body {
+   width: 100%;
+   height: 100%;
+}
+      
+body {
+    background-color: #2d3436;
+}
+
+.items:hover {
+   opacity: 0.6;
+}
+
+.carousel-control {
+    width: 5%;
+}
