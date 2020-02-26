@@ -9,9 +9,10 @@ public class MovieDto {
 	private String director;
 	private String actor;
 	private String fileName;
+	private String youtube;
 	public MovieDto() {}
 	public MovieDto(int num, String title, String content, String releasDate, String genre, String director,
-			String actor, String fileName) {
+			String actor, String fileName, String youtube) {
 		super();
 		this.num = num;
 		this.title = title;
@@ -21,6 +22,7 @@ public class MovieDto {
 		this.director = director;
 		this.actor = actor;
 		this.fileName = fileName;
+		this.youtube = youtube;
 	}
 	public int getNum() {
 		return num;
@@ -69,6 +71,12 @@ public class MovieDto {
 	}
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+	}
+	public String getYoutube() {
+		return youtube;
+	}
+	public void setYoutube(String youtube) {
+		this.youtube = youtube;
 	}
 	
 }
