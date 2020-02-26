@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<!-- Carousel -->
 <div id="myCarousel_comedy" class="carousel slide" data-ride="carousel"
 	data-interval="5000">
 	<!-- Carousel 하단의 동그란 nav 요소  -->
@@ -17,16 +17,15 @@
 		<c:forEach var="i" begin="1" end="2" step="1">
 			<div class="item <c:if test="${i eq 1}">active</c:if>">
 				<c:forEach var="tmp" items="${list }">
-					<c:if test="${fn:contains(tmp.genre,'드라마')}">
+					<c:if test="${fn:contains(tmp.genre,param.genre)}">
 						<div class="items">
-							<img id="showImg1" src="images/${tmp.fileName }.jpg" />
+							<img id="${param.genre }_${tmp.num}" src="images/${tmp.fileName }.jpg" />
 						</div>
 					</c:if>
 				</c:forEach>
 			</div>
 		</c:forEach>
 	</div>
-
 	<!-- 이전, 다음 control UI -->
 	<a href="#myCarousel_comedy" class="left carousel-control"
 		data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span>
@@ -37,3 +36,64 @@
 	</a>
 </div>
 
+<!-- Modal -->
+<c:forEach var="tmp" items="${list }">
+	<c:if test="${fn:contains(tmp.genre, param.genre)}">
+		<div class="modal fade" id="myModal${tmp.num }">
+			<!-- modal-lg  | default | modal-sm -->
+			<div class="modal-dialog">
+				<div class="modal-content"
+					style="width: 1000px; position: relative; left: 50%; transform: translateX(-50%);">
+					<div class="modal-body" style="display: flex;">
+						<img src="images/${tmp.fileName }.jpg" id="${tmp.num }"
+							style="width: 50%; height: auto; margin-right: 10px;">
+						<div class="imgBox">
+							<h2>${tmp.title }</h2>
+							<dl class="movie_info">
+								<dt>개봉</dt>
+								<dd>${tmp.releasDate }</dd>
+								<dt>장르</dt>
+								<dd class="movie_genre">
+									<p>${tmp.genre }</p>
+								</dd>
+								<dt>감독</dt>
+								<dd class="movie_director">
+									<p>${tmp.director }</p>
+								</dd>
+								<dt>출연</dt>
+								<dd class="movie_actor">
+									<p>${tmp.actor }</p>
+								</dd>
+							</dl>
+							<h3>줄거리</h3>
+							<h4>${tmp.content }</h4>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<div>
+							<Strong style="float: left;">댓글</Strong>
+							<textarea name="" id="" cols="30" rows="10"
+								style="margin: 0px; height: 74px; width: 973px;"
+								placeholder="Comment"></textarea>
+						</div>
+						<hr>
+						<iframe width="968" height="725" src="${tmp.youtube }"
+							frameborder="0"
+							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+							allowfullscreen></iframe>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+
+		<script>
+			$("#${param.genre }_${tmp.num}").click(function() {
+				$("#myModal${tmp.num}").modal("show");
+			});
+		</script>
+	</c:if>
+</c:forEach>
