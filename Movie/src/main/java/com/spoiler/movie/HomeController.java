@@ -15,7 +15,7 @@ public class HomeController {
 	@RequestMapping("/home")
 	public String home(HttpServletRequest request) {
 		service.movieList(request);
-		
+
 		return "home";
 	}
 	

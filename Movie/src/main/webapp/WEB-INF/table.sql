@@ -77,3 +77,19 @@ movie_seq.nextval,
 'https://youtube.com/embed/eLlRuunKgqM'
 );
 
+'test4'
+);
+
+ALTER TABLE movie ADD(youtube VARCHAR2(100));
+UPDATE movie
+SET youtube='https://www.youtube.com/embed/cTEpElvjdvg'
+WHERE num=1;
+UPDATE movie
+SET youtube='https://youtu.be/eGWJ87_8jpg'
+WHERE num=2;
+UPDATE movie
+SET youtube='https://youtu.be/mNvV50e-lJ4'
+WHERE num=3;
+UPDATE movie
+SET youtube='https://youtu.be/eLlRuunKgqM'
+WHERE num=4;

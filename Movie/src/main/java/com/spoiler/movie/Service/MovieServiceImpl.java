@@ -21,5 +21,5 @@ public class MovieServiceImpl implements MovieService{
 		List<MovieDto> list = dao.getList();
 		request.setAttribute("list", list);
 	}
-	
+
 }

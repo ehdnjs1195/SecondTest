@@ -17,4 +17,5 @@ public class MovieDaoImpl implements MovieDao{
 	public List<MovieDto> getList() {
 		return session.selectList("movie.getList");
 	}
+
 }
