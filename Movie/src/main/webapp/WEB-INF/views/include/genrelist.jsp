@@ -84,12 +84,8 @@
 							allowfullscreen></iframe>
 					</div>
 				</div>
-				<!-- /.modal-content -->
 			</div>
-			<!-- /.modal-dialog -->
 		</div>
-		<!-- /.modal -->
-
 		<script>
 			$("#${param.genre }_${tmp.num}").click(function() {
 				$("#myModal${tmp.num}").modal("show");
