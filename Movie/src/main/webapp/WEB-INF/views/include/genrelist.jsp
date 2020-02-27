@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!-- Carousel -->
-<div id="myCarousel_comedy" class="carousel slide" data-ride="carousel"
+<div id="myCarousel_${param.genre }" class="carousel slide" data-ride="carousel"
 	data-interval="5000">
 	<!-- Carousel 하단의 동그란 nav 요소  -->
 	<ol class="carousel-indicators">
@@ -27,10 +27,10 @@
 		</c:forEach>
 	</div>
 	<!-- 이전, 다음 control UI -->
-	<a href="#myCarousel_comedy" class="left carousel-control"
+	<a href="#myCarousel_${param.genre }" class="left carousel-control"
 		data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span>
 		<span class="sr-only">이전</span>
-	</a> <a href="#myCarousel_comedy" class="right carousel-control"
+	</a> <a href="#myCarousel_${param.genre }" class="right carousel-control"
 		data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span>
 		<span class="sr-only">다음</span>
 	</a>
