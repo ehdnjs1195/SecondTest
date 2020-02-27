@@ -26,14 +26,15 @@
 			</div>
 		</c:forEach>
 	</div>
-	<!-- 이전, 다음 control UI -->
-	<a href="#myCarousel_${param.genre }" class="left carousel-control"
-		data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span>
-		<span class="sr-only">이전</span>
-	</a> <a href="#myCarousel_${param.genre }" class="right carousel-control"
-		data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span>
-		<span class="sr-only">다음</span>
-	</a>
+		<!-- 이전, 다음 control UI -->
+		<a href="#myCarousel_${param.genre }" class="left carousel-control"
+			data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span>
+			<span class="sr-only">이전</span>
+		</a> 
+		<a href="#myCarousel_${param.genre }" class="right carousel-control"
+			data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span>
+			<span class="sr-only">다음</span>
+		</a>
 </div>
 
 <!-- Modal -->

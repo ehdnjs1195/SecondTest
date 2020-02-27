@@ -18,6 +18,10 @@
 				<c:forEach var="tmp" items="${list }">
 					<div class="items">
 						<img id="best_${tmp.num}" src="${tmp.imageLink }" />
+                        <div class="box-content">
+                            <h3 class="title">${tmp.title}</h3>
+                            <span class="post">${tmp.genre }</span>
+                        </div>
 					</div>
 				</c:forEach>
 			</div>

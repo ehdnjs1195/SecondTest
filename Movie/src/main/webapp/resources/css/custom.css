@@ -16,8 +16,9 @@ body {
 }
 
 .items:hover {
-   opacity: 0.6;
    cursor: pointer;
+    position:relative;
+   transition:all .2s ease-out 0s
 }
 
 .carousel-control {
@@ -26,6 +27,7 @@ body {
 
 .items{
    width: 25%; float: left; padding: 2px;
+  
 }
 
 .items img{
@@ -54,4 +56,18 @@ textarea{
 
 iframe{
    width: 968px; height: 725px; 
+}
+
+
+
+.items .box-content,
+.items:after{position:absolute;left:20px;right:20px}
+.items:after{content:"";display:block;background:#2d3436;
+top:20px;bottom:20px;opacity:0;transform:rotate3d(-1,1,0,100deg);transition:all .4s ease-in-out 0s}
+.items:hover:after{opacity:.9;transform:rotate3d(0,0,0,0deg)}
+.items .box-content{top:45%;opacity:0;z-index:1;-webkit-transform:translate(10%,-30%);transform:translate(10%,-30%);transition:all .2s ease-out 0s}
+.items:hover .box-content{opacity:1;transform:translate(0,-50%);transition-delay:.2s}
+.items .title{display:block;font-size:22px;font-weight:700;color:#FFC300;margin:0 0 10px}
+.items .post{display:block;font-size:15px;color:#f7f7b9;margin-bottom:20px}
+@media only screen and (max-width:990px){.box13{margin-bottom:30px}
 }
