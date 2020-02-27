@@ -41,7 +41,7 @@
 	<c:if test="${fn:contains(tmp.genre, param.genre)}">
 		<div class="modal fade" id="myModal${tmp.num }">
 			<!-- modal-lg  | default | modal-sm -->
-			<div class="modal-dialog">
+			<div class="modal-dialog">		
 				<div class="modal-content">
 					<div class="modal-body">
 						<img src="${tmp.imageLink }" id="${tmp.num }">
