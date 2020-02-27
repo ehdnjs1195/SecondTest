@@ -39,7 +39,7 @@ movie_seq.nextval,
 '장유정',
 '라미란, 김무열, 나문희',
 8.60,
-'https://movie-phinf.pstatic.net/20200121_186/1579570188386BXMMG_JPEG/movie_image.jpg',
+'https://youtube.com/embed/eGWJ87_8jpg',
 'https://youtube.com/embed/mNvV50e-lJ4'
 );
 insert into movie values(
