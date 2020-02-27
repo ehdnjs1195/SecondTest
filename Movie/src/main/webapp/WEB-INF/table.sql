@@ -6,8 +6,8 @@ releasDate varchar2(100),
 genre varchar2(50),
 director varchar2(100),
 actor varchar2(100),
-fileName varchar2(100),
 starPoint number(3,2),
+imageLink varchar2(100),
 videoLink varchar2(100)
 );
 
@@ -24,7 +24,9 @@ movie_seq.nextval,
 '범죄, 스릴러',
 '김용훈',
 '전도연, 정우성, 배성우',
-'test1'
+8.33,
+'https://movie-phinf.pstatic.net/20200211_156/1581402209718zyQ9B_JPEG/movie_image.jpg',
+'https://www.youtube.com/embed/cTEpElvjdvg'
 );
 insert into movie values(
 movie_seq.nextval,
@@ -35,8 +37,10 @@ movie_seq.nextval,
 '2020 .02.12 개봉',
 '코미디',
 '장유정',
-'라미란',
-'test2'
+'라미란, 김무열, 나문희',
+8.60,
+'https://movie-phinf.pstatic.net/20200121_186/1579570188386BXMMG_JPEG/movie_image.jpg',
+'https://youtube.com/embed/mNvV50e-lJ4'
 );
 insert into movie values(
 movie_seq.nextval,
@@ -49,7 +53,9 @@ movie_seq.nextval,
 '드라마, 전쟁',
 '샘 멘데스',
 '조지 맥케이, 단-찰스 채프먼',
-'test3'
+9.30,
+'https://movie-phinf.pstatic.net/20200212_161/1581489520959v0cjn_JPEG/movie_image.jpg',
+'https://youtube.com/embed/mNvV50e-lJ4'
 );
 insert into movie values(
 movie_seq.nextval,
@@ -66,5 +72,8 @@ movie_seq.nextval,
 '드라마, 멜로/로멘스',
 '그레타 거윅',
 '시얼샤 로넌, 엠마 왓슨, 플로렌스 퓨',
-'test4'
+9.18,
+'https://movie-phinf.pstatic.net/20200117_184/15792425940380AqI2_JPEG/movie_image.jpg',
+'https://youtube.com/embed/eLlRuunKgqM'
 );
+

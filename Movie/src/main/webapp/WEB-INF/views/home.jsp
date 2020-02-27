@@ -7,33 +7,7 @@
 <meta charset="UTF-8">
 <title>SPOILER</title>
 <jsp:include page="include/resource.jsp"></jsp:include>
-    <style>
-        body {
-            background-color: #2d3436;
-        }
-
-        .items {
-            width: 25%;
-            float: left;
-            padding: 2px;
-        }
-
-        .items img {
-            width: 100%;
-            height: 100%;
-        }
-
-        .carousel-control {
-            width: 5%;
-        }
-        .modal-dialog.modal-center {
-            display: inline-block;
-            text-align: left;
-            vertical-align: middle; 
-        }
-    </style>
 </head>
-
 <body>
     <div class="container">
     	<!-- 추천 TOP8 -->

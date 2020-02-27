@@ -19,7 +19,7 @@
 				<c:forEach var="tmp" items="${list }">
 					<c:if test="${fn:contains(tmp.genre,param.genre)}">
 						<div class="items">
-							<img id="${param.genre }_${tmp.num}" src="images/${tmp.fileName }.jpg" />
+							<img id="${param.genre }_${tmp.num}" src="${tmp.imageLink }" />
 						</div>
 					</c:if>
 				</c:forEach>
@@ -42,16 +42,14 @@
 		<div class="modal fade" id="myModal${tmp.num }">
 			<!-- modal-lg  | default | modal-sm -->
 			<div class="modal-dialog">
-				<div class="modal-content"
-					style="width: 1000px; position: relative; left: 50%; transform: translateX(-50%);">
-					<div class="modal-body" style="display: flex;">
-						<img src="images/${tmp.fileName }.jpg" id="${tmp.num }"
-							style="width: 50%; height: auto; margin-right: 10px;">
+				<div class="modal-content">
+					<div class="modal-body">
+						<img src="${tmp.imageLink }" id="${tmp.num }">
 						<div class="imgBox">
 							<h2>${tmp.title }</h2>
 							<dl class="movie_info">
 								<dt>개봉</dt>
-								<dd>${tmp.releasDate }</dd>
+								<dd>${tmp.releaseDate }</dd>
 								<dt>장르</dt>
 								<dd class="movie_genre">
 									<p>${tmp.genre }</p>
@@ -74,11 +72,10 @@
 						<div>
 							<Strong style="float: left;">댓글</Strong>
 							<textarea name="" id="" cols="30" rows="10"
-								style="margin: 0px; height: 74px; width: 973px;"
 								placeholder="Comment"></textarea>
 						</div>
 						<hr>
-						<iframe width="968" height="725" src="${tmp.youtube }"
+						<iframe width="968" height="725" src="${tmp.videoLink }"
 							frameborder="0"
 							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 							allowfullscreen></iframe>

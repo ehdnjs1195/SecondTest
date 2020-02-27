@@ -4,25 +4,27 @@ public class MovieDto {
 	private int num;
 	private String title; 
 	private String content;
-	private String releasDate;
+	private String releaseDate;
 	private String genre;
 	private String director;
 	private String actor;
-	private String fileName;
-	private String youtube;
+	private float starPoint;
+	private String imageLink;
+	private String videoLink;
 	public MovieDto() {}
-	public MovieDto(int num, String title, String content, String releasDate, String genre, String director,
-			String actor, String fileName, String youtube) {
+	public MovieDto(int num, String title, String content, String releaseDate, String genre, String director,
+			String actor, float starPoint, String imageLink, String videoLink) {
 		super();
 		this.num = num;
 		this.title = title;
 		this.content = content;
-		this.releasDate = releasDate;
+		this.releaseDate = releaseDate;
 		this.genre = genre;
 		this.director = director;
 		this.actor = actor;
-		this.fileName = fileName;
-		this.youtube = youtube;
+		this.starPoint = starPoint;
+		this.imageLink = imageLink;
+		this.videoLink = videoLink;
 	}
 	public int getNum() {
 		return num;
@@ -42,11 +44,11 @@ public class MovieDto {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getReleasDate() {
-		return releasDate;
+	public String getReleaseDate() {
+		return releaseDate;
 	}
-	public void setReleasDate(String releasDate) {
-		this.releasDate = releasDate;
+	public void setReleaseDate(String releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 	public String getGenre() {
 		return genre;
@@ -66,17 +68,24 @@ public class MovieDto {
 	public void setActor(String actor) {
 		this.actor = actor;
 	}
-	public String getFileName() {
-		return fileName;
+	public float getStarPoint() {
+		return starPoint;
 	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setStarPoint(float starPoint) {
+		this.starPoint = starPoint;
 	}
-	public String getYoutube() {
-		return youtube;
+	public String getImageLink() {
+		return imageLink;
 	}
-	public void setYoutube(String youtube) {
-		this.youtube = youtube;
+	public void setImageLink(String imageLink) {
+		this.imageLink = imageLink;
 	}
+	public String getVideoLink() {
+		return videoLink;
+	}
+	public void setVideoLink(String videoLink) {
+		this.videoLink = videoLink;
+	}
+	
 	
 }
