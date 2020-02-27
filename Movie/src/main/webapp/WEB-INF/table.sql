@@ -39,8 +39,8 @@ movie_seq.nextval,
 '장유정',
 '라미란, 김무열, 나문희',
 8.60,
-'https://youtube.com/embed/eGWJ87_8jpg',
-'https://youtube.com/embed/mNvV50e-lJ4'
+'https://movie-phinf.pstatic.net/20200121_186/1579570188386BXMMG_JPEG/movie_image.jpg',
+'https://youtube.com/embed/eGWJ87_8jpg'
 );
 insert into movie values(
 movie_seq.nextval,
@@ -76,20 +76,3 @@ movie_seq.nextval,
 'https://movie-phinf.pstatic.net/20200117_184/15792425940380AqI2_JPEG/movie_image.jpg',
 'https://youtube.com/embed/eLlRuunKgqM'
 );
-
-'test4'
-);
-
-ALTER TABLE movie ADD(youtube VARCHAR2(100));
-UPDATE movie
-SET youtube='https://www.youtube.com/embed/cTEpElvjdvg'
-WHERE num=1;
-UPDATE movie
-SET youtube='https://youtu.be/eGWJ87_8jpg'
-WHERE num=2;
-UPDATE movie
-SET youtube='https://youtu.be/mNvV50e-lJ4'
-WHERE num=3;
-UPDATE movie
-SET youtube='https://youtu.be/eLlRuunKgqM'
-WHERE num=4;
