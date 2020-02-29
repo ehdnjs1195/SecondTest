@@ -2,7 +2,7 @@ create table movie
 (num number primary key,
 title varchar2(100) not null,
 content clob,
-releasDate varchar2(100),
+releaseDate varchar2(100),
 genre varchar2(50),
 director varchar2(100),
 actor varchar2(100),
