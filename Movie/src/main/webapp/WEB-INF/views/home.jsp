@@ -18,6 +18,12 @@
 			<button type="submit">검색</button>
 		</form>
 	</div>
+	<!-- 장르별 리스트 -->
+	<div class="container">
+		<a href="genredetail.do?genre=드라마">드라마</a>
+		<a href="genredetail.do?genre=범죄">범죄</a>
+		<a href="genredetail.do?genre=코미디">코미디</a>
+	</div>
 
     <div class="container">
     	<!-- 추천 TOP8 -->

@@ -22,4 +22,12 @@ public class MovieController {
 		mView.setViewName("searchlist");
 		return mView;
 	}
+	@RequestMapping("/genredetail")
+	public ModelAndView list2(ModelAndView mView, HttpServletRequest request) {
+		//파일목록과 페이징 처리에 필요한 값들을 request에 담아주는 서비스 메소드 호출하기
+		service.movieList(request);
+	
+		mView.setViewName("genredetail");
+		return mView;
+	}
 }
