@@ -3,6 +3,9 @@
 <mapper namespace="movie">
 	<select id="getList" resultType="movieDto">
 		select * from movie	
+		<if test="title != null">
+			where title like '%${title}%'
+		</if>
+		order by num asc
 	</select>
-
 </mapper>

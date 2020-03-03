@@ -10,6 +10,15 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/custom.css" />
 </head>
 <body>
+	<!-- 검색 창 -->
+	<div class="container">
+		<form action="searchlist.do" method="get">
+			<label for="condition" style="display: none;">검색조건</label>
+			<input type="text" name="keyword" id="keyword" placeholder="검색어를 입력하세요..." value="${keyword }" />
+			<button type="submit">검색</button>
+		</form>
+	</div>
+
     <div class="container">
     	<!-- 추천 TOP8 -->
         <h1 style="color: honeydew;">추천 TOP8</h1>
