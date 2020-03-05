@@ -34,9 +34,15 @@
 			<h2>모든 검색결과 입니다</h2>
 		</c:otherwise>
 	</c:choose>
-	
-	
-	<table>
+
+		<div class="btn-group" data-toggle="buttons">
+			<label> <input type="radio" name="options" id="option1" checked> 제목순</label>
+			<label> <input type="radio" name="options" id="option2"> 출시일순</label>
+			<label> <input type="radio" name="options" id="option3"> 별점순</label>
+		</div>
+
+
+		<table>
 		<c:forEach var="tmp" items="${list }">
 			<c:if test="${fn:contains(tmp.genre,param.genre)}">
 				<tr>
@@ -60,6 +66,10 @@
 			</c:if>
 		</c:forEach>
 	</table>
+	<jsp:include page="include/paging.jsp">
+		<jsp:param value="genredetail" name="page"/>
+	</jsp:include>
 </div>
+
 </body>
 </html>

@@ -14,8 +14,13 @@ public class MovieDaoImpl implements MovieDao{
 	private SqlSession session;
 	
 	@Override
-	public List<MovieDto> getList() {
-		return session.selectList("movie.getList");
+	public List<MovieDto> getList(MovieDto dto) {
+		return session.selectList("movie.getList",dto);
+	}
+
+	@Override
+	public int getCount(MovieDto dto) {
+		return session.selectOne("movie.getCount",dto);
 	}
 
 }

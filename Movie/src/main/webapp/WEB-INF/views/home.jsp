@@ -20,21 +20,21 @@
 	</div>
 	<!-- 장르별 리스트 -->
 	<div class="container">
-		<a href="genredetail.do?genre=드라마">드라마</a>
-		<a href="genredetail.do?genre=범죄">범죄</a>
-		<a href="genredetail.do?genre=코미디">코미디</a>
+		<a href="genredetaillist.do?genre=드라마">드라마</a>
+		<a href="genredetaillist.do?genre=범죄">범죄</a>
+		<a href="genredetaillist.do?genre=코미디">코미디</a>
 	</div>
 
     <div class="container">
     	<!-- 추천 TOP8 -->
-        <h1 style="color: honeydew;">추천 TOP8</h1>
+        <h1 style="color: honeydew;">추천 TOP8</h1>s
         <jsp:include page="include/bestlist.jsp"/>
         
         <!-- 장르: 드라마 -->
         <h1 style="color: honeydew;">드라마 영화</h1>
 		<jsp:include page="include/genrelist.jsp">
 			<jsp:param value="드라마" name="genre"/>
-		</jsp:include>	
+		</jsp:include>
 		
 		<!-- 장르: 범죄 -->
 		<h1 style="color: honeydew;">범죄 영화</h1>

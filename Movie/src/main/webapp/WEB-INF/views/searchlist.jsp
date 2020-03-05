@@ -60,6 +60,9 @@
 			</c:if>
 		</c:forEach>
 	</table>
+	<jsp:include page="include/paging.jsp">
+		<jsp:param value="search" name="page"/>
+	</jsp:include>
 </div>
 </body>
 </html>

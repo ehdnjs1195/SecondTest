@@ -19,7 +19,7 @@
 				<c:forEach var="tmp" items="${list }">
 					<c:if test="${fn:contains(tmp.genre,param.genre)}">
 						<div class="items">
-							<img id="${param.genre }_${tmp.num}" src="${tmp.imageLink }" />
+							<img id="${tmp.genre }_${tmp.num}" src="${tmp.imageLink }" />
 						</div>
 					</c:if>
 				</c:forEach>

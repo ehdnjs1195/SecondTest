@@ -11,11 +11,13 @@ public class MovieDto {
 	private float starPoint;
 	private String imageLink;
 	private String videoLink;
+	private int startRowNum;
+	private int endRowNum;
 	
 	public MovieDto() {}
 
 	public MovieDto(int num, String title, String content, String releaseDate, String genre, String director,
-			String actor, float starPoint, String imageLink, String videoLink) {
+			String actor, float starPoint, String imageLink, String videoLink, int startRowNum, int endRowNum) {
 		super();
 		this.num = num;
 		this.title = title;
@@ -27,6 +29,8 @@ public class MovieDto {
 		this.starPoint = starPoint;
 		this.imageLink = imageLink;
 		this.videoLink = videoLink;
+		this.startRowNum = startRowNum;
+		this.endRowNum = endRowNum;
 	}
 
 	public int getNum() {
@@ -108,6 +112,21 @@ public class MovieDto {
 	public void setVideoLink(String videoLink) {
 		this.videoLink = videoLink;
 	}
-	
-	
+
+	public int getStartRowNum() {
+		return startRowNum;
+	}
+
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
+	}
+
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
+	}
+
 }

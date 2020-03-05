@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="movie">
-	<select id="getList" resultType="movieDto">
-		select * from movie	
+	<select id="getList" parameterType="movieDto" resultType="movieDto">
+		select * from
+			(select result1.*,rownum as rnum
+			from (select * from movie	
+			<if test="title != null ">
+				where title like '%${title}%'
+			</if>
+			order by num asc) result1)
+		where rnum between #{startRowNum} and #{endRowNum}	
+	</select>
+	
+	<select id="getCount" parameterType="movieDto" resultType="int">
+		select nvl(max(rownum),0)
+		from movie
 		<if test="title != null">
 			where title like '%${title}%'
 		</if>
-		order by num asc
 	</select>
 </mapper>

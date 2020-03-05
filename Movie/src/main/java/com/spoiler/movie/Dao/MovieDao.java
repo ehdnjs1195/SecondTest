@@ -5,5 +5,6 @@ import java.util.List;
 import com.spoiler.movie.Dto.MovieDto;
 
 public interface MovieDao {
-	public List<MovieDto> getList();
+	public List<MovieDto> getList(MovieDto dto);
+	public int getCount(MovieDto dto);//글의 갯수
 }
