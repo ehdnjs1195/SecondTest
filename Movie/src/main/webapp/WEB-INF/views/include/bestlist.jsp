@@ -39,20 +39,6 @@
 		<!-- modal-lg  | default | modal-sm -->
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<!-- 이전, 다음 control UI
-				<div>
-					<a href="#myCarousel_${param.genre }" class="left carousel-control" data-slide="prev">
-						<span class="glyphicon glyphicon-chevron-left"></span>
-						<span class="sr-only">이전</span>
-					</a>
-				</div>
-				<div>
-					<a href="#myCarousel_${param.genre }" class="right carousel-control" data-slide="next">
-						<span class="glyphicon glyphicon-chevron-right"></span>
-						<span class="sr-only">다음</span>
-					</a>
-				</div>
-				 -->
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true" style="float:right; width: 50px; font-size:30px;">×</span>
 				</button>
@@ -80,14 +66,7 @@
 						<h4>${tmp.content }</h4>
 					</div>
 				</div>
-
 				<div class="modal-footer justify-content-center flex-column flex-md-row">
-					<div>
-						<Strong style="float: left;">댓글</Strong>
-						<textarea name="" id="" cols="30" rows="10"
-							placeholder="Comment"></textarea>
-					</div>
-					<hr>
 					<iframe src="${tmp.videoLink }" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					<span class="mr-4">Spread the word!</span>
 			        <div>

@@ -76,3 +76,10 @@ movie_seq.nextval,
 'https://movie-phinf.pstatic.net/20200117_184/15792425940380AqI2_JPEG/movie_image.jpg',
 'https://youtube.com/embed/eLlRuunKgqM'
 );
+CREATE TABLE USERS
+(ID VARCHAR2(30) PRIMARY KEY,
+PWD VARCHAR2(100) NOT NULL,
+EMAIL VARCHAR2(30),
+REGDATE DATE,
+profile VARCHAR2(100)
+);
