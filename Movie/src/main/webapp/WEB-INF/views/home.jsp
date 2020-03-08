@@ -9,6 +9,10 @@
 <jsp:include page="include/resource.jsp"></jsp:include>
 </head>
 <body>
+<form action="searchlist.do" method="post">
+	<input type="text" name="keyword" placeholder="제목 검색.."/>
+	<button type="submit">검색</button>
+</form>
     <div class="container">
     	<!-- 추천 TOP8 -->
         <h1 style="color: honeydew;">추천 TOP8</h1>
