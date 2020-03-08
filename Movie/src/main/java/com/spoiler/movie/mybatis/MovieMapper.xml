@@ -8,7 +8,20 @@
 			<if test="title != null ">
 				where title like '%${title}%'
 			</if>
-			order by num asc) result1)
+			<choose>
+				<when test="title != null">
+					order by title asc
+				</when>
+				<when test="releaseDate != null">
+					order by releaseDate asc
+				</when>
+				<when test="starPoint != null">
+					order by starPoint asc
+				</when>
+				<otherwise>
+					order by num asc
+				</otherwise>
+			</choose>) result1)
 		where rnum between #{startRowNum} and #{endRowNum}	
 	</select>
 	
@@ -19,4 +32,5 @@
 			where title like '%${title}%'
 		</if>
 	</select>
+	
 </mapper>

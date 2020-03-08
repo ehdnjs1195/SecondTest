@@ -6,7 +6,7 @@
 		<c:choose>
 			<c:when test="${startPageNum ne 1 }">
 				<li><a
-					href="${param.page}list.do?pageNum=${startPageNum-1 }&keyword=${encodedKeyword}&genre=${param.genre}">&laquo;</a>
+					href="${param.page}list.do?pageNum=${startPageNum-1 }&keyword=${encodedKeyword}&genre=${param.genre}&option=${encodedKeyword2}">&laquo;</a>
 				</li>
 			</c:when>
 			<c:otherwise>
@@ -18,12 +18,12 @@
 			<c:choose>
 				<c:when test="${i eq pageNum }">
 					<li class="active"><a
-						href="${param.page}list.do?pageNum=${i }&keyword=${encodedKeyword}&genre=${param.genre}">${i }</a>
+						href="${param.page}list.do?pageNum=${i }&keyword=${encodedKeyword}&genre=${param.genre}&option=${encodedKeyword2}">${i }</a>
 					</li>
 				</c:when>
 				<c:otherwise>
 					<li><a
-						href="${param.page}list.do?pageNum=${i }&keyword=${encodedKeyword}&genre=${param.genre}">${i }</a>
+						href="${param.page}list.do?pageNum=${i }&keyword=${encodedKeyword}&genre=${param.genre}&option=${encodedKeyword2}">${i }</a>
 					</li>
 				</c:otherwise>
 			</c:choose>
@@ -31,7 +31,7 @@
 		<c:choose>
 			<c:when test="${endPageNum lt totalPageCount }">
 				<li><a
-					href="${param.page}list.do?pageNum=${endPageNum+1 }&keyword=${encodedKeyword}&genre=${param.genre}">&raquo;</a>
+					href="${param.page}list.do?pageNum=${endPageNum+1 }&keyword=${encodedKeyword}&genre=${param.genre}&option=${encodedKeyword2}">&raquo;</a>
 				</li>
 			</c:when>
 			<c:otherwise>

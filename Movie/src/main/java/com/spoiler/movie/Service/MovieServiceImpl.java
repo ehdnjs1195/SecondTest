@@ -21,12 +21,14 @@ public class MovieServiceImpl implements MovieService {
 	public void movieList(HttpServletRequest request) {
 		// 검색과 관련된 파라미터를 읽어와 본다.
 		String keyword = request.getParameter("keyword");
-		String condition = request.getParameter("condition");
-
+		String option=request.getParameter("option");
+		String genre=request.getParameter("genre");
+		
 		// 검색 키워드가 존재한다면 키워드를 담을 CafeDto 객체 생성
 		MovieDto dto = new MovieDto();
 		if (keyword != null) {// 검색 키워드가 전달된 경우
 			dto.setTitle(keyword);
+			
 			String encodedKeyword = null;
 			try {
 				encodedKeyword = URLEncoder.encode(keyword, "utf-8");
@@ -36,13 +38,32 @@ public class MovieServiceImpl implements MovieService {
 			// 키워드와 검색조건을 request 에 담는다.
 			request.setAttribute("keyword", keyword);
 			request.setAttribute("encodedKeyword", encodedKeyword);
-			request.setAttribute("condition", condition);
 		}
 
+		if (option != null) {// 검색 키워드가 전달된 경우
+			if(option.equals("title")) {
+				dto.setTitle(option);
+			}else if(option.equals("releaseDate")) {
+				dto.setReleaseDate(option);
+			}//else if(option.equals("starPoint")) {//작성자 검색
+			// 	dto.setStarPoint(Integer.parseInt(option));
+			//}
+			
+			String encodedKeyword2=null;
+			try {
+				encodedKeyword2=URLEncoder.encode(option, "utf-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			//키워드와 검색조건을 request 에 담는다. 
+			request.setAttribute("option", option);
+			request.setAttribute("encodedKeyword2", encodedKeyword2);
+		}
+		
 		// 한 페이지에 나타낼 row 의 갯수
-		final int PAGE_ROW_COUNT = 3;//......?왜 이 숫자에 따라 홈에서 보여지는 리스트의 갯수가 달라지지..?
+		final int PAGE_ROW_COUNT = 2;//......?왜 이 숫자에 따라 홈에서 보여지는 리스트의 갯수가 달라지지..?
 		// 하단 디스플레이 페이지 갯수
-		final int PAGE_DISPLAY_COUNT = 2;
+		final int PAGE_DISPLAY_COUNT = 3;
 
 		// 보여줄 페이지의 번호
 		int pageNum = 1;
@@ -52,6 +73,7 @@ public class MovieServiceImpl implements MovieService {
 			// 페이지 번호를 설정한다.
 			pageNum = Integer.parseInt(strPageNum);
 		}
+
 		// 보여줄 페이지 데이터의 시작 ResultSet row 번호
 		int startRowNum = 1 + (pageNum - 1) * PAGE_ROW_COUNT;
 		// 보여줄 페이지 데이터의 끝 ResultSet row 번호
@@ -83,5 +105,9 @@ public class MovieServiceImpl implements MovieService {
 		request.setAttribute("list", list);
 		// 전체 글의 갯수 담기
 		request.setAttribute("totalRow", totalRow);
+		request.setAttribute("option", option);
+		request.setAttribute("genre", genre);
 	}
+
+	
 }

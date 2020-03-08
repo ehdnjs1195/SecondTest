@@ -22,5 +22,4 @@ public class MovieDaoImpl implements MovieDao{
 	public int getCount(MovieDto dto) {
 		return session.selectOne("movie.getCount",dto);
 	}
-
 }

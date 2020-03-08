@@ -35,6 +35,30 @@
 		</c:otherwise>
 	</c:choose>
 	
+	<!-- 라디오 정렬기능 : input 요소에서는 if문 작성이 안되네.... 간단한 방법은 없을까? -->
+	<div class="container">
+			<form action="searchlist.do" method="get">
+					<input type="hidden" name="keyword" value="${keyword }" />
+					<c:choose>
+						<c:when test="${option eq 'releaseDate' }">
+							<input type="radio" name="option" id="option" value="releaseDate" checked="checked"> 출시일순
+							<input type="radio" name="option" id="option" value="title" > 제목순
+						</c:when>
+						<c:when test="${option eq 'title' }">
+							<input type="radio" name="option" id="option" value="releaseDate"> 출시일순
+							<input type="radio" name="option" id="option" value="title" checked="checked"> 제목순
+						</c:when>
+						<c:otherwise>
+							<input type="radio" name="option" id="option" value="releaseDate"> 출시일순
+							<input type="radio" name="option" id="option" value="title" > 제목순
+							<!-- <input type="radio" name="option" id="option" value="starPoint" > 별점순 --> 
+						</c:otherwise>
+					</c:choose>
+					
+				<button class="btn btn-primary" type="submit" style="color: yellow;">검색</button>
+			</form>
+		</div>
+	
 	<!-- table 안에 글자 키우는 방법은.....? span으로 묶어서 css????? 다른방법은 없는 것인가.... -->
 	<table>
 		<c:forEach var="tmp" items="${list }">
