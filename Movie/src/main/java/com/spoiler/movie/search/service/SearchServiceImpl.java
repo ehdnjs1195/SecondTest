@@ -44,11 +44,9 @@ public class SearchServiceImpl implements SearchService{
         requestHeaders.put("X-Naver-Client-Id", clientId);
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
         String responseBody = get(apiURL,requestHeaders);
-        JSONObject jsonObj=new JSONObject(responseBody);
-//        System.out.println(responseBody);
-//        System.out.println(arr);
+        JSONObject jsonObj=new JSONObject(responseBody);	//JSON으로 변환
         
-//        System.out.println(jsonObj.getJSONArray("items").getJSONObject(0));
+        //JSON에서 items 추출 후 dto에 담고 list에 담기
         JSONArray arr=jsonObj.getJSONArray("items");
         List<SearchDto> list=new ArrayList<>();
         for(int i=0;i<arr.length();i++) {
@@ -63,9 +61,7 @@ public class SearchServiceImpl implements SearchService{
         	SearchDto dto=new SearchDto(actor, image, director, subtitle, link, title, pubDate, userRating);
         	list.add(dto);
         }
-        
         request.setAttribute("list", list);
-        
     }
 
     private static String get(String apiUrl, Map<String, String> requestHeaders){

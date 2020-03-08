@@ -10,7 +10,7 @@
 </head>
 <body>
 <form action="searchlist.do" method="post">
-	<input type="text" name="keyword" placeholder="제목 검색.."/>
+	<input type="text" name="keyword" id="keyword" placeholder="제목 검색.."/>
 	<button type="submit">검색</button>
 </form>
     <div class="container">
@@ -37,4 +37,5 @@
 		</jsp:include>
     </div>
 </body>
+
 </html>
