@@ -9,11 +9,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
@@ -45,17 +48,23 @@ public class SearchServiceImpl implements SearchService{
 //        System.out.println(responseBody);
 //        System.out.println(arr);
         
-        System.out.println(jsonObj.getJSONArray("items").getJSONObject(0));
-        String actor=jsonObj.getJSONArray("items").getJSONObject(0).getString("actor");
-        String image=jsonObj.getJSONArray("items").getJSONObject(0).getString("image");
-        String director=jsonObj.getJSONArray("items").getJSONObject(0).getString("director");
-        String subtitle=jsonObj.getJSONArray("items").getJSONObject(0).getString("subtitle");
-        String link=jsonObj.getJSONArray("items").getJSONObject(0).getString("link");
-        String title=jsonObj.getJSONArray("items").getJSONObject(0).getString("title");
-        String pubDate=jsonObj.getJSONArray("items").getJSONObject(0).getString("pubDate");
-        String userRating=jsonObj.getJSONArray("items").getJSONObject(0).getString("userRating");
-        SearchDto dto=new SearchDto(actor, image, director, subtitle, link, title, pubDate, userRating);
-        request.setAttribute("dto", dto);
+//        System.out.println(jsonObj.getJSONArray("items").getJSONObject(0));
+        JSONArray arr=jsonObj.getJSONArray("items");
+        List<SearchDto> list=new ArrayList<>();
+        for(int i=0;i<arr.length();i++) {
+        	String actor=jsonObj.getJSONArray("items").getJSONObject(i).getString("actor");
+            String image=jsonObj.getJSONArray("items").getJSONObject(i).getString("image");
+            String director=jsonObj.getJSONArray("items").getJSONObject(i).getString("director");
+            String subtitle=jsonObj.getJSONArray("items").getJSONObject(i).getString("subtitle");
+            String link=jsonObj.getJSONArray("items").getJSONObject(i).getString("link");
+            String title=jsonObj.getJSONArray("items").getJSONObject(i).getString("title");
+            String pubDate=jsonObj.getJSONArray("items").getJSONObject(i).getString("pubDate");
+            String userRating=jsonObj.getJSONArray("items").getJSONObject(i).getString("userRating");
+        	SearchDto dto=new SearchDto(actor, image, director, subtitle, link, title, pubDate, userRating);
+        	list.add(dto);
+        }
+        
+        request.setAttribute("list", list);
         
     }
 
