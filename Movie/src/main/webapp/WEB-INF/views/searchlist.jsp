@@ -38,23 +38,9 @@
 	<!-- 라디오 정렬기능 : input 요소에서는 if문 작성이 안되네.... 간단한 방법은 없을까? -->
 	<div class="container">
 			<form action="searchlist.do" method="get">
-					<input type="hidden" name="keyword" value="${keyword }" />
-					<c:choose>
-						<c:when test="${option eq 'releaseDate' }">
-							<input type="radio" name="option" id="option" value="releaseDate" checked="checked"> 출시일순
-							<input type="radio" name="option" id="option" value="title" > 제목순
-						</c:when>
-						<c:when test="${option eq 'title' }">
-							<input type="radio" name="option" id="option" value="releaseDate"> 출시일순
-							<input type="radio" name="option" id="option" value="title" checked="checked"> 제목순
-						</c:when>
-						<c:otherwise>
-							<input type="radio" name="option" id="option" value="releaseDate"> 출시일순
-							<input type="radio" name="option" id="option" value="title" > 제목순
-							<!-- <input type="radio" name="option" id="option" value="starPoint" > 별점순 --> 
-						</c:otherwise>
-					</c:choose>
-					
+				<input type="hidden" name="keyword" value="${keyword }" />
+				<input type="radio" name="orderby" id="orderby" value="releaseDate" <c:if test="${orderby eq 'releaseDate' }">checked="checked"</c:if>> 출시일순
+				<input type="radio" name="orderby" id="orderby" value="title" <c:if test="${orderby eq 'title' }">checked="checked"</c:if>> 제목순
 				<button class="btn btn-primary" type="submit" style="color: yellow;">검색</button>
 			</form>
 		</div>
@@ -84,9 +70,6 @@
 			</c:if>
 		</c:forEach>
 	</table>
-	<jsp:include page="include/paging.jsp">
-		<jsp:param value="search" name="page"/>
-	</jsp:include>
 </div>
 </body>
 </html>
