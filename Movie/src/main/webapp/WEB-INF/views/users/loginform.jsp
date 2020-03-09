@@ -16,7 +16,6 @@
 
     </div>
 
-</div>
 <div class="main">
 <div class="container">
 	<div class="signin-content">

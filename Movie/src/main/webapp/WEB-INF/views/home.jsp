@@ -7,8 +7,10 @@
 <meta charset="UTF-8">
 <title>SPOILER</title>
 <jsp:include page="include/resource.jsp"></jsp:include>
+
 </head>
 <body>
+<jsp:include page="include/navbar.jsp"></jsp:include>
     <div class="container">
     	<!-- 추천 TOP8 -->
         <h1 style="color: honeydew;">추천 TOP8</h1>
