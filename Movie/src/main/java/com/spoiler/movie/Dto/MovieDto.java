@@ -13,11 +13,13 @@ public class MovieDto {
 	private String videoLink;
 	private int startRowNum;
 	private int endRowNum;
+	private String keyword;
 	
 	public MovieDto() {}
 
 	public MovieDto(int num, String title, String content, String releaseDate, String genre, String director,
-			String actor, float starPoint, String imageLink, String videoLink, int startRowNum, int endRowNum) {
+			String actor, float starPoint, String imageLink, String videoLink, int startRowNum, int endRowNum,
+			String keyword) {
 		super();
 		this.num = num;
 		this.title = title;
@@ -31,6 +33,7 @@ public class MovieDto {
 		this.videoLink = videoLink;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
+		this.keyword = keyword;
 	}
 
 	public int getNum() {
@@ -129,4 +132,13 @@ public class MovieDto {
 		this.endRowNum = endRowNum;
 	}
 
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	
 }

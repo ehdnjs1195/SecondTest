@@ -20,7 +20,7 @@
 		font-size: 25px;
 	}
 	#content_tx{
-		font-size: 13px;
+		font-size: 20px;
 	}
 </style>
 </head>
@@ -41,6 +41,7 @@
 				<input type="hidden" name="keyword" value="${keyword }" />
 				<input type="radio" name="orderby" id="orderby" value="releaseDate" <c:if test="${orderby eq 'releaseDate' }">checked="checked"</c:if>> 출시일순
 				<input type="radio" name="orderby" id="orderby" value="title" <c:if test="${orderby eq 'title' }">checked="checked"</c:if>> 제목순
+				<input type="radio" name="orderby" id="orderby" value="starPoint" <c:if test="${orderby eq 'starPoint' }">checked="checked"</c:if>> 별점순
 				<button class="btn btn-primary" type="submit" style="color: yellow;">검색</button>
 			</form>
 		</div>
@@ -51,7 +52,7 @@
 			<c:if test="${fn:contains(tmp.title,param.keyword)}">
 				<tr>
 					<td rowspan="4"><img id="${param.genre }_${tmp.num}"
-						src="${tmp.imageLink }" style="width: 200px; height: 300px;" /></span></td>
+						src="${tmp.imageLink }" style="width: 200px; height: 300px;" /></td>
 					<td><span id="title_tx"><span>제목</span></span></td>
 					<td><span id="content_tx">${tmp.title }</span></td>
 				</tr>
@@ -70,6 +71,9 @@
 			</c:if>
 		</c:forEach>
 	</table>
+	<jsp:include page="include/paging.jsp">
+		<jsp:param value="search" name="page"/>
+	</jsp:include>
 </div>
 </body>
 </html>

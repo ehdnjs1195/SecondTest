@@ -20,13 +20,12 @@
 		font-size: 25px;
 	}
 	#content_tx{
-		font-size: 13px;
+		font-size: 20px;
 	}
 </style>
 </head>
 <body>
 <div class="container">
-
 	<c:choose>
 		<c:when test="${not empty param.genre }">
 			<h2><strong><span style="color: yellow;">${param.genre }</span></strong>에 관한 목록 입니다</h2>
@@ -42,6 +41,7 @@
 					<input type="hidden" name="genre" value="${param.genre }" />
 					<input type="radio" name="orderby" id="orderby" value="releaseDate" <c:if test="${orderby eq 'releaseDate' }">checked="checked"</c:if>> 출시일순
 					<input type="radio" name="orderby" id="orderby" value="title" <c:if test="${orderby eq 'title' }">checked="checked"</c:if>> 제목순
+					<input type="radio" name="orderby" id="orderby" value="starPoint" <c:if test="${orderby eq 'starPoint' }">checked="checked"</c:if>> 별점순
 				<button class="btn btn-primary" type="submit" style="color: yellow;">검색</button>
 			</form>
 		</div>
@@ -70,7 +70,9 @@
 			</c:if>
 		</c:forEach>
 	</table>
-	
+	<jsp:include page="include/paging.jsp">
+		<jsp:param value="genredetail" name="page"/>
+	</jsp:include>
 </div>
 </body>
 </html>

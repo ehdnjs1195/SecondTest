@@ -14,7 +14,6 @@
 	<div class="container">
 		<form action="searchlist.do" method="get">
 			<label for="condition" style="display: none;">검색조건</label>
-			<input type="hidden" name="option" value="${option }" />
 			<input type="text" name="keyword" id="keyword" placeholder="검색어를 입력하세요..." value="${keyword }" />
 			<button type="submit">검색</button>
 		</form>
