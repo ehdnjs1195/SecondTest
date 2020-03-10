@@ -31,17 +31,13 @@ public class MovieServiceImpl implements MovieService {
 				if (orderby.equals("title")) {
 					dto.setTitle(keyword);
 				} else if (orderby.equals("releaseDate")) {
-					dto.setReleaseDate(orderby);
 					dto.setTitle(keyword);
+					dto.setReleaseDate("releaseDate");
 				} else if (orderby.equals("starPoint")) {
+					dto.setTitle(keyword);
 					dto.setStarPoint(1);
+				} else {
 					dto.setTitle(keyword);
-				}else {
-					dto.setTitle(keyword);
-					System.out.println(dto.getTitle());
-					//dto.setKeyword(keyword);
-					System.out.println(dto.getKeyword());
-					System.out.println("11");
 				}
 				String encodedKeyword = null;
 				try {
@@ -51,27 +47,31 @@ public class MovieServiceImpl implements MovieService {
 				}
 				// 키워드와 검색조건을 request 에 담는다.
 				request.setAttribute("encodedKeyword", encodedKeyword);
-			}else {
+			} else {
 				dto.setTitle(keyword);
-				System.out.println("2");
 			}
 			request.setAttribute("keyword", keyword);
 			request.setAttribute("orderby", orderby);
+			if (orderby == "") {
+				orderby = null;
+			}
+			if (genre == "") {
+				genre = null;
+			}
 		}
 
 		if (genre != null) {// 장르 리스트에서 > 정렬 키워드가 전달된 경우
 			if (orderby != null) {
-				System.out.println(orderby);
 				if (orderby.equals("title")) {
 					dto.setTitle(orderby);
 					dto.setGenre(genre);
 				} else if (orderby.equals("releaseDate")) {
 					dto.setReleaseDate(orderby);
 					dto.setGenre(genre);
-				}else if (orderby.equals("starPoint")) {
+				} else if (orderby.equals("starPoint")) {
 					dto.setStarPoint(1);
 					dto.setGenre(genre);
-				}else {
+				} else {
 					dto.setGenre(genre);
 				}
 				String encodedKeyword2 = null;
@@ -82,12 +82,12 @@ public class MovieServiceImpl implements MovieService {
 				}
 				// 키워드와 검색조건을 request 에 담는다.
 				request.setAttribute("encodedKeyword2", encodedKeyword2);
-			}else {				
+			} else {
 				dto.setGenre(genre);
 			}
 			request.setAttribute("orderby", orderby);
 			request.setAttribute("genre", genre);
-		}	
+		}
 		// 한 페이지에 나타낼 row 의 갯수
 		final int PAGE_ROW_COUNT = 3;
 		// 하단 디스플레이 페이지 갯수
@@ -121,7 +121,7 @@ public class MovieServiceImpl implements MovieService {
 		// FileDto 객체에 위에서 계산된 startRowNum 과 endRowNum 을 담는다.
 		dto.setStartRowNum(startRowNum);
 		dto.setEndRowNum(endRowNum);
-		
+
 		// 1. DB 에서 파일 목록을 얻어온다.
 		List<MovieDto> list = dao.getList(dto);
 		// 2. view page에 할요한 값을 request에 담아준다
@@ -131,7 +131,5 @@ public class MovieServiceImpl implements MovieService {
 		request.setAttribute("endPageNum", endPageNum);
 		request.setAttribute("totalPageCount", totalPageCount);
 		request.setAttribute("totalRow", totalRow);
-		
 	}
-	
 }

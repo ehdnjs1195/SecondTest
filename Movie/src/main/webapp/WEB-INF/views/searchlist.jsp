@@ -20,7 +20,7 @@
 		font-size: 25px;
 	}
 	#content_tx{
-		font-size: 20px;
+		font-size: 35px;
 	}
 </style>
 </head>

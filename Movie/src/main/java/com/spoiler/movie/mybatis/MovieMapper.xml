@@ -9,21 +9,21 @@
 		from
 		(select * from movie
 		<choose>
-			<when test="genre != null">		<!-- 장르리스트 -->
+			<when test="genre != null  ">		<!-- 장르리스트 -->
 				<choose>
-					<when test="title != null">			<!-- 장르리스트-제목정렬 됨 -->
-						where genre like '%${genre}%'
-						order by title asc
-					</when>
 					<when test="releaseDate != null">	<!-- 장르리스트-출시일정렬 됨 -->
 						where genre like '%${genre}%'
 						order by releaseDate asc
 					</when>
-					<when test="starPoint != null and starPoint!=0.0">		<!-- 장르리스트-별점정렬 됨 -->
+					<when test="starPoint!=0.0">		<!-- 장르리스트-별점정렬 됨 -->
 						where genre like '%${genre}%'
 						order by starPoint asc
 					</when>
-					<otherwise>							<!-- 장르리스트-번호정렬 됨 -->
+					<when test="title != null">			<!-- 장르리스트-제목정렬 됨 -->
+						where genre like '%${genre}%'
+						order by title asc
+					</when>
+					<otherwise>							<!-- 장르리스트-(리스트페이지 처음들어갔을때)번호정렬 됨 -->
 						where genre like '%${genre}%'
 						order by num asc
 					</otherwise>
@@ -32,19 +32,19 @@
 
 			<otherwise>						<!-- 검색리스트 -->
 				<choose>
-					<when test="title != null">			<!-- 검색리스트-제목정렬 됨 -->
-						where title like '%${title}%'
-						order by title asc
-					</when>
 					<when test="releaseDate != null">	<!-- 검색리스트-출시일정렬 됨 -->
 						where title like '%${title}%'
 						order by releaseDate asc
 					</when>
-					<when test="starPoint != null">		<!-- 검색리스트-별점정렬 됨 -->
+					<when test="starPoint != 0.0">		<!-- 검색리스트-별점정렬 됨 -->
 						where title like '%${title}%'
 						order by starPoint asc
 					</when>
-					<otherwise>							<!-- 검색리스트-번호정렬 됨 -->
+					<when test="title != 0.0">			<!-- 검색리스트-제목정렬 됨 -->
+						where title like '%${title}%'
+						order by title asc
+					</when>
+					<otherwise>							<!-- 검색리스트-(리스트페이지 처음들어갔을때)번호정렬 됨 -->
 						where title like '%${title}%'
 						order by num asc
 					</otherwise>
@@ -61,16 +61,16 @@
 		<choose>
 			<when test="genre != null">		<!-- 장르리스트 -->
 				<choose>
-					<when test="title != null">			<!-- 장르리스트-제목정렬 됨 -->
+					<when test="title != null">			
 						where genre like '%${genre}%'
 					</when>
-					<when test="releaseDate != null">	<!-- 장르리스트-출시일정렬 됨 -->
+					<when test="releaseDate != null">	
 						where genre like '%${genre}%'
 					</when>
-					<when test="starPoint != null">		<!-- 장르리스트-별점정렬 -->
+					<when test="starPoint != null">		
 						where genre like '%${genre}%'
 					</when>
-					<otherwise>							<!-- 장르리스트-번호정렬 됨 -->
+					<otherwise>							
 						where genre like '%${genre}%'
 					</otherwise>
 				</choose>
@@ -78,16 +78,17 @@
  
 			<otherwise>						<!-- 검색리스트 -->
 				<choose>
-					<when test="title != null">			<!-- 검색리스트-제목정렬 됨 -->
+					
+					<when test="releaseDate != null">	
 						where title like '%${title}%'
 					</when>
-					<when test="releaseDate != null">	<!-- 검색리스트-출시일정렬 됨 -->
+					<when test="starPoint != null">		
 						where title like '%${title}%'
 					</when>
-					<when test="starPoint != null">		<!-- 검색리스트-별점정렬 -->
+					<when test="title != null">			
 						where title like '%${title}%'
 					</when>
-					<otherwise>							<!-- 검색리스트-번호정렬 됨 -->
+					<otherwise>							
 						where title like '%${title}%'
 					</otherwise>
 				</choose>
