@@ -56,12 +56,6 @@ public class MovieServiceImpl implements MovieService{
 		String comment_group=request.getParameter("comment_group");
 		//저장할 댓글의 primary key 값이 필요하다
 		int seq = commentDao.getSequence();
-		System.out.println(writer);
-		System.out.println(ref_group);
-		System.out.println(target_id);
-		System.out.println(content);
-		System.out.println(comment_group);
-		System.out.println(seq);
 		//댓글 정보를 Dto 에 담기
 		MovieCommentDto dto=new MovieCommentDto();
 		dto.setNum(seq);

@@ -6,16 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-th, tr{
-	color: white;
-}
-</style>
 <jsp:include page="include/resource.jsp"/>
 </head>
 <body>
-<div class="container">
-	<table class="table table-bordered table-condensed">
+<div class="container" style="color:white;">
+	<table id="table" class="table table-bordered table-condensed">
 		<colgroup>
 			<col class="col-xs-3"/>
 			<col class="col-xs-9"/>
@@ -61,7 +56,7 @@ th, tr{
 			<td><iframe src="${dto.videoLink }" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
 		</tr>
 	</table>
-</div>
+
 <!-- Comments -->
 	<div class="comments">
 		<ul>
@@ -83,11 +78,12 @@ th, tr{
 									</c:otherwise>
 								</c:choose>
 								
-								<span style="color: white;">${tmp.writer }</span>
+								<span>${tmp.writer }</span>
 								<c:if test="${tmp.num ne tmp.comment_group }">
-									to <strong style="color: white;">${tmp.target_id }</strong>
+									<strong>to</strong>
+									<strong>${tmp.target_id }</strong>
 								</c:if>
-								<span style="color: white;">${tmp.regdate }</span>
+								<span>${tmp.regdate }</span>
 								<a href="javascript:" class="reply_link">답글</a> |
 								<c:choose>
 									<%-- 로그인된 아이디와 댓글의 작성자가 같으면 --%>
@@ -104,20 +100,21 @@ th, tr{
 								<pre>${tmp.content }</pre>
 							</dd>
 						</dl>
+						<!-- 대댓글 form css 에 display: none; -->
 						<form class="comment-insert-form" action="comment_insert.do" method="post">
 							<!-- 덧글 그룹 -->
 							<input type="hidden" name="ref_group" value="${dto.num }" />
 							<!-- 덧글 대상 -->
 							<input type="hidden" name="target_id" value="${tmp.writer }" />
 							<input type="hidden" name="comment_group" value="${tmp.comment_group }" />
-							<textarea name="content" style="width:1042px; height:1549px;"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
-							<button type="submit">등록</button>
+							<textarea name="content" style="color:black;"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
+							<button type="submit" style="color:black;">등록</button>
 						</form>	
 						<!-- 로그인한 아이디와 댓글의 작성자와 같으면 수정폼 출력 -->				
 						<c:if test="${id eq tmp.writer }">
 							<form class="comment-update-form" action="comment_update.do" method="post">
 								<input type="hidden" name="num" value="${tmp.num }" />
-								<textarea name="content" id="comment" cols="45" rows="8" maxlength="65525" required="required" placeholder="새로운 코멘트!">${tmp.content }</textarea>
+								<textarea name="content" id="comment" style="color:black;">${tmp.content }</textarea>
 								<button type="submit">수정</button>
 							</form>
 						</c:if>
@@ -128,8 +125,7 @@ th, tr{
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		</ul>
-		<div class="clearfix"></div>	
+		</ul>	
 		<!-- 원글에 댓글을 작성할수 있는 폼 -->
 		<div class="comment_form">
 			<form action="comment_insert.do" method="post">
@@ -138,12 +134,13 @@ th, tr{
 					value="${dto.num }"/>
 				<!-- 댓글의 대상자는 원글의 작성자가 된다. -->
 				<input type="hidden" name="target_id" 
-					value="${dto.num }"/>
-				<textarea name="content"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
-				<button type="submit">등록</button>
+					value="${dto.num }"/> <!-- 정보를 받아와서 뿌려주므로 원글의 작성자를 dto.num 으로 넣어줬다. -->
+				<textarea name="content" style="color:black;"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
+				<button type="submit" style="color:black;">등록</button>
 			</form>
 		</div>
 	</div>
+</div>
 <script>
 	//댓글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".comment-update-link").click(function(){
