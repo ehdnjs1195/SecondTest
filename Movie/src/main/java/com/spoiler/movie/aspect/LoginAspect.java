@@ -27,7 +27,7 @@ public class LoginAspect {
 		//aop 가 적용된 메소드에 전달된 값을 Object[] 로 얻어오기
 		Object[] args=joinPoint.getArgs();
 		for(Object tmp:args) {
-			System.out.println(tmp);
+			//System.out.println(tmp);
 		}
 		//로그인 여부
 		boolean isLogin=false;
@@ -78,7 +78,7 @@ public class LoginAspect {
 		//aop 가 적용된 메소드에 전달된 값을 Object[] 로 얻어오기
 		Object[] args=joinPoint.getArgs();
 		for(Object tmp:args) {
-			System.out.println(tmp);
+			//System.out.println(tmp);
 		}
 		//로그인 여부
 		boolean isLogin=false;

@@ -1,29 +1,29 @@
 package com.spoiler.movie.Dto;
 
 public class MovieCommentDto {
-	private int num; //댓글 번호
-	private String title; //해당 영화제목
-	private String writer; //(비로그인)댓글 작성자
-	private String pwd; //(비로그인)댓글 작성자 비밀번호
+	private int num;
+	private String writer;
 	private String content; //댓글 내용
-	private int likeNum; //좋아요
-	private int hateNum; //싫어요
-	private String deleted; // 삭제한 댓글인지 여부 "no" | "yes"
-	private String regdate; // 댓글 작성시간
+	private String target_id; //댓글 대상자의 아이디
+	private int ref_group; //댓글의 그룹번호 (원글의 글번호가 댓글의 그룹번호가 된다)
+	private int comment_group; //댓글 내에서의 그룹번호 (댓글의 댓글 처리 하기 위해)
+	private String deleted; // 삭제한 댓글인지 여부  "no" | "yes"
+	private String regdate; 
+	private String profile; //댓글 작성자의 프로필 이미지 경로를 담을 필드 
 	//생성자
 	public MovieCommentDto() {}
-	public MovieCommentDto(int num, String title, String writer, String pwd, String content, int likeNum, int hateNum,
-			String deleted, String regdate) {
+	public MovieCommentDto(int num, String writer, String content, String target_id, int ref_group, int comment_group,
+			String deleted, String regdate, String profile) {
 		super();
 		this.num = num;
-		this.title = title;
 		this.writer = writer;
-		this.pwd = pwd;
 		this.content = content;
-		this.likeNum = likeNum;
-		this.hateNum = hateNum;
+		this.target_id = target_id;
+		this.ref_group = ref_group;
+		this.comment_group = comment_group;
 		this.deleted = deleted;
 		this.regdate = regdate;
+		this.profile = profile;
 	}
 	public int getNum() {
 		return num;
@@ -31,23 +31,11 @@ public class MovieCommentDto {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
 	public String getWriter() {
 		return writer;
 	}
 	public void setWriter(String writer) {
 		this.writer = writer;
-	}
-	public String getPwd() {
-		return pwd;
-	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
 	}
 	public String getContent() {
 		return content;
@@ -55,17 +43,23 @@ public class MovieCommentDto {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int getLikeNum() {
-		return likeNum;
+	public String getTarget_id() {
+		return target_id;
 	}
-	public void setLikeNum(int likeNum) {
-		this.likeNum = likeNum;
+	public void setTarget_id(String target_id) {
+		this.target_id = target_id;
 	}
-	public int getHateNum() {
-		return hateNum;
+	public int getRef_group() {
+		return ref_group;
 	}
-	public void setHateNum(int hateNum) {
-		this.hateNum = hateNum;
+	public void setRef_group(int ref_group) {
+		this.ref_group = ref_group;
+	}
+	public int getComment_group() {
+		return comment_group;
+	}
+	public void setComment_group(int comment_group) {
+		this.comment_group = comment_group;
 	}
 	public String getDeleted() {
 		return deleted;
@@ -78,6 +72,12 @@ public class MovieCommentDto {
 	}
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
+	}
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
 		
 }

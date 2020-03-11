@@ -7,12 +7,14 @@
 	<typeAliases>
 		<typeAlias type="com.spoiler.movie.Dto.MovieDto" alias="movieDto"/>
 		<typeAlias type="com.spoiler.movie.users.dto.UsersDto" alias="usersDto"/>
+		<typeAlias type="com.spoiler.movie.Dto.MovieCommentDto" alias="movieCommentDto"/>
 	</typeAliases>
 	
 	<!-- mapper 설정 -->
 	<mappers>
 		<mapper resource="com/spoiler/movie/mybatis/MovieMapper.xml"/>
 		<mapper resource="com/spoiler/movie/mybatis/UsersMapper.xml"/>
+		<mapper resource="com/spoiler/movie/mybatis/MovieCommentMapper.xml"/>
 	</mappers>
 </configuration>
 

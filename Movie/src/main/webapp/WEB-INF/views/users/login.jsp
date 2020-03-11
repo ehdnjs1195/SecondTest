@@ -16,7 +16,7 @@
 		<c:when test="${not empty sessionScope.id }">
 			<p>
 				<strong>${id }</strong>회원님 로그인 되었습니다.
-				<a href="${url }">확인</a> <%-- Userscontroller 에서부터 들고 온것 --%>
+				<a href="${url }">확인</a> <%-- UsersController 에서부터 들고 온것 --%>
 			</p>
 		</c:when>
 		<c:otherwise>

@@ -4,5 +4,13 @@
 	<select id="getList" resultType="movieDto">
 		select * from movie	
 	</select>
-
+	<select id="getData" parameterType="int" resultType="movieDto">
+		SELECT result1.*
+		FROM
+			(SELECT num, title, content, releaseDate,
+			director, actor, starPoint, imageLink, videoLink
+			FROM movie
+			ORDER BY num DESC) result1
+		WHERE num=#{num }
+	</select>
 </mapper>

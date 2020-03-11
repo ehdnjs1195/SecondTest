@@ -39,9 +39,6 @@
 		<!-- modal-lg  | default | modal-sm -->
 		<div class="modal-dialog">
 			<div class="modal-content">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true" style="float:right; width: 50px; font-size:30px;">×</span>
-				</button>
 				<div class="modal-body" style="display: flex;">
 					<img src="${tmp.imageLink }" id="${tmp.num }">
 					<div class="imgBox">
@@ -64,29 +61,16 @@
 						</dl>
 						<h3>줄거리</h3>
 						<h4>${tmp.content }</h4>
+						<div>
+							<a href="detail.do?num=${tmp.num }" type="button" class="btn btn-info">자세히 보러가기</a>
+						</div>
 					</div>
 				</div>
-				<div class="modal-footer justify-content-center flex-column flex-md-row">
-					<iframe src="${tmp.videoLink }" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					<span class="mr-4">Spread the word!</span>
-			        <div>
-			          <a type="button" class="btn-floating btn-sm btn-fb">
-			            <i class="fab fa-facebook-f"></i>
-			          </a>
-			          <!--Twitter-->
-			          <a type="button" class="btn-floating btn-sm btn-tw">
-			            <i class="fab fa-twitter"></i>
-			          </a>
-			          <!--Google +-->
-			          <a type="button" class="btn-floating btn-sm btn-gplus">
-			            <i class="fab fa-google-plus-g"></i>
-			          </a>
-			          <!--Linkedin-->
-			          <a type="button" class="btn-floating btn-sm btn-ins">
-			            <i class="fab fa-linkedin-in"></i>
-			          </a>
-			        </div>
-			        <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>	
+				<div class="modal-footer">
+					<iframe src="${tmp.videoLink }"
+						frameborder="0"
+						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -101,7 +85,3 @@
 		});
 	</script>
 </c:forEach>
-
-
-
-

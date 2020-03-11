@@ -18,4 +18,10 @@ public class MovieDaoImpl implements MovieDao{
 		return session.selectList("movie.getList");
 	}
 
+	@Override
+	public MovieDto getData(int num) {
+		
+		return session.selectOne("movie.getData", num);
+	}
+
 }

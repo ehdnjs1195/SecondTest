@@ -54,7 +54,7 @@ public class UsersServiceImpl implements UsersService{
 			session.setAttribute("id", dto.getId());
 			String profile=dao.getProfile(dto.getId());
 			session.setAttribute("profile", profile);
-			System.out.println(dto.getId()+"|"+profile);
+			//System.out.println(dto.getId()+"|"+profile);
 		}
 	}
 	@Override

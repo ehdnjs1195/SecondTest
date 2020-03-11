@@ -67,14 +67,7 @@
 							<h4>${tmp.content }</h4>
 						</div>
 					</div>
-
 					<div class="modal-footer">
-						<div>
-							<Strong style="float: left;">댓글</Strong>
-							<textarea name="" id="" cols="30" rows="10"
-								placeholder="Comment"></textarea>
-						</div>
-						<hr>
 						<iframe width="968" height="725" src="${tmp.videoLink }"
 							frameborder="0"
 							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

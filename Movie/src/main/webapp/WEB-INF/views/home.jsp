@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>SPOILER</title>
 <jsp:include page="include/resource.jsp"></jsp:include>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/custom.css" />
 </head>
 <body>
     <div class="container">
@@ -32,6 +31,6 @@
 		<jsp:include page="include/genrelist.jsp">
 			<jsp:param value="코미디" name="genre"/>
 		</jsp:include>
-	</div>
+    </div>
 </body>
 </html>
