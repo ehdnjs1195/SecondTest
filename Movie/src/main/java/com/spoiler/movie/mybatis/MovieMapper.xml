@@ -40,7 +40,7 @@
 						where title like '%${title}%'
 						order by starPoint asc
 					</when>
-					<when test="title != 0.0">			<!-- 검색리스트-제목정렬 됨 -->
+					<when test="title != null">			<!-- 검색리스트-제목정렬 됨 -->
 						where title like '%${title}%'
 						order by title asc
 					</when>
