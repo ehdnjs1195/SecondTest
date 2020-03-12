@@ -13,6 +13,7 @@
 
 	<!-- 검색 창 -->
 	<div class="container">
+	<jsp:include page="include/slidebar.jsp"/>
 		<form action="searchlist.do" method="get">
 			<label for="condition" style="display: none;">검색조건</label>
 			<input type="text" name="keyword" id="keyword" placeholder="검색어를 입력하세요..." value="${keyword }" />
