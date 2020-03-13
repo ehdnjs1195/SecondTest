@@ -26,6 +26,7 @@
 </head>
 <body>
 <div class="container">
+<jsp:include page="include/slidebar.jsp"/>
 	<c:choose>
 		<c:when test="${not empty param.keyword }">
 			<h2>검색어 <strong><span style="color: yellow;">${param.keyword }</span></strong>에 관한 검색결과 입니다</h2>
