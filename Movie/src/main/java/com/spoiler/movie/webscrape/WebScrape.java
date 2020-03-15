@@ -1,24 +1,22 @@
 package com.spoiler.movie.webscrape;
 
-import java.io.IOException;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 public class WebScrape {
 	
 	
 	
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) throws Exception{
 			
-		
-			Document doc= Jsoup.connect("http://movie.naver.com").get();
-			String title=doc.title();
-			int code=doc.
-			System.out.println("title : " +title);
-		
-		}
-				
-				
+		final Document document=Jsoup.connect("https://movie.naver.com/movie/sdb/rank/rmovie.nhn?sel=cur&date=20200314").get();
+		for(Element row : document.select("table.list_ranking tr")) {		
+		final String title=row.select("td.title a").text();
+		final String rating=row.select("td.point").text();
+		System.out.println(title + "->Rating: "+ rating);
 	}
+	}
+}
 
