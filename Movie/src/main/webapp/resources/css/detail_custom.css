@@ -27,12 +27,12 @@
 	clear: left;
 }
 .comments form textarea{
-	width: 85%;
-	height: 100px;
+	width: 82%;
+	height: 30px;
 }
 .comments form button{
 	width: 15%;
-	height: 100px;
+	height: 30px;
 }
 /* 댓글에 댓글을 다는 폼과 수정폼을 일단 숨긴다. */
 .comment form{

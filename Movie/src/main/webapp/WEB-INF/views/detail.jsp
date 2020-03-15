@@ -135,6 +135,14 @@
 				<!-- 댓글의 대상자는 원글의 작성자가 된다. -->
 				<input type="hidden" name="target_id" 
 					value="${dto.num }"/> <!-- 정보를 받아와서 뿌려주므로 원글의 작성자를 dto.num 으로 넣어줬다. -->
+				<c:choose>
+					<c:when test="${empty tmp.profile }">
+						<img style="float: left; width: 3%; height:30px;"class="user-img" src="${pageContext.request.contextPath}/resources/images/default_user.jpeg"/>
+					</c:when>
+					<c:otherwise>
+						<img style="float: left; width: 5%;" class="user-img" src="${pageContext.request.contextPath}${tmp.profile}"/>
+					</c:otherwise>
+				</c:choose>
 				<textarea name="content" style="color:black;"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
 				<button type="submit" style="color:black;">등록</button>
 			</form>
