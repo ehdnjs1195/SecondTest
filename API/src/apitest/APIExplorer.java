@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -14,9 +16,10 @@ import org.json.simple.parser.ParseException;
 //https://www.kmdb.or.kr/info/api/apiDetail/6  에서 API이용
 //json-simple-1.1.1.jar 이
 public class APIExplorer {
+	
 	public static void main(String[] args) throws IOException, ParseException { 
 		StringBuilder urlBuilder = new StringBuilder("http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new"); /*URL*/ 
-		String keyword = null;
+//		String keyword = null;
 		urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=04YVG7XZ00W520AJ41N7"); /*Service Key*/ 
 		urlBuilder.append("&" + URLEncoder.encode("query","UTF-8") + "=" + URLEncoder.encode("해리포터", "UTF-8")); /*검색어*/ 
 		urlBuilder.append("&" + URLEncoder.encode("title","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*제목*/ 
@@ -47,6 +50,11 @@ public class APIExplorer {
 		JSONArray resultArr=(JSONArray)obj2.get("Result");
 		System.out.println("resultArr :: "+resultArr);
 		
+		getList(resultArr);
+	}
+	
+	public static void getList(JSONArray resultArr){
+		List<MovieDto> list = new ArrayList<>();
 		//obj3 => resultArr. 
 		for(int i=0;i<resultArr.size();i++) {
 			
@@ -56,27 +64,45 @@ public class APIExplorer {
 			String title=(String)obj3.get("title");
 			String titleEng=(String)obj3.get("titleEng");
 			String genre=(String)obj3.get("genre");
-			JSONArray director=(JSONArray)obj3.get("director");
-			JSONArray actor=(JSONArray)obj3.get("actor");
+			JSONArray dirArr=(JSONArray)obj3.get("director");
+			JSONObject dir=(JSONObject)dirArr.get(0);
+			String directorNm=(String)dir.get("directorNm");
+			JSONArray actArr=(JSONArray)obj3.get("actor");
+			String actorNm = "";
+			for(int j = 0 ; j < actArr.size() ; j++) {
+				JSONObject act=(JSONObject)actArr.get(j);
+				if(j==actArr.size()-1) {
+					actorNm += (String)act.get("actorNm");
+					break;
+				}
+				actorNm += (String)act.get("actorNm")+", ";
+			}
 			String plot=(String)obj3.get("plot");
 			String runtime=(String)obj3.get("runtime");
 			String repRlsDate=(String)obj3.get("repRlsDate");
 			String keywords=(String)obj3.get("keywords");
-			String posters=(String)obj3.get("posters");
+			String postersStr=(String)obj3.get("posters");
+			String[] posts = postersStr.split("\\|");
+			String posters = posts[0];
 			//출력.
 			System.out.println("movieSeq:: " + movieSeq);
 			System.out.println("title:: " + title);
 			System.out.println("titleEng:: " + titleEng);
 			System.out.println("genre:: " + genre);
-			System.out.println("director:: " + director);
-			System.out.println("actor:: " + actor);
+			System.out.println("director:: " + directorNm);
+			System.out.println("actor:: " + actorNm);
 			System.out.println("plot:: " + plot);
 			System.out.println("runtime:: " + runtime);
 			System.out.println("repRlsDate:: " + repRlsDate);
 			System.out.println("keywords:: " + keywords);
 			System.out.println("posters:: " + posters);
 			System.out.println("=============================================================");
+			
+			//MovieDto 객체 생성
+			//list에 담기
+			MovieDto dto=new MovieDto(movieSeq, title, titleEng, genre, directorNm, actorNm, plot, runtime, repRlsDate, keywords, posters);
+			list.add(dto);
+			
 		}
 	}
-	
 }
