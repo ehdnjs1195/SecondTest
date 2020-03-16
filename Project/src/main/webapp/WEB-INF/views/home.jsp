@@ -10,9 +10,10 @@
 </head>
 <body>
 <jsp:include page="include/navbar.jsp"></jsp:include>
+<!-- 왼쪽 슬라이드 바?(sidebar 말고?) -->
+<jsp:include page="include/slidebar.jsp"/>
     <div class="container">
-	    <!-- 왼쪽 슬라이드 바?(sidebar 말고?) -->
-    	<jsp:include page="include/slidebar.jsp"/>
+	   
     	<!-- 서치바(임시) -->
     	<form action="searchlist.do" method="get">
 			<label for="condition" style="display: none;">검색조건</label>

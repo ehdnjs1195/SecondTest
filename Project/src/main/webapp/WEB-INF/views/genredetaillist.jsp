@@ -27,6 +27,7 @@
 <body>
 <div class="container">
 <jsp:include page="include/slidebar.jsp"/>
+
 	<c:choose>
 		<c:when test="${not empty param.genre }">
 			<h2><strong><span style="color: yellow;">${param.genre }</span></strong>에 관한 목록 입니다</h2>
