@@ -14,6 +14,7 @@ videoLink varchar2(100)
 create sequence movie_seq;
 
 
+
 insert into movie values(
 movie_seq.nextval,
 '지푸라기라도 잡고 싶은 짐승들',

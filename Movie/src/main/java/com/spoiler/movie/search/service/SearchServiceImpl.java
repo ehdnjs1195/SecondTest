@@ -36,8 +36,8 @@ public class SearchServiceImpl implements SearchService{
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException("검색어 인코딩 실패",e);
         }
-
-        String apiURL = "https://openapi.naver.com/v1/search/movie?query=" + text;    // json 결과
+        	String apiURL = "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2"; //KM Db api
+//        String apiURL = "https://openapi.naver.com/v1/search/movie?query=" + text;    // json 결과
         //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
 
         Map<String, String> requestHeaders = new HashMap<>();
