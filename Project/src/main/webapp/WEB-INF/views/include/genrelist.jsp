@@ -26,15 +26,14 @@
 			</div>
 		</c:forEach>
 	</div>
-		<!-- 이전, 다음 control UI -->
-		<a href="#myCarousel_${param.genre }" class="left carousel-control"
-			data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span>
-			<span class="sr-only">이전</span>
-		</a> 
-		<a href="#myCarousel_${param.genre }" class="right carousel-control"
-			data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span>
-			<span class="sr-only">다음</span>
-		</a>
+	<!-- 이전, 다음 control UI -->
+	<a href="#myCarousel_${param.genre }" class="left carousel-control"
+		data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span>
+		<span class="sr-only">이전</span>
+	</a> <a href="#myCarousel_${param.genre }" class="right carousel-control"
+		data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span>
+		<span class="sr-only">다음</span>
+	</a>
 </div>
 
 <!-- Modal -->
@@ -42,7 +41,7 @@
 	<c:if test="${fn:contains(tmp.genre, param.genre)}">
 		<div class="modal fade" id="myModal${tmp.num }">
 			<!-- modal-lg  | default | modal-sm -->
-			<div class="modal-dialog">		
+			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body">
 						<img src="${tmp.imageLink }" id="${tmp.num }">
@@ -68,14 +67,7 @@
 							<h4>${tmp.content }</h4>
 						</div>
 					</div>
-
 					<div class="modal-footer">
-						<div>
-							<Strong style="float: left;">댓글</Strong>
-							<textarea name="" id="" cols="30" rows="10"
-								placeholder="Comment"></textarea>
-						</div>
-						<hr>
 						<iframe width="968" height="725" src="${tmp.videoLink }"
 							frameborder="0"
 							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

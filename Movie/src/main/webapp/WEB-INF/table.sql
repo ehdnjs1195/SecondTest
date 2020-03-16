@@ -2,7 +2,7 @@ create table movie
 (num number primary key,
 title varchar2(100) not null,
 content clob,
-releasDate varchar2(100),
+releaseDate varchar2(100),
 genre varchar2(50),
 director varchar2(100),
 actor varchar2(100),
@@ -39,8 +39,8 @@ movie_seq.nextval,
 '장유정',
 '라미란, 김무열, 나문희',
 8.60,
-'https://youtube.com/embed/eGWJ87_8jpg',
-'https://youtube.com/embed/mNvV50e-lJ4'
+'https://movie-phinf.pstatic.net/20200121_186/1579570188386BXMMG_JPEG/movie_image.jpg',
+'https://youtube.com/embed/eGWJ87_8jpg'
 );
 insert into movie values(
 movie_seq.nextval,
