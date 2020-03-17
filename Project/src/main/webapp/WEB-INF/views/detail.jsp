@@ -60,6 +60,27 @@
 
 <!-- Comments -->
 	<div class="comments">
+		<!-- 원글에 댓글을 작성할수 있는 폼 -->
+		<c:choose>
+			<c:when test="${empty tmp.profile }">
+				<img id="user-img" class="user-img" src="${pageContext.request.contextPath}/resources/images/default_user.jpeg"/>
+			</c:when>
+			<c:otherwise>
+				<img id="user-img" class="user-img" src="${pageContext.request.contextPath}${tmp.profile}"/>
+			</c:otherwise>
+		</c:choose>
+		<div class="comment_form">
+			<form action="comment_insert.do" method="post">
+				<!-- 댓글의 그룹번호는 원글의 글번호가 된다.  -->
+				<input type="hidden" name="ref_group" 
+					value="${dto.num }"/>
+				<!-- 댓글의 대상자는 원글의 작성자가 된다. -->
+				<input type="hidden" name="target_id" 
+					value="${dto.num }"/> <!-- 정보를 받아와서 뿌려주므로 원글의 작성자를 dto.num 으로 넣어줬다. -->
+				<textarea class="form-control" name="content" style="color:black;"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
+				<button type="submit" style="color:black;">등록</button>
+			</form>
+		</div>
 		<ul>
 		<c:forEach items="${commentList }" var="tmp">
 			<c:choose>
@@ -127,19 +148,6 @@
 			</c:choose>
 		</c:forEach>
 		</ul>	
-		<!-- 원글에 댓글을 작성할수 있는 폼 -->
-		<div class="comment_form">
-			<form action="comment_insert.do" method="post">
-				<!-- 댓글의 그룹번호는 원글의 글번호가 된다.  -->
-				<input type="hidden" name="ref_group" 
-					value="${dto.num }"/>
-				<!-- 댓글의 대상자는 원글의 작성자가 된다. -->
-				<input type="hidden" name="target_id" 
-					value="${dto.num }"/> <!-- 정보를 받아와서 뿌려주므로 원글의 작성자를 dto.num 으로 넣어줬다. -->
-				<textarea name="content" style="color:black;"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
-				<button type="submit" style="color:black;">등록</button>
-			</form>
-		</div>
 	</div>
 </div>
 <script>
