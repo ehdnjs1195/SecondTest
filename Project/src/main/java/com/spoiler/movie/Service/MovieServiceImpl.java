@@ -214,7 +214,7 @@ public class MovieServiceImpl implements MovieService{
 		try{
 			urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=04YVG7XZ00W520AJ41N7"); /*Service Key*/ 
 			if(titleKey != null) {
-				urlBuilder.append("&" + URLEncoder.encode("query","UTF-8") + "=" + URLEncoder.encode(titleKey, "UTF-8")); /*검색어*/ 
+				urlBuilder.append("&" + URLEncoder.encode("title","UTF-8") + "=" + URLEncoder.encode(titleKey, "UTF-8")); /*검색어*/ 
 			}
 			if(genreKey != null) {
 				urlBuilder.append("&" + URLEncoder.encode("genre","UTF-8") + "=" + URLDecoder.decode(genreKey, "UTF-8")); /*장르*/ 				
@@ -256,6 +256,8 @@ public class MovieServiceImpl implements MovieService{
 				//키값으로 하나씩 추출
 				String movieSeq=(String)obj3.get("movieSeq");
 				String title=(String)obj3.get("title");
+				title = title.replaceAll("!HS ", "");
+				title = title.replaceAll("!HE ", "");
 				String titleEng=(String)obj3.get("titleEng");
 				String genre=(String)obj3.get("genre");
 				JSONArray dirArr=(JSONArray)obj3.get("director");
