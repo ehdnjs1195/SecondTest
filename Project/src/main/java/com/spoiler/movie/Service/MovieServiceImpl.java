@@ -206,7 +206,7 @@ public class MovieServiceImpl implements MovieService{
 		commentDao.update(dto);
 	}	
 	
-	public List<MovieDto> getList(String titleKey, String genreKey){
+	public List<MovieDto> getList(String titleKey, String genreKey,int pageNum){
 		List<MovieDto> list = new ArrayList<>();
 		
 		StringBuilder urlBuilder = new StringBuilder("http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new"); /*URL*/ 
@@ -219,6 +219,9 @@ public class MovieServiceImpl implements MovieService{
 			if(genreKey != null) {
 				urlBuilder.append("&" + URLEncoder.encode("genre","UTF-8") + "=" + URLDecoder.decode(genreKey, "UTF-8")); /*장르*/ 				
 			}
+			urlBuilder.append("&" + URLEncoder.encode("sort","UTF-8") + "=" + URLDecoder.decode("prodYear", "UTF-8")); /*개봉순으로 정렬*/ 	
+			int startCount =1+(pageNum)*10;
+			urlBuilder.append("&" + URLEncoder.encode("startCount","UTF-8") + "=" + URLDecoder.decode(Integer.toString(startCount), "UTF-8")); /*페이징처리*/ 				
 			
 			URL url = new URL(urlBuilder.toString()); 
 			System.out.println(url);
@@ -275,6 +278,10 @@ public class MovieServiceImpl implements MovieService{
 				String postersStr=(String)obj3.get("posters");
 				String[] posts = postersStr.split("\\|");
 				String posters = posts[0];
+				String default_poster = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ7HY8NY2QmoKgSW-f6BmH_q5Sh6UnZmGU1rXmSy7OqHD0lRMPq";
+				if(posters.equals("")) {
+					posters = default_poster;
+				}
 				//출력.
 				System.out.println("movieSeq:: " + movieSeq);
 				System.out.println("title:: " + title);
@@ -288,7 +295,6 @@ public class MovieServiceImpl implements MovieService{
 				System.out.println("keywords:: " + keywords);
 				System.out.println("posters:: " + posters);
 				System.out.println("=============================================================");
-				
 				//MovieDto 객체 생성
 				//list에 담기
 				MovieDto dto=new MovieDto(movieSeq, title, titleEng, genre, directorNm, actorNm, plot, runtime, repRlsDate, keywords,0, posters,null,0,0);
