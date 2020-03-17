@@ -1,11 +1,20 @@
 package com.spoiler.movie.Service;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -35,9 +44,9 @@ public class MovieServiceImpl implements MovieService{
 			if (orderby != null) {
 				if (orderby.equals("title")) {
 					dto.setTitle(keyword);
-				} else if (orderby.equals("releaseDate")) {
+				} else if (orderby.equals("repRlsDate")) {
 					dto.setTitle(keyword);
-					dto.setReleaseDate("releaseDate");
+					dto.setRepRlsDate("repRlsDate");
 				} else if (orderby.equals("starPoint")) {
 					dto.setTitle(keyword);
 					dto.setStarPoint(1);
@@ -71,7 +80,7 @@ public class MovieServiceImpl implements MovieService{
 					dto.setTitle(orderby);
 					dto.setGenre(genre);
 				} else if (orderby.equals("releaseDate")) {
-					dto.setReleaseDate(orderby);
+					dto.setRepRlsDate(orderby);
 					dto.setGenre(genre);
 				} else if (orderby.equals("starPoint")) {
 					dto.setStarPoint(1);
@@ -144,7 +153,7 @@ public class MovieServiceImpl implements MovieService{
 		//MovieDto 객체 생성 (select 할때 필요한 정보를 담기 위해)
 		MovieDto dto=new MovieDto();				
 		//MovieDto 에 글번호도 담기
-		dto.setNum(num);
+		dto.setMovieSeq(Integer.toString(num));
 		//글 정보를 얻어와서
 		MovieDto dto2=dao.getData(num);
 		//request 에 글정보를 담고 
@@ -196,4 +205,96 @@ public class MovieServiceImpl implements MovieService{
 	public void updateComment(MovieCommentDto dto) {
 		commentDao.update(dto);
 	}	
+	
+	public List<MovieDto> getList(String titleKey, String genreKey){
+		List<MovieDto> list = new ArrayList<>();
+		
+		StringBuilder urlBuilder = new StringBuilder("http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new"); /*URL*/ 
+
+		try{
+			urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=04YVG7XZ00W520AJ41N7"); /*Service Key*/ 
+			if(titleKey != null) {
+				urlBuilder.append("&" + URLEncoder.encode("query","UTF-8") + "=" + URLEncoder.encode(titleKey, "UTF-8")); /*검색어*/ 
+			}
+			if(genreKey != null) {
+				urlBuilder.append("&" + URLEncoder.encode("genre","UTF-8") + "=" + URLDecoder.decode(genreKey, "UTF-8")); /*장르*/ 				
+			}
+			
+			URL url = new URL(urlBuilder.toString()); 
+			System.out.println(url);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET"); 
+			conn.setRequestProperty("Content-type", "application/json"); 
+			System.out.println("Response code: " + conn.getResponseCode()); 
+			BufferedReader rd; 
+			if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) { 
+				rd = new BufferedReader(new InputStreamReader(conn.getInputStream())); 
+			} else { 
+				rd = new BufferedReader(new InputStreamReader(conn.getErrorStream())); 
+			} 
+			StringBuilder sb = new StringBuilder(); 
+			String line; 
+			while ((line = rd.readLine()) != null) { sb.append(line); } 
+			rd.close(); 
+			conn.disconnect(); 
+	//		System.out.println(sb.toString()); 
+			JSONParser p=new JSONParser();
+			JSONObject obj=(JSONObject)p.parse(sb.toString());
+			JSONArray dataArr=(JSONArray)obj.get("Data");
+	//		System.out.println("dataArr :: " + dataArr);
+			JSONObject obj2=(JSONObject)dataArr.get(0);
+			JSONArray resultArr=(JSONArray)obj2.get("Result");
+			System.out.println("resultArr :: "+resultArr);
+			
+			//obj3 => resultArr. 
+			for(int i=0;i<resultArr.size();i++) {
+				
+				JSONObject obj3=(JSONObject)resultArr.get(i);
+				//키값으로 하나씩 추출
+				String movieSeq=(String)obj3.get("movieSeq");
+				String title=(String)obj3.get("title");
+				String titleEng=(String)obj3.get("titleEng");
+				String genre=(String)obj3.get("genre");
+				JSONArray dirArr=(JSONArray)obj3.get("director");
+				JSONObject dir=(JSONObject)dirArr.get(0);
+				String directorNm=(String)dir.get("directorNm");
+				JSONArray actArr=(JSONArray)obj3.get("actor");
+				String actorNm = "";
+				for(int j = 0 ; j < actArr.size() ; j++) {
+					JSONObject act=(JSONObject)actArr.get(j);
+					if(j==actArr.size()-1) {
+						actorNm += (String)act.get("actorNm");
+						break;
+					}
+					actorNm += (String)act.get("actorNm")+", ";
+				}
+				String plot=(String)obj3.get("plot");
+				String runtime=(String)obj3.get("runtime");
+				String repRlsDate=(String)obj3.get("repRlsDate");
+				String keywords=(String)obj3.get("keywords");
+				String postersStr=(String)obj3.get("posters");
+				String[] posts = postersStr.split("\\|");
+				String posters = posts[0];
+				//출력.
+				System.out.println("movieSeq:: " + movieSeq);
+				System.out.println("title:: " + title);
+				System.out.println("titleEng:: " + titleEng);
+				System.out.println("genre:: " + genre);
+				System.out.println("director:: " + directorNm);
+				System.out.println("actor:: " + actorNm);
+				System.out.println("plot:: " + plot);
+				System.out.println("runtime:: " + runtime);
+				System.out.println("repRlsDate:: " + repRlsDate);
+				System.out.println("keywords:: " + keywords);
+				System.out.println("posters:: " + posters);
+				System.out.println("=============================================================");
+				
+				//MovieDto 객체 생성
+				//list에 담기
+				MovieDto dto=new MovieDto(movieSeq, title, titleEng, genre, directorNm, actorNm, plot, runtime, repRlsDate, keywords,0, posters,null,0,0);
+				list.add(dto);	
+			}
+		}catch(Exception e) {}
+		return list;
+	}
 }

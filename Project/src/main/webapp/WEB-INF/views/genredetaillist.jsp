@@ -51,8 +51,8 @@
 		<c:forEach var="tmp" items="${list }">
 			<c:if test="${fn:contains(tmp.genre,param.genre)}">
 				<tr>
-					<td rowspan="4"><img id="${param.genre }_${tmp.num}"
-						src="${tmp.imageLink }" style="width: 200px; height: 300px;" /></td>
+					<td rowspan="4"><img id="${param.genre }_${tmp.movieSeq}"
+						src="${tmp.posters }" style="width: 200px; height: 300px;" /></td>
 					<td><span id="title_tx"><span>제목</span></span></td>
 					<td><span id="content_tx">${tmp.title }</span></td>
 				</tr>
@@ -62,7 +62,7 @@
 				</tr>
 				<tr>
 					<td><span id="title_tx">출시일</span></td>
-					<td><span id="content_tx">${tmp.releaseDate }</span></td>
+					<td><span id="content_tx">${tmp.repRlsDate }</span></td>
 				</tr>
 				<tr>
 					<td><span id="title_tx">평점</span></td>
