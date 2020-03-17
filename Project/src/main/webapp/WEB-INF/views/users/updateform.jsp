@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>/users/updateform.jsp</title>
 <jsp:include page="../include/resource.jsp"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/login.css" />
 </head>
 <body>
 <div class="container">

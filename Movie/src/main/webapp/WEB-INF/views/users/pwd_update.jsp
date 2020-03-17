@@ -19,7 +19,7 @@
 		</c:when>
 		<c:otherwise>
 			<script>
-				alert("기존 비밀번호가 일치 하지 않아요!");
+				alert("기존 비밀번호가 일치 하지 않습니다. 다시 확인해주세요.");
 				location.href="pwd_updateform.do";
 			</script>
 		</c:otherwise>

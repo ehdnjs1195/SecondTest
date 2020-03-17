@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>/users/loginform.jsp</title>
 <jsp:include page="../include/resource.jsp"></jsp:include>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/styles.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/loging.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
