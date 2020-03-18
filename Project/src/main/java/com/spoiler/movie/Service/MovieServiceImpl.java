@@ -218,6 +218,8 @@ public class MovieServiceImpl implements MovieService{
 			if(genreKey != null) {
 				urlBuilder.append("&" + URLEncoder.encode("genre","UTF-8") + "=" + URLDecoder.decode(genreKey, "UTF-8")); /*장르*/ 				
 			}
+			urlBuilder.append("&" + URLEncoder.encode("sort","UTF-8") + "=" + URLDecoder.decode("prodYear", "UTF-8")); /*장르*/ 				
+			urlBuilder.append("&" + URLEncoder.encode("startCount","UTF-8") + "=" + URLDecoder.decode("1", "UTF-8")); /*장르*/ 				
 			
 			URL url = new URL(urlBuilder.toString()); 
 			System.out.println(url);
