@@ -22,6 +22,7 @@
 		<a href="genredetaillist.do?genre=드라마">드라마</a>
 		<a href="genredetaillist.do?genre=범죄">범죄</a>
 		<a href="genredetaillist.do?genre=코미디">코미디</a>
+		<a href="updateMovie.do">영화 table 업데이트</a>
     
     	<!-- 추천 TOP8 -->
         <h1 style="color: honeydew;">추천 TOP8</h1>

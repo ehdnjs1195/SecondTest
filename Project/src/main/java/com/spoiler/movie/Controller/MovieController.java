@@ -33,4 +33,10 @@ public class MovieController {
 		mView.setViewName("genredetaillist");
 		return mView;
 	}
+	
+	@RequestMapping("/updateMovie")
+	public String updateMovieList() {
+		service.updateMovie();
+		return "home";
+	}
 }

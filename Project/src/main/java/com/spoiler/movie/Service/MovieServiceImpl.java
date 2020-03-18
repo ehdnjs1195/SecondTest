@@ -143,7 +143,7 @@ public class MovieServiceImpl implements MovieService{
 		dto.setEndRowNum(endRowNum);
 
 		// 1. DB 에서 파일 목록을 얻어온다.
-		List<MovieDto> list = dao.getList(dto);
+		List<MovieDto> list = dao.movieList();
 		// 2. view page에 할요한 값을 request에 담아준다
 		request.setAttribute("list", list);
 		request.setAttribute("pageNum", pageNum);
@@ -290,24 +290,11 @@ public class MovieServiceImpl implements MovieService{
 				if(posters.equals("")) {
 					posters = default_poster;
 				}
-				//출력.
-				System.out.println("movieSeq:: " + movieSeq);
-				System.out.println("title:: " + title);
-				System.out.println("titleEng:: " + titleEng);
-				System.out.println("genre:: " + genre);
-				System.out.println("director:: " + directorNm);
-				System.out.println("actor:: " + actorNm);
-				System.out.println("plot:: " + plot);
-				System.out.println("runtime:: " + runtime);
-				System.out.println("repRlsDate:: " + repRlsDate);
-				System.out.println("keywords:: " + keywords);
-				System.out.println("posters:: " + posters);
-				System.out.println("=============================================================");
+			
 				//MovieDto 객체 생성
 				//list에 담기
 				MovieDto dto=new MovieDto(movieSeq, title, titleEng, genre, directorNm, actorNm, plot, runtime, repRlsDate, keywords,0, posters,null,0,0);
 				list.add(dto);	
-				this.updateMovie();
 			}
 		}catch(Exception e) {}
 		return list;
@@ -382,19 +369,7 @@ public class MovieServiceImpl implements MovieService{
 				if(posters.equals("")) {
 					posters = default_poster;
 				}
-				//출력.
-				System.out.println("movieSeq:: " + movieSeq);
-				System.out.println("title:: " + title);
-				System.out.println("titleEng:: " + titleEng);
-				System.out.println("genre:: " + genre);
-				System.out.println("director:: " + directorNm);
-				System.out.println("actor:: " + actorNm);
-				System.out.println("plot:: " + plot);
-				System.out.println("runtime:: " + runtime);
-				System.out.println("repRlsDate:: " + repRlsDate);
-				System.out.println("keywords:: " + keywords);
-				System.out.println("posters:: " + posters);
-				System.out.println("=============================================================");
+				
 				//MovieDto 객체 생성
 				dto=new MovieDto(movieSeq, title, titleEng, genre, directorNm, actorNm, plot, runtime, repRlsDate, keywords,0, posters,null,0,0);
 			}
@@ -416,6 +391,7 @@ public class MovieServiceImpl implements MovieService{
 		//2. 목록을 가져온다.
 		Elements elements = doc.select(".tit3");	// ul의 clear 클래스 안에 있는 li를 모두 가져온다.
 		//제목별로 검색하여 데이터를 Dto에 저장하고 insert한다.
+		dao.initMovie();
 		for(Element element : elements) {
 			String titleKey=element.text();
 			StringBuilder urlBuilder = new StringBuilder("http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new"); /*URL*/ 
@@ -480,15 +456,13 @@ public class MovieServiceImpl implements MovieService{
 				String postersStr=(String)obj3.get("posters");
 				String[] posts = postersStr.split("\\|");
 				String posters = posts[0];
-				String default_poster = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ7HY8NY2QmoKgSW-f6BmH_q5Sh6UnZmGU1rXmSy7OqHD0lRMPq";
+				String default_poster = "http://liberaldead.com/blog/wp-content/uploads/no-poster.jpg";
 				if(posters.equals("")) {
 					posters = default_poster;
 				}
-				
-				System.out.println("title:: " + title);
 				//MovieDto 객체 생성
 				MovieDto dto=new MovieDto(movieSeq, title, titleEng, genre, directorNm, actorNm, plot, runtime, repRlsDate, keywords,0, posters,null,0,0);
-				dao.initMovie();
+				
 				dao.updateMovie(dto);
 			
 			}catch(Exception e) {}

@@ -20,4 +20,7 @@ public interface MovieService {
 	//API에서 영화 정보 list, dto로 담기.
 	public List<MovieDto> getList(String titleKey, String genreKey,int pageNum);
 	public MovieDto getMovieInfo(String movieSeqKey);
+	
+	//naver영화 순위 table에 update
+	public void updateMovie();
 }

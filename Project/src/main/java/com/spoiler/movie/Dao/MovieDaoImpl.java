@@ -14,8 +14,8 @@ public class MovieDaoImpl implements MovieDao{
 	private SqlSession session;
 	
 	@Override
-	public List<MovieDto> getList(MovieDto dto) {
-		return session.selectList("movie.getList",dto);
+	public List<MovieDto> movieList() {
+		return session.selectList("movie.getList");
 	}
 
 	@Override
@@ -36,6 +36,6 @@ public class MovieDaoImpl implements MovieDao{
 	}
 	@Override
 	public void updateMovie(MovieDto dto) {
-		session.insert("movie.updateMovie");
+		session.insert("movie.updateMovie", dto);
 	}
 }
