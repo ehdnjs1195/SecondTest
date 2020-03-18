@@ -29,4 +29,13 @@ public class MovieDaoImpl implements MovieDao{
 		return session.selectOne("movie.getData", num);
 	}
 
+	@Override
+	public void initMovie() {
+		session.delete("movie.initMovie");
+		
+	}
+	@Override
+	public void updateMovie(MovieDto dto) {
+		session.insert("movie.updateMovie");
+	}
 }

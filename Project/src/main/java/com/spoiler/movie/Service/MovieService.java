@@ -1,8 +1,11 @@
 package com.spoiler.movie.Service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import com.spoiler.movie.Dto.MovieCommentDto;
+import com.spoiler.movie.Dto.MovieDto;
 
 public interface MovieService {
 	public void movieList(HttpServletRequest request);
@@ -13,4 +16,8 @@ public interface MovieService {
 	public void deleteComment(int num);
 	//댓글 수정하는 메소드
 	public void updateComment(MovieCommentDto dto);
+	
+	//API에서 영화 정보 list, dto로 담기.
+	public List<MovieDto> getList(String titleKey, String genreKey,int pageNum);
+	public MovieDto getMovieInfo(String movieSeqKey);
 }

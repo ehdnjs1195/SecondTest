@@ -28,7 +28,7 @@ public class MovieController {
 	}
 	@RequestMapping("/genredetaillist")
 	public ModelAndView list2(ModelAndView mView, HttpServletRequest request, @ModelAttribute MovieDto dto) {
-		List<MovieDto> list = new MovieServiceImpl().getList(dto.getTitle(), dto.getGenre(), dto.getStartRowNum());
+		List<MovieDto> list = service.getList(dto.getTitle(), dto.getGenre(), dto.getStartRowNum());
 		mView.addObject("list", list);
 		mView.setViewName("genredetaillist");
 		return mView;
