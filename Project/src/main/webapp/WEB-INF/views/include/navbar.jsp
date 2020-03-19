@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <jsp:include page="../include/resource.jsp"></jsp:include>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 <style>
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
@@ -23,6 +24,7 @@
 #profileForm{
 		display: none;
 	}
+		
 	
 </style>
 
@@ -35,6 +37,7 @@
 			
 			</button>
 		</div>
+		
 		<c:choose>
 				<c:when test="${empty sessionScope.id }">	<!-- sessionScope. 는 생략 가능 -->
 					<div class="pull-right">
@@ -64,10 +67,15 @@
 					</div>
 				</c:otherwise>
 		</c:choose>  
-		
+		<div class="pull-right" style="margin-top:15px; margin-right:40px;">
+		<form action="searchlist.do" method="get" id="isSeach">
+			<label for="condition" style="display: none;">검색조건</label>
+			<input type="text" name="keyword" id="keyword" placeholder="영화 검색" value="${keyword }" />
+			<button type="submit" >검색</button>
+		</form>
+		</div>
 	</div>
 </div>
-
 <form action="profile_upload.do" method="post"
 	enctype="multipart/form-data" id="profileForm">
 	<label for="profileImage">프로필 이미지 선택</label>

@@ -29,49 +29,6 @@
     opacity:0.3;
  }
 
-/*Checkboxes styles*/
-input[type="checkbox"] { display: none; }
-
-input[type="checkbox"] + label {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 20px;
-  font: 14px/20px 'Open Sans', Arial, sans-serif;
-  color: #ddd;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
-input[type="checkbox"] + label:last-child { margin-bottom: 0; }
-
-input[type="checkbox"] + label:before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #6cc0e5;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: .6;
-  -webkit-transition: all .12s, border-color .08s;
-  transition: all .12s, border-color .08s;
-}
-
-input[type="checkbox"]:checked + label:before {
-  width: 10px;
-  top: -5px;
-  left: 5px;
-  border-radius: 0;
-  opacity: 1;
-  border-top-color: transparent;
-  border-left-color: transparent;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-}	
 
 .btn-lg{
 	width:100%;
@@ -251,7 +208,7 @@ p {
   font-size: 15px;
   color: #777; }
 
-h1 {
+h1,h3 {
   line-height: 1.66;
   letter-spacing: 5px;
   margin: 0;
@@ -268,7 +225,7 @@ h1 {
   clear: both; }
 
 .container {
-  width: 660px;
+  width: 660px; !important;
   position: relative;
   margin: 0 auto; }
   
@@ -316,7 +273,7 @@ h1 {
   -ms-border-radius: 10px;
   padding: 50px 85px; }
 
-.signin-content {
+.signin-content  {
   background: #fff;
   border-radius: 10px;
   -moz-border-radius: 10px;
@@ -325,6 +282,17 @@ h1 {
   -ms-border-radius: 10px;
   padding: 50px 85px; }
   
+#update-form{
+    background: #fff;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    padding: 50px 85px;
+    opacity:0.9;
+}
+
 .form-group {
   overflow: hidden;
   margin-bottom: 13px; }
@@ -478,11 +446,11 @@ input[type=checkbox]:not(old):checked + label > span:before {
   z-index: 2;
   color: #555; }
 
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 660px) {
   .container {
     width: calc(100% - 40px);
     max-width: 100%; } }
-@media screen and (max-width: 480px) {
+@media only screen and (max-width: 480px) {
   .signup-content {
     padding: 50px 25px; } }
 
