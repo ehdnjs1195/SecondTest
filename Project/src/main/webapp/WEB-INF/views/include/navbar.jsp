@@ -1,25 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <style>
-
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: #2d3436 !important;
-    border: #FBFCFC ;
-    
-}
-.btn-warning, .btn-warning:hover, .btn-warning:active, .btn-warning:visited {
-    background-color: #2d3436 !important;
-    border: #FBFCFC ;
-}
+	.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+	    background-color: #2d3436 !important;
+	    border: #FBFCFC ;
+	    
+	}
+	.btn-warning, .btn-warning:hover, .btn-warning:active, .btn-warning:visited {
+	    background-color: #2d3436 !important;
+	    border: #FBFCFC ;
+	}
+	body{
+	    margin-top: 90px;
+	    padding: 0;
+	    /* background: url(unnamed.jpg);
+	    background-size: cover; */
+	    font-family: fantasy, sans-serif;
+	}
+	.neon{
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+	    margin: 0;
+	    padding: 0 20px;
+	    font-size: 3em;
+	    color: #fff;
+	    text-shadow: 0 0 20px #ff005b;
+	}
+	.neon:after{
+	    content: attr(data-text);
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    padding: 0 20px;
+	    z-index: -1;
+	    color: #ff005b;
+	    filter: blur(15px);
+	}
+	.neon::before{
+	    content: '';
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    background-color: #fe3a80;
+	    z-index: -2;
+	    opacity: .5;
+	    filter: blur(40px);
+	}
 </style>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<!-- 홈페이지 링크와 버튼을 넣어둘 div -->
 		<div class="navbar-header">
-			<a class="navbar-brand" href="${pageContext.request.contextPath }/home.do"><i class="fas fa-ticket-alt"></i> Spoiler</a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath }/home.do">
+				<span class="neon" data-text="SPOILER">SPOILER</span>
+			</a>
 			<button class="navbar-toggle" data-toggle="collapse" data-target="#one">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
