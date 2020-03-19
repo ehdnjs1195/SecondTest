@@ -17,7 +17,7 @@
 			<div class="item <c:if test="${i eq 1}">active</c:if>">
 				<c:forEach var="tmp" items="${list }">
 					<div class="items">
-						<img id="best_${tmp.num}" src="${tmp.imageLink }" />
+						<img id="best_${tmp.movieSeq}" src="${tmp.posters }" />
 					</div>
 				</c:forEach>
 			</div>
@@ -35,17 +35,17 @@
 
 <!-- Modal -->
 <c:forEach var="tmp" items="${list }">
-	<div class="modal fade" id="myModal${tmp.num }">
+	<div class="modal fade" id="myModal${tmp.movieSeq }">
 		<!-- modal-lg  | default | modal-sm -->
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-body" style="display: flex;">
-					<img src="${tmp.imageLink }" id="${tmp.num }">
+					<img src="${tmp.posters }" id="${tmp.movieSeq }">
 					<div class="imgBox">
 						<h2>${tmp.title }</h2>
 						<dl class="movie_info">
 							<dt>개봉</dt>
-							<dd>${tmp.releaseDate }</dd>
+							<dd>${tmp.repRlsDate }</dd>
 							<dt>장르</dt>
 							<dd class="movie_genre">
 								<p>${tmp.genre }</p>
@@ -60,18 +60,18 @@
 							</dd>
 						</dl>
 						<h3>줄거리</h3>
-						<h4>${tmp.content }</h4>
+						<h4>${tmp.plot }</h4>
 						<div>
-							<a href="detail.do?num=${tmp.num }" type="button" class="btn btn-info">자세히 보러가기</a>
+							<a href="detail.do?num=${tmp.movieSeq }" type="button" class="btn btn-info">자세히 보러가기</a>
 						</div>
 					</div>
 				</div>
-				<div class="modal-footer">
+				<%-- <div class="modal-footer">
 					<iframe src="${tmp.videoLink }"
 						frameborder="0"
 						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen></iframe>
-				</div>
+				</div> --%>
 			</div>
 			<!-- /.modal-content -->
 		</div>
@@ -80,8 +80,8 @@
 	<!-- /.modal -->
 
 	<script>
-		$("#best_${tmp.num}").click(function() {
-			$("#myModal${tmp.num}").modal("show");
+		$("#best_${tmp.movieSeq}").click(function() {
+			$("#myModal${tmp.movieSeq}").modal("show");
 		});
 	</script>
 </c:forEach>

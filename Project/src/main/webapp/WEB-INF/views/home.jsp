@@ -21,7 +21,7 @@
 		</form>
 		<a href="genredetaillist.do?genre=드라마">드라마</a>
 		<a href="genredetaillist.do?genre=범죄">범죄</a>
-		<a href="genredetaillist.do?genre=코미디">코미디</a>
+		<a href="genredetaillist.do?genre=코메디">코미디</a>
 		<a href="updateMovie.do">영화 table 업데이트</a>
     
     	<!-- 추천 TOP8 -->
@@ -43,7 +43,7 @@
 		<!-- 장르: 코미디 -->
 		<h1 style="color: honeydew;">코미디 영화</h1>
 		<jsp:include page="include/genrelist.jsp">
-			<jsp:param value="코미디" name="genre"/>
+			<jsp:param value="코메디" name="genre"/>
 		</jsp:include>
     </div>
 </body>

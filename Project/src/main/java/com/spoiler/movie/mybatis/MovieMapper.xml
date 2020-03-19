@@ -7,10 +7,10 @@
 	
 	<insert id="updateMovie" parameterType="movieDto">
 		insert into movie
-		values(#{movieSeq}, #{title}, #{titleEng}, #{genre}, #{director}, #{actor}, #{plot}, #{runtime}, #{repRlsDate}, #{keywords}, #{posters})
+		values(#{rank}, #{movieSeq}, #{title}, #{titleEng}, #{genre}, #{director}, #{actor}, #{plot}, #{runtime}, #{repRlsDate}, #{keywords}, #{posters})
 	</insert>
 	
-	<select id="getList" resultType="movieDto">
+	<select id="getHomeList" resultType="movieDto">
 		select * from movie
 	</select>
 	

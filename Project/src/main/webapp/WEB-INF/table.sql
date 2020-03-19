@@ -1,5 +1,6 @@
 create table movie
-(movieSeq varchar2(5) primary key,
+(rank number not null, 
+movieSeq varchar2(5) primary key,
 title varchar2(200) not null,
 titleEng varchar2(300),
 genre varchar2(150),

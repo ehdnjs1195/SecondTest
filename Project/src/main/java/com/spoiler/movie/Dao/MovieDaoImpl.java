@@ -15,7 +15,7 @@ public class MovieDaoImpl implements MovieDao{
 	
 	@Override
 	public List<MovieDto> movieList() {
-		return session.selectList("movie.getList");
+		return session.selectList("movie.getHomeList");
 	}
 
 	@Override

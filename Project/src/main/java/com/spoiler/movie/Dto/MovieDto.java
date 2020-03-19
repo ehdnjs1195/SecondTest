@@ -1,6 +1,7 @@
 package com.spoiler.movie.Dto;
 
 public class MovieDto {
+	private int rank;
 	private String movieSeq;
 	private String title;
 	private String titleEng;
@@ -19,10 +20,11 @@ public class MovieDto {
 	
 	public MovieDto() {}
 
-	public MovieDto(String movieSeq, String title, String titleEng, String genre, String director, String actor,
-			String plot, String runtime, String repRlsDate, String keywords, float starPoint, String posters,
-			String videoLink, int startRowNum, int endRowNum) {
+	public MovieDto(int rank, String movieSeq, String title, String titleEng, String genre, String director,
+			String actor, String plot, String runtime, String repRlsDate, String keywords, float starPoint,
+			String posters, String videoLink, int startRowNum, int endRowNum) {
 		super();
+		this.rank = rank;
 		this.movieSeq = movieSeq;
 		this.title = title;
 		this.titleEng = titleEng;
@@ -38,6 +40,14 @@ public class MovieDto {
 		this.videoLink = videoLink;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
+	}
+
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
 	}
 
 	public String getMovieSeq() {
@@ -160,5 +170,6 @@ public class MovieDto {
 		this.endRowNum = endRowNum;
 	}
 
+	
 	
 }
