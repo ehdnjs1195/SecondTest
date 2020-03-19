@@ -10,7 +10,7 @@ import org.jsoup.select.Elements;
 public class Crawl{
 	
 	public static void main(String[] args) throws Exception{
-		String url = "https://movie.naver.com/movie/sdb/rank/rmovie.nhn?sel=cnt&date=20200317"; //크롤링할 url 지정
+		String url = "https://movie.naver.com/movie/running/current.nhn?order=reserve"; //크롤링할 url 지정
         Document doc = null; //Document 에는 페이지의 전체 소스가 저장된다  
         try {
             doc = Jsoup.connect(url).get();
@@ -21,12 +21,20 @@ public class Crawl{
          * select 를 이용하여 원하는 태그를 선택한다. select 는 원하는 값을 가져오기 위한 중요한 기능이다.
          * ==>원하는 값들이 들어있는 덩어리를 가져온다.
          */
-        Elements element  = doc.select("tbody");
+        Elements element  = doc.select("div.obj_section");
         
 		//Iterator을 사용하여 하나씩 값 가져오기
-		Iterator<Element> ie = element.select("td.title").iterator();		        
+		Iterator<Element> title = element.select("dt.tit a").iterator();		        
+		Iterator<Element> ie = element.select("span.num").iterator();		        
+		Iterator<Element> ie2 = element.select("span.num2").iterator();		        
+		Iterator<Element> ie3 = element.select("dl.info_exp").iterator();		        
+		Iterator<Element> ie4 = element.select(".lst_dsc .info_txt1 dd a").iterator(); //.attr 로 해보기!	        
 		while (ie.hasNext()) {
-			System.out.println(ie.next().text());
+			System.out.println("제목 : "+title.next().text()+"|"+
+					"네티즌 : "+ie.next().text()+"|"+
+					ie2.next().text() +"|"+
+					ie3.next().text() +"|"+
+					ie4.next().text());
 		}
 
 	}//main

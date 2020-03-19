@@ -77,7 +77,7 @@
 					<div class="pull-right">
 						<strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.do">
 						<img src="${pageContext.request.contextPath }${profile}" style="width:50px; height:50px; border-radius:50%;" />${id }</a></strong>
-						<a class="btn btn-warning navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/logout.do">로그아웃</a>
+						<a class="btn btn-warning navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/logout.do">Logout</a>
 					</div>
 				</c:otherwise>
 			</c:choose>  
