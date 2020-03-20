@@ -17,10 +17,12 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.spoiler.movie.Dao.MovieDao;
 import com.spoiler.movie.Dto.MovieDto;
 
+@Service
 public class MovieAPIServiceImpl implements MovieAPIService{
 	@Autowired
 	private MovieDao dao;

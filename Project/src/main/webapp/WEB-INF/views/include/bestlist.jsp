@@ -19,6 +19,16 @@
 					<div class="items">
 						<img id="best_${tmp.movieSeq}" src="${tmp.posters }" />
 					</div>
+					<div class="items" id="best_${tmp.movieSeq}">
+						<img id="best_${tmp.movieSeq}" src="${tmp.posters }" />
+                        <div class="box-content" style="text-align:center">
+                            <h3 class="title">${tmp.title}</h3>
+                            <p class="post">개봉일 : ${tmp.repRlsDate }</p>
+                            <p class="post">${tmp.genre }</p>
+                            <hr width="170px">
+                             	<a style="color:white">자세히보기</a>
+	                     </div>
+	                 </div>
 				</c:forEach>
 			</div>
 		</c:forEach>
@@ -62,7 +72,7 @@
 						<h3>줄거리</h3>
 						<h4>${tmp.plot }</h4>
 						<div>
-							<a href="detail.do?num=${tmp.movieSeq }" type="button" class="btn btn-info">자세히 보러가기</a>
+							<a href="detail.do?movieSeq=${tmp.movieSeq }" type="button" class="btn btn-info">자세히 보러가기</a>
 						</div>
 					</div>
 				</div>

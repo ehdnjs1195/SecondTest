@@ -16,9 +16,16 @@
 		<c:forEach var="i" begin="1" end="2" step="1">
 			<div class="item <c:if test="${i eq 1}">active</c:if>">
 				<c:forEach var="tmp" items="${list }">
-					<div class="items">
+					<div class="items" id="best_${tmp.num}">
 						<img id="best_${tmp.num}" src="${tmp.imageLink }" />
-					</div>
+                        <div class="box-content" style="text-align:center">
+                            <h3 class="title">${tmp.title}</h3>
+                            <p class="post">개봉일 : ${tmp.releaseDate }</p>
+                            <p class="post">${tmp.genre }</p>
+                            <hr width="170px">
+                             <a style="color:white">자세히보기</a>
+                            </div>
+                        </div>
 				</c:forEach>
 			</div>
 		</c:forEach>

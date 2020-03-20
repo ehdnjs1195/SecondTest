@@ -53,6 +53,8 @@ public class UsersServiceImpl implements UsersService{
 		if(isValid) {
 			//로그인 처리를 한다.
 			session.setAttribute("id", dto.getId());
+			
+			session.setAttribute("profile", dao.getProfile(dto.getId()));
 		}
 	}
 	@Override
@@ -98,7 +100,7 @@ public class UsersServiceImpl implements UsersService{
 		System.out.println(path);
 		// UsersDao 를 이용해서 DB 에 반영하기 
 		dao.updateProfile(dto);
-		
+		request.getSession().setAttribute("profile", dto.getProfile());
 		//이미지 경로 리턴해주기 
 		return path;
 	}

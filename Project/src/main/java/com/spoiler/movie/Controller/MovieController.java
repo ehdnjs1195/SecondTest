@@ -39,6 +39,6 @@ public class MovieController {
 	@RequestMapping("/updateMovie")
 	public String updateMovieList() {
 		apiService.updateMovie();
-		return "redirect: /movie";
+		return "redirect: /home.do";
 	}
 }
