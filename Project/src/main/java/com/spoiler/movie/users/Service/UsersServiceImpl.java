@@ -94,6 +94,8 @@ public class UsersServiceImpl implements UsersService{
 		UsersDto dto=new UsersDto();
 		dto.setId(id);
 		dto.setProfile(path);
+		System.out.println(id);
+		System.out.println(path);
 		// UsersDao 를 이용해서 DB 에 반영하기 
 		dao.updateProfile(dto);
 		

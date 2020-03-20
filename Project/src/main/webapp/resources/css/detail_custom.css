@@ -4,6 +4,7 @@
 	width: 100%;
 	border: 1px dotted #cecece;
 	box-shadow: 3px 3px 5px 6px #ccc;
+	margin-top: 20px;
 }
 /* 댓글에 관련된 css */
 .comments ul{
@@ -27,12 +28,12 @@
 	clear: left;
 }
 .comments form textarea{
-	width: 85%;
-	height: 100px;
+	width: 81%;
+	height: 73px;
 }
 .comments form button{
-	width: 15%;
-	height: 100px;
+	width: 12%;
+	height: 73px;
 }
 /* 댓글에 댓글을 다는 폼과 수정폼을 일단 숨긴다. */
 .comment form{
@@ -51,5 +52,10 @@
 .comments .user-img{
 	width: 20px;
 	height: 20px;
-	border-radius: 50%;
+	border-radius: 10%;
+}
+#user-img{
+	width: 7%;
+	height: 73px;
+	float: left;
 }
