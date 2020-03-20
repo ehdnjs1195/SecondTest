@@ -1,7 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/poster_hover.css" />
+<style>
+.items{
+cursor: pointer;
+    position:relative;
+   transition:all .2s ease-out 0s
+   }
+.items .box-content, 
+.items:after{position:absolute;left:20px;right:20px}
+.items:after{content:"";display:block;background:#2d3436;
+top:20px;bottom:20px;opacity:0;transform:rotate3d(-1,1,0,100deg);transition:all .4s ease-in-out 0s}
+.items:hover:after{opacity:.9;transform:rotate3d(0,0,0,0deg)}
+.items .box-content{top:45%;opacity:0;z-index:1;-webkit-transform:translate(10%,-30%);transform:translate(10%,-30%);transition:all .2s ease-out 0s}
+.items:hover .box-content{opacity:1;transform:translate(0,-50%);transition-delay:.2s}
+.items .title{display:block;font-size:22px;font-weight:700;color:#FFC300;margin:0 0 10px}
+.items .post{display:block;font-size:15px;color:#f7f7b9;margin-bottom:20px}
+@media only screen and (max-width:990px){.box13{margin-bottom:30px}
+</style>
+
+
 <!-- Carousel -->
 <div id="myCarousel_top8" class="carousel slide" data-ride="carousel"
 	data-interval="5000">
@@ -17,11 +35,7 @@
 		<c:forEach var="i" begin="1" end="2" step="1">
 			<div class="item <c:if test="${i eq 1}">active</c:if>">
 				<c:forEach var="tmp" items="${list }">
-					<div class="items">
-						<img id="best_${tmp.movieSeq}" src="${tmp.posters }" />
-					</div>
-					<!-- 호버됐을 때! -->
-					<div class="poster-hover" id="best_${tmp.movieSeq}">
+					<div class="items" id="best_${tmp.movieSeq}">
 						<img id="best_${tmp.movieSeq}" src="${tmp.posters }" />
                         <div class="box-content" style="text-align:center">
                             <h3 class="title">${tmp.title}</h3>
@@ -30,9 +44,11 @@
                             <hr width="170px">
                              	<a style="color:white">자세히보기</a>
 	                     </div>
-	                 </div>
-	                 
+	                     
+	                  </div>
+					
 				</c:forEach>
+				
 			</div>
 		</c:forEach>
 	</div>

@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 .poster-hover .box-content,
 .poster-hover:after{position:absolute;left:20px;right:20px}
 .poster-hover:after{content:"";display:block;background:#2d3436;
