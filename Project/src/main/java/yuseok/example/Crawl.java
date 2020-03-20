@@ -28,13 +28,18 @@ public class Crawl{
 		Iterator<Element> ie = element.select("span.num").iterator();		        
 		Iterator<Element> ie2 = element.select("span.num2").iterator();		        
 		Iterator<Element> ie3 = element.select("dl.info_exp").iterator();		        
-		Iterator<Element> ie4 = element.select(".lst_dsc .info_txt1 dd a").iterator(); //.attr 로 해보기!	        
+		Iterator<Element> ie4 = element.select(".lst_dsc .info_txt1 .tit_t1+dd").iterator();		        
+		Iterator<Element> ie5 = element.select(".lst_dsc .info_txt1 .tit_t2+dd a").iterator();        
+		Iterator<Element> ie6 = element.select(".lst_dsc .info_txt1 .tit_t3+dd").iterator();        
 		while (ie.hasNext()) {
-			System.out.println("제목 : "+title.next().text()+"|"+
-					"네티즌 : "+ie.next().text()+"|"+
+			System.out.println(
+					"제목 : "+title.next().text() +"|"+
+					"네티즌 : "+ie.next().text() +"|"+
 					ie2.next().text() +"|"+
 					ie3.next().text() +"|"+
-					ie4.next().text());
+					"개요 : "+ie4.next().text() +"|"+
+					"감독 : "+ie5.next().text() +"|"+
+					"출연 : "+ie6.next().text());
 		}
 
 	}//main
