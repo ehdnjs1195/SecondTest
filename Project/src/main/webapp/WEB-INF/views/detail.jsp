@@ -17,8 +17,8 @@
 			<col class="col-xs-9"/>
 		</colgroup>
 		<tr>
-			<th>num</th>
-			<td>${dto.num }</td>
+			<th>movieSeq</th>
+			<td>${dto.movieSeq }</td>
 		</tr>
 		<tr>
 			<th>title</th>
@@ -26,11 +26,11 @@
 		</tr>
 		<tr>
 			<th>content</th>
-			<td>${dto.content }</td>
+			<td>${dto.plot }</td>
 		</tr>
 		<tr>
 			<th>releaseDate</th>
-			<td>${dto.releaseDate }</td>
+			<td>${dto.repRlsDate }</td>
 		</tr>
 		<tr>
 			<th>genre</th>
@@ -50,7 +50,7 @@
 		</tr>
 		<tr>
 			<th>imageLink</th>
-			<td><img src="${dto.imageLink }" style="width: 300px; height: 600px;"/></td>
+			<td><img src="${dto.posters }" style="width: 300px; height: 600px;"/></td>
 		</tr>
 		<tr>
 			<th>videoLink</th>
@@ -73,10 +73,10 @@
 			<form action="comment_insert.do" method="post">
 				<!-- 댓글의 그룹번호는 원글의 글번호가 된다.  -->
 				<input type="hidden" name="ref_group" 
-					value="${dto.num }"/>
+					value="${dto.movieSeq }"/>
 				<!-- 댓글의 대상자는 원글의 작성자가 된다. -->
 				<input type="hidden" name="target_id" 
-					value="${dto.num }"/> <!-- 정보를 받아와서 뿌려주므로 원글의 작성자를 dto.num 으로 넣어줬다. -->
+					value="${dto.movieSeq }"/> <!-- 정보를 받아와서 뿌려주므로 원글의 작성자를 dto.movieSeq 으로 넣어줬다. -->
 				<textarea class="form-control" name="content" style="color:black;"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
 				<button type="submit" style="color:black;">등록</button>
 			</form>
@@ -125,7 +125,7 @@
 						<!-- 대댓글 form css 에 display: none; -->
 						<form class="comment-insert-form" action="comment_insert.do" method="post">
 							<!-- 덧글 그룹 -->
-							<input type="hidden" name="ref_group" value="${dto.num }" />
+							<input type="hidden" name="ref_group" value="${dto.movieSeq }" />
 							<!-- 덧글 대상 -->
 							<input type="hidden" name="target_id" value="${tmp.writer }" />
 							<input type="hidden" name="comment_group" value="${tmp.comment_group }" />
@@ -213,18 +213,18 @@
 		var isLogin=${not empty id};
 		if(isLogin==false){
 			alert("로그인 페이지로 이동 합니다.");
-			location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?num=${dto.num}";
+			location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}";
 			return false;//폼 전송 막기 
 		}
 	});
 	//폼에 click 이벤트가 일어 났을때 실행할 함수 등록 
 	$(".comments form textarea").on("click", function(){
-		//로그인 여부
+		//로그인 여부 
 		var isLogin=${not empty id};
 		if(isLogin==false){
 			var isMove=confirm("로그인 페이지로 이동 하시겠습니까?");
 			if(isMove){
-				location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?num=${dto.num}";
+				location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}";
 			}
 		}
 	});
@@ -248,7 +248,7 @@
 	function deleteConfirm(){
 		var isDelete=confirm("글을 삭제 하시 겠습니까?");
 		if(isDelete){
-			location.href="delete.do?num=${dto.num}";
+			location.href="delete.do?movieSeq=${dto.movieSeq}";
 		}
 	}
 </script>

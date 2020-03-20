@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/poster_hover.css" />
 <!-- Carousel -->
 <div id="myCarousel_top8" class="carousel slide" data-ride="carousel"
 	data-interval="5000">
@@ -19,7 +20,8 @@
 					<div class="items">
 						<img id="best_${tmp.movieSeq}" src="${tmp.posters }" />
 					</div>
-					<div class="items" id="best_${tmp.movieSeq}">
+					<!-- 호버됐을 때! -->
+					<div class="poster-hover" id="best_${tmp.movieSeq}">
 						<img id="best_${tmp.movieSeq}" src="${tmp.posters }" />
                         <div class="box-content" style="text-align:center">
                             <h3 class="title">${tmp.title}</h3>
@@ -29,6 +31,7 @@
                              	<a style="color:white">자세히보기</a>
 	                     </div>
 	                 </div>
+	                 
 				</c:forEach>
 			</div>
 		</c:forEach>

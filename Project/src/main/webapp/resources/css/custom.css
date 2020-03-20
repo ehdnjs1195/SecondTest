@@ -15,11 +15,6 @@ body {
     background-color: #2d3436;
 }
 
-.items:hover {
-   opacity: 0.6;
-   cursor: pointer;
-}
-
 .carousel-control {
     width: 5%;
 }

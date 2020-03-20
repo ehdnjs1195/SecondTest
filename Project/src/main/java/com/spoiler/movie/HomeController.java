@@ -37,7 +37,7 @@ public class HomeController {
 	@RequestMapping(value = "/comment_insert", method = RequestMethod.POST)
 	public ModelAndView authCommentInsert(HttpServletRequest request, @RequestParam int ref_group) {
 		service.saveComment(request);
-		return new ModelAndView("redirect:/detail.do?num="+ref_group);
+		return new ModelAndView("redirect:/detail.do?movieSeq="+ref_group);
 	}
 	
 	//댓글 삭제 요청 처리

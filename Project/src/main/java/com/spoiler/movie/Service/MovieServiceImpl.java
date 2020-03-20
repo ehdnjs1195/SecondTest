@@ -45,6 +45,8 @@ public class MovieServiceImpl implements MovieService {
 	private MovieDao dao;
 	@Autowired
 	private MovieCommentDao commentDao;
+	@Autowired
+	private MovieAPIService apiService;
 
 	@Override
 	public void homeList(HttpServletRequest request) {
@@ -55,17 +57,14 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public void getDetail(HttpServletRequest request) {
 		// 파라미터로 전달되는 글번호
-		int num = Integer.parseInt(request.getParameter("num"));
+		int movieSeq = Integer.parseInt(request.getParameter("movieSeq"));
+		
 		// MovieDto 객체 생성 (select 할때 필요한 정보를 담기 위해)
-		MovieDto dto = new MovieDto();
-		// MovieDto 에 글번호도 담기
-		dto.setMovieSeq(Integer.toString(num));
-		// 글 정보를 얻어와서
-		MovieDto dto2 = dao.getData(num);
+		MovieDto dto = apiService.getMovieInfo(Integer.toString(movieSeq));
 		// request 에 글정보를 담고
-		request.setAttribute("dto", dto2);
+		request.setAttribute("dto", dto);
 		// 댓글 목록을 얻어와서 request 에 담아준다.
-		List<MovieCommentDto> commentList = commentDao.getList(num);
+		List<MovieCommentDto> commentList = commentDao.getList(movieSeq);
 		request.setAttribute("commentList", commentList);
 	}
 
