@@ -299,11 +299,20 @@ public class MovieServiceImpl implements MovieService {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			// 2. 목록을 가져온다.
-			Elements elements = doc.select(".info_tit > a");
-			for (int j = 0; j < elements.size(); j++) {
-				Element ele = elements.get(j);
-				String titleKey = ele.text();
+			//2. 목록을 가져온다.
+			 Elements tits	 = doc.select(".info_tit > a");	// ul의 clear 클래스 안에 있는 li를 모두 가져온다.
+			 Elements dates = doc.select(".info_state");	// ul의 clear 클래스 안에 있는 li를 모두 가져온다.
+			 //제목별로 검색하여 데이터를 Dto에 저장하고 insert한다.
+			 
+			 for(int j = 0; j < tits.size(); j ++) {
+				 Element tit=tits.get(j);
+				 String titleKey=tit.text();
+				 
+				 Element day=dates.get(j);
+				 String date=day.text();
+				 String[] a=date.split("\\s");
+				 String[] d = a[0].split("\\.");
+				 String dateKey = "20"+d[0]+d[1]+d[2];
 
 				// 제목별로 검색하여 데이터를 Dto에 저장하고 insert한다.
 
@@ -314,10 +323,10 @@ public class MovieServiceImpl implements MovieService {
 				try {
 					urlBuilder.append(
 							"&" + URLEncoder.encode("ServiceKey", "UTF-8") + "=04YVG7XZ00W520AJ41N7"); /* Service Key */
-					if (titleKey != null) {
-						urlBuilder.append("&" + URLEncoder.encode("title", "UTF-8") + "="
-								+ URLEncoder.encode(titleKey, "UTF-8")); /* 검색어 */
-					}
+					
+					urlBuilder.append("&" + URLEncoder.encode("title", "UTF-8") + "=" + URLEncoder.encode(titleKey, "UTF-8")); /* 검색어 */
+					urlBuilder.append("&" + URLEncoder.encode("releaseDts", "UTF-8") + "=" + URLEncoder.encode(dateKey, "UTF-8")); /* 검색어 */
+				
 					URL url = new URL(urlBuilder.toString());
 					System.out.println(url);
 					HttpURLConnection conn = (HttpURLConnection) url.openConnection();

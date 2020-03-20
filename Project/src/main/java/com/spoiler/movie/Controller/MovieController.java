@@ -37,6 +37,6 @@ public class MovieController {
 	@RequestMapping("/updateMovie")
 	public String updateMovieList() {
 		service.updateMovie();
-		return "home";
+		return "redirect: /movie";
 	}
 }

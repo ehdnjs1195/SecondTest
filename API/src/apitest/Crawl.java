@@ -12,9 +12,9 @@ public class Crawl {
 	public static void main(String[] args) {
 		 SimpleDateFormat today = new SimpleDateFormat("yyyyMMdd");
 		 int idx = 0;
-//		 for(int i =1 ; i<=2;i++) {
+		 for(int i =1 ; i<=2;i++) {
 			 
-			 String URL="https://movie.naver.com/movie/running/current.nhn";
+			 String URL="https://movie.daum.net/premovie/released?opt=reserve&page="+i;
 			 
 			 //1. Document를 가져온다.
 			 Document doc = null;
@@ -24,20 +24,22 @@ public class Crawl {
 				 e.printStackTrace();
 			 }
 			 //2. 목록을 가져온다.
-			 Elements elements = doc.select(".tit > a");	// ul의 clear 클래스 안에 있는 li를 모두 가져온다.
-			 Elements dir = doc.select(".info_txt1 > dd ");	// ul의 clear 클래스 안에 있는 li를 모두 가져온다.
+			 Elements tits	 = doc.select(".info_tit > a");	// ul의 clear 클래스 안에 있는 li를 모두 가져온다.
+			 Elements dates = doc.select(".info_state");	// ul의 clear 클래스 안에 있는 li를 모두 가져온다.
 			 //제목별로 검색하여 데이터를 Dto에 저장하고 insert한다.
-			 Element day=dir.get(1);
-			 String direc=day.text();
-			 System.out.println(direc);
-//			 for(int j = 0; j < 10; j ++) {
-//				 Element ele=elements.get(j);
-//				 String titleKey=ele.text();
-//				 
-//				 Element day=dir.get(2);
-//				 String direc=day.toString();
-//				 System.out.println(++idx + " : " + titleKey + " | " + direc);
-//			 }
-//		 }
+			 
+			 for(int j = 0; j < tits.size(); j ++) {
+				 Element tit=tits.get(j);
+				 String titleKey=tit.text();
+				 
+				 Element day=dates.get(j);
+				 String date=day.text();
+				 String[] a=date.split("\\s");
+				 String[] d = a[0].split("\\.");
+				 String da = "20"+d[0]+d[1]+d[2];
+				
+				 System.out.println(++idx + " : " + titleKey + " | " + da);
+			 }
+		 }
 	}
 }
