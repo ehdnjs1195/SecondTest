@@ -24,7 +24,6 @@ public class HomeController {
 	@RequestMapping("/home")
 	public String home(HttpServletRequest request) {
 		service.homeList(request);
-		
 		return "home";
 	}
 	//글 자세히 보기 요청 처리

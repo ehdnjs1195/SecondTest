@@ -11,13 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spoiler.movie.Dto.MovieDto;
+import com.spoiler.movie.Service.MovieAPIService;
 import com.spoiler.movie.Service.MovieService;
-import com.spoiler.movie.Service.MovieServiceImpl;
 
 @Controller
 public class MovieController {
 	@Autowired
 	private MovieService service;
+	@Autowired
+	private MovieAPIService apiService;
 	
 	@RequestMapping("/searchlist")
 	public ModelAndView list(ModelAndView mView, HttpServletRequest request) {
@@ -28,7 +30,7 @@ public class MovieController {
 	}
 	@RequestMapping("/genredetaillist")
 	public ModelAndView list2(ModelAndView mView, HttpServletRequest request, @ModelAttribute MovieDto dto) {
-		List<MovieDto> list = service.getList(dto.getTitle(), dto.getGenre(), dto.getStartRowNum());
+		List<MovieDto> list = apiService.getList(dto.getTitle(), dto.getGenre(), dto.getStartRowNum());
 		mView.addObject("list", list);
 		mView.setViewName("genredetaillist");
 		return mView;
@@ -36,7 +38,7 @@ public class MovieController {
 	
 	@RequestMapping("/updateMovie")
 	public String updateMovieList() {
-		service.updateMovie();
+		apiService.updateMovie();
 		return "redirect: /movie";
 	}
 }
