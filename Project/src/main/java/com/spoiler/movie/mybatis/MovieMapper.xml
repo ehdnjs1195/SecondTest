@@ -12,6 +12,7 @@
 	
 	<select id="getHomeList" resultType="movieDto">
 		select * from movie
+		order by rank asc
 	</select>
 	
 	<select id="getData" parameterType="int" resultType="movieDto">
