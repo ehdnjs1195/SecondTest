@@ -257,8 +257,6 @@
 
 <script>
 
-// 댓글 더 보기 플러그인 - http://nubiz.tistory.com/546
-
 var thresholdCount = 5; //댓글 표시 갯수
 
 $("li[id^='comment']").parent().first().addClass("nubiz");
