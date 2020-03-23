@@ -31,7 +31,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 		List<MovieDto> list = new ArrayList<>();
 
 		StringBuilder urlBuilder = new StringBuilder(
-				"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new"); 
+				"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new&listCount=50"); 
 		try {
 			urlBuilder
 					.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + "=04YVG7XZ00W520AJ41N7"); /* Service Key */
@@ -107,7 +107,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 				String postersStr = (String) obj3.get("posters");
 				String[] posts = postersStr.split("\\|");
 				String posters = posts[0];
-				String default_poster = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ7HY8NY2QmoKgSW-f6BmH_q5Sh6UnZmGU1rXmSy7OqHD0lRMPq";
+				String default_poster = "http://liberaldead.com/blog/wp-content/uploads/no-poster.jpg";
 				if (posters.equals("")) {
 					posters = default_poster;
 				}
@@ -195,7 +195,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 				String postersStr = (String) obj3.get("posters");
 				String[] posts = postersStr.split("\\|");
 				String posters = posts[0];
-				String default_poster = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ7HY8NY2QmoKgSW-f6BmH_q5Sh6UnZmGU1rXmSy7OqHD0lRMPq";
+				String default_poster = "http://liberaldead.com/blog/wp-content/uploads/no-poster.jpg";
 				if (posters.equals("")) {
 					posters = default_poster;
 				}
