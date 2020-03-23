@@ -253,4 +253,59 @@
 	}
 </script>
 </body>
+<script>window.jQuery||document.write('<script src="https://s1.daumcdn.net/svc/original/U03/cssjs/jquery/jquery-1.11.0.min.js"><\/script>');</script>
+
+<script>
+
+// 댓글 더 보기 플러그인 - http://nubiz.tistory.com/546
+
+var thresholdCount = 5; //댓글 표시 갯수
+
+$("li[id^='comment']").parent().first().addClass("nubiz");
+
+var commentCount = $(".nubiz>li[id^='comment']").length;
+
+$(".nubiz").append('<button id="moreComment" onclick="moreComment()" style="display:none"> 보기 </button><button id="allComment" onclick="showAllComment()" style="display:none">전체</br>보기</button><style>#moreComment {width: 85%;height: 50px;font-size: .8em;font-weight: bold;background-color: #eee;float:left;}#allComment{width: 15%;height: 50px;font-size: .8em;font-weight: bold;background-color: #eee;}#moreComment:hover,#allComment:hover {color:#fff;background-color: #999;}</style>')
+
+function refeshComment() {
+
+    $("#moreComment").html("더 보기 [ " + $("li[id^=comment]:visible").length + "/" + $("li[id^='comment']").length + " ]");
+
+}
+
+function moreComment() {
+
+    $(".nubiz>li[id^='comment']:hidden:lt("+thresholdCount+")").show(500)
+
+    if($("li[id^='comment']:hidden")[0]==undefined){
+
+        $("#moreComment, #allComment").hide(500)
+
+    };
+
+    refeshComment();
+
+}
+
+function showAllComment() {
+
+    $(".nubiz>li[id^=comment]").show(500);
+
+    $("#moreComment, #allComment").hide(500);
+
+}
+
+if (commentCount > thresholdCount) {
+
+    $("#moreComment, #allComment").show();
+
+    $(".nubiz>li[id^='comment']:gt(" + (thresholdCount-1) + ")").hide();
+
+    refeshComment();
+
+};
+
+$("li[id^='ttMorePreviousComments']").click(function(){showAllComment()});
+
+</script>
 </html>
