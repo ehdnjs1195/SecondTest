@@ -89,12 +89,6 @@
 		</div>
 	</div>
 </div>
-<form action="profile_upload.do" method="post"
-	enctype="multipart/form-data" id="profileForm">
-	<label for="profileImage">프로필 이미지 선택</label>
-	<input type="file" name="profileImage" id="profileImage"
-		accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
-</form>
 <%-- jquery form  플러그인 javascript 로딩 --%>
 <script src="${pageContext.request.contextPath }/resources/js/jquery.form.min.js"></script>
 <script>
