@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
@@ -12,14 +13,19 @@
 	div{
 		color: white;
 	}
+	
 	table tr td{
-	padding: 20px;
+	padding: 10px;
 	}
 	#title_tx{
-		font-size: 25px;
+		width:25px;
+		font-size: 20px;
 	}
 	#content_tx{
-		font-size: 35px;
+		font-size: 20px;
+	}
+	table {
+		width: 100%;
 	}
 </style>
 
@@ -55,22 +61,26 @@
 		<c:forEach var="tmp" items="${list }">
 			<c:if test="${fn:contains(tmp.genre,param.genre)}">
 				<tr>
-					<td rowspan="4"><a href="detail.do?movieSeq=${tmp.movieSeq }"><img id="${param.genre }_${tmp.movieSeq}"
-						src="${tmp.posters }" style="width: 200px; height: 300px;" /></a></td>
-					<td><span id="title_tx"><span>제목</span></span></td>
-					<td><span id="content_tx">${tmp.title }</span></td>
+					<td class="col-xs-2" rowspan="4"><img id="${param.genre }_${tmp.movieSeq}"
+						src="${tmp.posters }" style="width: 200px; height: 300px;" /></td>
+					<td class="col-xs-1"><span id="title_tx"><span>제목</span></span></td>
+					<td class="col-xs-9"><span id="content_tx">${tmp.title }</span></td>
 				</tr>
 				<tr>
 					<td><span id="title_tx">장르</span></td>
-					<td><span id="content_tx">${tmp.genre }</span></td>
+					<td><span id="content_tx">${tmp.genre } 
+							<c:if test="${tmp.runtime ne ''}"> | ${tmp.runtime}분</c:if> 
+							<c:if test="${tmp.repRlsDate ne ''}"> |<fmt:parseDate value="${tmp.repRlsDate}" var="strDate" pattern="yyyyMMdd"/>
+																	<fmt:formatDate value="${strDate}" pattern="yyyy년 MM월 dd일"/> 개봉</c:if>
+						</span></td>
 				</tr>
 				<tr>
-					<td><span id="title_tx">출시일</span></td>
-					<td><span id="content_tx">${tmp.repRlsDate }</span></td>
+					<td><span id="title_tx">감독</span></td>
+					<td><span id="content_tx">${tmp.director }</span></td>
 				</tr>
 				<tr>
-					<td><span id="title_tx">평점</span></td>
-					<td><span id="content_tx">${tmp.starPoint }</span></td>
+					<td><span id="title_tx">배우</span></td>
+					<td><span id="content_tx">${tmp.actor }</span></td>
 				</tr>
 			</c:if>
 		</c:forEach>

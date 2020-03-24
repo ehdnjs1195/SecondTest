@@ -34,7 +34,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 				"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new&listCount=50"); 
 		try {
 			urlBuilder
-					.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + "=04YVG7XZ00W520AJ41N7"); /* Service Key */
+					.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + "=0510885533XK58C4291C"); /* Service Key */
 			if (titleKey != null) {
 				urlBuilder.append("&" + URLEncoder.encode("title", "UTF-8") + "="
 						+ URLEncoder.encode(titleKey, "UTF-8")); /* 검색어 */
@@ -132,7 +132,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 
 		try {
 			urlBuilder
-					.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + "=04YVG7XZ00W520AJ41N7"); /* Service Key */
+					.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + "=0510885533XK58C4291C"); /* Service Key */
 
 			urlBuilder.append("&" + URLEncoder.encode("movieSeq", "UTF-8") + "="
 					+ URLEncoder.encode(movieSeqKey, "UTF-8")); /* movieSeq */
