@@ -31,7 +31,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 		List<MovieDto> list = new ArrayList<>();
 
 		StringBuilder urlBuilder = new StringBuilder(
-				"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new&listCount=50"); 
+				"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new&listCount=50"); 
 		try {
 			urlBuilder
 					.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + "=04YVG7XZ00W520AJ41N7"); /* Service Key */

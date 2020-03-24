@@ -24,7 +24,9 @@ public class MovieController {
 	@RequestMapping("/searchlist")
 	public ModelAndView list(ModelAndView mView, HttpServletRequest request) {
 		//파일목록과 페이징 처리에 필요한 값들을 request에 담아주는 서비스 메소드 호출하기
-//		service.movieList(request);
+		String title = request.getParameter("title");
+		List<MovieDto> list = apiService.getList(title, null, 0);
+		mView.addObject("list", list);
 		mView.setViewName("searchlist");
 		return mView;
 	}

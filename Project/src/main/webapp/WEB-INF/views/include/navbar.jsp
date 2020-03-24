@@ -97,8 +97,8 @@
 		<div class="pull-right" style="margin-top:15px; margin-right:40px;">
 		<form action="searchlist.do" method="get" id="isSeach">
 			<label for="condition" style="display: none;">검색조건</label>
-			<input type="text" name="keyword" id="keyword" placeholder="영화 검색" value="${keyword }" />
-			<button type="submit" >검색</button>
+			<input type="text" name="title" id="title" placeholder="영화 제목 검색" style="color:black;" />
+			<button type="submit" style="color:black;">검색</button>
 		</form>
 		</div>
 	</div>
@@ -109,8 +109,7 @@
 	<input type="file" name="profileImage" id="profileImage"
 		accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
 </form>
-<%-- jquery form  플러그인 javascript 로딩 --%>
-<script src="${pageContext.request.contextPath }/resources/js/jquery.form.min.js"></script>
+
 <script>
 	//프로파일 이미지를 클릭하면 
 	$("#profileLink").click(function(){
@@ -142,8 +141,6 @@
 			location.href="delete.do";
 		}
 	}
-	<script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
 </script>
-<%-- jquery form  플러그인 javascript 로딩 --%>
+
 

@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>장르 디테일 리스트</title>
 <jsp:include page="include/resource.jsp"></jsp:include>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/custom.css" />
 <style>
 	div{
 		color: white;
@@ -26,6 +25,7 @@
 
 </head>
 <body>
+<jsp:include page="include/navbar.jsp"/>
 <div class="container">
 <jsp:include page="include/slidebar.jsp"/>
 	<c:if test="${not empty param.genre }">
@@ -55,8 +55,8 @@
 		<c:forEach var="tmp" items="${list }">
 			<c:if test="${fn:contains(tmp.genre,param.genre)}">
 				<tr>
-					<td rowspan="4"><img id="${param.genre }_${tmp.movieSeq}"
-						src="${tmp.posters }" style="width: 200px; height: 300px;" /></td>
+					<td rowspan="4"><a href="detail.do?movieSeq=${tmp.movieSeq }"><img id="${param.genre }_${tmp.movieSeq}"
+						src="${tmp.posters }" style="width: 200px; height: 300px;" /></a></td>
 					<td><span id="title_tx"><span>제목</span></span></td>
 					<td><span id="content_tx">${tmp.title }</span></td>
 				</tr>
