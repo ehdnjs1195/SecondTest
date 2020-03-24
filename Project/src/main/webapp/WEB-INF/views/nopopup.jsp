@@ -13,7 +13,7 @@
 	if(isPopup != null){// null 이 아니면 체크박스를 체크한 것이므로 
 		//팝업을 일정시간 띄우지 않도록 쿠키를 응답한다.
 		Cookie cook=new Cookie("isPopup", isPopup);
-		cook.setMaxAge(60);
+		cook.setMaxAge(60*60);//1시간동안 띄우지 않기
 		response.addCookie(cook);
 	}
 %>

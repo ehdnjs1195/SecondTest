@@ -13,14 +13,19 @@
 	div{
 		color: white;
 	}
+	
 	table tr td{
-	padding: 20px;
+	padding: 10px;
 	}
 	#title_tx{
-		font-size: 25px;
+		width:25px;
+		font-size: 20px;
 	}
 	#content_tx{
-		font-size: 35px;
+		font-size: 20px;
+	}
+	table {
+		width: 100%;
 	}
 </style>
 </head>
@@ -50,24 +55,24 @@
 	<!-- table 안에 글자 키우는 방법은.....? span으로 묶어서 css????? 다른방법은 없는 것인가.... -->
 	<table>
 		<c:forEach var="tmp" items="${list }">
-			<c:if test="${fn:contains(tmp.title,param.keyword)}">
+			<c:if test="${fn:contains(tmp.genre,param.genre)}">
 				<tr>
-					<td rowspan="4"><img id="${param.genre }_${tmp.num}"
-						src="${tmp.imageLink }" style="width: 200px; height: 300px;" /></td>
-					<td><span id="title_tx"><span>제목</span></span></td>
-					<td><span id="content_tx">${tmp.title }</span></td>
+					<td class="col-xs-2" rowspan="4"><img id="${param.genre }_${tmp.movieSeq}"
+						src="${tmp.posters }" style="width: 200px; height: 300px;" /></td>
+					<td class="col-xs-1"><span id="title_tx"><span>제목</span></span></td>
+					<td class="col-xs-9"><span id="content_tx">${tmp.title }</span></td>
 				</tr>
 				<tr>
 					<td><span id="title_tx">장르</span></td>
-					<td><span id="content_tx">${tmp.genre }</span></td>
+					<td><span id="content_tx">${tmp.genre } <c:if test="${tmp.runtime ne ''}"> | ${tmp.runtime}분</c:if> <c:if test="${tmp.repRlsDate ne ''}"> | ${tmp.repRlsDate}개봉</c:if></span></td>
 				</tr>
 				<tr>
-					<td><span id="title_tx">출시일</span></td>
-					<td><span id="content_tx">${tmp.releaseDate }</span></td>
+					<td><span id="title_tx">감독</span></td>
+					<td><span id="content_tx">${tmp.director }</span></td>
 				</tr>
 				<tr>
-					<td><span id="title_tx">평점</span></td>
-					<td><span id="content_tx">${tmp.starPoint }</span></td>
+					<td><span id="title_tx">배우</span></td>
+					<td><span id="content_tx">${tmp.actor }</span></td>
 				</tr>
 			</c:if>
 		</c:forEach>

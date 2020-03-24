@@ -28,9 +28,14 @@
 <!-- 공지사항 팝업 띄우기 -->
 <%if(canPopup){ %>
 	<script>
-		window.open("notify.do","sale","width=500,height=400,top=100,left=100");
+		window.open("notify.do","sale","width=700px,height=450px,top=100px,left=100px");
 	</script>
 <%} %>
+<div style="position: fixed; top: 100px; left: 50%; z-index: -1;">
+	<div style="position: relative; top: 0; left: 700px;">
+		<img src="${pageContext.request.contextPath }/resources/images/제목 없음.png" alt="" style="width: 130px; height: auto;">
+	</div>
+</div>
 <jsp:include page="include/navbar.jsp"></jsp:include>
 <!-- 왼쪽 슬라이드 바?(sidebar 말고?) -->
 <jsp:include page="include/slidebar.jsp"/>
