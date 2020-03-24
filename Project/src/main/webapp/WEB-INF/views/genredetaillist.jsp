@@ -68,7 +68,11 @@
 				</tr>
 				<tr>
 					<td><span id="title_tx">장르</span></td>
-					<td><span id="content_tx">${tmp.genre } <c:if test="${tmp.runtime ne ''}"> | ${tmp.runtime}분</c:if> <c:if test="${tmp.repRlsDate ne ''}"> | ${tmp.repRlsDate}개봉</c:if></span></td>
+					<td><span id="content_tx">${tmp.genre } 
+							<c:if test="${tmp.runtime ne ''}"> | ${tmp.runtime}분</c:if> 
+							<c:if test="${tmp.repRlsDate ne ''}"> |<fmt:parseDate value="${tmp.repRlsDate}" var="strDate" pattern="yyyyMMdd"/>
+																	<fmt:formatDate value="${strDate}" pattern="yyyy년 MM월 dd일"/> 개봉</c:if>
+						</span></td>
 				</tr>
 				<tr>
 					<td><span id="title_tx">감독</span></td>
