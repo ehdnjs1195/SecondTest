@@ -31,7 +31,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 		List<MovieDto> list = new ArrayList<>();
 
 		StringBuilder urlBuilder = new StringBuilder(
-				"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new&listCount=50"); 
+				"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new&listCount=20"); 
 		try {
 			urlBuilder
 					.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + "=0510885533XK58C4291C"); /* Service Key */
@@ -45,7 +45,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 			}
 			urlBuilder.append("&" + URLEncoder.encode("sort", "UTF-8") + "="
 					+ URLEncoder.encode("prodYear", "UTF-8")); /* 개봉순으로 정렬 */
-			int startCount = 1 + (pageNum) * 10;
+//			int startCount = 1 + (pageNum) * 10;
 //			urlBuilder.append("&" + URLEncoder.encode("startCount","UTF-8") + "=" + URLEncoder.encode(Integer.toString(startCount), "UTF-8")); /*페이징처리*/ 				
 
 			URL url = new URL(urlBuilder.toString());
@@ -103,6 +103,18 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 				String plot = (String) obj3.get("plot");
 				String runtime = (String) obj3.get("runtime");
 				String repRlsDate = (String) obj3.get("repRlsDate");
+				if(repRlsDate.equals("")) {
+					
+				}else {
+					String yyyy=repRlsDate.substring(0,4);
+					String mm = repRlsDate.substring(4,6);
+					String dd = repRlsDate.substring(6,8);
+					if(dd.equals("00")) {
+						repRlsDate = yyyy+"년 " + mm+"월 ";						
+					}else {
+						repRlsDate = yyyy+"년 " + mm+"월 " + dd+"일 ";						
+					}
+				}
 				String keywords = (String) obj3.get("keywords");
 				String postersStr = (String) obj3.get("posters");
 				String[] posts = postersStr.split("\\|");
@@ -129,7 +141,6 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 				"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new"); /*
 																													 * URL
 																													 */
-
 		try {
 			urlBuilder
 					.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + "=0510885533XK58C4291C"); /* Service Key */
@@ -165,45 +176,55 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 			System.out.println("resultArr :: " + resultArr);
 
 			// obj3 => resultArr.
-			for (int i = 0; i < resultArr.size(); i++) {
-
-				JSONObject obj3 = (JSONObject) resultArr.get(i);
-				// 키값으로 하나씩 추출
-				String movieSeq = (String) obj3.get("movieSeq");
-				String title = (String) obj3.get("title");
-				title = title.replaceAll("!HS ", "");
-				title = title.replaceAll("!HE ", "");
-				String titleEng = (String) obj3.get("titleEng");
-				String genre = (String) obj3.get("genre");
-				JSONArray dirArr = (JSONArray) obj3.get("director");
-				JSONObject dir = (JSONObject) dirArr.get(0);
-				String directorNm = (String) dir.get("directorNm");
-				JSONArray actArr = (JSONArray) obj3.get("actor");
-				String actorNm = "";
-				for (int j = 0; j < actArr.size(); j++) {
-					JSONObject act = (JSONObject) actArr.get(j);
-					if (j == actArr.size() - 1) {
-						actorNm += (String) act.get("actorNm");
-						break;
-					}
-					actorNm += (String) act.get("actorNm") + ", ";
+			JSONObject obj3 = (JSONObject) resultArr.get(0);
+			// 키값으로 하나씩 추출
+			String movieSeq = (String) obj3.get("movieSeq");
+			String title = (String) obj3.get("title");
+			title = title.replaceAll("!HS ", "");
+			title = title.replaceAll("!HE ", "");
+			String titleEng = (String) obj3.get("titleEng");
+			String genre = (String) obj3.get("genre");
+			JSONArray dirArr = (JSONArray) obj3.get("director");
+			JSONObject dir = (JSONObject) dirArr.get(0);
+			String directorNm = (String) dir.get("directorNm");
+			JSONArray actArr = (JSONArray) obj3.get("actor");
+			String actorNm = "";
+			for (int j = 0; j < actArr.size(); j++) {
+				JSONObject act = (JSONObject) actArr.get(j);
+				if (j == actArr.size() - 1) {
+					actorNm += (String) act.get("actorNm");
+					break;
 				}
-				String plot = (String) obj3.get("plot");
-				String runtime = (String) obj3.get("runtime");
-				String repRlsDate = (String) obj3.get("repRlsDate");
-				String keywords = (String) obj3.get("keywords");
-				String postersStr = (String) obj3.get("posters");
-				String[] posts = postersStr.split("\\|");
-				String posters = posts[0];
-				String default_poster = "http://liberaldead.com/blog/wp-content/uploads/no-poster.jpg";
-				if (posters.equals("")) {
-					posters = default_poster;
-				}
-
-				// MovieDto 객체 생성
-				dto = new MovieDto(0, movieSeq, title, titleEng, genre, directorNm, actorNm, plot, runtime, repRlsDate,
-						keywords, 0, posters, null, 0, 0);
+				actorNm += (String) act.get("actorNm") + ", ";
 			}
+			String plot = (String) obj3.get("plot");
+			String runtime = (String) obj3.get("runtime");
+			String repRlsDate = (String) obj3.get("repRlsDate");
+			if(repRlsDate.equals("")) {
+				
+			}else {
+				String yyyy=repRlsDate.substring(0,4);
+				String mm = repRlsDate.substring(4,6);
+				String dd = repRlsDate.substring(6,8);
+				if(dd.equals("00")) {
+					repRlsDate = yyyy+"년 " + mm+"월 ";						
+				}else {
+					repRlsDate = yyyy+"년 " + mm+"월 " + dd+"일 ";						
+				}
+			}
+			String keywords = (String) obj3.get("keywords");
+			String postersStr = (String) obj3.get("posters");
+			String[] posts = postersStr.split("\\|");
+			String posters = posts[0];
+			String default_poster = "http://liberaldead.com/blog/wp-content/uploads/no-poster.jpg";
+			if (posters.equals("")) {
+				posters = default_poster;
+			}
+
+			// MovieDto 객체 생성
+			dto = new MovieDto(0, movieSeq, title, titleEng, genre, directorNm, actorNm, plot, runtime, repRlsDate,
+					keywords, 0, posters, null, 0, 0);
+
 		} catch (Exception e) {
 		}
 		return dto;
