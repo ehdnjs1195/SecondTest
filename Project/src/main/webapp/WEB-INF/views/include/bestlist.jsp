@@ -65,7 +65,7 @@ top:20px;bottom:20px;opacity:0;transform:rotate3d(-1,1,0,100deg);transition:all 
 						<h3>줄거리</h3>
 						<h4>${tmp.plot }</h4>
 						<div>
-							<a href="detail.do?movieSeq=${tmp.movieSeq }" type="button" class="btn btn-info">자세히 보러가기</a>
+							<a href="detail.do?movieSeq=${tmp.movieSeq }&movieId=${tmp.movieId}" type="button" class="btn btn-info">자세히 보러가기</a>
 						</div>
 					</div>
 				</div>

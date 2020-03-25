@@ -81,6 +81,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 
 				JSONObject obj3 = (JSONObject) resultArr.get(i);
 				// 키값으로 하나씩 추출
+				String movieId = (String) obj3.get("movieId");
 				String movieSeq = (String) obj3.get("movieSeq");
 				String title = (String) obj3.get("title");
 				title = title.replaceAll("!HS ", "");
@@ -126,7 +127,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 
 				// MovieDto 객체 생성
 				// list에 담기
-				MovieDto dto = new MovieDto(0, movieSeq, title, titleEng, genre, directorNm, actorNm, plot, runtime,
+				MovieDto dto = new MovieDto(0,movieId, movieSeq, title, titleEng, genre, directorNm, actorNm, plot, runtime,
 						repRlsDate, keywords, 0, posters, null, 0, 0);
 				list.add(dto);
 			}
@@ -135,7 +136,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 		return list;
 	}
 
-	public MovieDto getMovieInfo(String movieSeqKey) {
+	public MovieDto getMovieInfo(String movieSeqKey, String movieIdKey) {
 		MovieDto dto = null;
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new"); /*
@@ -147,6 +148,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 
 			urlBuilder.append("&" + URLEncoder.encode("movieSeq", "UTF-8") + "="
 					+ URLEncoder.encode(movieSeqKey, "UTF-8")); /* movieSeq */
+			urlBuilder.append("&" + URLEncoder.encode("movieId", "UTF-8") + "=" + URLEncoder.encode(movieIdKey, "UTF-8")); /* movieId */
 			URL url = new URL(urlBuilder.toString());
 			System.out.println(url);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -178,6 +180,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 			// obj3 => resultArr.
 			JSONObject obj3 = (JSONObject) resultArr.get(0);
 			// 키값으로 하나씩 추출
+			String movieId = (String) obj3.get("movieId");
 			String movieSeq = (String) obj3.get("movieSeq");
 			String title = (String) obj3.get("title");
 			title = title.replaceAll("!HS ", "");
@@ -222,7 +225,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 			}
 
 			// MovieDto 객체 생성
-			dto = new MovieDto(0, movieSeq, title, titleEng, genre, directorNm, actorNm, plot, runtime, repRlsDate,
+			dto = new MovieDto(0,movieId, movieSeq, title, titleEng, genre, directorNm, actorNm, plot, runtime, repRlsDate,
 					keywords, 0, posters, null, 0, 0);
 
 		} catch (Exception e) {
@@ -297,6 +300,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 					// obj3 => resultArr.
 					JSONObject obj3 = (JSONObject) resultArr.get(0);
 					// 키값으로 하나씩 추출
+					String movieId = (String) obj3.get("movieId");
 					String movieSeq = (String) obj3.get("movieSeq");
 					String title = (String) obj3.get("title");
 					title = title.replaceAll("!HS ", "");
@@ -328,7 +332,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 						posters = default_poster;
 					}
 					// MovieDto 객체 생성
-					MovieDto dto = new MovieDto(++idx, movieSeq, title, titleEng, genre, directorNm, actorNm, plot,
+					MovieDto dto = new MovieDto(++idx,movieId, movieSeq, title, titleEng, genre, directorNm, actorNm, plot,
 							runtime, repRlsDate, keywords, 0, posters, null, 0, 0);
 					System.out.println(idx + ". title :: " + title);
 					dao.updateMovie(dto);
