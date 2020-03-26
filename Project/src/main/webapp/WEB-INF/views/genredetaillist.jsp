@@ -57,7 +57,7 @@
 			</form>
 		</div>
 
-		<table>
+	<table>
 		<c:forEach var="tmp" items="${list }">
 			<c:if test="${fn:contains(tmp.genre,param.genre)}">
 				<tr>
@@ -84,9 +84,27 @@
 			</c:if>
 		</c:forEach>
 	</table>
-	<jsp:include page="include/paging.jsp">
-		<jsp:param value="genredetail" name="page"/>
-	</jsp:include>
+	<button class="btn btn-primary" style="width:100%;background-color: yellow;" id="moreBtn">더보기 ▼</button>
 </div>
+<script>
+//댓글 스크롤로 보이기
+var idx = 0;
+var startCount = 0;
+$("#moreBtn").click(function() {
+		idx++;
+		startCount = idx * 10;
+      	$.ajax({
+      	url:"more_list.do",
+      	method:"get",
+      	data:{"startCount":startCount, "genre":"${param.genre}","title":""}, //data : 파라미터로 전달할 문자열 
+      	dataType:"html",
+      	success:function(responseData){
+	        $("table").append(responseData);
+	        
+	     	}     
+      	})
+      	console.log(idx);
+});
+</script>
 </body>
 </html>

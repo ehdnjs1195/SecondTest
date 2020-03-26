@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spoiler.movie.Dto.MovieDto;
@@ -52,6 +53,13 @@ public class MovieController {
 	@RequestMapping("/nopopup")
 	public ModelAndView nopopup(ModelAndView mView, HttpServletRequest request) {
 		mView.setViewName("nopopup");
+		return mView;
+	}
+	@RequestMapping("/more_list")
+	public ModelAndView moreMovieList(@RequestParam int startCount, @RequestParam String genre, @RequestParam String title, ModelAndView mView) {
+		List<MovieDto> list = apiService.moreMovieList(Integer.toString(startCount), genre, title);
+		mView.addObject("list",list);
+		mView.setViewName("more_list");
 		return mView;
 	}
 }
