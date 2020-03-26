@@ -8,15 +8,13 @@
 <jsp:include page="../include/resource.jsp"/>
 </head>
 <body>
-<div class="container">
-	<h1>Alert</h1>
-	<p>
-		<strong>${dto.id }</strong> 회원님 가입 되었습니다.
-		<a href="${pageContext.request.contextPath }/users/loginform.do">
-			로그인 하러 가기
-		</a>
-	</p>
-</div>
+
+<script type="text/javascript">
+
+
+     alert("${dto.id}님 회원가입이 완료되었습니다.")
+      	window.location.href="${pageContext.request.contextPath }/home.do";
+     </script>
 </body>
 </html>
 

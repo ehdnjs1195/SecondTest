@@ -1,101 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="movie">
-	<select id="getList" parameterType="movieDto"
-		resultType="movieDto">
-		select *
-		from
-		(select result1.*,rownum as rnum
-		from
-		(select * from movie
-		<choose>
-			<when test="genre != null  ">		<!-- 장르리스트 -->
-				<choose>
-					<when test="releaseDate != null">	<!-- 장르리스트-출시일정렬 됨 -->
-						where genre like '%${genre}%'
-						order by releaseDate asc
-					</when>
-					<when test="starPoint!=0.0">		<!-- 장르리스트-별점정렬 됨 -->
-						where genre like '%${genre}%'
-						order by starPoint asc
-					</when>
-					<when test="title != null">			<!-- 장르리스트-제목정렬 됨 -->
-						where genre like '%${genre}%'
-						order by title asc
-					</when>
-					<otherwise>							<!-- 장르리스트-(리스트페이지 처음들어갔을때)번호정렬 됨 -->
-						where genre like '%${genre}%'
-						order by num asc
-					</otherwise>
-				</choose>
-			</when>
-
-			<otherwise>						<!-- 검색리스트 -->
-				<choose>
-					<when test="releaseDate != null">	<!-- 검색리스트-출시일정렬 됨 -->
-						where title like '%${title}%'
-						order by releaseDate asc
-					</when>
-					<when test="starPoint != 0.0">		<!-- 검색리스트-별점정렬 됨 -->
-						where title like '%${title}%'
-						order by starPoint asc
-					</when>
-					<when test="title != null">			<!-- 검색리스트-제목정렬 됨 -->
-						where title like '%${title}%'
-						order by title asc
-					</when>
-					<otherwise>							<!-- 검색리스트-(리스트페이지 처음들어갔을때)번호정렬 됨 -->
-						where title like '%${title}%'
-						order by num asc
-					</otherwise>
-				</choose>
-			</otherwise>
-		</choose>
-		) result1)
-		where rnum between #{startRowNum} and #{endRowNum}
-	</select>
-
-	<select id="getCount" parameterType="movieDto" resultType="int">
-		select nvl(max(rownum),0)
-		from movie
-		<choose>
-			<when test="genre != null">		<!-- 장르리스트 -->
-				<choose>
-					<when test="title != null">			
-						where genre like '%${genre}%'
-					</when>
-					<when test="releaseDate != null">	
-						where genre like '%${genre}%'
-					</when>
-					<when test="starPoint != null">		
-						where genre like '%${genre}%'
-					</when>
-					<otherwise>							
-						where genre like '%${genre}%'
-					</otherwise>
-				</choose>
-			</when>
- 
-			<otherwise>						<!-- 검색리스트 -->
-				<choose>
-					
-					<when test="releaseDate != null">	
-						where title like '%${title}%'
-					</when>
-					<when test="starPoint != null">		
-						where title like '%${title}%'
-					</when>
-					<when test="title != null">			
-						where title like '%${title}%'
-					</when>
-					<otherwise>							
-						where title like '%${title}%'
-					</otherwise>
-				</choose>
-			</otherwise>
-		</choose>
-	</select>
+	<delete id="initMovie">
+		delete movie
+	</delete>
 	
+	<insert id="updateMovie" parameterType="movieDto">
+		insert into movie
+		values(#{rank}, #{movieSeq}, #{title}, #{titleEng}, #{genre}, #{director}, #{actor}, #{plot}, #{runtime}, #{repRlsDate}, #{keywords}, #{posters})
+	</insert>
+	
+	<select id="getHomeList" resultType="movieDto">
+		select * from movie
+	</select>
 	
 	<select id="getData" parameterType="int" resultType="movieDto">
 		SELECT result1.*

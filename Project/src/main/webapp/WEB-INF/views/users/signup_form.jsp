@@ -5,18 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/signup_form.jsp</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
+<jsp:include page="../include/navbar.jsp"></jsp:include>
+<jsp:include page="../include/resource.jsp"></jsp:include>
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/login.css" />
 <style>
+
+.input-group .form-control-feedback {
+    z-index: 3;
+}
+
 	/* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
 	.help-block, .form-control-feedback{
 		display: none;
 	}
 	.btn btn-primary {
 	width: 100%;
-	background-color: #2abb9b;
-	border-color: #2abb9b;
+	background-color: #2d3436;
+	border-color: #2d3436;
 	margin-bottom: 0.5em;
 	border-radius: 0;
 }
@@ -52,6 +57,106 @@
   padding: 0px;
   margin: 0px;
 }
+/* 배경화면*/
+#backgroundImage{
+	z-index: 1;
+	
+}
+
+#backgroundImage:before {
+   content: "";
+   position: absolute;
+   z-index: -1;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8) ),url(${pageContext.request.contextPath }/resources/images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    filter: grayscale(80%);
+    height:100%;
+    width:100%;
+    opacity:0.3;
+ }
+/* 제목*/	
+h1 {
+    line-height: 1.66;
+    letter-spacing: 5px;
+    margin: 0;
+    padding: 0;
+    font-weight: 900;
+    color: #222;
+    font-family: 'Montserrat';
+    font-size: 24px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+}
+/*  컨테이너 css*/
+.signup-content{
+	background:#fff;
+	-webkit-border-radius: 10px;
+	padding: 50px 85px;
+}
+#signup-form {
+    width: 660px;
+    !important: ;
+    position: relative;
+    margin: 0 auto;
+}
+.loginhere {
+    color: #555;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 91px;
+    margin-bottom: 5px;
+}
+/* 체크박스 스타일*/
+input[type="checkbox"] { display: none; }
+
+input[type="checkbox"] + label {
+
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 20px;
+  font: 14px/20px 'Open Sans', Arial, sans-serif;
+  color: #ddd;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+input[type="checkbox"] + label:last-child { margin-bottom: 0; margin-top: 3px;}
+
+input[type="checkbox"] + label:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #6cc0e5;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: .6;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+}
+
+input[type="checkbox"]:checked + label:before {
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}	
+
 </style>
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.js"></script>
@@ -62,7 +167,7 @@
 
     </div>
     <div class="main">
-<div class="container">
+<div class="container" id="signup-form">
 	<div class="signup-content">
 	<h1 class="form-title">회원가입</h1>
 			<hr>
@@ -87,7 +192,7 @@
  
 
 <div>제 1 조 (목적)
-이 약관은 {COMPANY_NAME}(이하 "사이트"라 합니다)에서 제공하는 인터넷서비스(이하 "서비스"라 합니다)의 이용 조건 및 절차에 관한 기본적인 사항을 규정함을 목적으로 합니다.
+이 약관은 SPOILER(이하 "사이트"라 합니다)에서 제공하는 인터넷서비스(이하 "서비스"라 합니다)의 이용 조건 및 절차에 관한 기본적인 사항을 규정함을 목적으로 합니다.
 </div>
  
 <div>
@@ -277,12 +382,14 @@
 				
 				<input class="form-control" type="text" id="id" name="id" placeholder="아이디"/>
 				<span>
-				<span class="glyphicon glyphicon-remove form-control-feedback"></span>
-				<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+					<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+					<span class="glyphicon glyphicon-ok form-control-feedback"></span>
 				</span>
 			</div>
 			<p class="help-block" id="id_notusable">이미 사용중인 아이디 입니다.</p>
 			<p class="help-block" id="id_required">필수 정보입니다.</p>
+			<p class="help-block" id="id_mix">4자리이상 20이하 영문, 숫자 조합으로 입력 하세요.</p>
+			<p class="help-block" id="noSpace_id">공백은 입력 할 수 없습니다.</p>
 		</div>
 		
 		<div class="form-group has-feedback">
@@ -295,8 +402,9 @@
 			</span>
 			</div>
 			<p class="help-block" id="pwd_required">필수 정보입니다.</p>
+			<p class="help-block" id="noSpace_required">공백은 입력할수없습니다.</p>
+			<p class="help-block" id="pwdChk_required">영문, 숫자 조합 8자리~20자리 이내로 입력하세요.</p>
 			<p class="help-block" id="pwd_notequal">비밀번호가 일치하지 않습니다.</p>
-			
 		</div>
 		
 		<div class="form-group">
@@ -324,7 +432,7 @@
 			
 		</form>
 		
-		<p class="loginhere" style="margin-top:60px">
+		<p class="loginhere" style="margin-top:60px; font-weight:bold;">
                         이미 계정이 있으신가요? <a href="loginform.do" class="loginhere-link">로그인</a>
                     </p>
 
@@ -343,13 +451,16 @@
 	var isPwdEqual=false;
 	//비밀번호를 입력했는지 여부 
 	var isPwdInput=false;
-	
-	//이메일을 형식에 맞게 입력했는지 여부 
+		//이메일을 형식에 맞게 입력했는지 여부 
 	var isEmailMatch=false;
 	//이메일을 입력했는지 여부
 	var isEmailInput=false;
-	
-		
+	// 비밀번호 정규식 
+	var rightPw = false;
+	// 아이디 정규식
+	var rightId = false;
+	// 이메일 정규식
+	var rightEmail= false;
 	//아이디 입력란에 한번이라도 입력한 적이 있는지 여부
 	var isIdDirty=false;
 	//비밀 번호 입력란에 한번이라도 입력한 적이 있는지 여부
@@ -363,7 +474,7 @@
         	isChecked=false;
         	
         }
-		if(isChecked && isIdUsable && isIdInput && isPwdEqual && isPwdInput && (!isEmailDirty || !isEmailInput || isEmailMatch)){
+		if((rightId && rightPw && isChecked && isIdUsable && isIdInput && isPwdEqual && isPwdInput) && (!isEmailInput || isEmailMatch)){
 		
 			$("button[type=submit]").removeAttr("disabled");
 		}else{
@@ -379,9 +490,13 @@
 	$("#email").on("input", function(){
 		
 		
+		
 		var email=$("#email").val();
 		
-		if(email.match("@")){//이메일 형식에 맞게 입력 했다면
+		rightEmail=chkEmail();
+		
+		if(!rightEmail && email.match("@")){
+
 			isEmailMatch=true;
 		}else{//형식에 맞지 않게 입력했다면 
 			isEmailMatch=false;
@@ -393,7 +508,7 @@
 			isEmailInput=true;
 		}
 		//이메일 에러 여부 
-		var isError=isEmailInput && !isEmailMatch;
+		var isError= rightEmail && isEmailInput && !isEmailMatch;
 		//이메일 상태 바꾸기 
 		setState("#email", isError);
 	});
@@ -404,9 +519,13 @@
 		isPwdDirty=true;
 		
 		//입력한 비밀번호를 읽어온다.
-		var pwd=$("#pwd").val();
-		var pwd2=$("#pwd2").val();
+		var pwd = $("#pwd").val();
+		var pwd2= $("#pwd2").val();
 		
+		 
+		
+		rightPw = chkPw();	
+	
 		if(pwd != pwd2){//두 비밀번호를 동일하게 입력하지 않았다면
 			isPwdEqual=false;
 		}else{
@@ -419,15 +538,65 @@
 			isPwdInput=true;
 		}
 		//비밀번호 에러 여부 
-		var isError=!isPwdEqual || !isPwdInput;
+		var isError=!rightPw || !isPwdEqual || !isPwdInput;
 		//비밀번호 상태 바꾸기 
 		setState("#pwd", isError);
 	});
+	
+	function chkEmail(){
+		var email=$("#email").val();
+		var spe = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+		
+		if(spe.test(email)==true){
+			return false;
+		}else{
+			
+			return true;
+		}
+	}
+	function chkId(){
+		var id = $("#id").val();
+		var num = id.search(/[0-9]/g);
+		var eng = id.search(/[a-z]/ig);
+		var spe = id.search(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
+		
+		 if(id.length < 5 || id.length > 19 ){
+			 	return false;
+			 }else if(id.search(/\s/) != -1){
+				return false;
+			 }else if(num < 0 || eng < 0 || spe > 0 ){
+				 return false;
+			 }else {
+				
+				 console.log("아이디통과");
 
+				return true;				 
+			}
+	};
+	
+	
+	function chkPw(){
+		var pwd = $("#pwd").val();
+		var num = pwd.search(/[0-9]/g);
+		var eng = pwd.search(/[a-z]/ig);
+		var spe = pwd.search(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
+		
+		 if(pwd.length < 8 || pwd.length > 20 ){
+				return false;
+			 }else if(pwd.search(/\s/) != -1){
+				return false;
+			 }else if(num < 0 || eng < 0 || spe < 0 ){
+				 return false;
+			 }else {
+				 console.log("통과");
+				return true;				 
+			}
+	};
 	
 	//아이디를 입력할때 실행할 함수 등록 
 	$("#id").on("input", function(){
 		isIdDirty=true;
+		rightId=chkId();
 		
 		//1. 입력한 아이디를 읽어온다.
 		var inputId=$("#id").val();
@@ -443,7 +612,7 @@
 					isIdUsable=true;
 				}
 				//아이디 에러 여부 
-				var isError= !isIdUsable || !isIdInput ;
+				var isError= !rightId || !isIdUsable || !isIdInput ;
 				//아이디 상태 바꾸기 
 				setState("#id", isError );
 			}
@@ -453,9 +622,11 @@
 			isIdInput=false;
 		}else{
 			isIdInput=true;
+			
+			
 		}
 		//아이디 에러 여부 
-		var isError= !isIdUsable || !isIdInput;
+		var isError= !rightId || !isIdUsable || !isIdInput;
 		//아이디 상태 바꾸기 
 		setState("#id", isError );
 	});
@@ -486,40 +657,94 @@
 			.show();
 		}
 		//에러가 있다면 에러 메세지 띄우기
-		if(isEmailInput && !isEmailMatch){
-			$("#email_notmatch").show();
+		if(!isIdUsable && isIdDirty){
+			$("#id_notusable").show();
+		}else{
+			$("#id_notusable").hide();
+			
 		}
+		
 		//에러가 있다면 에러 메세지 띄우기
 		if(!isPwdEqual && isPwdDirty){
 			$("#pwd_notequal").show();
+		}else{
+			$("#pwd_notequal").hide();
+
 		}
 		if(!isPwdInput && isPwdDirty){
-			$("#pwd_required").show();
-		}
-		//에러가 있다면 에러 메세지 띄우기
-		if(!isIdUsable && isIdDirty){
-			$("#id_notusable").show();
+			$("#pwd_notmatch").show();
+		}else{
+			$("#pwd_notmatch").hide();
+			
 		}
 		
 		if(!isIdInput && isIdDirty){
 			$("#id_required").show();
-		}
-		if(isIdUsable){
-			$("#id_notusable").hide();
-			
-		}
-		if(isIdInput){
+		}else{
 			$("#id_required").hide();
 		}
-		if(isPwdEqual){
-			$("#pwd_required").hide()
-			$("#pwd_notequal").hide();
+		
+		
+		if(($("#pwd").val().search(/\s/) != -1) && isPwdDirty){
+			 $("#noSpace_required").show();
+
+		}else{
+			 $("#noSpace_required").hide();
 		}
-		if(isEmailMatch || !isEmailInput){
+		
+		if(isEmailInput && !isEmailMatch){
+			$("#email_notmatch").show();
+		}else{
 			$("#email_notmatch").hide();
+			
 		}
+	
+		
+		
+		
+		if(  
+			isIdDirty	&&
+				(
+				$("#id").val().length < 5 || $("#id").val().length > 19
+				|| 
+				$("#id").val().search(/[0-9]/g)<0 || $("#id").val().search(/[a-z]/ig) <0 
+				|| 
+				$("#id").val().search(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi) >0 ) 
+				)
+		{
+			 $("#id_mix").show();
+		}else{
+			 $("#id_mix").hide();
+			
+		}	 
+			 
+		
+		
+		
+		if(  isPwdDirty
+				&&
+				(
+						($("#pwd").val().length < 8 || $("#pwd").val().length > 20 ) 
+				
+		&&	(	$("#pwd").val().search(/[0-9]/g) 
+		|| 	$("#pwd").val().search(/[a-z]/ig) 
+		|| $("#pwd").val().search(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi )
+		)))
+		{
+			$("#pwdChk_required").show();
+		}else{
+			$("#pwdChk_required").hide();
+		}
+		
+		if($("#id").val().search(/\s/) != -1 && isPwdDirty){
+			 $("#noSpace_id").show();
+
+		}else{
+			 $("#noSpace_id").hide();
+		}
+		
 		//버튼의 상태 바꾸기 
-		if(isChecked && isIdUsable && isIdInput && isPwdEqual && isPwdInput && (!isEmailDirty || !isEmailInput || isEmailMatch)){
+		if(rightId && rightPw && isChecked && isIdUsable && isIdInput && isPwdEqual && isPwdInput &&  (!isEmailInput || isEmailMatch)){
 		
 			$("button[type=submit]").removeAttr("disabled");
 		}else{

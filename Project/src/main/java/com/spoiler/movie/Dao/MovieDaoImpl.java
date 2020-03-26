@@ -14,8 +14,8 @@ public class MovieDaoImpl implements MovieDao{
 	private SqlSession session;
 	
 	@Override
-	public List<MovieDto> getList(MovieDto dto) {
-		return session.selectList("movie.getList",dto);
+	public List<MovieDto> movieList() {
+		return session.selectList("movie.getHomeList");
 	}
 
 	@Override
@@ -29,4 +29,13 @@ public class MovieDaoImpl implements MovieDao{
 		return session.selectOne("movie.getData", num);
 	}
 
+	@Override
+	public void initMovie() {
+		session.delete("movie.initMovie");
+		
+	}
+	@Override
+	public void updateMovie(MovieDto dto) {
+		session.insert("movie.updateMovie", dto);
+	}
 }

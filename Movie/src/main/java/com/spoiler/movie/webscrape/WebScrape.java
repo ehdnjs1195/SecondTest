@@ -12,10 +12,10 @@ public class WebScrape {
 	public static void main(String[] args) throws Exception{
 			
 		final Document document=Jsoup.connect("https://movie.naver.com/movie/sdb/rank/rmovie.nhn?sel=cur&date=20200314").get();
-		for(Element row : document.select("table.list_ranking tr")) {		
-		final String title=row.select("td.title a").text();
+		for(Element row : document.select("table.list_ranking tr td")) {		
+		final String rank=row.select("td.img").text();
 		final String rating=row.select("td.point").text();
-		System.out.println(title + "->Rating: "+ rating);
+		System.out.println(rank + "->Rating: "+ rating);
 	}
 	}
 }

@@ -23,10 +23,14 @@
 		font-size: 35px;
 	}
 </style>
+
 </head>
 <body>
 <div class="container">
 <jsp:include page="include/slidebar.jsp"/>
+	<c:if test="${not empty param.genre }">
+		<style> ul.depth02{display: list-item; margin-left: -40px;}</style>
+	</c:if>
 	<c:choose>
 		<c:when test="${not empty param.genre }">
 			<h2><strong><span style="color: yellow;">${param.genre }</span></strong>에 관한 목록 입니다</h2>
@@ -51,8 +55,8 @@
 		<c:forEach var="tmp" items="${list }">
 			<c:if test="${fn:contains(tmp.genre,param.genre)}">
 				<tr>
-					<td rowspan="4"><img id="${param.genre }_${tmp.num}"
-						src="${tmp.imageLink }" style="width: 200px; height: 300px;" /></td>
+					<td rowspan="4"><img id="${param.genre }_${tmp.movieSeq}"
+						src="${tmp.posters }" style="width: 200px; height: 300px;" /></td>
 					<td><span id="title_tx"><span>제목</span></span></td>
 					<td><span id="content_tx">${tmp.title }</span></td>
 				</tr>
@@ -62,7 +66,7 @@
 				</tr>
 				<tr>
 					<td><span id="title_tx">출시일</span></td>
-					<td><span id="content_tx">${tmp.releaseDate }</span></td>
+					<td><span id="content_tx">${tmp.repRlsDate }</span></td>
 				</tr>
 				<tr>
 					<td><span id="title_tx">평점</span></td>

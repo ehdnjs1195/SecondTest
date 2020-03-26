@@ -15,17 +15,12 @@ body {
     background-color: #2d3436;
 }
 
-.items:hover {
-   opacity: 0.6;
-   cursor: pointer;
-}
-
 .carousel-control {
     width: 5%;
 }
 
 .items{
-   width: 25%; float: left; padding: 2px;
+   width: 25%; height: ;float: left; padding: 2px;
 }
 
 .items img{

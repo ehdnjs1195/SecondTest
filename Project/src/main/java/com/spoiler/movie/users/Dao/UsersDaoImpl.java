@@ -70,6 +70,18 @@ public class UsersDaoImpl implements UsersDao{
 			return session.selectOne("users.getProfile", id);
 	}
 
+	@Override
+	public boolean isPwdright(String inputPw) {
+		//인자로 전달되는 비밀번호를 이용해서 select 를 한다.
+				String pwd=session.selectOne("users.isPwdright", inputPw);
+				//만일 select 된 결과가 null 이면 존재하지 않는 아이디이다.
+				if(pwd==null) {
+					return false;
+				}else {
+					return true;
+				}
+	}
+
 	
 	
 

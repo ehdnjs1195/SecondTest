@@ -1,47 +1,61 @@
 package com.spoiler.movie.Dto;
 
 public class MovieDto {
-	private int num;
-	private String title; 
-	private String content;
-	private String releaseDate;
+	private int rank;
+	private String movieSeq;
+	private String title;
+	private String titleEng;
 	private String genre;
 	private String director;
 	private String actor;
+	private String plot;
+	private String runtime;
+	private String repRlsDate;
+	private String keywords;
 	private float starPoint;
-	private String imageLink;
+	private String posters;
 	private String videoLink;
 	private int startRowNum;
 	private int endRowNum;
-	private String keyword;
 	
 	public MovieDto() {}
 
-	public MovieDto(int num, String title, String content, String releaseDate, String genre, String director,
-			String actor, float starPoint, String imageLink, String videoLink, int startRowNum, int endRowNum,
-			String keyword) {
+	public MovieDto(int rank, String movieSeq, String title, String titleEng, String genre, String director,
+			String actor, String plot, String runtime, String repRlsDate, String keywords, float starPoint,
+			String posters, String videoLink, int startRowNum, int endRowNum) {
 		super();
-		this.num = num;
+		this.rank = rank;
+		this.movieSeq = movieSeq;
 		this.title = title;
-		this.content = content;
-		this.releaseDate = releaseDate;
+		this.titleEng = titleEng;
 		this.genre = genre;
 		this.director = director;
 		this.actor = actor;
+		this.plot = plot;
+		this.runtime = runtime;
+		this.repRlsDate = repRlsDate;
+		this.keywords = keywords;
 		this.starPoint = starPoint;
-		this.imageLink = imageLink;
+		this.posters = posters;
 		this.videoLink = videoLink;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
-		this.keyword = keyword;
 	}
 
-	public int getNum() {
-		return num;
+	public int getRank() {
+		return rank;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
+	public String getMovieSeq() {
+		return movieSeq;
+	}
+
+	public void setMovieSeq(String movieSeq) {
+		this.movieSeq = movieSeq;
 	}
 
 	public String getTitle() {
@@ -52,20 +66,12 @@ public class MovieDto {
 		this.title = title;
 	}
 
-	public String getContent() {
-		return content;
+	public String getTitleEng() {
+		return titleEng;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public String getReleaseDate() {
-		return releaseDate;
-	}
-
-	public void setReleaseDate(String releaseDate) {
-		this.releaseDate = releaseDate;
+	public void setTitleEng(String titleEng) {
+		this.titleEng = titleEng;
 	}
 
 	public String getGenre() {
@@ -92,6 +98,38 @@ public class MovieDto {
 		this.actor = actor;
 	}
 
+	public String getPlot() {
+		return plot;
+	}
+
+	public void setPlot(String plot) {
+		this.plot = plot;
+	}
+
+	public String getRuntime() {
+		return runtime;
+	}
+
+	public void setRuntime(String runtime) {
+		this.runtime = runtime;
+	}
+
+	public String getRepRlsDate() {
+		return repRlsDate;
+	}
+
+	public void setRepRlsDate(String repRlsDate) {
+		this.repRlsDate = repRlsDate;
+	}
+
+	public String getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
+
 	public float getStarPoint() {
 		return starPoint;
 	}
@@ -100,12 +138,12 @@ public class MovieDto {
 		this.starPoint = starPoint;
 	}
 
-	public String getImageLink() {
-		return imageLink;
+	public String getPosters() {
+		return posters;
 	}
 
-	public void setImageLink(String imageLink) {
-		this.imageLink = imageLink;
+	public void setPosters(String posters) {
+		this.posters = posters;
 	}
 
 	public String getVideoLink() {
@@ -132,13 +170,5 @@ public class MovieDto {
 		this.endRowNum = endRowNum;
 	}
 
-	public String getKeyword() {
-		return keyword;
-	}
 
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-
-	
 }
