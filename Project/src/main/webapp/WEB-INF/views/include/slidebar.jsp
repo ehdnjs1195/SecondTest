@@ -4,73 +4,82 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
 <style>
    .slide_left{
-            text-decoration: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 150px;
-            height: 100%;
+           text-decoration: none;
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 150px;
+           height: 100%;
+			z-index:100;
+           
+       }
+       .smenu{
+           width: 250px;
+           left:0;
+           height: 100%;
+           margin-top : 70px;
+           background: #3498db;
+           text-align: center;
+           overflow: auto;
+           margin-left: -40px;
+       }
+       .slide_btn a{
+           text-decoration: none;
+       }
+       li{
+       	list-style: none;
+       }
+       ul.depth02{
+       	display: none;
+       	margin-left: -40px;	
+       }
+       .smenu a{
+           display: block;
+           padding: 16px 26px;
+           color: white;
+           font-size: 14px;
+           margin: 4px 0;
+           position: relative;
+       }
+       
+       .slide_btn{
+           display: block;
+           padding: 16px 20px;
+           background: #333;
+           color : white;
+           position: relative;
+           font-size: 25px;
+           font-weight: bold; 
+       }
+       .smenu a:before{
+           content: "";
+           position: relative;;
+           width: 100%;
+           height: 100%;
+           left: 0;
+           top: 0;
+           transition: 0.3s;
+           opacity: 0;
+       }
+        .smenu a:hover{
+   	     background: #333;
         }
-        .smenu{
-            width: 250px;
-            height: 100%;
-            background: #3498db;
-            text-align: center;
-            overflow: auto;
-            margin-left: -40px;
-        }
-        
-        .slide_btn a{
-            text-decoration: none;
-        }
-        li{
-        	list-style: none;
-       		
-        }
-        ul.depth02{
-        	display: none;
-        	margin-left: -40px;	
-        }
-        .smenu a{
-            display: block;
-            padding: 16px 26px;
-            color: white;
-            font-size: 14px;
-            margin: 4px 0;
-            position: relative;
-        }
-        
-        .slide_btn{
-            display: block;
-            padding: 16px 20px;
-            background: #333;
-            color : white;
-            position: relative;
-            font-size: 25px;
-            font-weight: bold; 
-        }
-        .smenu a:before{
-            content: "";
-            position: relative;;
-            width: 100%;
-            height: 100%;
-            left: 0;
-            top: 0;
-            transition: 0.3s;
-            opacity: 0;
-        }
-         .smenu a:hover{
-         background: #333;
-         }
+	#showBtn,#hideBtn{
+		display: block;
+		background: #273c75;
+		color : white;
+		position: relative;
+		font-size: 13px;
+	}
 </style>
 <div class="slide_left">
 	<div class="smenu">
-		<h1 class="logo"style="font-family: fantasy; text-align: center; color: white;"><a href="home.do"><span style="font-family: fantasy;color: #3498db">S</span>POILER</a></h1>
 		<ul class="depth01">
-			<li><a href="#" class="slide_btn"  >영화별 장르</a></li>
-			<li><a href="genredetaillist.do?genre=드라마" value="slide" name="1">드라마</a></li>
-			<li><a href="genredetaillist.do?genre=범죄" value="slide" name="2">범죄</a></li>
-			<li><a href="genredetaillist.do?genre=코메디" value="slide" name="3">코메디</a></li>
+			<li><a href="#" id="hideBtn">장르메뉴 접기▲</a></li>
+			<li><a href="#" class="slide_btn">영화별 장르</a></li>
+			<li><a href="genredetaillist.do?genre=드라마">드라마</a></li>
+			<li><a href="genredetaillist.do?genre=범죄">범죄</a></li>
+			<li><a href="genredetaillist.do?genre=코메디">코메디</a></li>
 			<li><a href="genredetaillist.do?genre=어드벤처">어드벤처</a></li>
 			<li><a href="genredetaillist.do?genre=판타지">판타지</a></li>
 			<li><a href="genredetaillist.do?genre=공포">공포</a></li>
@@ -108,13 +117,31 @@
 			</li>
 		</ul>
 	</div>
+	<a href="#" class="slide_btn" id="showBtn"style="margin-top: 70px; font-weight: normal; ;">장르메뉴 펼치기▼</a>
 </div>
 <script>
 	$('ul.depth01>li').mouseup(function(){
-	    $('ul.depth02').slideUp();
-	        $(this).children('ul.depth02').toggle();
-	    })
+    $('ul.depth02').slideUp();
+        $(this).children('ul.depth02').toggle();
+    })
+    
+     $("#hideBtn").on("click", function () {
+         $(".smenu").hide(500);
+     });
+	 $("#showBtn").on("click", function () {
+         $(".smenu").show(500);
+     });
+	 
+	 $( window ).resize(function() {
+		 var windowWidth = $( window ).width();
+		 if(windowWidth > 1600) {
+			 $(".smenu").show(300);
+		 } else {
+			 $(".smenu").hide(300);
+		 }
+	});
 </script>
+
 
 
 
