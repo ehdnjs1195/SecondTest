@@ -451,8 +451,7 @@ input[type="checkbox"]:checked + label:before {
 	var isPwdEqual=false;
 	//비밀번호를 입력했는지 여부 
 	var isPwdInput=false;
-	
-	//이메일을 형식에 맞게 입력했는지 여부 
+		//이메일을 형식에 맞게 입력했는지 여부 
 	var isEmailMatch=false;
 	//이메일을 입력했는지 여부
 	var isEmailInput=false;
@@ -601,11 +600,6 @@ input[type="checkbox"]:checked + label:before {
 		
 		//1. 입력한 아이디를 읽어온다.
 		var inputId=$("#id").val();
-		
-		
-	
-		
-		
 		//2. 서버에 보내서 사용가능 여부를 응답 받는다.
 		$.ajax({
 			url:"${pageContext.request.contextPath }/users/checkid.do",
@@ -663,53 +657,61 @@ input[type="checkbox"]:checked + label:before {
 			.show();
 		}
 		//에러가 있다면 에러 메세지 띄우기
-		if(isEmailInput && !isEmailMatch){
-			$("#email_notmatch").show();
-		}else{
-			$("#email_notmatch").hide();
-		}
-		//에러가 있다면 에러 메세지 띄우기
-		if(!isPwdEqual){
-			$("#pwd_notequal").show();
-		}else{
-			$("#pwd_notequal").hide();
-
-		}
-		if(!isPwdInput && isPwdDirty){
-			$("#pwd_required").show();
-		}else{
-			$("#pwd_required").hide();
-			
-		}
-		//에러가 있다면 에러 메세지 띄우기
 		if(!isIdUsable && isIdDirty){
 			$("#id_notusable").show();
 		}else{
 			$("#id_notusable").hide();
 			
 		}
-		if(!isIdInput && isIdDirty){
-			$("#id_required").show();
-			$("#id_mix").show();
+		
+		//에러가 있다면 에러 메세지 띄우기
+		if(!isPwdEqual && isPwdDirty){
+			$("#pwd_notequal").show();
 		}else{
-			$("#id_required").hide();
-			$("#id_mix").hide();
+			$("#pwd_notequal").hide();
 
 		}
-		if($("#pwd").val().search(/\s/) != -1){
+		if(!isPwdInput && isPwdDirty){
+			$("#pwd_notmatch").show();
+		}else{
+			$("#pwd_notmatch").hide();
+			
+		}
+		
+		if(!isIdInput && isIdDirty){
+			$("#id_required").show();
+		}else{
+			$("#id_required").hide();
+		}
+		
+		
+		if(($("#pwd").val().search(/\s/) != -1) && isPwdDirty){
 			 $("#noSpace_required").show();
 
 		}else{
 			 $("#noSpace_required").hide();
 		}
 		
-		
+		if(isEmailInput && !isEmailMatch){
+			$("#email_notmatch").show();
+		}else{
+			$("#email_notmatch").hide();
+			
+		}
 	
 		
 		
 		
-		if( ($("#id").val().length < 5 || $("#id").val().length > 19) || ( $("#id").val().search(/[0-9]/g)<0 || $("#id").val().search(/[a-z]/ig) <0 
-				|| $("#id").val().search(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi) >0 )   ){
+		if(  
+			isIdDirty	&&
+				(
+				$("#id").val().length < 5 || $("#id").val().length > 19
+				|| 
+				$("#id").val().search(/[0-9]/g)<0 || $("#id").val().search(/[a-z]/ig) <0 
+				|| 
+				$("#id").val().search(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi) >0 ) 
+				)
+		{
 			 $("#id_mix").show();
 		}else{
 			 $("#id_mix").hide();
@@ -719,13 +721,22 @@ input[type="checkbox"]:checked + label:before {
 		
 		
 		
-		if(    $("#pwd").val().length < 8 || $("#pwd").val().length > 20 ){
+		if(  isPwdDirty
+				&&
+				(
+						($("#pwd").val().length < 8 || $("#pwd").val().length > 20 ) 
+				
+		&&	(	$("#pwd").val().search(/[0-9]/g) 
+		|| 	$("#pwd").val().search(/[a-z]/ig) 
+		|| $("#pwd").val().search(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi )
+		)))
+		{
 			$("#pwdChk_required").show();
 		}else{
 			$("#pwdChk_required").hide();
 		}
 		
-		if($("#id").val().search(/\s/) != -1){
+		if($("#id").val().search(/\s/) != -1 && isPwdDirty){
 			 $("#noSpace_id").show();
 
 		}else{

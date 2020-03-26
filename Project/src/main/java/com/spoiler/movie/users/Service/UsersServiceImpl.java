@@ -130,8 +130,16 @@ public class UsersServiceImpl implements UsersService{
 	public void deleteUser(String id) {
 		dao.delete(id);
 	}
+	@Override
+	public Map<String, Object> isPwdright(String inputPw) {
+			boolean isPwdright=dao.isPwdright(inputPw);
+			Map<String, Object> map=new HashMap<>();
+			map.put("isPwdright", isPwdright);
+			return map;
+		}
+	}
 
-}
+
 
 
 

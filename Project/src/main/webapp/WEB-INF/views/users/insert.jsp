@@ -11,6 +11,7 @@
 
 <script type="text/javascript">
 
+
      alert("${dto.id}님 회원가입이 완료되었습니다.")
       	window.location.href="${pageContext.request.contextPath }/home.do";
      </script>

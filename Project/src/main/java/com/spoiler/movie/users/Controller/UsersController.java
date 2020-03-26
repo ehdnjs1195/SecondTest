@@ -44,6 +44,14 @@ public class UsersController {
 		Map<String, Object> map=service.isExistId(inputId);
 		return map;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/users/checkpwd")
+	public Map<String, Object> checkpwd(@RequestParam String inputPw){
+		Map<String, Object> map=service.isPwdright(inputPw);
+		return map;
+	}
+	
 	// POST 방식 /users/signup.do 요청 처리 
 	@RequestMapping(value = "/users/signup")
 	public ModelAndView signup(@ModelAttribute("dto") UsersDto dto,
