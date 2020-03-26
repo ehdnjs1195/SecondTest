@@ -195,7 +195,12 @@
 		    <artifactId>spring-tx</artifactId>
 		    <version>4.0.0.RELEASE</version>
 		</dependency>				
-		     		        
+		<!--  유효성 검사 -->
+		 <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.10.Final</version>
+        </dependency>
 	</dependencies>
     <build>
         <plugins>

@@ -9,6 +9,11 @@
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <style>
+
+.input-group .form-control-feedback {
+    z-index: 3;
+}
+
 	/* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
 	.help-block, .form-control-feedback{
 		display: none;
@@ -187,7 +192,7 @@ input[type="checkbox"]:checked + label:before {
  
 
 <div>제 1 조 (목적)
-이 약관은 {COMPANY_NAME}(이하 "사이트"라 합니다)에서 제공하는 인터넷서비스(이하 "서비스"라 합니다)의 이용 조건 및 절차에 관한 기본적인 사항을 규정함을 목적으로 합니다.
+이 약관은 SPOILER(이하 "사이트"라 합니다)에서 제공하는 인터넷서비스(이하 "서비스"라 합니다)의 이용 조건 및 절차에 관한 기본적인 사항을 규정함을 목적으로 합니다.
 </div>
  
 <div>
@@ -377,12 +382,14 @@ input[type="checkbox"]:checked + label:before {
 				
 				<input class="form-control" type="text" id="id" name="id" placeholder="아이디"/>
 				<span>
-				<span class="glyphicon glyphicon-remove form-control-feedback"></span>
-				<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+					<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+					<span class="glyphicon glyphicon-ok form-control-feedback"></span>
 				</span>
 			</div>
 			<p class="help-block" id="id_notusable">이미 사용중인 아이디 입니다.</p>
 			<p class="help-block" id="id_required">필수 정보입니다.</p>
+			<p class="help-block" id="id_mix">4자리이상 20이하 영문, 숫자 조합으로 입력 하세요.</p>
+			<p class="help-block" id="noSpace_id">공백은 입력 할 수 없습니다.</p>
 		</div>
 		
 		<div class="form-group has-feedback">
@@ -395,8 +402,9 @@ input[type="checkbox"]:checked + label:before {
 			</span>
 			</div>
 			<p class="help-block" id="pwd_required">필수 정보입니다.</p>
+			<p class="help-block" id="noSpace_required">공백은 입력할수없습니다.</p>
+			<p class="help-block" id="pwdChk_required">영문, 숫자 조합 8자리~20자리 이내로 입력하세요.</p>
 			<p class="help-block" id="pwd_notequal">비밀번호가 일치하지 않습니다.</p>
-			
 		</div>
 		
 		<div class="form-group">
@@ -448,8 +456,12 @@ input[type="checkbox"]:checked + label:before {
 	var isEmailMatch=false;
 	//이메일을 입력했는지 여부
 	var isEmailInput=false;
-	
-		
+	// 비밀번호 정규식 
+	var rightPw = false;
+	// 아이디 정규식
+	var rightId = false;
+	// 이메일 정규식
+	var rightEmail= false;
 	//아이디 입력란에 한번이라도 입력한 적이 있는지 여부
 	var isIdDirty=false;
 	//비밀 번호 입력란에 한번이라도 입력한 적이 있는지 여부
@@ -463,7 +475,7 @@ input[type="checkbox"]:checked + label:before {
         	isChecked=false;
         	
         }
-		if(isChecked && isIdUsable && isIdInput && isPwdEqual && isPwdInput && (!isEmailDirty || !isEmailInput || isEmailMatch)){
+		if((rightId && rightPw && isChecked && isIdUsable && isIdInput && isPwdEqual && isPwdInput) && (!isEmailInput || isEmailMatch)){
 		
 			$("button[type=submit]").removeAttr("disabled");
 		}else{
@@ -479,9 +491,13 @@ input[type="checkbox"]:checked + label:before {
 	$("#email").on("input", function(){
 		
 		
+		
 		var email=$("#email").val();
 		
-		if(email.match("@")){//이메일 형식에 맞게 입력 했다면
+		rightEmail=chkEmail();
+		
+		if(!rightEmail && email.match("@")){
+
 			isEmailMatch=true;
 		}else{//형식에 맞지 않게 입력했다면 
 			isEmailMatch=false;
@@ -493,7 +509,7 @@ input[type="checkbox"]:checked + label:before {
 			isEmailInput=true;
 		}
 		//이메일 에러 여부 
-		var isError=isEmailInput && !isEmailMatch;
+		var isError= rightEmail && isEmailInput && !isEmailMatch;
 		//이메일 상태 바꾸기 
 		setState("#email", isError);
 	});
@@ -504,9 +520,13 @@ input[type="checkbox"]:checked + label:before {
 		isPwdDirty=true;
 		
 		//입력한 비밀번호를 읽어온다.
-		var pwd=$("#pwd").val();
-		var pwd2=$("#pwd2").val();
+		var pwd = $("#pwd").val();
+		var pwd2= $("#pwd2").val();
 		
+		 
+		
+		rightPw = chkPw();	
+	
 		if(pwd != pwd2){//두 비밀번호를 동일하게 입력하지 않았다면
 			isPwdEqual=false;
 		}else{
@@ -519,18 +539,73 @@ input[type="checkbox"]:checked + label:before {
 			isPwdInput=true;
 		}
 		//비밀번호 에러 여부 
-		var isError=!isPwdEqual || !isPwdInput;
+		var isError=!rightPw || !isPwdEqual || !isPwdInput;
 		//비밀번호 상태 바꾸기 
 		setState("#pwd", isError);
 	});
+	
+	function chkEmail(){
+		var email=$("#email").val();
+		var spe = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+		
+		if(spe.test(email)==true){
+			return false;
+		}else{
+			
+			return true;
+		}
+	}
+	function chkId(){
+		var id = $("#id").val();
+		var num = id.search(/[0-9]/g);
+		var eng = id.search(/[a-z]/ig);
+		var spe = id.search(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
+		
+		 if(id.length < 5 || id.length > 19 ){
+			 	return false;
+			 }else if(id.search(/\s/) != -1){
+				return false;
+			 }else if(num < 0 || eng < 0 || spe > 0 ){
+				 return false;
+			 }else {
+				
+				 console.log("아이디통과");
 
+				return true;				 
+			}
+	};
+	
+	
+	function chkPw(){
+		var pwd = $("#pwd").val();
+		var num = pwd.search(/[0-9]/g);
+		var eng = pwd.search(/[a-z]/ig);
+		var spe = pwd.search(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
+		
+		 if(pwd.length < 8 || pwd.length > 20 ){
+				return false;
+			 }else if(pwd.search(/\s/) != -1){
+				return false;
+			 }else if(num < 0 || eng < 0 || spe < 0 ){
+				 return false;
+			 }else {
+				 console.log("통과");
+				return true;				 
+			}
+	};
 	
 	//아이디를 입력할때 실행할 함수 등록 
 	$("#id").on("input", function(){
 		isIdDirty=true;
+		rightId=chkId();
 		
 		//1. 입력한 아이디를 읽어온다.
 		var inputId=$("#id").val();
+		
+		
+	
+		
+		
 		//2. 서버에 보내서 사용가능 여부를 응답 받는다.
 		$.ajax({
 			url:"${pageContext.request.contextPath }/users/checkid.do",
@@ -543,7 +618,7 @@ input[type="checkbox"]:checked + label:before {
 					isIdUsable=true;
 				}
 				//아이디 에러 여부 
-				var isError= !isIdUsable || !isIdInput ;
+				var isError= !rightId || !isIdUsable || !isIdInput ;
 				//아이디 상태 바꾸기 
 				setState("#id", isError );
 			}
@@ -553,9 +628,11 @@ input[type="checkbox"]:checked + label:before {
 			isIdInput=false;
 		}else{
 			isIdInput=true;
+			
+			
 		}
 		//아이디 에러 여부 
-		var isError= !isIdUsable || !isIdInput;
+		var isError= !rightId || !isIdUsable || !isIdInput;
 		//아이디 상태 바꾸기 
 		setState("#id", isError );
 	});
@@ -588,38 +665,75 @@ input[type="checkbox"]:checked + label:before {
 		//에러가 있다면 에러 메세지 띄우기
 		if(isEmailInput && !isEmailMatch){
 			$("#email_notmatch").show();
+		}else{
+			$("#email_notmatch").hide();
 		}
 		//에러가 있다면 에러 메세지 띄우기
-		if(!isPwdEqual && isPwdDirty){
+		if(!isPwdEqual){
 			$("#pwd_notequal").show();
+		}else{
+			$("#pwd_notequal").hide();
+
 		}
 		if(!isPwdInput && isPwdDirty){
 			$("#pwd_required").show();
+		}else{
+			$("#pwd_required").hide();
+			
 		}
 		//에러가 있다면 에러 메세지 띄우기
 		if(!isIdUsable && isIdDirty){
 			$("#id_notusable").show();
-		}
-		
-		if(!isIdInput && isIdDirty){
-			$("#id_required").show();
-		}
-		if(isIdUsable){
+		}else{
 			$("#id_notusable").hide();
 			
 		}
-		if(isIdInput){
+		if(!isIdInput && isIdDirty){
+			$("#id_required").show();
+			$("#id_mix").show();
+		}else{
 			$("#id_required").hide();
+			$("#id_mix").hide();
+
 		}
-		if(isPwdEqual){
-			$("#pwd_required").hide()
-			$("#pwd_notequal").hide();
+		if($("#pwd").val().search(/\s/) != -1){
+			 $("#noSpace_required").show();
+
+		}else{
+			 $("#noSpace_required").hide();
 		}
-		if(isEmailMatch || !isEmailInput){
-			$("#email_notmatch").hide();
+		
+		
+	
+		
+		
+		
+		if( ($("#id").val().length < 5 || $("#id").val().length > 19) || ( $("#id").val().search(/[0-9]/g)<0 || $("#id").val().search(/[a-z]/ig) <0 
+				|| $("#id").val().search(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi) >0 )   ){
+			 $("#id_mix").show();
+		}else{
+			 $("#id_mix").hide();
+			
+		}	 
+			 
+		
+		
+		
+		if(    $("#pwd").val().length < 8 || $("#pwd").val().length > 20 ){
+			$("#pwdChk_required").show();
+		}else{
+			$("#pwdChk_required").hide();
 		}
+		
+		if($("#id").val().search(/\s/) != -1){
+			 $("#noSpace_id").show();
+
+		}else{
+			 $("#noSpace_id").hide();
+		}
+		
 		//버튼의 상태 바꾸기 
-		if(isChecked && isIdUsable && isIdInput && isPwdEqual && isPwdInput && (!isEmailDirty || !isEmailInput || isEmailMatch)){
+		if(rightId && rightPw && isChecked && isIdUsable && isIdInput && isPwdEqual && isPwdInput &&  (!isEmailInput || isEmailMatch)){
 		
 			$("button[type=submit]").removeAttr("disabled");
 		}else{
