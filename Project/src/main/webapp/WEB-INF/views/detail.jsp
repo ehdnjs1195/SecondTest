@@ -40,7 +40,7 @@
 		<div class="subject_movie">
 			<strong class="tit_movie">${dto.title } (${dto.repRlsDate })</strong>
 			<!-- 영어 원본 제목 -->
-			<span class="txt_origin">${dto.title }</span>
+			<span class="txt_origin">${dto.titleEng }</span>
 		</div>
 		<a href="#">${dto.starPoint }</a>
 	</div>
@@ -66,11 +66,11 @@
 	<div class="comments">
 		<!-- 원글에 댓글을 작성할수 있는 폼 -->
 		<c:choose>
-			<c:when test="${empty tmp.profile }">
+			<c:when test="${empty profile }">
 				<img id="user-img" class="user-img" src="${pageContext.request.contextPath}/resources/images/default_user.jpeg"/>
 			</c:when>
 			<c:otherwise>
-				<img id="user-img" class="user-img" src="${pageContext.request.contextPath}${tmp.profile}"/>
+				<img id="user-img" class="user-img" src="${pageContext.request.contextPath}${profile}"/>
 			</c:otherwise>
 		</c:choose>
 		<div class="comment_form">
