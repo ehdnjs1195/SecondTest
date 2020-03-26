@@ -79,6 +79,8 @@
 				<!-- 댓글의 그룹번호는 원글의 글번호가 된다.  -->
 				<input type="hidden" name="ref_group" 
 					value="${dto.movieSeq }"/>
+				<input type="hidden" name="movieId" 
+					value="${dto.movieId}"/>
 				<!-- 댓글의 대상자는 원글의 작성자가 된다. -->
 				<input type="hidden" name="target_id" 
 					value="${dto.movieSeq }"/> <!-- 정보를 받아와서 뿌려주므로 원글의 작성자를 dto.movieSeq 으로 넣어줬다. -->
@@ -218,7 +220,7 @@
 		var isLogin=${not empty id};
 		if(isLogin==false){
 			alert("로그인 페이지로 이동 합니다.");
-			location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}";
+			location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}%26movieId=${dto.movieId}";
 			return false;//폼 전송 막기 
 		}
 	});
@@ -229,7 +231,7 @@
 		if(isLogin==false){
 			var isMove=confirm("로그인 페이지로 이동 하시겠습니까?");
 			if(isMove){
-				location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}";
+				location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}%26movieId=${dto.movieId}";
 			}
 		}
 	});
