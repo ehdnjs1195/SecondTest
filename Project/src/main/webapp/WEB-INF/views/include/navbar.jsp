@@ -18,12 +18,15 @@
 		width: 50px;
 		height: 50px;
 		border-radius: 50%;
-		margin-right: 20px;
 		}
 #profileForm{
 		display: none;
 	}
-	
+#searchbar{
+	display:inline;
+	position:relative;
+ 	margin-top: 5px;
+}
 </style>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -35,6 +38,11 @@
 			
 			</button>
 		</div>
+		<form id="searchbar" action="searchlist.do" method="get">
+				<label for="condition" style="display:none;">검색조건</label>
+				<input type="text" name="keyword" id="keyword" placeholder="영화 검색" />
+				<button	type="submit">검색</button>
+		</form>
 		<c:choose>
 				<c:when test="${empty sessionScope.id }">	<!-- sessionScope. 는 생략 가능 -->
 					<div class="pull-right">
@@ -44,23 +52,31 @@
 				</c:when>
 				<c:otherwise>
 				
-					<div class="pull-right">
-						<span id="profileLink1">
+					<div class="pull-right" >
+						<span id="profileLink1" >
 					
 						<c:choose>
 						<c:when test="${ empty profile }">
-							<img src="${pageContext.request.contextPath }/resources/images/default_user.png"/>
+						<a href="${pageContext.request.contextPath }/users/info.do">
+							<img src="${pageContext.request.contextPath }/resources/images/default_user.png"
+							/>
+							</a>
 						</c:when>
 						<c:otherwise>
-							<img src="${pageContext.request.contextPath }${profile}"/>
+						<a href="${pageContext.request.contextPath }/users/info.do">
+							<img src="${pageContext.request.contextPath }${profile}"
+							/>
+						</a>	
 						</c:otherwise>
 						</c:choose>
 					
 				</span>
 				
-						<strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.do">
-						${id }</a></strong>
+						
 						<a class="btn btn-warning navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/logout.do">로그아웃</a>
+						
+						
+		
 					</div>
 				</c:otherwise>
 		</c:choose>  
