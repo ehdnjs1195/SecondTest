@@ -90,13 +90,6 @@
 	</div>
 </div>
 
-<form action="profile_upload.do" method="post"
-	enctype="multipart/form-data" id="profileForm">
-	<label for="profileImage">프로필 이미지 선택</label>
-	<input type="file" name="profileImage" id="profileImage"
-		accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
-</form>
-
 <script>
 	//프로파일 이미지를 클릭하면 
 	$("#profileLink").click(function(){
