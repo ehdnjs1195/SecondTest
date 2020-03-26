@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.gura</groupId>
-	<artifactId>spring05</artifactId>
-	<name>Spring05_Final</name>
+	<groupId>com.spoiler</groupId>
+	<artifactId>movie</artifactId>
+	<name>Project</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -195,7 +195,12 @@
 		    <artifactId>spring-tx</artifactId>
 		    <version>4.0.0.RELEASE</version>
 		</dependency>				
-		     		        
+		<!--  유효성 검사 -->
+		 <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.10.Final</version>
+        </dependency>
 	</dependencies>
     <build>
         <plugins>

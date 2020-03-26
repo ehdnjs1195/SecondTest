@@ -45,7 +45,7 @@ public class UsersController {
 		return map;
 	}
 	// POST 방식 /users/signup.do 요청 처리 
-	@RequestMapping(value = "/users/signup", method = RequestMethod.POST)
+	@RequestMapping(value = "/users/signup")
 	public ModelAndView signup(@ModelAttribute("dto") UsersDto dto,
 			ModelAndView mView) {
 		service.addUser(dto);
