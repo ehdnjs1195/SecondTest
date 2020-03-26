@@ -6,67 +6,72 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.txt_origin{
+	display: -webkit-box;
+    overflow: hidden;
+    height: 25px;
+    font-size: 14px;
+    line-height: 25px;
+    color: #989898;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+.tit_movie{
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    padding-bottom: 0;
+    font-size: 18px;
+    line-height: 25px;
+}
+</style>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/detail_custom.css" />
 <jsp:include page="include/resource.jsp"/>
 </head>
 <body>
 <jsp:include page="include/navbar.jsp"/>
 <div class="container" style="color:white;">
-	<table id="table" class="table table-bordered table-condensed">
-		<colgroup>
-			<col class="col-xs-3"/>
-			<col class="col-xs-9"/>
-		</colgroup>
-		<tr>
-			<th>movieSeq</th>
-			<td>${dto.movieSeq }</td>
-		</tr>
-		<tr>
-			<th>title</th>
-			<td>${dto.title }</td>
-		</tr>
-		<tr>
-			<th>content</th>
-			<td>${dto.plot }</td>
-		</tr>
-		<tr>
-			<th>releaseDate</th>
-			<td>${dto.repRlsDate }</td>
-		</tr>
-		<tr>
-			<th>genre</th>
-			<td>${dto.genre }</td>
-		</tr>
-		<tr>
-			<th>director</th>
-			<td>${dto.director }</td>
-		</tr>
-		<tr>
-			<th>actor</th>
-			<td>${dto.actor }</td>
-		</tr>
-		<tr>
-			<th>starPoint</th>
-			<td>${dto.starPoint }</td>
-		</tr>
-		<tr>
-			<th>imageLink</th>
-			<td><img src="${dto.posters }" style="width: 300px; height: 600px;"/></td>
-		</tr>
-		<tr>
-			<th>videoLink</th>
-			<td><iframe src="${dto.videoLink }" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
-		</tr>
-	</table>
+	<div class="detail_summarize">
+		<span class="thumb_summary #info #poster">
+			<img src="${dto.posters }" style="width: 300px; height: 600px;" class="img_summary" alt="${dto.title } 포스터"/>
+		</span>
+	</div>
+	<div class="movie_summary">
+		<div class="subject_movie">
+			<strong class="tit_movie">${dto.title } (${dto.repRlsDate })</strong>
+			<!-- 영어 원본 제목 -->
+			<span class="txt_origin">${dto.titleEng }</span>
+		</div>
+		<a href="#">${dto.starPoint }</a>
+	</div>
+	<dl class="list_movie list_main">
+		<dt class="screen_out">장르</dt>
+		<dd class="txt_main">${dto.genre }</dd>
+	</dl>
+	<dd class="txt_main">
+		(개봉) ${dto.repRlsDate }
+	</dd>
+	<dd class="type_ellipsis">
+		(감독) <a href="#">${dto.director }</a>
+	</dd>
+	<dd class="type_ellipsis">
+		(배우) <a href="#">${dto.actor }</a>
+	</dd>
+	<div class="desc_movie">
+		(줄거리) <p>${dto.plot }</p>
+	</div>
 
 <!-- Comments -->
+	<h2>네티즌 댓글</h2>
 	<div class="comments">
 		<!-- 원글에 댓글을 작성할수 있는 폼 -->
 		<c:choose>
-			<c:when test="${empty tmp.profile }">
+			<c:when test="${empty profile }">
 				<img id="user-img" class="user-img" src="${pageContext.request.contextPath}/resources/images/default_user.jpeg"/>
 			</c:when>
 			<c:otherwise>
-				<img id="user-img" class="user-img" src="${pageContext.request.contextPath}${tmp.profile}"/>
+				<img id="user-img" class="user-img" src="${pageContext.request.contextPath}${profile}"/>
 			</c:otherwise>
 		</c:choose>
 		<div class="comment_form">
@@ -253,4 +258,57 @@
 	}
 </script>
 </body>
+<script>window.jQuery||document.write('<script src="https://s1.daumcdn.net/svc/original/U03/cssjs/jquery/jquery-1.11.0.min.js"><\/script>');</script>
+
+<script>
+
+var thresholdCount = 5; //댓글 표시 갯수
+
+$("li[id^='comment']").parent().first().addClass("nubiz");
+
+var commentCount = $(".nubiz>li[id^='comment']").length;
+
+$(".nubiz").append('<button id="moreComment" onclick="moreComment()" style="display:none"> 보기 </button><button id="allComment" onclick="showAllComment()" style="display:none">전체</br>보기</button><style>#moreComment {width: 85%;height: 50px;font-size: .8em;font-weight: bold;background-color: #eee;float:left;}#allComment{width: 15%;height: 50px;font-size: .8em;font-weight: bold;background-color: #eee;}#moreComment:hover,#allComment:hover {color:#fff;background-color: #999;}</style>')
+
+function refeshComment() {
+
+    $("#moreComment").html("더 보기 [ " + $("li[id^=comment]:visible").length + "/" + $("li[id^='comment']").length + " ]");
+
+}
+
+function moreComment() {
+
+    $(".nubiz>li[id^='comment']:hidden:lt("+thresholdCount+")").show(500)
+
+    if($("li[id^='comment']:hidden")[0]==undefined){
+
+        $("#moreComment, #allComment").hide(500)
+
+    };
+
+    refeshComment();
+
+}
+
+function showAllComment() {
+
+    $(".nubiz>li[id^=comment]").show(500);
+
+    $("#moreComment, #allComment").hide(500);
+
+}
+
+if (commentCount > thresholdCount) {
+
+    $("#moreComment, #allComment").show();
+
+    $(".nubiz>li[id^='comment']:gt(" + (thresholdCount-1) + ")").hide();
+
+    refeshComment();
+
+};
+
+$("li[id^='ttMorePreviousComments']").click(function(){showAllComment()});
+
+</script>
 </html>
