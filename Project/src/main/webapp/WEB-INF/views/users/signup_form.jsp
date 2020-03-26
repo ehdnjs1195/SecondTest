@@ -549,6 +549,8 @@ input[type="checkbox"]:checked + label:before {
 		var spe = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 		
 		if(spe.test(email)==true){
+			
+			
 			return false;
 		}else{
 			
@@ -716,9 +718,8 @@ input[type="checkbox"]:checked + label:before {
 			
 		}	 
 			 
-		
-		
-		
+
+
 		if(    $("#pwd").val().length < 8 || $("#pwd").val().length > 20 ){
 			$("#pwdChk_required").show();
 		}else{

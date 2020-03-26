@@ -98,7 +98,6 @@ public class UsersController {
 		// view page 에 전달하기 
 		mView.addObject("url", url);
 		mView.addObject("encodedUrl", encodedUrl);
-		
 		//아이디 비밀번호 저장 체크박스를 체크 했는지 읽어와 본다.
 		String isSave=request.getParameter("isSave");	
 		//아이디, 비밀번호를 쿠키에 저장
