@@ -16,6 +16,7 @@
     color: #989898;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
+    font-family: auto;
 }
 .tit_movie{
     display: block;
@@ -24,6 +25,96 @@
     padding-bottom: 0;
     font-size: 18px;
     line-height: 25px;
+    font-family: auto;
+}
+.detail_summarize{
+    position: relative;
+    float: left;
+    margin-right: 30px;
+    font-family: auto;
+}
+.movie_summary{
+    overflow: hidden;
+    font-family: auto;
+}
+.txt_main{
+	font-size: 14px;
+	font-family: auto;
+}
+.txt_grade{
+	float: left;
+    font-size: 18px;
+    line-height: 15px;
+    color: #989898;
+    font-family: auto;
+}
+.emph_grade {
+    float: left;
+    padding-left: 10px;
+    font-size: 18px;
+    line-height: 15px;
+    font-weight: bold;
+    color: #ff0080;
+    font-family: auto;
+}
+.bg_star {
+    display: block;
+    float: left;
+    width: 106px;
+    height: 17px;
+    background: url(//i1.daumcdn.net/img-contents/movie/2016/pc/bg_star_170614_v2.png) no-repeat 0 0;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    background-position: 0 -20px;
+    text-indent: -9999px;
+    font-family: auto;
+}
+.plot{
+	font-weight: lighter;
+	font-style: normal;
+	font-family: auto;
+	color: #ff83c2;
+}
+.list_placing{
+    overflow: hidden;
+    padding-top: 11px;
+    border-top: 2px solid #f5f5f5;
+}
+.list_placing .txt_bar {
+    width: 1px;
+    height: 12px;
+    margin: 4px 7px 0 11px;
+    background-color: #eaeaea;
+    display: inline-block;
+    vertical-align: top;
+}
+.screen_out {
+    overflow: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
+.emph_g{
+	color: #f32276;
+}
+.list_placing dt {
+    float: left;
+    padding-right: 5px;
+}
+.list_placing dd {
+    float: left;
+    margin-right: 5px;
+}
+#moreComment, #allComment{
+	background-color: #b0b0b0 !important;
+	font-family: initial;
+    font-style: italic;
+}
+#moreComment:hover, #allComment:hover{
+	background-color: #868686 !important;
 }
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/detail_custom.css" />
@@ -34,7 +125,7 @@
 <div class="container" style="color:white;">
 	<div class="detail_summarize">
 		<span class="thumb_summary #info #poster">
-			<img src="${dto.posters }" style="width: 300px; height: 600px;" class="img_summary" alt="${dto.title } 포스터"/>
+			<img src="${dto.posters }" style="width: 187px; height: 272px;" class="img_summary" alt="${dto.title } 포스터"/>
 		</span>
 	</div>
 	<div class="movie_summary">
@@ -43,27 +134,42 @@
 			<!-- 영어 원본 제목 -->
 			<span class="txt_origin">${dto.titleEng }</span>
 		</div>
-		<a href="#">${dto.starPoint }</a>
+		<span class="bg_star star_grade">
+			<span class="bg_star inner_star" style="width:73.30000162124634%">평점</span>
+		</span>
+		<em class="emph_grade">${dto.starPoint }</em>
+		<span class="txt_grade">/10</span>
+		<dl class="list_movie list_main" style="clear: left;">
+			<dd class="txt_main">${dto.genre }</dd>
+			<dd class="txt_main">
+				(개봉) ${dto.repRlsDate }
+			</dd>
+			<dd class="type_ellipsis">
+				(감독) <a href="#" style="color: #70ff35;">${dto.director }</a>
+			</dd>
+			<dd class="type_ellipsis">
+				(배우) <a href="#" style="color: #70ff35;">${dto.actor }</a>
+			</dd>
+		</dl>
+		<dl class="list_placing">
+		<dt class="screen_out">예매순위</dt>
+		<dd>
+			예매 
+			<em class="emph_g"><strong>2</strong></em>&nbsp;위
+			<span class="txt_bar"></span>
+		</dd>
+		<dt>누적관객</dt>
+		<dd id="totalAudience">682,309명</dd>
+		</dl>
+		<a href="#" class="btn btn-danger">관심목록 추가하러가기</a>
 	</div>
-	<dl class="list_movie list_main">
-		<dt class="screen_out">장르</dt>
-		<dd class="txt_main">${dto.genre }</dd>
-	</dl>
-	<dd class="txt_main">
-		(개봉) ${dto.repRlsDate }
-	</dd>
-	<dd class="type_ellipsis">
-		(감독) <a href="#">${dto.director }</a>
-	</dd>
-	<dd class="type_ellipsis">
-		(배우) <a href="#">${dto.actor }</a>
-	</dd>
-	<div class="desc_movie">
-		(줄거리) <p>${dto.plot }</p>
+	<div class="desc_movie" style="clear: left; font-weight: bold; padding-top: 28px;">
+	<h3 style="font-style: oblique; margin-top: 0; color: #ff83c2;">줄거리</h3>
+	<p class="plot">${dto.plot }</p>
 	</div>
 
 <!-- Comments -->
-	<h2>네티즌 댓글</h2>
+	<h3 style="font-style: oblique;">네티즌 댓글</h3>
 	<div class="comments">
 		<!-- 원글에 댓글을 작성할수 있는 폼 -->
 		<c:choose>
@@ -107,21 +213,21 @@
 									</c:otherwise>
 								</c:choose>
 								
-								<span>${tmp.writer }</span>
+								<span style="font-weight: normal; font-family: auto;">${tmp.writer }</span>
 								<c:if test="${tmp.num ne tmp.comment_group }">
 									<strong>to</strong>
 									<strong>${tmp.target_id }</strong>
 								</c:if>
-								<span>${tmp.regdate }</span>
-								<a href="javascript:" class="reply_link">답글</a> |
+								<span style="font-weight: normal; font-family: auto;">${tmp.regdate }</span>
+								<a href="javascript:" class="reply_link" style="color: #70ff35;">답글</a> |
 								<c:choose>
 									<%-- 로그인된 아이디와 댓글의 작성자가 같으면 --%>
 									<c:when test="${id eq tmp.writer }">
-										<a href="javascript:" class="comment-update-link">수정</a>&nbsp;&nbsp;
-										<a href="javascript:deleteComment(${tmp.num })">삭제</a>
+										<a href="javascript:" class="comment-update-link" style="color: #00c851;">수정</a>&nbsp;&nbsp;
+										<a href="javascript:deleteComment(${tmp.num })" style="color: #00c851;">삭제</a>
 									</c:when>
 									<c:otherwise>
-										<a href="javascript:">신고</a>
+										<a href="javascript:" style="color: #ff0000;">신고</a>
 									</c:otherwise>
 								</c:choose>
 							</dt>
@@ -133,6 +239,7 @@
 						<form class="comment-insert-form" action="comment_insert.do" method="post">
 							<!-- 덧글 그룹 -->
 							<input type="hidden" name="ref_group" value="${dto.movieSeq }" />
+							<input type="hidden" name="movieId" value="${dto.movieId}"/>
 							<!-- 덧글 대상 -->
 							<input type="hidden" name="target_id" value="${tmp.writer }" />
 							<input type="hidden" name="comment_group" value="${tmp.comment_group }" />
