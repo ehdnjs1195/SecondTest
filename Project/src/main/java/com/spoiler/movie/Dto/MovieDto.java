@@ -7,6 +7,7 @@ public class MovieDto {
 	private String title;
 	private String titleEng;
 	private String genre;
+	private String nation;
 	private String director;
 	private String actor;
 	private String plot;
@@ -22,8 +23,8 @@ public class MovieDto {
 	public MovieDto() {}
 
 	public MovieDto(int rank, String movieId, String movieSeq, String title, String titleEng, String genre,
-			String director, String actor, String plot, String runtime, String repRlsDate, String keywords,
-			float starPoint, String posters, String videoLink, int startRowNum, int endRowNum) {
+			String nation, String director, String actor, String plot, String runtime, String repRlsDate,
+			String keywords, float starPoint, String posters, String videoLink, int startRowNum, int endRowNum) {
 		super();
 		this.rank = rank;
 		this.movieId = movieId;
@@ -31,6 +32,7 @@ public class MovieDto {
 		this.title = title;
 		this.titleEng = titleEng;
 		this.genre = genre;
+		this.nation = nation;
 		this.director = director;
 		this.actor = actor;
 		this.plot = plot;
@@ -90,6 +92,14 @@ public class MovieDto {
 
 	public void setGenre(String genre) {
 		this.genre = genre;
+	}
+
+	public String getNation() {
+		return nation;
+	}
+
+	public void setNation(String nation) {
+		this.nation = nation;
 	}
 
 	public String getDirector() {
@@ -180,6 +190,7 @@ public class MovieDto {
 		this.endRowNum = endRowNum;
 	}
 
+	
 	
 
 }

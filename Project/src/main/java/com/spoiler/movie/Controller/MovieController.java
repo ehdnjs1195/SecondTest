@@ -26,14 +26,15 @@ public class MovieController {
 	public ModelAndView list(ModelAndView mView, HttpServletRequest request) {
 		//파일목록과 페이징 처리에 필요한 값들을 request에 담아주는 서비스 메소드 호출하기
 		String title = request.getParameter("title");
-		List<MovieDto> list = apiService.getList(title, null, 0);
+		
+		List<MovieDto> list = apiService.getList(title, null,null, 0);
 		mView.addObject("list", list);
 		mView.setViewName("searchlist");
 		return mView;
 	}
 	@RequestMapping("/genredetaillist")
 	public ModelAndView list2(ModelAndView mView, HttpServletRequest request, @ModelAttribute MovieDto dto) {
-		List<MovieDto> list = apiService.getList(dto.getTitle(), dto.getGenre(), dto.getStartRowNum());
+		List<MovieDto> list = apiService.getList(dto.getTitle(), dto.getGenre(), dto.getNation(), dto.getStartRowNum());
 		mView.addObject("list", list);
 		mView.setViewName("genredetaillist");
 		return mView;
@@ -56,8 +57,8 @@ public class MovieController {
 		return mView;
 	}
 	@RequestMapping("/more_list")
-	public ModelAndView moreMovieList(@RequestParam int startCount, @RequestParam String genre, @RequestParam String title, ModelAndView mView) {
-		List<MovieDto> list = apiService.moreMovieList(Integer.toString(startCount), genre, title);
+	public ModelAndView moreMovieList(@RequestParam int startCount, @RequestParam String genre, @RequestParam String title, @RequestParam String nation, ModelAndView mView) {
+		List<MovieDto> list = apiService.moreMovieList(Integer.toString(startCount), genre, title,nation);
 		mView.addObject("list",list);
 		mView.setViewName("more_list");
 		return mView;
