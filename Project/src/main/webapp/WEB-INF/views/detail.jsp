@@ -133,6 +133,7 @@
 						<form class="comment-insert-form" action="comment_insert.do" method="post">
 							<!-- 덧글 그룹 -->
 							<input type="hidden" name="ref_group" value="${dto.movieSeq }" />
+							<input type="hidden" name="movieId" value="${dto.movieId}"/>
 							<!-- 덧글 대상 -->
 							<input type="hidden" name="target_id" value="${tmp.writer }" />
 							<input type="hidden" name="comment_group" value="${tmp.comment_group }" />
