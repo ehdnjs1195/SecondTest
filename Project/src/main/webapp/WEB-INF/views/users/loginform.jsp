@@ -12,7 +12,9 @@
 </head>
 
 <style>
-
+.neon{
+	font-family: fantasy, sans-serif;
+}
 /* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
 .help-block, .form-control-feedback {
 	display: none;
