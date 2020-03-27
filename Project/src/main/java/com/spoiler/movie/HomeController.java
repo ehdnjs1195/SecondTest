@@ -28,10 +28,15 @@ public class HomeController {
 	}
 	//글 자세히 보기 요청 처리
 	@RequestMapping("/detail")
-	public String detail(HttpServletRequest request){
+	public ModelAndView detail(HttpServletRequest request, ModelAndView mView){
 		service.getDetail(request);
-		//view page 로 forward 이동해서 글 자세히 보기 
-		return "detail";
+		double ran=Math.random()*7+3;
+		double point=Math.round(ran*10)/10.0;
+		double point2 = point*10;
+		mView.addObject("point", point);
+		mView.addObject("point2", point2);
+		mView.setViewName("detail");
+		return mView;
 	}
 	//댓글 저장 요청 처리
 	@RequestMapping(value = "/comment_insert", method = RequestMethod.POST)

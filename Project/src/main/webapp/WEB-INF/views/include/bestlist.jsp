@@ -42,7 +42,7 @@ top:20px;bottom:20px;opacity:0;transform:rotate3d(-1,1,0,100deg);transition:all 
 		<!-- modal-lg  | default | modal-sm -->
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-body" style="display: flex;">
+				<div class="modal-body" style="display: flex; font-family: auto;">
 					<img src="${tmp.posters }" id="${tmp.movieSeq }">
 					<div class="imgBox">
 						<h2>${tmp.title }</h2>

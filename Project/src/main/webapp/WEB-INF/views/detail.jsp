@@ -57,19 +57,6 @@
     color: #ff0080;
     font-family: auto;
 }
-.bg_star {
-    display: block;
-    float: left;
-    width: 106px;
-    height: 17px;
-    background: url(//i1.daumcdn.net/img-contents/movie/2016/pc/bg_star_170614_v2.png) no-repeat 0 0;
-    overflow: hidden;
-    font-size: 0;
-    line-height: 0;
-    background-position: 0 -20px;
-    text-indent: -9999px;
-    font-family: auto;
-}
 .plot{
 	font-weight: lighter;
 	font-style: normal;
@@ -116,6 +103,38 @@
 #moreComment:hover, #allComment:hover{
 	background-color: #868686 !important;
 }
+
+.movie_summary .raking_grade {
+    padding-top: 1px;
+    line-height: 22px;
+}
+.raking_grade {
+    display: inline-block;
+    line-height: 22px;
+}
+.raking_grade .bg_star {
+    display: block;
+    float: left;
+    width: 108px;
+    height: 17px;
+    background: url(//i1.daumcdn.net/img-contents/movie/2016/pc/bg_star_170614_v2.png) no-repeat 0 0;
+}
+.raking_grade .bg_star .inner_star {
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    background-position: 0 -20px;
+    text-indent: -9999px;
+}
+.raking_grade .bg_star {
+    display: block;
+    float: left;
+    width: 108px;
+    height: 17px;
+    background: url(//i1.daumcdn.net/img-contents/movie/2016/pc/bg_star_170614_v2.png) no-repeat 0 0;
+}
+
+
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/detail_custom.css" />
 <jsp:include page="include/resource.jsp"/>
@@ -130,15 +149,17 @@
 	</div>
 	<div class="movie_summary">
 		<div class="subject_movie">
-			<strong class="tit_movie">${dto.title } (${dto.repRlsDate })</strong>
+			<strong class="tit_movie">${dto.title } (${dto.repRlsDate})</strong>
 			<!-- 영어 원본 제목 -->
 			<span class="txt_origin">${dto.titleEng }</span>
 		</div>
-		<span class="bg_star star_grade">
-			<span class="bg_star inner_star" style="width:73.30000162124634%">평점</span>
-		</span>
-		<em class="emph_grade">${dto.starPoint }</em>
-		<span class="txt_grade">/10</span>
+		<a href="#" class="raking_grade">
+			<span class="bg_star star_grade">
+				<span class="bg_star inner_star" style="width:${point2}%">평점</span>
+			</span>
+			<em class="emph_grade">${point }</em>
+			<span class="txt_grade">/10</span>
+		</a>
 		<dl class="list_movie list_main" style="clear: left;">
 			<dd class="txt_main">${dto.genre }</dd>
 			<dd class="txt_main">
@@ -154,8 +175,8 @@
 		<dl class="list_placing">
 		<dt class="screen_out">예매순위</dt>
 		<dd>
-			예매 
-			<em class="emph_g"><strong>2</strong></em>&nbsp;위
+			예매율 
+			<em class="emph_g"><strong>${dto.rank}</strong></em>&nbsp;위
 			<span class="txt_bar"></span>
 		</dd>
 		<dt>누적관객</dt>
@@ -169,7 +190,7 @@
 	</div>
 
 <!-- Comments -->
-	<h3 style="font-style: oblique;">네티즌 댓글</h3>
+	<h3 style="font-style: oblique; color: lightblue;">네티즌 댓글</h3>
 	<div class="comments">
 		<!-- 원글에 댓글을 작성할수 있는 폼 -->
 		<c:choose>
@@ -251,7 +272,7 @@
 							<form class="comment-update-form" action="comment_update.do" method="post">
 								<input type="hidden" name="num" value="${tmp.num }" />
 								<textarea name="content" id="comment" style="color:black;">${tmp.content }</textarea>
-								<button type="submit">수정</button>
+								<button type="submit" style="color: black;">수정</button>
 							</form>
 						</c:if>
 					</li>				

@@ -13,12 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spoiler.movie.Dto.MovieDto;
 import com.spoiler.movie.Service.MovieAPIService;
-import com.spoiler.movie.Service.MovieService;
 
 @Controller
 public class MovieController {
-	@Autowired
-	private MovieService service;
 	@Autowired
 	private MovieAPIService apiService;
 	
