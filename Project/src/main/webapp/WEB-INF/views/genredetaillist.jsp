@@ -41,24 +41,29 @@
 		</c:otherwise>
 	</c:choose>
 		
-	<!-- 라디오 정렬기능 : input 요소에서는 if문 작성이 안되네.... 간단한 방법은 없을까? -->
 	<div class="container">
 			<form action="genredetaillist.do" method="get">
-					<input type="hidden" name="genre" value="${param.genre }" />
-					<input type="radio" name="orderby" id="orderby" value="releaseDate" <c:if test="${orderby eq 'releaseDate' }">checked="checked"</c:if>> 출시일순
-					<input type="radio" name="orderby" id="orderby" value="title" <c:if test="${orderby eq 'title' }">checked="checked"</c:if>> 제목순
-					<input type="radio" name="orderby" id="orderby" value="starPoint" <c:if test="${orderby eq 'starPoint' }">checked="checked"</c:if>> 별점순
+				<input type="hidden" name="genre" value="${param.genre }" />
+				<input type="radio" name="nation" id="nation" value="대한민국" <c:if test="${param.nation eq '대한민국' }">checked="checked"</c:if>> 한국
+				<input type="radio" name="nation" id="nation" value="영국" <c:if test="${param.nation eq '영국' }">checked="checked"</c:if>> 영국
+				<input type="radio" name="nation" id="nation" value="미국" <c:if test="${param.nation eq '미국' }">checked="checked"</c:if>> 미국
+				<input type="radio" name="nation" id="nation" value="중국" <c:if test="${param.nation eq '중국' }">checked="checked"</c:if>>중국
+				<input type="radio" name="nation" id="nation" value="일본" <c:if test="${param.nation eq '일본' }">checked="checked"</c:if>> 일본
+				<input type="radio" name="nation" id="nation" value="덴마크" <c:if test="${param.nation eq '덴마크' }">checked="checked"</c:if>> 덴마크
+				<input type="radio" name="nation" id="nation" value="인도" <c:if test="${param.nation eq '인도' }">checked="checked"</c:if>> 인도
+				<input type="radio" name="nation" id="nation" value="싱가포르" <c:if test="${param.nation eq '싱가포르' }">checked="checked"</c:if>> 싱가포르
+				<input type="radio" name="nation" id="nation" value="홍콩" <c:if test="${param.nation eq '홍콩' }">checked="checked"</c:if>> 홍콩
 				<button class="btn btn-primary" type="submit" style="color: yellow;">검색</button>
 			</form>
 		</div>
 
 	<table>
 		<c:forEach var="tmp" items="${list }">
-
+		<c:if test="${fn:contains(tmp.nation,param.nation)}">
 			<tbody style="border-top: 2px solid white ;	border-bottom: 2px solid white ;" >
 				<tr>
-					<td class="col-xs-2" rowspan="4"><a href="detail.do?movieSeq=${tmp.movieSeq }&movieId=${tmp.movieId}"><img id="${param.genre }_${tmp.movieSeq}"
-					src="${tmp.posters }" style="width: 200px; height: 300px;" /></a></td>
+					<td class="col-xs-2" rowspan="4"><img id="${param.genre }_${tmp.movieSeq}"
+						src="${tmp.posters }" style="width: 200px; height: 300px;" /></td>
 					<td class="col-xs-1"><span id="title_tx"><span>제목</span></span></td>
 					<td class="col-xs-9"><span id="content_tx">${tmp.title }</span></td>
 				</tr>
@@ -78,7 +83,7 @@
 					<td><span id="content_tx">${tmp.actor }</span></td>
 				</tr>	
 			</tbody>
-
+			</c:if>				
 		</c:forEach>
 	</table>
 	<button class="btn btn-primary" style="width:100%;background-color: yellow;" id="moreBtn">더보기 ▼</button>
@@ -93,7 +98,7 @@ $("#moreBtn").click(function() {
       	$.ajax({
       	url:"more_list.do",
       	method:"get",
-      	data:{"startCount":startCount, "genre":"${param.genre}","title":""}, //data : 파라미터로 전달할 문자열 
+      	data:{"startCount":startCount, "genre":"${param.genre}","nation":"${param.nation}","title":""}, //data : 파라미터로 전달할 문자열 
       	dataType:"html",
       	success:function(responseData){
 	        $("table").append(responseData);

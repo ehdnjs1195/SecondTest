@@ -27,7 +27,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 	@Autowired
 	private MovieDao dao;
 	
-	public List<MovieDto> getList(String titleKey, String genreKey, int pageNum) {
+	public List<MovieDto> getList(String titleKey, String genreKey, String nationKey, int pageNum) {
 		List<MovieDto> list = new ArrayList<>();
 
 		StringBuilder urlBuilder = new StringBuilder(
@@ -42,6 +42,10 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 			if (genreKey != null) {
 				urlBuilder.append("&" + URLEncoder.encode("genre", "UTF-8") + "="
 						+ URLEncoder.encode(genreKey, "UTF-8")); /* 장르 */
+			}
+			if (nationKey != null) {
+				urlBuilder.append("&" + URLEncoder.encode("nation", "UTF-8") + "="
+						+ URLEncoder.encode(nationKey, "UTF-8")); /* 나라별 리스트 */
 			}
 			urlBuilder.append("&" + URLEncoder.encode("sort", "UTF-8") + "="
 					+ URLEncoder.encode("prodYear", "UTF-8")); /* 개봉순으로 정렬 */
@@ -88,6 +92,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 				title = title.replaceAll("!HE ", "");
 				String titleEng = (String) obj3.get("titleEng");
 				String genre = (String) obj3.get("genre");
+				String nation=(String) obj3.get("nation");
 				JSONArray dirArr = (JSONArray) obj3.get("director");
 				JSONObject dir = (JSONObject) dirArr.get(0);
 				String directorNm = (String) dir.get("directorNm");
@@ -127,7 +132,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 
 				// MovieDto 객체 생성
 				// list에 담기
-				MovieDto dto = new MovieDto(0,movieId, movieSeq, title, titleEng, genre, directorNm, actorNm, plot, runtime,
+				MovieDto dto = new MovieDto(0,movieId, movieSeq, title, titleEng, genre, nation, directorNm, actorNm, plot, runtime,
 						repRlsDate, keywords, 0, posters, null, 0, 0);
 				list.add(dto);
 			}
@@ -187,6 +192,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 			title = title.replaceAll("!HE ", "");
 			String titleEng = (String) obj3.get("titleEng");
 			String genre = (String) obj3.get("genre");
+			String nation=(String) obj3.get("nation");
 			JSONArray dirArr = (JSONArray) obj3.get("director");
 			JSONObject dir = (JSONObject) dirArr.get(0);
 			String directorNm = (String) dir.get("directorNm");
@@ -225,7 +231,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 			}
 
 			// MovieDto 객체 생성
-			dto = new MovieDto(0,movieId, movieSeq, title, titleEng, genre, directorNm, actorNm, plot, runtime, repRlsDate,
+			dto = new MovieDto(0,movieId, movieSeq, title, titleEng, genre, nation, directorNm, actorNm, plot, runtime, repRlsDate,
 					keywords, 0, posters, null, 0, 0);
 
 		} catch (Exception e) {
@@ -307,6 +313,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 					title = title.replaceAll("!HE ", "");
 					String titleEng = (String) obj3.get("titleEng");
 					String genre = (String) obj3.get("genre");
+					String nation=(String) obj3.get("nation");
 					JSONArray dirArr = (JSONArray) obj3.get("director");
 					JSONObject dir = (JSONObject) dirArr.get(0);
 					String directorNm = (String) dir.get("directorNm");
@@ -332,7 +339,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 						posters = default_poster;
 					}
 					// MovieDto 객체 생성
-					MovieDto dto = new MovieDto(++idx,movieId, movieSeq, title, titleEng, genre, directorNm, actorNm, plot,
+					MovieDto dto = new MovieDto(++idx,movieId, movieSeq, title, titleEng, genre, nation, directorNm, actorNm, plot,
 							runtime, repRlsDate, keywords, 0, posters, null, 0, 0);
 					System.out.println(idx + ". title :: " + title);
 					dao.updateMovie(dto);
@@ -344,7 +351,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 	}
 	
 	@Override
-	public List<MovieDto> moreMovieList(String startCount, String genreKey, String titleKey) {
+	public List<MovieDto> moreMovieList(String startCount, String genreKey, String titleKey,String nationKey) {
 		List<MovieDto> list = new ArrayList<>();
 
 		StringBuilder urlBuilder = new StringBuilder(
@@ -356,6 +363,9 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 			}
 			if(titleKey != null) {
 				urlBuilder.append("&" + URLEncoder.encode("title", "UTF-8") + "="+ URLEncoder.encode(titleKey, "UTF-8")); /* 개봉순으로 정렬 */				
+			}
+			if(nationKey != null) {
+				urlBuilder.append("&" + URLEncoder.encode("nation", "UTF-8") + "="+ URLEncoder.encode(nationKey, "UTF-8")); /* 나라별리스트 */				
 			}
 			urlBuilder.append("&" + URLEncoder.encode("sort", "UTF-8") + "="+ URLEncoder.encode("prodYear", "UTF-8")); /* 개봉순으로 정렬 */
 			
@@ -401,6 +411,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 				title = title.replaceAll("!HE ", "");
 				String titleEng = (String) obj3.get("titleEng");
 				String genre = (String) obj3.get("genre");
+				String nation=(String) obj3.get("nation");
 				JSONArray dirArr = (JSONArray) obj3.get("director");
 				JSONObject dir = (JSONObject) dirArr.get(0);
 				String directorNm = (String) dir.get("directorNm");
@@ -440,7 +451,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 
 				// MovieDto 객체 생성
 				// list에 담기
-				MovieDto dto = new MovieDto(0,movieId, movieSeq, title, titleEng, genre, directorNm, actorNm, plot, runtime,
+				MovieDto dto = new MovieDto(0,movieId, movieSeq, title, titleEng, genre, nation, directorNm, actorNm, plot, runtime,
 						repRlsDate, keywords, 0, posters, null, 0, 0);
 				list.add(dto);
 			}
