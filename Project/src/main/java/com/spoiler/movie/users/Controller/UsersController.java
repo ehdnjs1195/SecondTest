@@ -47,8 +47,8 @@ public class UsersController {
 	
 	@ResponseBody
 	@RequestMapping("/users/checkpwd")
-	public Map<String, Object> checkpwd(@RequestParam String inputPw){
-		Map<String, Object> map=service.isPwdright(inputPw);
+	public Map<String, Object> checkpwd(@RequestParam String inputPw, HttpServletRequest request){
+		Map<String, Object> map=service.isPwdright(inputPw, request);
 		return map;
 	}
 	

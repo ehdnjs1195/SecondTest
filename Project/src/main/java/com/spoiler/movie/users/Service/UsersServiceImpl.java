@@ -131,8 +131,11 @@ public class UsersServiceImpl implements UsersService{
 		dao.delete(id);
 	}
 	@Override
-	public Map<String, Object> isPwdright(String inputPw) {
-			boolean isPwdright=dao.isPwdright(inputPw);
+	public Map<String, Object> isPwdright(String inputPw, HttpServletRequest request) {
+			String id = (String)request.getSession().getAttribute("id");
+			String pwdHash=dao.getPwdHash(id);
+			
+			boolean isPwdright=BCrypt.checkpw(inputPw, pwdHash);
 			Map<String, Object> map=new HashMap<>();
 			map.put("isPwdright", isPwdright);
 			return map;

@@ -9,7 +9,7 @@
 	<select id="isPwdright" parameterType="java.lang.String" resultType="String">
 		SELECT pwd
 		FROM users
-		WHERE pwd=#{inputPw}
+		WHERE id=#{id}
 	</select>
 	<insert id="insert" parameterType="usersDto">
 		INSERT INTO users

@@ -13,7 +13,7 @@ import com.spoiler.movie.users.Dto.UsersDto;
 
 public interface UsersService {
 	public Map<String, Object> isExistId(String inputId);
-	public Map<String, Object> isPwdright(String inputPw);
+	public Map<String, Object> isPwdright(String inputPw, HttpServletRequest request);
 	public void validUser(UsersDto dto, HttpSession session, 
 			ModelAndView mView);
 	public void showInfo(String id, ModelAndView mView);

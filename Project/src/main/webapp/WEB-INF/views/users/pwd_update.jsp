@@ -10,20 +10,12 @@
 </head>
 <body>
 <div class="container">
-	<c:choose>
-		<c:when test="${isSuccess }">
+
 			<script>
 				alert("비밀 번호를 수정 했습니다.");
 				location.href="info.do";
 			</script>
-		</c:when>
-		<c:otherwise>
-			<script>
-				alert("기존 비밀번호가 일치 하지 않습니다. 다시 확인해주세요.");
-				location.href="pwd_updateform.do";
-			</script>
-		</c:otherwise>
-	</c:choose>
+		
 </div>
 </body>
 </html>

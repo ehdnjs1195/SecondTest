@@ -212,7 +212,7 @@ p {
 						<p class="help-block" id="newPwd_required">필수 정보입니다.</p>
 						<p class="help-block" id="noSpace_required">공백은 입력할수없습니다.</p>
 						<p class="help-block" id="newPwd_notequal">아래의 확인란과 동일하게 입력하세요</p>
-						<p class="help-block" id="pwdChk_required">영문, 숫자 조합 8자리~20자리 이내로 입력하세요.</p>
+						<p class="help-block" id="pwdChk_required">영문, 숫자, 특수문자 조합 8자리~20자리 이내로 입력하세요.</p>
 					</div>
 					<div class="form-group">
 						<div class="input-group">
@@ -256,7 +256,13 @@ p {
 	var isPwdDirty3=false;
 	
 	var isPwdright=false;
+var Message=false;
 	
+	if(Message){
+		$("#pwd_notmatch").show();
+	}else{
+		$("#pwd_notmatch").hide();
+	}
 	
 	$("#newPwd, #newPwd2").on("input", function(){
 		//상태값을 바꿔준다. 
@@ -318,21 +324,23 @@ p {
 			//2. 서버에 보내서 사용가능 여부를 응답 받는다.
 			$.ajax({
 				url:"${pageContext.request.contextPath }/users/checkpwd.do",
-				method:"GET",
-				data:{inputPw:inputPw},
+				method:"POST",
+				data:{"inputPw":inputPw},
 				success:function(responseData){
 					if(responseData.isPwdright){//이미 존재하는 아이디라면 
-						isPwdright=true;
+						
+						isPwdright= true;
 					}else{
+						
 						isPwdright=false;
 					}
-					//아이디 에러 여부 
+					 //아이디 에러 여부 
 					var isError= !isPwdright;
 					//아이디 상태 바꾸기 
-					setState("#pwd", isError );
+					setState("#pwd", isError ); 
 				}
 			});
-			//아이디를 입력했는지 검증
+			 //아이디를 입력했는지 검증
 			if(inputPw.length == 0){//만일 입력하지 않았다면 
 				isPwdInput1=false;
 			}else{
@@ -340,7 +348,7 @@ p {
 				
 				
 			}
-			
+			 
 		});
 		
 		//입력란의 상태를 바꾸는 함수 

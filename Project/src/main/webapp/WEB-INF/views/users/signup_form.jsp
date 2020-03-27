@@ -403,7 +403,7 @@ input[type="checkbox"]:checked + label:before {
 			</div>
 			<p class="help-block" id="pwd_required">필수 정보입니다.</p>
 			<p class="help-block" id="noSpace_required">공백은 입력할수없습니다.</p>
-			<p class="help-block" id="pwdChk_required">영문, 숫자 조합 8자리~20자리 이내로 입력하세요.</p>
+			<p class="help-block" id="pwdChk_required">영문, 숫자, 특수문자 조합 8자리~20자리 이내로 입력하세요.</p>
 			<p class="help-block" id="pwd_notequal">비밀번호가 일치하지 않습니다.</p>
 		</div>
 		
@@ -604,7 +604,7 @@ input[type="checkbox"]:checked + label:before {
 		$.ajax({
 			url:"${pageContext.request.contextPath }/users/checkid.do",
 			method:"GET",
-			data:{inputId:inputId},
+			data:{"inputId":inputId},
 			success:function(responseData){
 				if(responseData.isExist){//이미 존재하는 아이디라면 
 					isIdUsable=false;
