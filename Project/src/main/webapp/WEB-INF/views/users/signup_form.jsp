@@ -9,13 +9,15 @@
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <style>
-
+.neon{
+	font-family: fantasy, sans-serif;
+}
 .input-group .form-control-feedback {
     z-index: 3;
 }
 
-	/* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
-	.help-block, .form-control-feedback{
+/* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
+.help-block, .form-control-feedback{
 		display: none;
 	}
 	.btn btn-primary {

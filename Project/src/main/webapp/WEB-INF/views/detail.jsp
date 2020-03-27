@@ -108,6 +108,14 @@
     float: left;
     margin-right: 5px;
 }
+#moreComment, #allComment{
+	background-color: #b0b0b0 !important;
+	font-family: initial;
+    font-style: italic;
+}
+#moreComment:hover, #allComment:hover{
+	background-color: #868686 !important;
+}
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/detail_custom.css" />
 <jsp:include page="include/resource.jsp"/>
@@ -231,6 +239,7 @@
 						<form class="comment-insert-form" action="comment_insert.do" method="post">
 							<!-- 덧글 그룹 -->
 							<input type="hidden" name="ref_group" value="${dto.movieSeq }" />
+							<input type="hidden" name="movieId" value="${dto.movieId}"/>
 							<!-- 덧글 대상 -->
 							<input type="hidden" name="target_id" value="${tmp.writer }" />
 							<input type="hidden" name="comment_group" value="${tmp.comment_group }" />
