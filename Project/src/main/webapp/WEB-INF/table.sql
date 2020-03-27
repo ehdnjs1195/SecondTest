@@ -12,3 +12,8 @@ runtime varchar2(3),
 repRlsDate varchar2(8),
 keywords varchar2(200),
 posters varchar2(150));
+
+CREATE TABLE favorite(num NUMBER PRIMARY KEY,id VARCHAR2(30), movieId VARCHAR2(5), movieSeq VARCHAR2(5),
+repRlsDate VARCHAR2(8), genre VARCHAR2(150), title VARCHAR2(200) NOT NULL, poster VARCHAR2(150))
+
+CREATE SEQUENCE Favorite_Seq;

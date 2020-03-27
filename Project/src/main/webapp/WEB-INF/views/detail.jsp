@@ -161,7 +161,9 @@
 		<dt>누적관객</dt>
 		<dd id="totalAudience">682,309명</dd>
 		</dl>
-		<a href="#" class="btn btn-danger">관심목록 추가하러가기</a>
+		<form class="form-favorite" action="${pageContext.request.contextPath }/users/favorite_update.do" method="post">
+		<button class="btn btn-danger">관심목록 추가하러가기</button>
+		</form>
 	</div>
 	<div class="desc_movie" style="clear: left; font-weight: bold; padding-top: 28px;">
 	<h3 style="font-style: oblique; margin-top: 0; color: #ff83c2;">줄거리</h3>
@@ -343,7 +345,20 @@
 		}
 	});
 	
-	
+	//폼에 click 이벤트가 일어 났을때 실행할 함수 등록 
+	$(".form-favorite").on("click", function(){
+		//로그인 여부 
+		var isLogin=${not empty id};
+		if(isLogin==false){
+			var isMove=confirm("관심목록을 추가하려면 로그인이 필요합니다.\n로그인 페이지로 이동 하시겠습니까?");
+			if(isMove){
+				location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}%26movieId=${dto.movieId}";
+			}else{
+				
+				return false;
+			}
+		}
+	});
 	
 	//답글 달기 링크를 클릭했을때 실행할 함수 등록
 	$(".comment .reply_link").click(function(){

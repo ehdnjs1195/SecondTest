@@ -153,7 +153,7 @@ header img {
     -ms-border-radius: 10px;
     padding: 50px 85px;
     opacity:0.9;
-     width: 480px;
+     width: 500px;
 }
 
 p{
@@ -190,7 +190,18 @@ p{
 		</c:choose>
 			</a>
 		<h1 class="tm-title bold shadow">${dto.id }</h1>
-		<h4><span style="font-weight:bold;">관심목록 : </span> </h4>
+		<h4><span style="font-weight:bold;">관심목록 :</span>
+		<span>
+		<c:choose>
+			<c:when test="${ empty dto.profile }" >
+				<img src="${pageContext.request.contextPath }/resources/images/default_user.png" 
+				class="img-responsive img-circle tm-border"/>
+			</c:when>
+			<c:otherwise>
+				아직 추가한 영화가 없습니다.
+			</c:otherwise>
+		</c:choose>
+		</span> </h4>
 		<p>
 		
 		
