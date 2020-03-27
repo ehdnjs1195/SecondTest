@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -211,9 +212,9 @@ body {
 
 					<div class="form-group form-check">
 						<input type="checkbox" name="isSave" value="yes"
-							class="form-check-input" id="idPwdSave"> <label
-							class="form-check-label" for="idPwdSave" style="color: black">아이디,비밀번호
-							저장</label>
+							class="form-check-input" id="idPwdSave" <c:if test="${not empty savedId }">checked</c:if>> <label
+							class="form-check-label" for="idPwdSave" style="color: black"  >아이디,비밀번호 
+							저장</label> 
 					</div>
 
 					<div>
