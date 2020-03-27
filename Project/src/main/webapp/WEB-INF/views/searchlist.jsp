@@ -71,7 +71,7 @@ $("#moreBtn").click(function() {
    	$.ajax({
    	url:"more_list.do",
    	method:"get",
-   	data:{"startCount":startCount,"genre":"", "title":"${param.title}"}, //data : 파라미터로 전달할 문자열 
+   	data:{"startCount":startCount,"genre":"","nation":"", "title":"${param.title}"}, //data : 파라미터로 전달할 문자열 
    	dataType:"html",
    	success:function(responseData){
        $("table").append(responseData);
