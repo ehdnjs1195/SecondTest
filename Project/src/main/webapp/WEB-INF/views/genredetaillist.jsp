@@ -62,8 +62,8 @@
 		<c:if test="${fn:contains(tmp.nation,param.nation)}">
 			<tbody style="border-top: 2px solid white ;	border-bottom: 2px solid white ;" >
 				<tr>
-					<td class="col-xs-2" rowspan="4"><img id="${param.genre }_${tmp.movieSeq}"
-						src="${tmp.posters }" style="width: 200px; height: 300px;" /></td>
+					<td class="col-xs-2" rowspan="4"><a href="detail.do?movieSeq=${tmp.movieSeq }&movieId=${tmp.movieId}"><img id="${param.genre }_${tmp.movieSeq}"
+						src="${tmp.posters }" style="width: 200px; height: 300px;" /></a></td>
 					<td class="col-xs-1"><span id="title_tx"><span>제목</span></span></td>
 					<td class="col-xs-9"><span id="content_tx">${tmp.title }</span></td>
 				</tr>
