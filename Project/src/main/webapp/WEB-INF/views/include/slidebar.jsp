@@ -7,8 +7,8 @@
            text-decoration: none;
            position: fixed;
            top: 0;
-           left: 0;
-           width: 150px;
+           left: 0px;
+           width: 10px;
            height: 100%;
 			z-index:100;
            
@@ -71,9 +71,19 @@
 		position: relative;
 		font-size: 13px;
 	}
+	
+
+	
+	#style-3::-webkit-scrollbar
+	{
+		width: 0px;
+	
+	}
+	
+
 </style>
 <div class="slide_left">
-	<div class="smenu">
+	<div class="smenu scrollbar" id="style-3">
 		<ul class="depth01">
 			<li><a href="#" id="hideBtn">장르메뉴 접기▲</a></li>
 			<li><a href="#" class="slide_btn">영화별 장르</a></li>
@@ -111,8 +121,8 @@
 				<li><a href="genredetaillist.do?genre=인물">인물</a></li>
 				<li><a href="genredetaillist.do?genre=자연ㆍ환경">자연ㆍ환경</a></li>
 				<li><a href="genredetaillist.do?genre=인권">인권</a></li>
-				<li><a href="genredetaillist.do?genre=계몽">계몽</a></li>
 				<li><a href="genredetaillist.do?genre=에로">에로</a></li>
+				<li><a href="genredetaillist.do?genre=계몽">계몽</a></li>
 			</ul>
 			</li>
 		</ul>
@@ -121,8 +131,8 @@
 </div>
 <script>
 	$('ul.depth01>li').mouseup(function(){
-    $('ul.depth02').slideUp();
-        $(this).children('ul.depth02').toggle();
+	    $('ul.depth02').slideUp();
+	        $(this).children('ul.depth02').toggle();
     })
     
      $("#hideBtn").on("click", function () {
