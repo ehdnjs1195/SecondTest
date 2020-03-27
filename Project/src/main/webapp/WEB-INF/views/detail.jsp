@@ -110,30 +110,14 @@
     margin-right: 5px;
 }
 
-/* .wrap_pbtn {
-    overflow: hidden;
-    margin: -1px 0 0 -7px;
+#moreComment, #allComment{
+	background-color: #b0b0b0 !important;
+	font-family: initial;
+    font-style: italic;
 }
-.wrap_pbtn .link_popcorn {
-    display: block;
-    width: 115px;
-    height: 40px;
-    line-height: 42px;
-    border: 0;
+#moreComment:hover, #allComment:hover{
+	background-color: #868686 !important;
 }
-.wrap_pbtn .btn_item {
-    position: relative;
-    margin: 8px 0 0 8px;
-}
-.main_detail .btn_item {
-    float: left;
-    font-size: 14px;
-    text-align: center;
-}
-.link_popcorn {
-    color: #fff;
-    background-color: #ff382e;
-} */
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/detail_custom.css" />
 <jsp:include page="include/resource.jsp"/>
