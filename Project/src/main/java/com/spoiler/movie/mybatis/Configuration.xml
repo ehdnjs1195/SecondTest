@@ -8,6 +8,7 @@
 		<typeAlias type="com.spoiler.movie.Dto.MovieDto" alias="movieDto"/>
 		<typeAlias type="com.spoiler.movie.Dto.MovieCommentDto" alias="movieCommentDto"/>
 		<typeAlias type="com.spoiler.movie.users.Dto.UsersDto" alias="usersDto"/>
+		<typeAlias type="com.spoiler.movie.favorite.Dto.FavoriteDto" alias="favoriteDto"/>
 	</typeAliases>
 	
 	<!-- mapper 설정 -->
@@ -15,6 +16,7 @@
 		<mapper resource="com/spoiler/movie/mybatis/MovieMapper.xml"/>
 		<mapper resource="com/spoiler/movie/mybatis/MovieCommentMapper.xml"/>
 		<mapper resource="com/spoiler/movie/mybatis/UsersMapper.xml"/>
+		<mapper resource="com/spoiler/movie/mybatis/FavoriteMapper.xml"/>
 	</mappers>
 </configuration>
 

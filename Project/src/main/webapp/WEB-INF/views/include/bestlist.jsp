@@ -19,47 +19,21 @@ top:20px;bottom:20px;opacity:0;transform:rotate3d(-1,1,0,100deg);transition:all 
 @media only screen and (max-width:990px){.box13{margin-bottom:30px}
 </style>
 
-
-<!-- Carousel -->
-<div id="myCarousel_top8" class="carousel slide" data-ride="carousel"
-	data-interval="5000">
-	<!-- Carousel 하단의 동그란 nav 요소  -->
-	<ol class="carousel-indicators">
-		<!-- data-target="Carousel 전체의 선택자" 
-         data-slide-to="컨텐츠 인덱스" -->
-		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-		<li data-target="#myCarousel" data-slide-to="1"></li>
-	</ol>
-
-	<div class="carousel-inner">
-		<c:forEach var="i" begin="1" end="2" step="1">
-			<div class="item <c:if test="${i eq 1}">active</c:if>">
-				<c:forEach var="tmp" items="${list }">
-					<div class="items" id="best_${tmp.movieSeq}">
-						<img id="best_${tmp.movieSeq}" src="${tmp.posters }" />
-                        <div class="box-content" style="text-align:center">
-                            <h3 class="title">${tmp.title}</h3>
-                            <p class="post">개봉일 : ${tmp.repRlsDate }</p>
-                            <p class="post">${tmp.genre }</p>
-                            <hr width="170px">
-                             	<a style="color:white">자세히보기</a>
-	                     </div>
-	                     
-	                  </div>
-					
-				</c:forEach>
-				
-			</div>
-		</c:forEach>
-	</div>
-	<!-- 이전, 다음 control UI -->
-	<a href="#myCarousel_top8" class="left carousel-control"
-		data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span>
-		<span class="sr-only">이전</span>
-	</a> <a href="#myCarousel_top8" class="right carousel-control"
-		data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span>
-		<span class="sr-only">다음</span>
-	</a>
+<div>
+	<c:forEach var="tmp" items="${list }">
+		<c:if test="${tmp.rank le 10 }">
+			<div class="items" id="best_${tmp.movieSeq}" >
+				<img id="best_${tmp.movieSeq}" src="${tmp.posters }" />
+	               <div class="box-content" style="text-align:center">
+	                <h3 class="title">${tmp.title}</h3>
+	                <p class="post">개봉일 : ${tmp.repRlsDate }</p>
+	                <p class="post">${tmp.genre }</p>
+	                <hr width="170px">
+	                  	<a style="color:white">자세히보기</a>
+	             	</div>
+	       	</div>
+		</c:if>
+	</c:forEach>
 </div>
 
 <!-- Modal -->
@@ -91,7 +65,7 @@ top:20px;bottom:20px;opacity:0;transform:rotate3d(-1,1,0,100deg);transition:all 
 						<h3>줄거리</h3>
 						<h4>${tmp.plot }</h4>
 						<div>
-							<a href="detail.do?movieSeq=${tmp.movieSeq }" type="button" class="btn btn-info">자세히 보러가기</a>
+							<a href="detail.do?movieSeq=${tmp.movieSeq }&movieId=${tmp.movieId}" type="button" class="btn btn-info">네티즌 평점 보러가기</a>
 						</div>
 					</div>
 				</div>

@@ -6,67 +6,180 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.txt_origin{
+	display: -webkit-box;
+    overflow: hidden;
+    height: 25px;
+    font-size: 14px;
+    line-height: 25px;
+    color: #989898;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    font-family: auto;
+}
+.tit_movie{
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    padding-bottom: 0;
+    font-size: 18px;
+    line-height: 25px;
+    font-family: auto;
+}
+.detail_summarize{
+    position: relative;
+    float: left;
+    margin-right: 30px;
+    font-family: auto;
+}
+.movie_summary{
+    overflow: hidden;
+    font-family: auto;
+}
+.txt_main{
+	font-size: 14px;
+	font-family: auto;
+}
+.txt_grade{
+	float: left;
+    font-size: 18px;
+    line-height: 15px;
+    color: #989898;
+    font-family: auto;
+}
+.emph_grade {
+    float: left;
+    padding-left: 10px;
+    font-size: 18px;
+    line-height: 15px;
+    font-weight: bold;
+    color: #ff0080;
+    font-family: auto;
+}
+.bg_star {
+    display: block;
+    float: left;
+    width: 106px;
+    height: 17px;
+    background: url(//i1.daumcdn.net/img-contents/movie/2016/pc/bg_star_170614_v2.png) no-repeat 0 0;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    background-position: 0 -20px;
+    text-indent: -9999px;
+    font-family: auto;
+}
+.plot{
+	font-weight: lighter;
+	font-style: normal;
+	font-family: auto;
+	color: #ff83c2;
+}
+.list_placing{
+    overflow: hidden;
+    padding-top: 11px;
+    border-top: 2px solid #f5f5f5;
+}
+.list_placing .txt_bar {
+    width: 1px;
+    height: 12px;
+    margin: 4px 7px 0 11px;
+    background-color: #eaeaea;
+    display: inline-block;
+    vertical-align: top;
+}
+.screen_out {
+    overflow: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
+.emph_g{
+	color: #f32276;
+}
+.list_placing dt {
+    float: left;
+    padding-right: 5px;
+}
+.list_placing dd {
+    float: left;
+    margin-right: 5px;
+}
+#moreComment, #allComment{
+	background-color: #b0b0b0 !important;
+	font-family: initial;
+    font-style: italic;
+}
+#moreComment:hover, #allComment:hover{
+	background-color: #868686 !important;
+}
+</style>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/detail_custom.css" />
 <jsp:include page="include/resource.jsp"/>
 </head>
 <body>
 <jsp:include page="include/navbar.jsp"/>
 <div class="container" style="color:white;">
-	<table id="table" class="table table-bordered table-condensed">
-		<colgroup>
-			<col class="col-xs-3"/>
-			<col class="col-xs-9"/>
-		</colgroup>
-		<tr>
-			<th>movieSeq</th>
-			<td>${dto.movieSeq }</td>
-		</tr>
-		<tr>
-			<th>title</th>
-			<td>${dto.title }</td>
-		</tr>
-		<tr>
-			<th>content</th>
-			<td>${dto.plot }</td>
-		</tr>
-		<tr>
-			<th>releaseDate</th>
-			<td>${dto.repRlsDate }</td>
-		</tr>
-		<tr>
-			<th>genre</th>
-			<td>${dto.genre }</td>
-		</tr>
-		<tr>
-			<th>director</th>
-			<td>${dto.director }</td>
-		</tr>
-		<tr>
-			<th>actor</th>
-			<td>${dto.actor }</td>
-		</tr>
-		<tr>
-			<th>starPoint</th>
-			<td>${dto.starPoint }</td>
-		</tr>
-		<tr>
-			<th>imageLink</th>
-			<td><img src="${dto.posters }" style="width: 300px; height: 600px;"/></td>
-		</tr>
-		<tr>
-			<th>videoLink</th>
-			<td><iframe src="${dto.videoLink }" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
-		</tr>
-	</table>
+	<div class="detail_summarize">
+		<span class="thumb_summary #info #poster">
+			<img src="${dto.posters }" style="width: 187px; height: 272px;" class="img_summary" alt="${dto.title } 포스터"/>
+		</span>
+	</div>
+	<div class="movie_summary">
+		<div class="subject_movie">
+			<strong class="tit_movie">${dto.title } (${dto.repRlsDate })</strong>
+			<!-- 영어 원본 제목 -->
+			<span class="txt_origin">${dto.titleEng }</span>
+		</div>
+		<span class="bg_star star_grade">
+			<span class="bg_star inner_star" style="width:73.30000162124634%">평점</span>
+		</span>
+		<em class="emph_grade">${dto.starPoint }</em>
+		<span class="txt_grade">/10</span>
+		<dl class="list_movie list_main" style="clear: left;">
+			<dd class="txt_main">${dto.genre }</dd>
+			<dd class="txt_main">
+				(개봉) ${dto.repRlsDate }
+			</dd>
+			<dd class="type_ellipsis">
+				(감독) <a href="#" style="color: #70ff35;">${dto.director }</a>
+			</dd>
+			<dd class="type_ellipsis">
+				(배우) <a href="#" style="color: #70ff35;">${dto.actor }</a>
+			</dd>
+		</dl>
+		<dl class="list_placing">
+		<dt class="screen_out">예매순위</dt>
+		<dd>
+			예매 
+			<em class="emph_g"><strong>2</strong></em>&nbsp;위
+			<span class="txt_bar"></span>
+		</dd>
+		<dt>누적관객</dt>
+		<dd id="totalAudience">682,309명</dd>
+		</dl>
+		<form class="form-favorite" action="${pageContext.request.contextPath }/users/favorite_update.do" method="post">
+		<button class="btn btn-danger">관심목록 추가하러가기</button>
+		</form>
+	</div>
+	<div class="desc_movie" style="clear: left; font-weight: bold; padding-top: 28px;">
+	<h3 style="font-style: oblique; margin-top: 0; color: #ff83c2;">줄거리</h3>
+	<p class="plot">${dto.plot }</p>
+	</div>
 
 <!-- Comments -->
+	<h3 style="font-style: oblique;">네티즌 댓글</h3>
 	<div class="comments">
 		<!-- 원글에 댓글을 작성할수 있는 폼 -->
 		<c:choose>
-			<c:when test="${empty tmp.profile }">
+			<c:when test="${empty profile }">
 				<img id="user-img" class="user-img" src="${pageContext.request.contextPath}/resources/images/default_user.jpeg"/>
 			</c:when>
 			<c:otherwise>
-				<img id="user-img" class="user-img" src="${pageContext.request.contextPath}${tmp.profile}"/>
+				<img id="user-img" class="user-img" src="${pageContext.request.contextPath}${profile}"/>
 			</c:otherwise>
 		</c:choose>
 		<div class="comment_form">
@@ -74,6 +187,8 @@
 				<!-- 댓글의 그룹번호는 원글의 글번호가 된다.  -->
 				<input type="hidden" name="ref_group" 
 					value="${dto.movieSeq }"/>
+				<input type="hidden" name="movieId" 
+					value="${dto.movieId}"/>
 				<!-- 댓글의 대상자는 원글의 작성자가 된다. -->
 				<input type="hidden" name="target_id" 
 					value="${dto.movieSeq }"/> <!-- 정보를 받아와서 뿌려주므로 원글의 작성자를 dto.movieSeq 으로 넣어줬다. -->
@@ -100,21 +215,21 @@
 									</c:otherwise>
 								</c:choose>
 								
-								<span>${tmp.writer }</span>
+								<span style="font-weight: normal; font-family: auto;">${tmp.writer }</span>
 								<c:if test="${tmp.num ne tmp.comment_group }">
 									<strong>to</strong>
 									<strong>${tmp.target_id }</strong>
 								</c:if>
-								<span>${tmp.regdate }</span>
-								<a href="javascript:" class="reply_link">답글</a> |
+								<span style="font-weight: normal; font-family: auto;">${tmp.regdate }</span>
+								<a href="javascript:" class="reply_link" style="color: #70ff35;">답글</a> |
 								<c:choose>
 									<%-- 로그인된 아이디와 댓글의 작성자가 같으면 --%>
 									<c:when test="${id eq tmp.writer }">
-										<a href="javascript:" class="comment-update-link">수정</a>&nbsp;&nbsp;
-										<a href="javascript:deleteComment(${tmp.num })">삭제</a>
+										<a href="javascript:" class="comment-update-link" style="color: #00c851;">수정</a>&nbsp;&nbsp;
+										<a href="javascript:deleteComment(${tmp.num })" style="color: #00c851;">삭제</a>
 									</c:when>
 									<c:otherwise>
-										<a href="javascript:">신고</a>
+										<a href="javascript:" style="color: #ff0000;">신고</a>
 									</c:otherwise>
 								</c:choose>
 							</dt>
@@ -126,6 +241,7 @@
 						<form class="comment-insert-form" action="comment_insert.do" method="post">
 							<!-- 덧글 그룹 -->
 							<input type="hidden" name="ref_group" value="${dto.movieSeq }" />
+							<input type="hidden" name="movieId" value="${dto.movieId}"/>
 							<!-- 덧글 대상 -->
 							<input type="hidden" name="target_id" value="${tmp.writer }" />
 							<input type="hidden" name="comment_group" value="${tmp.comment_group }" />
@@ -213,7 +329,7 @@
 		var isLogin=${not empty id};
 		if(isLogin==false){
 			alert("로그인 페이지로 이동 합니다.");
-			location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}";
+			location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}%26movieId=${dto.movieId}";
 			return false;//폼 전송 막기 
 		}
 	});
@@ -224,12 +340,25 @@
 		if(isLogin==false){
 			var isMove=confirm("로그인 페이지로 이동 하시겠습니까?");
 			if(isMove){
-				location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}";
+				location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}%26movieId=${dto.movieId}";
 			}
 		}
 	});
 	
-	
+	//폼에 click 이벤트가 일어 났을때 실행할 함수 등록 
+	$(".form-favorite").on("click", function(){
+		//로그인 여부 
+		var isLogin=${not empty id};
+		if(isLogin==false){
+			var isMove=confirm("관심목록을 추가하려면 로그인이 필요합니다.\n로그인 페이지로 이동 하시겠습니까?");
+			if(isMove){
+				location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}%26movieId=${dto.movieId}";
+			}else{
+				
+				return false;
+			}
+		}
+	});
 	
 	//답글 달기 링크를 클릭했을때 실행할 함수 등록
 	$(".comment .reply_link").click(function(){
@@ -253,4 +382,57 @@
 	}
 </script>
 </body>
+<script>window.jQuery||document.write('<script src="https://s1.daumcdn.net/svc/original/U03/cssjs/jquery/jquery-1.11.0.min.js"><\/script>');</script>
+
+<script>
+
+var thresholdCount = 5; //댓글 표시 갯수
+
+$("li[id^='comment']").parent().first().addClass("nubiz");
+
+var commentCount = $(".nubiz>li[id^='comment']").length;
+
+$(".nubiz").append('<button id="moreComment" onclick="moreComment()" style="display:none"> 보기 </button><button id="allComment" onclick="showAllComment()" style="display:none">전체</br>보기</button><style>#moreComment {width: 85%;height: 50px;font-size: .8em;font-weight: bold;background-color: #eee;float:left;}#allComment{width: 15%;height: 50px;font-size: .8em;font-weight: bold;background-color: #eee;}#moreComment:hover,#allComment:hover {color:#fff;background-color: #999;}</style>')
+
+function refeshComment() {
+
+    $("#moreComment").html("더 보기 [ " + $("li[id^=comment]:visible").length + "/" + $("li[id^='comment']").length + " ]");
+
+}
+
+function moreComment() {
+
+    $(".nubiz>li[id^='comment']:hidden:lt("+thresholdCount+")").show(500)
+
+    if($("li[id^='comment']:hidden")[0]==undefined){
+
+        $("#moreComment, #allComment").hide(500)
+
+    };
+
+    refeshComment();
+
+}
+
+function showAllComment() {
+
+    $(".nubiz>li[id^=comment]").show(500);
+
+    $("#moreComment, #allComment").hide(500);
+
+}
+
+if (commentCount > thresholdCount) {
+
+    $("#moreComment, #allComment").show();
+
+    $(".nubiz>li[id^='comment']:gt(" + (thresholdCount-1) + ")").hide();
+
+    refeshComment();
+
+};
+
+$("li[id^='ttMorePreviousComments']").click(function(){showAllComment()});
+
+</script>
 </html>

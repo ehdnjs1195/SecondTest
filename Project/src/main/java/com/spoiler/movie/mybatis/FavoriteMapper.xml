@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="favorite">
+
+
+	<select id="isExist" parameterType="java.lang.String" resultType="String">
+		SELECT movieId
+		FROM favorite
+		WHERE id=#{Id}
+	</select>
+	
+	<select id="getFavoriteList" resultType="favoriteDto">
+		select * from favorite
+		order by movieSeq asc
+	</select>
+	
+	
+	<insert id="insert" parameterType="favoriteDto">
+		INSERT INTO favorite
+		(num, id, movieId, movieSeq, repRlsDate, genre, title, poster)
+		VALUES(Favorite_Seq.NEXTVAL, 
+		#{id}, #{movieId}, #{movieSeq}, #{repRlsDate}, #{genre}, #{title}, #{poster} )
+	</insert>
+	
+	
+	<select id="getData" parameterType="String" resultType="favoriteDto">
+		SELECT num, movieId, movieSeq, repRlsDate, genre, title, poster
+		FROM favorite
+		WHERE id=#{id}
+	</select>
+	
+	<select id="getCount" parameterType="String" resultType="favoriteDto">
+		SELECT count(movieId)
+		FROM favorite
+		WHERE id=#{id}
+	</select>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM favorite
+		WHERE movieId=#{movieId} and id=#{Id}
+	</delete>
+	
+</mapper>

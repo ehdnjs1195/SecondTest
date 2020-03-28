@@ -2,7 +2,7 @@
 /* 글 내용을 출력할 div 에 적용할 css */
 .contents, table{
 	width: 100%;
-	border: 1px dotted #cecece;
+	border: 1px solid #cecece;
 	box-shadow: 3px 3px 5px 6px #ccc;
 	margin-top: 20px;
 }
@@ -13,10 +13,11 @@
 	list-style-type: none;
 }
 .comments ul li{
-	border-top: 1px solid #888; /* li 의 윗쪽 경계선 */
+	border-top: 2px solid #f5f5f5; /* li 의 윗쪽 경계선 */
 }
 .comments dt{
 	margin-top: 5px;
+	padding: 14px 0 12px;
 }
 .comments dd{
 	margin-left: 26px;

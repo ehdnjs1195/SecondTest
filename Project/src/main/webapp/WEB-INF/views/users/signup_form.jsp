@@ -9,13 +9,15 @@
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <style>
-
+.neon{
+	font-family: fantasy, sans-serif;
+}
 .input-group .form-control-feedback {
     z-index: 3;
 }
 
-	/* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
-	.help-block, .form-control-feedback{
+/* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
+.help-block, .form-control-feedback{
 		display: none;
 	}
 	.btn btn-primary {
@@ -403,7 +405,7 @@ input[type="checkbox"]:checked + label:before {
 			</div>
 			<p class="help-block" id="pwd_required">필수 정보입니다.</p>
 			<p class="help-block" id="noSpace_required">공백은 입력할수없습니다.</p>
-			<p class="help-block" id="pwdChk_required">영문, 숫자 조합 8자리~20자리 이내로 입력하세요.</p>
+			<p class="help-block" id="pwdChk_required">영문, 숫자, 특수문자 조합 8자리~20자리 이내로 입력하세요.</p>
 			<p class="help-block" id="pwd_notequal">비밀번호가 일치하지 않습니다.</p>
 		</div>
 		
@@ -548,6 +550,8 @@ input[type="checkbox"]:checked + label:before {
 		var spe = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 		
 		if(spe.test(email)==true){
+			
+			
 			return false;
 		}else{
 			
@@ -604,7 +608,7 @@ input[type="checkbox"]:checked + label:before {
 		$.ajax({
 			url:"${pageContext.request.contextPath }/users/checkid.do",
 			method:"GET",
-			data:{inputId:inputId},
+			data:{"inputId":inputId},
 			success:function(responseData){
 				if(responseData.isExist){//이미 존재하는 아이디라면 
 					isIdUsable=false;
@@ -718,8 +722,7 @@ input[type="checkbox"]:checked + label:before {
 			
 		}	 
 			 
-		
-		
+
 		
 		if(  isPwdDirty
 				&&
@@ -731,6 +734,7 @@ input[type="checkbox"]:checked + label:before {
 		|| $("#pwd").val().search(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi )
 		)))
 		{
+
 			$("#pwdChk_required").show();
 		}else{
 			$("#pwdChk_required").hide();
