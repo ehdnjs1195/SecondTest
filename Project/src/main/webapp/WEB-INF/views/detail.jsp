@@ -161,9 +161,7 @@
 		<dt>누적관객</dt>
 		<dd id="totalAudience">682,309명</dd>
 		</dl>
-		<form class="form-favorite" action="${pageContext.request.contextPath }/users/favorite_update.do" method="post">
-		<button class="btn btn-danger">관심목록 추가하러가기</button>
-		</form>
+		<button onclick = "location.href = 'favorite/insert.do' " class="btn btn-danger">관심목록 추가하러가기</button>
 	</div>
 	<div class="desc_movie" style="clear: left; font-weight: bold; padding-top: 28px;">
 	<h3 style="font-style: oblique; margin-top: 0; color: #ff83c2;">줄거리</h3>
@@ -346,7 +344,7 @@
 	});
 	
 	//폼에 click 이벤트가 일어 났을때 실행할 함수 등록 
-	$(".form-favorite").on("click", function(){
+	$(".btn-danger").on("click", function(){
 		//로그인 여부 
 		var isLogin=${not empty id};
 		if(isLogin==false){
@@ -354,8 +352,7 @@
 			if(isMove){
 				location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}%26movieId=${dto.movieId}";
 			}else{
-				
-				return false;
+				location.href="${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}&movieId=${dto.movieId}";
 			}
 		}
 	});

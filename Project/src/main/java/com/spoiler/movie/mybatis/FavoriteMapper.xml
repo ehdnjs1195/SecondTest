@@ -3,13 +3,9 @@
 <mapper namespace="favorite">
 
 
-	<select id="isExist" parameterType="java.lang.String" resultType="String">
-		SELECT movieId
-		FROM favorite
-		WHERE id=#{Id}
-	</select>
 	
-	<select id="getFavoriteList" resultType="favoriteDto">
+	
+	<select id="favoriteList" resultType="favoriteDto">
 		select * from favorite
 		order by movieSeq asc
 	</select>
@@ -17,19 +13,26 @@
 	
 	<insert id="insert" parameterType="favoriteDto">
 		INSERT INTO favorite
-		(num, id, movieId, movieSeq, repRlsDate, genre, title, poster)
+		(NUM, id, movieId, movieSeq, repRlsDate, genre, title, poster)
 		VALUES(Favorite_Seq.NEXTVAL, 
-		#{id}, #{movieId}, #{movieSeq}, #{repRlsDate}, #{genre}, #{title}, #{poster} )
+		#{id, jdbcType=VARCHAR}, 
+		#{movieId, jdbcType=VARCHAR}, 
+		#{movieSeq, jdbcType=VARCHAR}, 
+		#{repRlsDate, jdbcType=VARCHAR}, 
+		#{genre, jdbcType=VARCHAR}, 
+		#{title, jdbcType=VARCHAR}, 
+		#{poster, jdbcType=VARCHAR} )
+	
 	</insert>
 	
 	
 	<select id="getData" parameterType="String" resultType="favoriteDto">
-		SELECT num, movieId, movieSeq, repRlsDate, genre, title, poster
+		SELECT NUM, movieId, movieSeq, repRlsDate, genre, title, poster
 		FROM favorite
 		WHERE id=#{id}
 	</select>
 	
-	<select id="getCount" parameterType="String" resultType="favoriteDto">
+	<select id="getCount" parameterType="int" resultType="favoriteDto">
 		SELECT count(movieId)
 		FROM favorite
 		WHERE id=#{id}

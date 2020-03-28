@@ -6,7 +6,7 @@ public class FavoriteDto {
 	private String id;
 	private String movieId;
 	private String movieSeq;
-	private String resRlsDate;
+	private String repRlsDate;
 	private String genre;
 	private String title;
 	private String poster;
@@ -14,14 +14,14 @@ public class FavoriteDto {
 	public FavoriteDto() {}
 
 	public FavoriteDto(int num, String id, String movieId,
-			String movieSeq, String resRlsDate,
+			String movieSeq, String repRlsDate,
 			String genre, String title, String poster) {
 		super();
 		this.num = num;
 		this.id = id;
 		this.movieId = movieId;
 		this.movieSeq = movieSeq;
-		this.resRlsDate = resRlsDate;
+		this.repRlsDate = repRlsDate;
 		this.genre = genre;
 		this.title = title;
 		this.poster = poster;
@@ -59,12 +59,12 @@ public class FavoriteDto {
 		this.movieSeq = movieSeq;
 	}
 
-	public String getResRlsDate() {
-		return resRlsDate;
+	public String getRepRlsDate() {
+		return repRlsDate;
 	}
 
-	public void setResRlsDate(String resRlsDate) {
-		this.resRlsDate = resRlsDate;
+	public void setRepRlsDate(String repRlsDate) {
+		this.repRlsDate = repRlsDate;
 	}
 
 	public String getGenre() {

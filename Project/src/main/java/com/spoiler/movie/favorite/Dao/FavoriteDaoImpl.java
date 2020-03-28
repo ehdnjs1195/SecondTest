@@ -19,18 +19,6 @@ public class FavoriteDaoImpl implements FavoriteDao{
 	private SqlSession session;
 	
 	@Override
-	public boolean isExist(String inputId) {
-		//인자로 전달되는 아이디를 이용해서 select 를 한다.
-		String id=session.selectOne("users.isExist", inputId);
-		//만일 select 된 결과가 null 이면 존재하지 않는 아이디이다.
-		if(id==null) {
-			return false;
-		}else {
-			return true;
-		}
-	}
-
-	@Override
 	public void insert(FavoriteDto dto) {
 		session.insert("favorite.insert", dto);
 	}
@@ -42,20 +30,26 @@ public class FavoriteDaoImpl implements FavoriteDao{
 		return session.selectOne("favorite.getData", id);
 	}
 
-	
-	@Override
-	public void delete(String id) {
-		session.delete("favorite.delete", id);
-	}
+
 
 	@Override
-	public FavoriteDto getCount(FavoriteDto dto) {
-		return session.selectOne("favorite.getCount",dto);
+	public List<FavoriteDto> favoriteList(String id) {
+        return session.selectList("favorite.favoritelist", id);
+
 	}
 
+
 	@Override
-	public List<FavoriteDto> movieList() {
-		return session.selectList("favorite.getFavoriteList");
+	public void delete(int num) {
+		session.delete("favorite.delete", num);
+		
+	}
+
+
+	@Override
+	public int getCount(String id, String movieId) {
+		
+		return 0;
 	}
 
 

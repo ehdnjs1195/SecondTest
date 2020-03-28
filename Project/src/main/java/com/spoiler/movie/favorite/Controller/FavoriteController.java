@@ -1,10 +1,17 @@
 package com.spoiler.movie.favorite.Controller;
 
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.jsoup.Connection.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,22 +28,58 @@ public class FavoriteController {
 	
 	
 	@RequestMapping("favorite/insert.do")
-	public ModelAndView insert(HttpServletRequest request, 
-				ModelAndView mView) {
-		//로그인된 아이디 읽어오기
-		String id=(String)request.getSession().getAttribute("id");
-		//FavoriteService 객체를 이용해서 영화정보를 ModelAndView 객체에 담기도록 한다.
-		service.showInfo(id, mView);
-		//view page 정보를 담고 
-		mView.setViewName("users/info");
-		return mView; //ModelAndView 객체를 리턴해주기 
+	public String insert(@ModelAttribute FavoriteDto dto, HttpSession session,HttpServletRequest request) {
+		String id=(String)session.getAttribute("id");
+		String movieId=(String)request.getAttribute("movieId");
+		String movieSeq=(String)request.getParameter("movieSeq");
+		String repRlsDate=(String)request.getParameter("repRlsDate");
+		String genre=(String)request.getParameter("genre");
+		String title=(String)request.getParameter("title");
+		String poster=(String)request.getParameter("poster");
+		
+		dto.setId(id);
+		dto.setMovieId(movieId);
+		dto.setMovieSeq(movieSeq);
+		dto.setGenre(genre);
+		dto.setPoster(poster);
+		dto.setRepRlsDate(repRlsDate);
+		dto.setTitle(title);
+		service.insert(dto);
+		return "${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}&movieId=${dto.movieId}";
 	}
 	
 	@RequestMapping("favorite/delete.do")
-	public String delete(@RequestParam FavoriteDto dto ) {
-		service.deleteFavorite(dto);
-		return "redirect:favorite/list.do";
+	public String delete(@RequestParam int num) {
+		service.delete(num);
+		return "redirect:/favorite/list.do";
 		
 	}
+	
+	@RequestMapping("favorite/favoriteList.do")
+    public ModelAndView favoriteList(HttpSession session, ModelAndView mav) {
+        Map<String, Object> map=new HashMap<>();
+
+
+        String id=(String)session.getAttribute("id");
+
+
+        if(id!=null) { 
+            //로그인한 상태이면 실행
+            List<FavoriteDto> list=service.favoriteList(id);//장바구니 목록
+           map.put("count", list.size()); //레코드 갯수
+
+           //ModelAndView mav에 이동할 페이지의 이름과 데이터를 저장한다.
+
+            mav.setViewName("favorite/favoriteList"); //이동할 페이지의 이름
+            mav.addObject("map", map); //데이터 저장
+
+            return mav; //화면 이동
+
+        }else { //로그인하지 않은 상태
+
+            return new ModelAndView("users/loginform.do", "", null);
+            //로그인을 하지 않았으면 로그인 페이지로 이동시킨다.
+        }
+    }
 	
 }

@@ -193,9 +193,8 @@ p{
 		<h4><span style="font-weight:bold;">관심목록 :</span>
 		<span>
 		<c:choose>
-			<c:when test="${ empty dto.profile }" >
-				<img src="${pageContext.request.contextPath }/resources/images/default_user.png" 
-				class="img-responsive img-circle tm-border"/>
+			<c:when test="${map.count>0 }" >
+				${map.count}개가 있습니다.
 			</c:when>
 			<c:otherwise>
 				아직 추가한 영화가 없습니다.

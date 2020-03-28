@@ -17,3 +17,6 @@ CREATE TABLE favorite(num NUMBER PRIMARY KEY,id VARCHAR2(30), movieId VARCHAR2(5
 repRlsDate VARCHAR2(8), genre VARCHAR2(150), title VARCHAR2(200) NOT NULL, poster VARCHAR2(150))
 
 CREATE SEQUENCE Favorite_Seq;
+
+alter table favorite add constraint favorite_Id_fk
+foreign key(id) references users(id);

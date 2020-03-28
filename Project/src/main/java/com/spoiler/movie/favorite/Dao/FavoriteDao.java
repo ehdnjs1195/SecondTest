@@ -8,12 +8,10 @@ import com.spoiler.movie.favorite.Dto.FavoriteDto;
 
 
 public interface FavoriteDao {
-	public List<FavoriteDto> movieList();
-	public boolean isExist(String inputId);
-
+	public List<FavoriteDto> favoriteList(String id);
 	public void insert(FavoriteDto dto);
-	public void delete(String id);
+	public void delete(int num);
 	public FavoriteDto getData(String id);
-	public FavoriteDto getCount(FavoriteDto dto);
+	public int getCount(String id, String movieId);
 	
 }
