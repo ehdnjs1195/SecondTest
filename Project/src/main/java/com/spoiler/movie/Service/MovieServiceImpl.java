@@ -62,7 +62,7 @@ public class MovieServiceImpl implements MovieService {
         
 		//Iterator을 사용하여 하나씩 값 가져오기
         Iterator<Element> title = element.select(".lst_dsc .tit a").iterator(); //제목
-		Iterator<Element> ie = element.select(".star_t1 .num").iterator();//네티즌 평점
+		Iterator<Element> ie = element.select(".star_t1 .st_off + .num").iterator();//네티즌 평점
 
 		while (title.hasNext()) {
 			request.setAttribute("title", title.next().text());

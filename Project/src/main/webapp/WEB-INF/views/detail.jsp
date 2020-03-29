@@ -155,9 +155,26 @@
 		</div>
 		<a href="#" class="raking_grade">
 			<span class="bg_star star_grade">
-				<span class="bg_star inner_star" style="width:${point2}%">평점</span>
+				<span class="bg_star inner_star"
+				<c:choose>
+					<c:when test="${dto.title == title}">
+						style="width:${nPoint }%"
+					</c:when>
+					<c:otherwise>
+						style="width:${point2 }%"
+					</c:otherwise>
+				</c:choose>>평점</span>
 			</span>
-			<em class="emph_grade">${point }</em>
+			<em class="emph_grade">
+				<c:choose>
+					<c:when test="${dto.title == title}">
+						${nPoint }
+					</c:when>
+					<c:otherwise>
+						${point }
+					</c:otherwise>
+				</c:choose>
+			</em>
 			<span class="txt_grade">/10</span>
 		</a>
 		<dl class="list_movie list_main" style="clear: left;">

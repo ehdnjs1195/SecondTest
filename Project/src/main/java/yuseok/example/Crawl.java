@@ -25,7 +25,7 @@ public class Crawl{
         
 		//Iterator을 사용하여 하나씩 값 가져오기
         Iterator<Element> title = element.select(".lst_dsc .tit a").iterator(); //제목
-		Iterator<Element> ie = element.select(".star_t1 .num").iterator();//네티즌 평점	        
+		Iterator<Element> ie = element.select(".star_t1 .st_off + .num").iterator();//네티즌 평점	        
 //		Iterator<Element> ie1 = element.select(".star_t1 .num2 em").iterator();        
 //		Iterator<Element> ie2 = element.select(".lst_dsc .info_txt1 .tit_t1+dd").iterator();		        
 //		Iterator<Element> ie3 = element.select(".lst_dsc .info_txt1 .tit_t2+dd a").iterator();
