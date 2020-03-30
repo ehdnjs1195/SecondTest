@@ -181,6 +181,9 @@ p{
     display: block;
     width: 100%;
 }
+#background{
+	display: none;	
+}
 </style>
 
 <body>

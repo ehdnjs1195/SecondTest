@@ -244,8 +244,8 @@
 								<c:choose>
 									<%-- 로그인된 아이디와 댓글의 작성자가 같으면 --%>
 									<c:when test="${id eq tmp.writer }">
-										<a href="javascript:" class="comment-update-link" style="color: #00c851;">수정</a>&nbsp;&nbsp;
-										<a href="javascript:deleteComment(${tmp.num })" style="color: #00c851;">삭제</a>
+										<a href="javascript:" class="comment-update-link" style="color: #fb3;">수정</a>&nbsp;&nbsp;
+										<a href="javascript:deleteComment(${tmp.num })" style="color: #ff3535;">삭제</a>
 									</c:when>
 									<c:otherwise>
 										<a href="javascript:" style="color: #ff0000;">신고</a>

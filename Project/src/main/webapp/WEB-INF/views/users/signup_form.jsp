@@ -158,7 +158,9 @@ input[type="checkbox"]:checked + label:before {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }	
-
+#background{
+	display: none;	
+}
 </style>
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.js"></script>

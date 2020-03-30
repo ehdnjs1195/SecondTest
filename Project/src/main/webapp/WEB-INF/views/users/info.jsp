@@ -167,6 +167,9 @@ p{
     height: 200px;
     margin: 0px auto;
 }
+#background{
+	display: none;	
+}
 </style>
 </head>
 <script
