@@ -55,7 +55,10 @@
         <h1 style="color: honeydew;">추천 TOP10</h1>
         <jsp:include page="include/bestlist.jsp"/>
         
-       
+      
+    </div>
+    <div class="container">
+         <jsp:include page="include/map.jsp"/>
     </div>
 </body>
 </html>
