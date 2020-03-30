@@ -149,7 +149,7 @@
 	</div>
 	<div class="movie_summary">
 		<div class="subject_movie">
-			<strong class="tit_movie">${dto.title } (${dto.repRlsDate})</strong>
+			<strong class="tit_movie">${dto.title }</strong>
 			<!-- 영어 원본 제목 -->
 			<span class="txt_origin">${dto.titleEng }</span>
 		</div>
