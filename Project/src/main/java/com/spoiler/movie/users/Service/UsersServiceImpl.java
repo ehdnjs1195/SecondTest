@@ -53,7 +53,8 @@ public class UsersServiceImpl implements UsersService{
 		if(isValid) {
 			//로그인 처리를 한다.
 			session.setAttribute("id", dto.getId());
-			
+			int master = dao.getData(dto.getId()).getMaster();
+			session.setAttribute("master", master);
 			session.setAttribute("profile", dao.getProfile(dto.getId()));
 		}
 	}

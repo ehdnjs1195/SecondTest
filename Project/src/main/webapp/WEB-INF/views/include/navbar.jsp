@@ -86,6 +86,8 @@
 						</c:choose>
 						</a></strong>
 						<a class="btn btn-warning navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/logout.do">Logout</a>
+						
+						<c:if test="${master eq 1 }"><a class="btn btn-danger" href="${pageContext.request.contextPath }/master/admin.do">관리자</a></c:if>
 					</div>
 				</c:otherwise>
 		</c:choose>  

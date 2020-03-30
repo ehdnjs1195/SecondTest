@@ -3,6 +3,7 @@ package com.spoiler.movie.Controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spoiler.movie.Dto.MovieDto;
+import com.spoiler.movie.Service.AdminService;
 import com.spoiler.movie.Service.MovieAPIService;
 import com.spoiler.movie.Service.MovieService;
 
@@ -21,6 +23,8 @@ public class MovieController {
 	private MovieService service;
 	@Autowired
 	private MovieAPIService apiService;
+	@Autowired
+	private AdminService adminService;
 	
 	@RequestMapping("/searchlist")
 	public ModelAndView list(ModelAndView mView, HttpServletRequest request) {
@@ -48,11 +52,13 @@ public class MovieController {
 	
 	@RequestMapping("/notify")
 	public ModelAndView popup(ModelAndView mView, HttpServletRequest request) {
+		adminService.popUp(request);
 		mView.setViewName("notify");
 		return mView;
 	}
 	@RequestMapping("/nopopup")
-	public ModelAndView nopopup(ModelAndView mView, HttpServletRequest request) {
+	public ModelAndView nopopup(ModelAndView mView, HttpServletRequest request, HttpServletResponse response) {
+		adminService.noPopUp(request, response);
 		mView.setViewName("nopopup");
 		return mView;
 	}

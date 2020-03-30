@@ -239,6 +239,12 @@ public class UsersController {
 		return mView;
 		
 	}
+	
+	@RequestMapping("master/admin")
+	public ModelAndView authAdmin(HttpServletRequest request, ModelAndView mView) {
+		mView.setViewName("master/admin");
+		return mView;
+	}
 }
 
 

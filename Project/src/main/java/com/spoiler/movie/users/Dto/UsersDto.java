@@ -7,10 +7,11 @@ public class UsersDto {
 	private String regdate;
 	private String profile; //프로필 이미지 경로를 저장할 필드
 	private String newPwd; //새로운 비밀번호를 저장할 필드
+	private int master;
 	
 	public UsersDto() {}
 
-	public UsersDto(String id, String pwd, String email, String regdate, String profile, String newPwd) {
+	public UsersDto(String id, String pwd, String email, String regdate, String profile, String newPwd, int master) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -18,6 +19,7 @@ public class UsersDto {
 		this.regdate = regdate;
 		this.profile = profile;
 		this.newPwd = newPwd;
+		this.master = master;
 	}
 
 	public String getId() {
@@ -66,6 +68,14 @@ public class UsersDto {
 
 	public void setNewPwd(String newPwd) {
 		this.newPwd = newPwd;
+	}
+
+	public int getMaster() {
+		return master;
+	}
+
+	public void setMaster(int master) {
+		this.master = master;
 	}
 	
 }
