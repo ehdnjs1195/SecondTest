@@ -2,6 +2,8 @@ package com.spoiler.movie.favorite.Service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,19 +17,12 @@ public class FavoriteServiceImpl implements FavoriteService{
 	private FavoriteDao dao;
 
 	@Override
-	public void insert(FavoriteDto dto) {
-			
-				      
-				       
-				        dao.insert(dto); 
-	}
+	public void favorite_insert(FavoriteDto dto) {
+		dao.favorite_insert(dto); 
+}
 		
 
-	@Override
-	public void delete(int num) {
-		dao.delete(num);
-	}
-
+	
 	@Override
 	public List<FavoriteDto> favoriteList(String id) {
 		
@@ -35,13 +30,20 @@ public class FavoriteServiceImpl implements FavoriteService{
 	}
 
 	@Override
-	public int getCount(String id, String movieId) {
-		return 0;
+	public int getCount(String id) {
+		return dao.getCount(id);
 	}
 
 	@Override
-	public FavoriteDto getData(String id) {
-		return null;
+	public List<FavoriteDto> getData(String id) {
+		return dao.getData(id);
+	}
+
+
+	@Override
+	public void delete(String id) {
+		dao.delete(id);
+		
 	}
 
 	

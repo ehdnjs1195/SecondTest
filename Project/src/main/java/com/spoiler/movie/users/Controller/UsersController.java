@@ -27,6 +27,8 @@ import com.spoiler.movie.users.Service.UsersService;
 public class UsersController {
 	@Autowired
 	private UsersService service;
+	@Autowired
+	private com.spoiler.movie.favorite.Service.FavoriteService favoriteService;
 	//회원가입 폼 요청 처리 
 	@RequestMapping("/users/signup_form")
 	public String signup_form() {
@@ -145,6 +147,8 @@ public class UsersController {
 		String id=(String)request.getSession().getAttribute("id");
 		//UsersService 객체를 이용해서 개인정보를 ModelAndView 객체에 담기도록 한다.
 		service.showInfo(id, mView);
+		int count=favoriteService.getCount(id);
+		mView.addObject("count",count);
 		//view page 정보를 담고 
 		mView.setViewName("users/info");
 		return mView;//ModelAndView 객체를 리턴해주기 

@@ -1,9 +1,11 @@
 package com.spoiler.movie;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,14 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spoiler.movie.Dto.MovieCommentDto;
 import com.spoiler.movie.Service.MovieService;
+import com.spoiler.movie.favorite.Dto.FavoriteDto;
+import com.spoiler.movie.favorite.Service.FavoriteService;
 @Controller
 public class HomeController {
 	@Autowired
 	private MovieService service;
+	@Autowired
+	private FavoriteService service2;
 	
 	@RequestMapping("/home")
 	public String home(HttpServletRequest request) {
@@ -28,8 +35,11 @@ public class HomeController {
 	}
 	//글 자세히 보기 요청 처리
 	@RequestMapping("/detail")
-	public String detail(HttpServletRequest request){
+	public String detail(HttpSession session,HttpServletRequest request){
+		
+		String id=(String)session.getAttribute("id");
 		service.getDetail(request);
+		service2.getData(id);
 		//view page 로 forward 이동해서 글 자세히 보기 
 		return "detail";
 	}

@@ -28,30 +28,21 @@ public class FavoriteController {
 	
 	
 	@RequestMapping("favorite/insert.do")
-	public String insert(@ModelAttribute FavoriteDto dto, HttpSession session,HttpServletRequest request) {
+	public String insert(@ModelAttribute FavoriteDto dto, HttpSession session) {
 		String id=(String)session.getAttribute("id");
-		String movieId=(String)request.getAttribute("movieId");
-		String movieSeq=(String)request.getParameter("movieSeq");
-		String repRlsDate=(String)request.getParameter("repRlsDate");
-		String genre=(String)request.getParameter("genre");
-		String title=(String)request.getParameter("title");
-		String poster=(String)request.getParameter("poster");
 		
 		dto.setId(id);
-		dto.setMovieId(movieId);
-		dto.setMovieSeq(movieSeq);
-		dto.setGenre(genre);
-		dto.setPoster(poster);
-		dto.setRepRlsDate(repRlsDate);
-		dto.setTitle(title);
-		service.insert(dto);
+		service.favorite_insert(dto);
 		return "${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}&movieId=${dto.movieId}";
 	}
 	
 	@RequestMapping("favorite/delete.do")
-	public String delete(@RequestParam int num) {
-		service.delete(num);
-		return "redirect:/favorite/list.do";
+	public String delete(@ModelAttribute FavoriteDto dto, HttpSession session) {
+		String id=(String)session.getAttribute("id");
+		
+		dto.setId(id);
+		service.delete(id);
+		return "${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}&movieId=${dto.movieId}";
 		
 	}
 	

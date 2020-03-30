@@ -11,7 +11,7 @@
 	</select>
 	
 	
-	<insert id="insert" parameterType="favoriteDto">
+	<insert id="favorite_insert" parameterType="favoriteDto">
 		INSERT INTO favorite
 		(NUM, id, movieId, movieSeq, repRlsDate, genre, title, poster)
 		VALUES(Favorite_Seq.NEXTVAL, 
@@ -26,13 +26,13 @@
 	</insert>
 	
 	
-	<select id="getData" parameterType="String" resultType="favoriteDto">
-		SELECT NUM, movieId, movieSeq, repRlsDate, genre, title, poster
+	<select id="getData" parameterType="String" resultType="String">
+		SELECT movieId
 		FROM favorite
 		WHERE id=#{id}
 	</select>
 	
-	<select id="getCount" parameterType="int" resultType="favoriteDto">
+	<select id="getCount" parameterType="String" resultType="int">
 		SELECT count(movieId)
 		FROM favorite
 		WHERE id=#{id}
@@ -40,7 +40,7 @@
 	
 	<delete id="delete" parameterType="String">
 		DELETE FROM favorite
-		WHERE movieId=#{movieId} and id=#{Id}
+		WHERE id=#{Id}
 	</delete>
 	
 </mapper>

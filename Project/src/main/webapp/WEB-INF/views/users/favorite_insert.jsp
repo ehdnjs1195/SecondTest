@@ -9,20 +9,14 @@
 <jsp:include page="../include/resource.jsp"/>
 </head>
 <body>
-<c:choose>
-		<c:when test="${updateFavorite }=false">
+
+
 			<script>
 				alert("관심목록에 추가합니다.");
-				location.href="${url}";
+				window.location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}%&movieId=${dto.movieId}";
 			</script>
-		</c:when>
-		<c:otherwise>
-			<script>
-				alert("관심목록에서 삭제합니다.");
-				location.href="${url}";
-			</script>
-		</c:otherwise>
-	</c:choose>
+		
+	
 </body>
 </html>
 

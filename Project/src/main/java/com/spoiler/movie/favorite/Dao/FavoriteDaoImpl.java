@@ -19,15 +19,15 @@ public class FavoriteDaoImpl implements FavoriteDao{
 	private SqlSession session;
 	
 	@Override
-	public void insert(FavoriteDto dto) {
-		session.insert("favorite.insert", dto);
+	public void favorite_insert(FavoriteDto dto) {
+		session.insert("favorite.favorite_insert", dto);
 	}
 
 
 	@Override
-	public FavoriteDto getData(String id) {
+	public List<FavoriteDto> getData(String id) {
 		
-		return session.selectOne("favorite.getData", id);
+		return session.selectList("favorite.getData",id);
 	}
 
 
@@ -40,17 +40,18 @@ public class FavoriteDaoImpl implements FavoriteDao{
 
 
 	@Override
-	public void delete(int num) {
-		session.delete("favorite.delete", num);
+	public void delete(String id) {
+		session.delete("favorite.delete", id);
 		
 	}
 
 
-	@Override
-	public int getCount(String id, String movieId) {
-		
-		return 0;
+	public int getCount(String id) {
+		return session.selectOne("favorite.getCount",id);
 	}
+
+
+
 
 
 	
