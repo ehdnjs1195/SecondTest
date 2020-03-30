@@ -2,6 +2,7 @@ package com.spoiler.movie;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -33,6 +34,9 @@ public class HomeController {
 		double ran=Math.random()*7+3;
 		double point=Math.round(ran*10)/10.0;
 		double point2 = point*10;
+		Random random=new Random();
+		mView.addObject("random", random.nextInt(10)+1);
+		mView.addObject("random2", random.nextInt(10000000));
 		mView.addObject("point", point);
 		mView.addObject("point2", point2);
 		mView.setViewName("detail");

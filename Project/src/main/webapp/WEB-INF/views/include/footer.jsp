@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <!----------- Footer ------------>
-<div class="container">
+<div class="container" style="color: white;">
     <footer class="footer-bs">
         <div class="row">
         	<div class="col-md-3 footer-brand animated fadeInLeft">

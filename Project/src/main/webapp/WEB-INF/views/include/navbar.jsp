@@ -20,9 +20,10 @@
 	}
 	.neon{
 	    position: absolute;
-	    top: 50%;
+	    top: 20px;
+	    /* top: 50%;
 	    left: 50%;
-	    transform: translate(-50%, -50%);
+	    transform: translate(-50%, -50%); */
 	    margin: 0;
 	    padding: 0 20px;
 	    font-size: 3em;
@@ -51,8 +52,74 @@
 	    opacity: .5;
 	    filter: blur(40px);
 	}
+	/* 배경화면*/
+	#background {
+		z-index: 1;
+	}
+	
+	#background:before {
+		content: "";
+		position: fixed;
+		z-index: -1;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+			url("https://assets.nflxext.com/ffe/siteui/vlv3/3b48f428-24ed-4692-bb04-bc7771854131/fb5674c7-afc0-4c05-9f06-ef601019b114/KR-ko-20200302-popsignuptwoweeks-perspective_alpha_website_small.jpg");
+		background-repeat: no-repeat;
+		background-size: auto;
+		filter: grayscale(80%);
+		height: 100%;
+		width: 100%;
+		opacity: 0.5;
+		background-attachment: fixed;
+	}
+	
+	.search-box{
+		margin-top: -1.5px;
+		background: #2f3640;
+		height: 38.5px;
+		border-radius: 40px;
+		padding: 0;
+	}
+	.search-box:hover > .search-txt{
+		width: 200px;
+		padding: 0 6px;
+	}
+	.search-box:hover > .search-btn{
+		background: white;
+	}
+	
+	.search-btn{
+	    margin-top: -1.5px;
+		float: right;
+		width: 40px;
+		height: 38.5px;
+		border-radius: 50%;
+		background: #db0752;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: 0.4s;
+	}
+	
+	.search-txt{
+		border: none;
+		background: none;
+		outline: none;
+		float: left;
+		padding: 0;
+		color: white;
+		font-size: 16px;
+		transition: 0.4s;
+		line-height: 40px;
+		width: 0px;
+	}
 </style>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+<!-- 배경화면 -->
+<div id="background"></div>
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<!-- 홈페이지 링크와 버튼을 넣어둘 div -->
@@ -64,7 +131,6 @@
 			
 			</button>
 		</div>
-		
 		<c:choose>
 				<c:when test="${empty sessionScope.id }">	<!-- sessionScope. 는 생략 가능 -->
 					<div class="pull-right">
@@ -81,11 +147,15 @@
 				</c:otherwise>
 		</c:choose>  
 		<div class="pull-right" style="margin-top:15px; margin-right:40px;">
-		<form action="searchlist.do" method="get" id="isSeach">
-			<label for="condition" style="display: none;">검색조건</label>
-			<input type="text" name="title" id="title" placeholder="영화 제목 검색" style="color:black;" />
-			<button type="submit" style="color:black;">검색</button>
-		</form>
+			<form action="searchlist.do" method="get" id="isSeach">
+				<label for="condition" style="display: none;">검색조건</label>
+				<div class="search-box">
+					<input class="search-txt" type="text" name="title" placeholder="영화 제목 검색" />
+					<a class="search-btn" type="submit">
+						<i class="fas fa-search"></i>
+					</a>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

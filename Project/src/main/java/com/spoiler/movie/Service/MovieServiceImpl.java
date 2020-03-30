@@ -45,29 +45,6 @@ public class MovieServiceImpl implements MovieService {
 		// 댓글 목록을 얻어와서 request 에 담아준다.
 		List<MovieCommentDto> commentList = commentDao.getList(Integer.parseInt(movieSeq));
 		request.setAttribute("commentList", commentList);
-		
-		//크롤링 비즈니스 로직
-		String url = "https://movie.naver.com/movie/running/current.nhn?order=reserve"; //크롤링할 url 지정
-        Document doc = null; //Document 에는 페이지의 전체 소스가 저장된다  
-        try {
-            doc = Jsoup.connect(url).get();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        /*
-         * select 를 이용하여 원하는 태그를 선택한다. select 는 원하는 값을 가져오기 위한 중요한 기능이다.
-         * ==>원하는 값들이 들어있는 덩어리를 가져온다.
-         */
-        Elements element  = doc.select(".lst_detail_t1 li");
-        
-		//Iterator을 사용하여 하나씩 값 가져오기
-        Iterator<Element> title = element.select(".lst_dsc .tit a").iterator(); //제목
-		Iterator<Element> ie = element.select(".star_t1 .st_off + .num").iterator();//네티즌 평점
-
-		while (title.hasNext()) {
-			request.setAttribute("title", title.next().text());
-			request.setAttribute("nPoint", ie.next().text());
-		}
 			
 	}
 

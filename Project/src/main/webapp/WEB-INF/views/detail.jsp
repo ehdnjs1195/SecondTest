@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -134,7 +135,6 @@
     background: url(//i1.daumcdn.net/img-contents/movie/2016/pc/bg_star_170614_v2.png) no-repeat 0 0;
 }
 
-
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/detail_custom.css" />
 <jsp:include page="include/resource.jsp"/>
@@ -155,26 +155,9 @@
 		</div>
 		<a href="#" class="raking_grade">
 			<span class="bg_star star_grade">
-				<span class="bg_star inner_star"
-				<c:choose>
-					<c:when test="${dto.title == title}">
-						style="width:${nPoint }%"
-					</c:when>
-					<c:otherwise>
-						style="width:${point2 }%"
-					</c:otherwise>
-				</c:choose>>평점</span>
+				<span class="bg_star inner_star" style="width:${point2}%">평점</span>
 			</span>
-			<em class="emph_grade">
-				<c:choose>
-					<c:when test="${dto.title == title}">
-						${nPoint }
-					</c:when>
-					<c:otherwise>
-						${point }
-					</c:otherwise>
-				</c:choose>
-			</em>
+			<em class="emph_grade">${point }</em>
 			<span class="txt_grade">/10</span>
 		</a>
 		<dl class="list_movie list_main" style="clear: left;">
@@ -193,11 +176,11 @@
 		<dt class="screen_out">예매순위</dt>
 		<dd>
 			예매율 
-			<em class="emph_g"><strong>${dto.rank}</strong></em>&nbsp;위
+			<em class="emph_g"><strong>${random}</strong></em>&nbsp;위
 			<span class="txt_bar"></span>
 		</dd>
 		<dt>누적관객</dt>
-		<dd id="totalAudience">682,309명</dd>
+		<dd id="totalAudience"><fmt:formatNumber value="${random2 }"/>명</dd>
 		</dl>
 		<a href="#" class="btn btn-danger">관심목록 추가하러가기</a>
 	</div>
