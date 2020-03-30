@@ -45,7 +45,11 @@ public class MovieController {
 		apiService.updateMovie();
 		return "redirect:/home.do";
 	}
-	
+	@RequestMapping("/map")
+	public ModelAndView map(ModelAndView mView, HttpServletRequest request) {
+		mView.setViewName("include/map");
+		return mView;
+	}
 	@RequestMapping("/notify")
 	public ModelAndView popup(ModelAndView mView, HttpServletRequest request) {
 		mView.setViewName("notify");
