@@ -36,7 +36,7 @@ public class HomeController {
 		double point2 = point*10;
 		Random random=new Random();
 		mView.addObject("random", random.nextInt(10)+1);
-		mView.addObject("random2", random.nextInt(10000000));
+		mView.addObject("random2", random.nextInt(710000));
 		mView.addObject("point", point);
 		mView.addObject("point2", point2);
 		mView.setViewName("detail");

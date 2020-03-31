@@ -97,12 +97,12 @@
     margin-right: 5px;
 }
 #moreComment, #allComment{
-	background-color: #b0b0b0 !important;
+	background-color: #b0b0b000 !important;
 	font-family: initial;
     font-style: italic;
 }
 #moreComment:hover, #allComment:hover{
-	background-color: #868686 !important;
+	background-color: #8686867a !important;
 }
 
 .movie_summary .raking_grade {
@@ -271,7 +271,7 @@
 						<c:if test="${id eq tmp.writer }">
 							<form class="comment-update-form" action="comment_update.do" method="post">
 								<input type="hidden" name="num" value="${tmp.num }" />
-								<textarea name="content" id="comment" style="color:black;">${tmp.content }</textarea>
+								<textarea class="md-textarea form-control" name="content" id="comment" style="color:black;">${tmp.content }</textarea>
 								<button type="submit" style="color: black;">수정</button>
 							</form>
 						</c:if>

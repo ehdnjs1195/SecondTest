@@ -28,7 +28,42 @@
 <body>
 <jsp:include page="include/navbar.jsp"/>
 <div class="container">
-<jsp:include page="include/slidebar.jsp"/>
+<%-- <jsp:include page="include/slidebar.jsp"/> --%>
+	<div>
+		<a class="btn btn-primary" href="${pageContext.request.contextPath }/home.do">홈으로 돌아가기</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=드라마">드라마</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=범죄">범죄</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=코메디">코미디</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=어드벤처">어드벤처</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=판타지">판타지</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=공포">공포</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=스릴러">스릴러</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=SF">SF</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=뮤지컬">뮤지컬</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=멜로드라마">멜로드라마</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=멜로">멜로</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=로멘스">로멘스</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=전쟁">전쟁</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=전기">전기</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=사극">사극</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=시대극">시대극</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=갱스터">갱스터</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=모험">모험</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=애니메이션">애니메이션</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=가족">가족</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=느와르">느와르</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=역사">역사</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=스포츠">스포츠</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=서부">서부</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=지역">지역</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=문화">문화</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=사회">사회</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=인물">인물</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=자연ㆍ환경">자연ㆍ환경</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=인권">인권</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=계몽">계몽</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=에로">에로</a>
+	</div>
 	<c:if test="${not empty param.title }">
 		<h2>검색어 <strong><span style="color: yellow;">${param.title }</span></strong>에 관한 검색결과 입니다</h2>
 	</c:if>
