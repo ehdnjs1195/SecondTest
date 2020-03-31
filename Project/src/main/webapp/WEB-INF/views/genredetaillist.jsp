@@ -23,6 +23,9 @@
 	#content_tx{
 		font-size: 20px;
 	}
+	.btn-primary:hover {
+    	color: #00ffd0;
+    }
 </style>
 </head>
 <body>

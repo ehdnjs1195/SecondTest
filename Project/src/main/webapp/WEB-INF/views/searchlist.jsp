@@ -23,6 +23,9 @@
 	#content_tx{
 		font-size: 20px;
 	}
+	.btn-primary:hover {
+    	color: #00ffd0;
+    }
 </style>
 </head>
 <body>
@@ -30,7 +33,7 @@
 <div class="container">
 <%-- <jsp:include page="include/slidebar.jsp"/> --%>
 	<div>
-		<a class="btn btn-primary" href="${pageContext.request.contextPath }/home.do">홈으로 돌아가기</a>
+		<a class="btn" href="${pageContext.request.contextPath }/home.do">홈으로 돌아가기</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=드라마">드라마</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=범죄">범죄</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=코메디">코미디</a>

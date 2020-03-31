@@ -26,6 +26,9 @@
 	.row{
     	margin-top: 100px;
 	}
+	.btn-primary:hover {
+    	color: #00ffd0 !important;
+    }
 </style>
 <jsp:include page="include/resource.jsp"></jsp:include>
 </head>
