@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin">
+	<insert id="insert-popup" parameterType="popupDto">
+		insert into popup
+		(num, writer, title, content, regdate, state)
+		values(popup_seq.nextval, #{writer}, #{title}, #{content}, sysdate, default)
+	</insert>
+	<select id="get-popuplist" resultType="popupDto">
+		select * from popup
+	</select>
+	<update id="updateState" parameterType="popupDto">
+		update popup
+		set state=#{state}
+		where num=#{num}
+	</update>
+</mapper>

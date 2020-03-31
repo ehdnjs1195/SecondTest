@@ -13,7 +13,7 @@
 <!-- 공지사항 팝업 띄우기 -->
 
 	<script>
-		window.open("notify.do","sale","width=700px,height=450px,top=100px,left=100px");
+		window.open("notify.do","news","width=700px,height=450px,top=100px,left=100px");
 	</script>
 
 <div style="position: fixed; top: 100px; left: 50%; z-index: -1;">

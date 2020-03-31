@@ -1,13 +1,22 @@
 package com.spoiler.movie.Service;
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.spoiler.movie.Dao.AdminDao;
+import com.spoiler.movie.Dto.PopupDto;
 
 @Service
 public class AdminServiceImpl implements AdminService{
+	@Autowired
+	private AdminDao adminDao;
 	@Override
 	public void popUp(HttpServletRequest request) {
 		//쿠키 읽어오기
@@ -37,5 +46,28 @@ public class AdminServiceImpl implements AdminService{
 			cook.setMaxAge(60*60);//1시간동안 띄우지 않기
 			response.addCookie(cook);
 		}
+	}
+	@Override
+	public void addPopUp(PopupDto dto) {
+		adminDao.insertPopup(dto);
+	}
+	
+	@Override
+	public void getPopUPList(ModelAndView mView) {
+		List<PopupDto> list = adminDao.getPopupList();
+		mView.addObject("list", list);
+	}
+	
+	@Override
+	public void updateState(PopupDto dto) {
+		boolean showPopup = false;
+		if(dto.getState().equals("true")) {
+			
+			showPopup = true;
+		}else {
+			
+			showPopup = false;
+		}
+		adminDao.updateState(dto);
 	}
 }

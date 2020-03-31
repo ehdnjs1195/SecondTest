@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spoiler.movie.Dto.MovieDto;
+import com.spoiler.movie.Dto.PopupDto;
 import com.spoiler.movie.Service.AdminService;
 import com.spoiler.movie.Service.MovieAPIService;
 import com.spoiler.movie.Service.MovieService;
@@ -68,5 +69,32 @@ public class MovieController {
 		mView.addObject("list",list);
 		mView.setViewName("more_list");
 		return mView;
+	}
+	
+	@RequestMapping("/master/popup-list")
+	public ModelAndView popupList(ModelAndView mView) {
+		adminService.getPopUPList(mView);
+		mView.setViewName("master/popup-list");
+		return mView;
+	}
+	
+	@RequestMapping("/master/popup-insertform")
+	public String popupInsertForm() {
+		return "master/popup-insertform";
+	}
+	
+	@RequestMapping("/master/popup-insert")
+	public ModelAndView popupInsert(ModelAndView mView, @ModelAttribute("dto") PopupDto dto) {
+		System.out.println(dto.getWriter()+dto.getTitle()+dto.getState());
+		adminService.addPopUp(dto);
+		
+		mView.setViewName("redirect:/master/popup-list.do");
+		return mView;
+	}
+	
+	@RequestMapping("/master/update_state")
+	public String updateStatement(@ModelAttribute PopupDto dto) {
+		adminService.updateState(dto);
+		return "master/update_state";
 	}
 }

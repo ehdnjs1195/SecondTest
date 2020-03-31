@@ -25,3 +25,12 @@ master number(2) default 0 )
 update users
 set master = 1
 where id = 'master00';
+
+create table popup
+(num number primary key,
+writer varchar2(50) not null,
+title varchar2(100),
+content clob,
+regdate date,
+state varchar2(10) default 'false');
+create sequence popup_seq;
