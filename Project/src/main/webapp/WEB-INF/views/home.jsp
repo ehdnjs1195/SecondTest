@@ -26,9 +26,68 @@
 	.row{
     	margin-top: 100px;
 	}
+	.btn{
+		font-size: smaller !important;
+	}
 	.btn-primary:hover {
     	color: #00ffd0 !important;
     }
+    
+    @media (min-width: 992px)
+	.container {
+	    width: 970px;
+	}
+	.clearfix, .clearfix:before, .clearfix:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after {
+	    content: " ";
+	    display: table;
+	}
+    body #kn-footer .container .kn-info-wrapper {
+	    position: relative;
+	    padding: 50px 0;
+	    margin: 0 auto;
+	    text-align: center;
+	}
+	body #kn-footer .container .kn-info-wrapper .kinolights-ci {
+	    position: absolute;
+	    left: 0;
+	    top: 40px;
+	    width: 91px;
+	    height: 53px;
+	    background: url(/static/web/dist/images/common/kinolights_logo.png) no-repeat;
+	    background-size: cover;
+        text-align: center;
+	}
+	body #kn-footer .container .kn-info-wrapper .kn-copyright {
+	    margin-top: 15px;
+	    font-size: 12px;
+	    font-weight: normal;
+	    color: #546cb2;
+	}
+	body #kn-footer .container .kn-info-wrapper .sns-items {
+	    position: absolute;
+	    right: 0;
+	    top: 55px;
+	    display: inline-block;
+	    vertical-align: middle;
+	}
+	ol, ul {
+	    list-style: none;
+	}
+	body #kn-footer .container .kn-info-wrapper .sns-items .sns-item {
+	    float: left;
+	    margin-right: 15px;
+	    margin-bottom: 12px;
+	    line-height: 24px;
+	}
+	body #kn-footer .container .kn-info-wrapper .sns-items .sns-item:last-of-type {
+	    margin-right: 0;
+	}
+	body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-menu-item a {
+	    text-decoration: none;
+	    font-size: 14px;
+	    font-weight: normal;
+	    color: #b3bfdd;
+	}
 </style>
 <jsp:include page="include/resource.jsp"></jsp:include>
 </head>
@@ -51,13 +110,13 @@
 		</form>
 		--%>
 		<div>
-			<a class="btn btn-primary" href="updateMovie.do">영화 실시간 업데이트</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=드라마">드라마</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=범죄">범죄</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=코메디">코미디</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=어드벤처">어드벤처</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=판타지">판타지</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=공포">공포</a>
+			<a class="btn btn-primary" href="genredetaillist.do?genre=미스터리">미스터리</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=스릴러">스릴러</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=SF">SF</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=뮤지컬">뮤지컬</a>
@@ -83,13 +142,65 @@
 			<a class="btn btn-primary" href="genredetaillist.do?genre=자연ㆍ환경">자연ㆍ환경</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=인권">인권</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=계몽">계몽</a>
+			<a class="btn btn-primary" href="genredetaillist.do?genre=교육">교육</a>
+			<a class="btn btn-primary" href="genredetaillist.do?genre=서부">서부</a>
+			<a class="btn btn-primary" href="genredetaillist.do?genre=예술">예술</a>
+			<a class="btn btn-primary" href="genredetaillist.do?genre=실험">실험</a>
+			<a class="btn btn-primary" href="genredetaillist.do?genre=재난">재난</a>
+			<a class="btn btn-primary" href="genredetaillist.do?genre=종교">종교</a>
+			<a class="btn btn-primary" href="genredetaillist.do?genre=옴니버스">옴니버스</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=에로">에로</a>
+			<!-- <a class="btn btn-primary" href="updateMovie.do">영화 실시간 업데이트</a> -->
 		</div>
     
     	<!-- 추천 TOP10 -->
-        <h1 style="color: honeydew;">추천 TOP10</h1>
+        <h1 style="color: honeydew;">TOP 10</h1>
         <jsp:include page="include/bestlist.jsp"/>
     </div>
-<jsp:include page="include/footer.jsp"></jsp:include>
+    <footer id="kn-footer">
+    <div class="container">
+      <div class="kn-info-wrapper">
+        <div class="kinolights-ci"></div>
+        <div class="kn-info">
+            <ul class="footer-menu-items">
+            	<li class="footer-menu-item">
+            		<a href="#" target="_blank">이용약관</a>
+           		</li>
+           		<li class="footer-menu-item">
+           			<a href="#" target="_blank">개인정보취급방침</a>
+         		</li>
+         		<li class="footer-menu-item">
+         			<a href="#">사용 설명서</a>
+        		</li>
+        		<li class="footer-menu-item">
+        			<a href="#" class="btn-kn-report-db">이용문의 및 DB제보</a>
+        		</li>
+       		</ul>
+        </div>
+        <div class="kn-copyright">
+          <p><strong style="color:#b3bfdd;">업무 제휴 문의 : <a href="mailto:znql16@gmail.com" style="color:#b3bfdd;">znql16@gmail.com</a></strong></p>
+          <br>
+          Copyright © 스포일러 Spoiler  ALL RIGHTS RESERVED.
+        </div>
+        <ul class="sns-items">
+          <li class="sns-item">
+            <a href="https://post.naver.com/my.nhn?memberNo=43999716" target="_blank" rel="noopener" aria-label="네이버 포스트" title="네이버 포스트">
+              <i class="icon-post"></i>
+            </a>
+          </li>
+          <li class="sns-item">
+            <a href="https://www.facebook.com/KINOLIGHTS/" target="_blank" rel="noopener" aria-label="페이스북" title="페이스북">
+              <i class="icon-facebook"></i>
+            </a>
+          </li>
+          <li class="sns-item">
+            <a href="https://www.instagram.com/kinolights/" target="_blank" rel="noopener" aria-label="인스타그램" title="인스타그램">
+              <i class="icon-instagram"></i>
+            </a>
+          </li>
+                  </ul>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

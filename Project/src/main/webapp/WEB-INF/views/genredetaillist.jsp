@@ -26,6 +26,9 @@
 	.btn-primary:hover {
     	color: #00ffd0;
     }
+    .btn{
+		font-size: smaller !important;
+	}
 </style>
 </head>
 <body>
@@ -40,6 +43,7 @@
 		<a class="btn btn-primary" href="genredetaillist.do?genre=어드벤처">어드벤처</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=판타지">판타지</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=공포">공포</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=미스터리">미스터리</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=스릴러">스릴러</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=SF">SF</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=뮤지컬">뮤지컬</a>
@@ -65,6 +69,13 @@
 		<a class="btn btn-primary" href="genredetaillist.do?genre=자연ㆍ환경">자연ㆍ환경</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=인권">인권</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=계몽">계몽</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=교육">교육</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=서부">서부</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=예술">예술</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=실험">실험</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=재난">재난</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=종교">종교</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=옴니버스">옴니버스</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=에로">에로</a>
 	</div>
 	<c:if test="${not empty param.genre }">
