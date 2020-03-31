@@ -11,10 +11,11 @@
 </head>
 <body>
 <!-- 공지사항 팝업 띄우기 -->
-
+<c:if test="${showPopup }">
 	<script>
 		window.open("notify.do","news","width=700px,height=450px,top=100px,left=100px");
 	</script>
+</c:if>
 
 <div style="position: fixed; top: 100px; left: 50%; z-index: -1;">
 	<div style="position: relative; top: 0; left: 700px;">

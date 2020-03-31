@@ -59,15 +59,14 @@ public class AdminServiceImpl implements AdminService{
 	}
 	
 	@Override
-	public void updateState(PopupDto dto) {
+	public void updateState(PopupDto dto, HttpServletRequest request) {
 		boolean showPopup = false;
 		if(dto.getState().equals("true")) {
-			
 			showPopup = true;
 		}else {
-			
 			showPopup = false;
 		}
+		request.getSession().setAttribute("showPopup", showPopup);
 		adminDao.updateState(dto);
 	}
 }

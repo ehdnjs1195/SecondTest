@@ -33,26 +33,32 @@
 				<td>${tmp.regdate }</td>
 				<td>
 					<label class="switch">
-				        <input id="input_${tmp.num}" type="checkbox" <c:if test="${tmp.state }">checked</c:if> >	
+				        <input class="check_${tmp.num}" type="checkbox" <c:if test="${tmp.state }">checked</c:if> >	
 				        <span class="slider round"></span>
 				    </label>
-				    <p id="p_${tmp.num}">OFF</p><p id="p_${tmp.num}" style="display:none;">ON</p>
+				    <p class="onOff_${tmp.num }">OFF</p>
+				    <p class="onOff_${tmp.num }" style="display:none;">ON</p> 
       			</td>
-			</tr>		
+			</tr>	
+			<script type="text/javascript">
+			
+			</script>	
 			<script>
-			    var check = $("#input_${tmp.num}");
+			    var check = $(".check_${tmp.num}");
 			    var tog;
 			    check.click(function(){
-			        $("#p_${tmp.num}").toggle();
-			        tog=$("#${tmp.num}").is(":checked");
-			        console.log(tog)
+			        $(".onOff_${tmp.num }").toggle();
+			        tog=$(".check_${tmp.num}").is(":checked");
+			        console.log("tog: "+tog);
 				    $.ajax({
 				      	url:"update_state.do",
 				      	method:"post",
-				      	data:{"state": tog,"num":"${tmp.num}"}, //data : 파라미터로 전달할 문자열 
-				      	   
-				   	})
-			    });
+				      	data:{"state":tog,"num":"${tmp.num}"}, //data : 파라미터로 전달할 문자열 
+				      	success:function(responseData){
+					        
+					     	}     
+				      	})
+				   	});
 			</script>
 		</c:forEach>
 		

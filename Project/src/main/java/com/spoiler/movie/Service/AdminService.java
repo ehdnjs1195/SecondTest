@@ -12,5 +12,5 @@ public interface AdminService {
 	public void noPopUp(HttpServletRequest request, HttpServletResponse response);
 	public void addPopUp(PopupDto dto);
 	public void getPopUPList(ModelAndView mView);
-	public void updateState(PopupDto dto);
+	public void updateState(PopupDto dto, HttpServletRequest request);
 }
