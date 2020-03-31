@@ -44,7 +44,7 @@ public class HomeController {
 	}
 	//댓글 저장 요청 처리
 	@RequestMapping(value = "/comment_insert", method = RequestMethod.POST)
-	public ModelAndView authCommentInsert(HttpServletRequest request, @RequestParam int ref_group, @RequestParam String movieId) {
+	public ModelAndView authCommentInsert(HttpServletRequest request, @RequestParam String ref_group, @RequestParam String movieId) {
 		service.saveComment(request);
 		return new ModelAndView("redirect:/detail.do?movieSeq="+ref_group+"&movieId="+movieId);
 	}

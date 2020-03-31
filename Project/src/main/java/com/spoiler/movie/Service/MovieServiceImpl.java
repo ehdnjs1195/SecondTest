@@ -37,6 +37,7 @@ public class MovieServiceImpl implements MovieService {
 	public void getDetail(HttpServletRequest request) {
 		// 파라미터로 전달되는 글번호
 		String movieSeq = request.getParameter("movieSeq");
+		System.out.println(movieSeq);
 		String movieId = request.getParameter("movieId");
 		// MovieDto 객체 생성 (select 할때 필요한 정보를 담기 위해)
 		MovieDto dto = apiService.getMovieInfo(movieSeq, movieId);
