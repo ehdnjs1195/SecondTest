@@ -37,19 +37,21 @@
 <%-- <jsp:include page="include/slidebar.jsp"/> --%>
 	<div>
 		<a class="btn" href="${pageContext.request.contextPath }/home.do">홈으로 돌아가기</a>
-		<a class="btn btn-primary" href="genredetaillist.do?genre=드라마">드라마</a>
-		<a class="btn btn-primary" href="genredetaillist.do?genre=범죄">범죄</a>
-		<a class="btn btn-primary" href="genredetaillist.do?genre=코메디">코미디</a>
-		<a class="btn btn-primary" href="genredetaillist.do?genre=어드벤처">어드벤처</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=액션">액션</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=SF">SF</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=판타지">판타지</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=어드벤처">어드벤처</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=드라마">드라마</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=코메디">코미디</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=스릴러">스릴러</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=호러">호러</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=뮤지컬">뮤지컬</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=범죄">범죄</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=공포">공포</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=미스터리">미스터리</a>
-		<a class="btn btn-primary" href="genredetaillist.do?genre=스릴러">스릴러</a>
-		<a class="btn btn-primary" href="genredetaillist.do?genre=SF">SF</a>
-		<a class="btn btn-primary" href="genredetaillist.do?genre=뮤지컬">뮤지컬</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=멜로드라마">멜로드라마</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=멜로">멜로</a>
-		<a class="btn btn-primary" href="genredetaillist.do?genre=로멘스">로멘스</a>
+		<a class="btn btn-primary" href="genredetaillist.do?genre=로맨스">로맨스</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=전쟁">전쟁</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=전기">전기</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=사극">사극</a>
@@ -70,7 +72,6 @@
 		<a class="btn btn-primary" href="genredetaillist.do?genre=인권">인권</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=계몽">계몽</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=교육">교육</a>
-		<a class="btn btn-primary" href="genredetaillist.do?genre=서부">서부</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=예술">예술</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=실험">실험</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=재난">재난</a>
