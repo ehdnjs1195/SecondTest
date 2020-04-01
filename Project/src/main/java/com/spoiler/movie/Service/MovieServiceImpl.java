@@ -1,35 +1,10 @@
 package com.spoiler.movie.Service;
 
-import java.io.BufferedReader;
-
-import java.io.IOException;
-
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
-import java.util.ArrayList;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,15 +13,22 @@ import com.spoiler.movie.Dao.MovieCommentDao;
 import com.spoiler.movie.Dao.MovieDao;
 import com.spoiler.movie.Dto.MovieCommentDto;
 import com.spoiler.movie.Dto.MovieDto;
+import com.spoiler.movie.favorite.Dao.FavoriteDao;
+import com.spoiler.movie.favorite.Dto.FavoriteDto;
+import com.spoiler.movie.favorite.Service.FavoriteService;
 
 @Service
 public class MovieServiceImpl implements MovieService {
 	@Autowired
 	private MovieDao dao;
 	@Autowired
+	private FavoriteDao dao2;
+	@Autowired
 	private MovieCommentDao commentDao;
 	@Autowired
 	private MovieAPIService apiService;
+	@Autowired
+	private FavoriteService favoriteService;
 
 	@Override
 	public void homeList(HttpServletRequest request) {
@@ -59,6 +41,7 @@ public class MovieServiceImpl implements MovieService {
 		// 파라미터로 전달되는 글번호
 		String movieSeq = request.getParameter("movieSeq");
 		String movieId = request.getParameter("movieId");
+		
 		// MovieDto 객체 생성 (select 할때 필요한 정보를 담기 위해)
 		MovieDto dto = apiService.getMovieInfo(movieSeq, movieId);
 		// request 에 글정보를 담고

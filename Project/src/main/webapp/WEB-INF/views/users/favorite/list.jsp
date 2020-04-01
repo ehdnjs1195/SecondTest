@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/signup_form.jsp</title>
-<jsp:include page="../include/navbar.jsp"></jsp:include>
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="${pageContext.request.contextPath }/include/navbar.jsp"></jsp:include>
+<jsp:include page="${pageContext.request.contextPath }/include/resource.jsp"></jsp:include>
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <style>
 .neon{

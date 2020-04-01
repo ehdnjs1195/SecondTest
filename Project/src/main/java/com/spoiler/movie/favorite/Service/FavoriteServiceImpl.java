@@ -17,8 +17,8 @@ public class FavoriteServiceImpl implements FavoriteService{
 	private FavoriteDao dao;
 
 	@Override
-	public void favorite_insert(FavoriteDto dto) {
-		dao.favorite_insert(dto); 
+	public void insert(FavoriteDto dto) {
+		dao.insert(dto); 
 }
 		
 
@@ -43,6 +43,14 @@ public class FavoriteServiceImpl implements FavoriteService{
 	@Override
 	public void delete(String id) {
 		dao.delete(id);
+		
+	}
+
+
+
+	@Override
+	public FavoriteDto getMovieInfo(String id) {
+		return (FavoriteDto) dao.getData(id);
 		
 	}
 

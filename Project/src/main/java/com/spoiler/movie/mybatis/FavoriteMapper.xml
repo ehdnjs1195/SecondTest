@@ -11,23 +11,21 @@
 	</select>
 	
 	
-	<insert id="favorite_insert" parameterType="favoriteDto">
+	<insert id="insert" parameterType="favoriteDto">
 		INSERT INTO favorite
-		(NUM, id, movieId, movieSeq, repRlsDate, genre, title, poster)
+		(num, id, movieId, movieSeq, repRlsDate, genre, title, poster, isDeleted)
 		VALUES(Favorite_Seq.NEXTVAL, 
-		#{id, jdbcType=VARCHAR}, 
-		#{movieId, jdbcType=VARCHAR}, 
-		#{movieSeq, jdbcType=VARCHAR}, 
-		#{repRlsDate, jdbcType=VARCHAR}, 
-		#{genre, jdbcType=VARCHAR}, 
-		#{title, jdbcType=VARCHAR}, 
-		#{poster, jdbcType=VARCHAR} )
+		#{id}, 
+		#{movieId}, 
+		#{movieSeq}, #{repRlsDate}, #{genre}, #{title}, 
+		#{poster}, 
+		#{isDeleted}='no' )
 	
 	</insert>
 	
 	
 	<select id="getData" parameterType="String" resultType="String">
-		SELECT movieId
+		SELECT movieId,movieSeq
 		FROM favorite
 		WHERE id=#{id}
 	</select>
@@ -38,9 +36,10 @@
 		WHERE id=#{id}
 	</select>
 	
-	<delete id="delete" parameterType="String">
-		DELETE FROM favorite
-		WHERE id=#{Id}
-	</delete>
+	<update id="delete" parameterType="String">
+		UPDATE favorite
+		SET isDeleted='true'
+		WHERE id=#{id, jdbcType=VARCHAR}
+	</update>
 	
 </mapper>

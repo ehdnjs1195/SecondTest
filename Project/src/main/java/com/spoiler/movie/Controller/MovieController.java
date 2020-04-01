@@ -18,8 +18,6 @@ import com.spoiler.movie.Service.MovieService;
 @Controller
 public class MovieController {
 	@Autowired
-	private MovieService service;
-	@Autowired
 	private MovieAPIService apiService;
 	
 	@RequestMapping("/searchlist")

@@ -10,12 +10,15 @@ public class FavoriteDto {
 	private String genre;
 	private String title;
 	private String poster;
+	private String isDeleted;
 	
-	public FavoriteDto() {}
-
+	
+	public FavoriteDto() {};
+	
 	public FavoriteDto(int num, String id, String movieId,
 			String movieSeq, String repRlsDate,
-			String genre, String title, String poster) {
+			String genre, String title, String poster,
+			String isDeleted) {
 		super();
 		this.num = num;
 		this.id = id;
@@ -25,6 +28,7 @@ public class FavoriteDto {
 		this.genre = genre;
 		this.title = title;
 		this.poster = poster;
+		this.isDeleted = isDeleted;
 	}
 
 	public int getNum() {
@@ -89,8 +93,16 @@ public class FavoriteDto {
 
 	public void setPoster(String poster) {
 		this.poster = poster;
-	};
-	
+	}
+
+	public String getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(String isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
 	
 	
 }

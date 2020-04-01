@@ -5,15 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.jsoup.Connection.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spoiler.movie.favorite.Dto.FavoriteDto;
@@ -25,26 +25,29 @@ public class FavoriteController {
 	@Autowired
 	private FavoriteService service;
 	
-	
-	
-	@RequestMapping("favorite/insert.do")
-	public String insert(@ModelAttribute FavoriteDto dto, HttpSession session) {
+	@ResponseBody
+	@RequestMapping(value="/favorite/insert", method=RequestMethod.POST)
+	public ModelAndView authInsert(HttpSession session,
+			@ModelAttribute FavoriteDto dto){
 		String id=(String)session.getAttribute("id");
-		
 		dto.setId(id);
-		service.favorite_insert(dto);
-		return "${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}&movieId=${dto.movieId}";
+		service.insert(dto);
+		return new ModelAndView("redirect:/${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}&movieId=${dto.movieId}");
 	}
 	
-	@RequestMapping("favorite/delete.do")
-	public String delete(@ModelAttribute FavoriteDto dto, HttpSession session) {
+	
+	@RequestMapping(value="/favorite/delete", method=RequestMethod.POST)
+	public ModelAndView authDelete(@ModelAttribute FavoriteDto dto, HttpSession session) {
 		String id=(String)session.getAttribute("id");
 		
 		dto.setId(id);
 		service.delete(id);
-		return "${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}&movieId=${dto.movieId}";
+		
+		return new ModelAndView("redirect:/${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}&movieId=${dto.movieId}");
 		
 	}
+	
+	
 	
 	@RequestMapping("favorite/favoriteList.do")
     public ModelAndView favoriteList(HttpSession session, ModelAndView mav) {

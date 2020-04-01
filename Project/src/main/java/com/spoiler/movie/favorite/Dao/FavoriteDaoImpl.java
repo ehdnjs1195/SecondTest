@@ -7,9 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spoiler.movie.Dto.MovieDto;
 import com.spoiler.movie.favorite.Dto.FavoriteDto;
-import com.spoiler.movie.users.Dto.UsersDto;
 
 
 @Repository
@@ -19,8 +17,8 @@ public class FavoriteDaoImpl implements FavoriteDao{
 	private SqlSession session;
 	
 	@Override
-	public void favorite_insert(FavoriteDto dto) {
-		session.insert("favorite.favorite_insert", dto);
+	public void insert(FavoriteDto dto) {
+		session.insert("favorite.insert",dto);
 	}
 
 
@@ -49,6 +47,9 @@ public class FavoriteDaoImpl implements FavoriteDao{
 	public int getCount(String id) {
 		return session.selectOne("favorite.getCount",id);
 	}
+
+
+
 
 
 

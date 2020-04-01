@@ -25,8 +25,7 @@ import com.spoiler.movie.favorite.Service.FavoriteService;
 public class HomeController {
 	@Autowired
 	private MovieService service;
-	@Autowired
-	private FavoriteService service2;
+
 	
 	@RequestMapping("/home")
 	public String home(HttpServletRequest request) {
@@ -35,11 +34,11 @@ public class HomeController {
 	}
 	//글 자세히 보기 요청 처리
 	@RequestMapping("/detail")
-	public String detail(HttpSession session,HttpServletRequest request){
+	public String detail(HttpServletRequest request){
 		
-		String id=(String)session.getAttribute("id");
+		
 		service.getDetail(request);
-		service2.getData(id);
+		
 		//view page 로 forward 이동해서 글 자세히 보기 
 		return "detail";
 	}
