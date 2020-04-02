@@ -27,7 +27,7 @@
 	
 	<select id="getRankList" resultType="movieRankDto">
 		SELECT * from movie_rank
-		order by starPoint desc
+		order by rank asc
 	</select>
 	<insert id="updateRank" parameterType="movieRankDto">
 		insert into movie_rank

@@ -123,9 +123,9 @@ public class MovieServiceImpl implements MovieService {
 			int count=0;
 				while (titles.hasNext()) {
 					count = count+1;
-					dto.setRank(Integer.toString(count));
+					dto.setRank(count);
 					dto.setTitle(titles.next().text());
-					dto.setStarPoint(points.next().text());
+					dto.setStarPoint(Float.parseFloat(points.next().text()));
 					rankDao.updateRank(dto);
 				}
 		}catch(Exception e){
@@ -151,9 +151,9 @@ public class MovieServiceImpl implements MovieService {
 				Iterator<Element> points = elements.select("td.point").iterator();
 
 				while (titles.hasNext()) {
-					dto.setRank(rankings.next().text());
+					dto.setRank(Integer.parseInt(rankings.next().text()));
 					dto.setTitle(titles.next().text());
-					dto.setStarPoint(points.next().text());
+					dto.setStarPoint(Float.parseFloat(points.next().text()));
 					rankDao.updateRank(dto);
 				}
 				

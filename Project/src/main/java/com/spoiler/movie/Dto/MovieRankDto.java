@@ -1,24 +1,24 @@
 package com.spoiler.movie.Dto;
 
 public class MovieRankDto {
-	private String rank;
+	private int rank;
 	private String title;
-	private String starPoint;
+	private float starPoint;
 	
 	public MovieRankDto() {}
 
-	public MovieRankDto(String rank, String title, String starPoint) {
+	public MovieRankDto(int rank, String title, float starPoint) {
 		super();
 		this.rank = rank;
 		this.title = title;
 		this.starPoint = starPoint;
 	}
 
-	public String getRank() {
+	public int getRank() {
 		return rank;
 	}
 
-	public void setRank(String rank) {
+	public void setRank(int rank) {
 		this.rank = rank;
 	}
 
@@ -30,11 +30,11 @@ public class MovieRankDto {
 		this.title = title;
 	}
 
-	public String getStarPoint() {
+	public float getStarPoint() {
 		return starPoint;
 	}
 
-	public void setStarPoint(String starPoint) {
+	public void setStarPoint(float starPoint) {
 		this.starPoint = starPoint;
 	}
 
