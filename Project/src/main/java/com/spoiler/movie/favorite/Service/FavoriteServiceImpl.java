@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spoiler.movie.Dto.MovieCommentDto;
 import com.spoiler.movie.favorite.Dao.FavoriteDao;
 import com.spoiler.movie.favorite.Dto.FavoriteDto;
 
@@ -17,8 +18,25 @@ public class FavoriteServiceImpl implements FavoriteService{
 	private FavoriteDao dao;
 
 	@Override
-	public void insert(FavoriteDto dto) {
-		dao.insert(dto); 
+	public void insert(HttpServletRequest request) {
+		String id = (String) request.getSession().getAttribute("id");
+		String movieId = request.getParameter("movieId");
+		String movieSeq = request.getParameter("movieSeq");
+		String title = request.getParameter("title");
+		String genre= request.getParameter("genre");
+		String repRlsDate=request.getParameter("repRlsDate");
+		String posters=request.getParameter("posters");
+		FavoriteDto dto = new FavoriteDto();
+		dto.setId(id);
+		dto.setMovieId(movieId);
+		dto.setMovieSeq(movieSeq);
+		dto.setTitle(title);
+		dto.setGenre(genre);
+		dto.setRepRlsDate(repRlsDate);
+		dto.setPosters(posters);
+		
+		dao.insert(dto);
+		
 }
 		
 

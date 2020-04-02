@@ -392,7 +392,7 @@ input[type="checkbox"]:checked + label:before {
 			</div>
 			<p class="help-block" id="id_notusable">이미 사용중인 아이디 입니다.</p>
 			<p class="help-block" id="id_required">필수 정보입니다.</p>
-			<p class="help-block" id="id_mix">4자리이상 20이하 영문, 숫자 조합으로 입력 하세요.</p>
+			<p class="help-block" id="id_mix">5자리이상 20이하 영문, 숫자 조합으로 입력 하세요.</p>
 			<p class="help-block" id="noSpace_id">공백은 입력 할 수 없습니다.</p>
 		</div>
 		

@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SPOILER/detail</title>
+<jsp:include page="include/resource.jsp"></jsp:include>
+</head>
 <style>
 .txt_origin{
 	display: -webkit-box;
@@ -162,29 +165,19 @@
 		<dd id="totalAudience">682,309명</dd>
 		</dl>
 		 
-		<c:choose>
-		<c:when test="${dto.movieId ne null}">
-		<form class="favorite_btn" action="users/favorite_insert.do" method="post">
+		
+		<form id="favorite_form" class="favorite_form" action="" method="post">
 		
 		<input type="hidden" name="movieId" value="${dto.movieId }"/>
 		<input type="hidden" name="movieSeq" value="${dto.movieSeq }"/>
 		<input type="hidden" name="repRlsDate" value="${dto.repRlsDate }"/>
-		<input type="hidden" name="poster" value="${dto.posters }"/>			
 		<input type="hidden" name="title" value="${dto.title }"/>
 		<input type="hidden" name="genre" value="${dto.genre }"/>
+		<input type="hidden" name="posters" value="${dto.posters }"/>			
 			
-		<button disabled="diabled" id="add_btn" class="btn btn-danger" type="submit">관심목록 추가</button>
+		<button id="add_btn" class="btn btn-danger" type="submit">관심목록 추가</button>
 		</form> 
-		</c:when>
 		
-		<c:otherwise>
-		<form class="del_btn" action="favorite/delete.do" method="post">
-		<input type="hidden" name="movieId" value="${dto.movieId }"/>
-		<input type="hidden" name="movieSeq" value="${dto.movieSeq }"/>
-		<button class="btn btn-danger" type="submit">관심목록 삭제</button>
-		</form>
-		</c:otherwise>
-		</c:choose>
 	</div>
 	<div class="desc_movie" style="clear: left; font-weight: bold; padding-top: 28px;">
 	<h3 style="font-style: oblique; margin-top: 0; color: #ff83c2;">줄거리</h3>
@@ -288,13 +281,6 @@
 	</div>
 </div>
 <script>
-var isLogin=${not empty id};
-if(isLogin==false){
-	$("button[type=submit]").attr("disabled","disabled");
-}else{
-	$("button[type=submit]").removeAttr("disabled");
-}
-
 
 	//댓글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".comment-update-link").click(function(){
@@ -319,7 +305,10 @@ if(isLogin==false){
 			data:data,
 			success:function(responseData){
 				// responseData : {isSuccess:true}
-				if(responseData.isSuccess){
+				if(responseData
+
+				
+				){
 					//폼을 안보이게 한다 
 					$this.slideUp(200);
 					//폼에 입력한 내용 읽어오기
@@ -375,53 +364,39 @@ if(isLogin==false){
 		}
 	});
 	
-	//폼에 click 이벤트가 일어 났을때 실행할 함수 등록 
-	$(".favorite_btn").on("click", function(){
-		//로그인 여부 
+	
+	//폼에 submit 이벤트가 일어 났을때 실행할 함수 등록 
+	$(".favorite_form").on("submit",function(event){
+		 event.preventDefault();
 		var isLogin=${not empty id};
 		if(isLogin==false){
 			var isMove=confirm("관심목록을 추가하려면 로그인이 필요합니다.\n로그인 페이지로 이동 하시겠습니까?");
 			if(isMove){
 				location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}%26movieId=${dto.movieId}";
-				return false;
-			}else{
 				
-				location.href="${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}&movieId=${dto.movieId}";
-				return false;
+					return false;
 			}
+		}else{	
+			
+			var data = $(this).serialize();
+			$.ajax({
+											
+				url: "favorite_insert.do",
+				method: "POST",
+				/* cache:false, */
+				data:data,
+				success: function(responseData){
+					alert(responseData+"\n 을(를) 관심목록에 추가하였습니다.");
+				}, 
+				error: function(){
+					alert("실패했습니다.");
+				}
+
+			})
 		}
 	});
 	
-	function favorite_func(){
-		  var frm_read = $('#frm_read');
-		  var movieId = $('${dto.movieId}', frm_read).val();
-		  
-		  $.ajax({
-		    url: "../favorite/like.do",
-		    type: "GET",
-		    cache: false,
-		    dataType: "json",
-		    data: 'boardno=' +boardno,
-		    success: function(data) {
-		      var msg = '';
-		      var like_img = '';
-		      msg += data.msg;
-		      alert(msg);
-		      
-		      if(data.like_check == 0){
-		        like_img = "./images/dislike.png";
-		      } else {
-		        like_img = "./images/like.png";
-		      }      
-		      $('#like_img', frm_read).attr('src', like_img);
-		      $('#like_cnt').html(data.like_cnt);
-		      $('#like_check').html(data.like_check);
-		    },
-		    error: function(request, status, error){
-		      alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		    }
-		  });
-		}
+	
 
 
 	

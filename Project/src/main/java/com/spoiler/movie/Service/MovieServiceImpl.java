@@ -22,13 +22,9 @@ public class MovieServiceImpl implements MovieService {
 	@Autowired
 	private MovieDao dao;
 	@Autowired
-	private FavoriteDao dao2;
-	@Autowired
 	private MovieCommentDao commentDao;
 	@Autowired
 	private MovieAPIService apiService;
-	@Autowired
-	private FavoriteService favoriteService;
 
 	@Override
 	public void homeList(HttpServletRequest request) {

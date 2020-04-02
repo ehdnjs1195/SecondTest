@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,13 +28,11 @@ public class FavoriteController {
 	private FavoriteService service;
 	
 	@ResponseBody
-	@RequestMapping(value="/favorite/insert", method=RequestMethod.POST)
-	public ModelAndView authInsert(HttpSession session,
-			@ModelAttribute FavoriteDto dto){
-		String id=(String)session.getAttribute("id");
-		dto.setId(id);
-		service.insert(dto);
-		return new ModelAndView("redirect:/${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}&movieId=${dto.movieId}");
+	@RequestMapping(value ="/favorite_insert.do", method=RequestMethod.POST, produces = "application/text; charset=utf8")
+	public String authInsert(HttpServletRequest request, 
+			@ModelAttribute FavoriteDto dto) throws Exception {	
+		service.insert(request);
+			return dto.getTitle();
 	}
 	
 	

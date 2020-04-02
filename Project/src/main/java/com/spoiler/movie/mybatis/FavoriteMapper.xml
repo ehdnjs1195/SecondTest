@@ -5,21 +5,20 @@
 
 	
 	
-	<select id="favoriteList" resultType="favoriteDto">
+	<select id="favoriteList" resultType="FavoriteDto">
 		select * from favorite
 		order by movieSeq asc
 	</select>
 	
 	
-	<insert id="insert" parameterType="favoriteDto">
+	<insert id="insert" parameterType="FavoriteDto">
 		INSERT INTO favorite
-		(num, id, movieId, movieSeq, repRlsDate, genre, title, poster, isDeleted)
+		(num, id, movieId, movieSeq, repRlsDate, genre, title, posters)
 		VALUES(Favorite_Seq.NEXTVAL, 
 		#{id}, 
 		#{movieId}, 
 		#{movieSeq}, #{repRlsDate}, #{genre}, #{title}, 
-		#{poster}, 
-		#{isDeleted}='no' )
+		#{posters})
 	
 	</insert>
 	
@@ -37,9 +36,8 @@
 	</select>
 	
 	<update id="delete" parameterType="String">
-		UPDATE favorite
-		SET isDeleted='true'
-		WHERE id=#{id, jdbcType=VARCHAR}
+		DELETE FROM favorite
+		WHERE movieSeq=#{movieSeq, jdbcType=VARCHAR}
 	</update>
 	
 </mapper>
