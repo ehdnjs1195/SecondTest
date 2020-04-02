@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -74,24 +75,20 @@ public class MovieController {
 		return mView;
 	}
 	
-	@RequestMapping("/master/popup-list")
-	public ModelAndView popupList(ModelAndView mView) {
-		adminService.getPopUPList(mView);
-		mView.setViewName("master/popup-list");
+	@RequestMapping("/master/popup")
+	public ModelAndView popupList(ModelAndView mView,HttpSession session) {
+		adminService.getPopUp(mView, session);
+		mView.setViewName("master/popup");
 		return mView;
 	}
 	
-	@RequestMapping("/master/popup-insertform")
-	public String popupInsertForm() {
-		return "master/popup-insertform";
-	}
 	
 	@RequestMapping("/master/popup-insert")
 	public ModelAndView popupInsert(ModelAndView mView, @ModelAttribute("dto") PopupDto dto) {
 		System.out.println(dto.getWriter()+dto.getTitle()+dto.getState());
 		adminService.addPopUp(dto);
 		
-		mView.setViewName("redirect:/master/popup-list.do");
+		mView.setViewName("redirect:/master/popup.do");
 		return mView;
 	}
 	@ResponseBody

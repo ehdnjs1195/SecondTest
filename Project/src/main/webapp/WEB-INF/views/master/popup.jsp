@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>POPUP</title>
 <jsp:include page="../include/resource.jsp"></jsp:include>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/toggle.css" />
 <style>
 	/* textarea의 크기가 SmartEditer의 크기가 된다. */
 	#content{
@@ -13,9 +15,13 @@
 		width: 100%;
 		height: 400px;
 	}
+	body{
+		color: #fff;
+	}
 </style>
 </head>
 <body>
+<jsp:include page="../include/navbar.jsp"/>
 <div class="container">
 	<form action="popup-insert.do" method="post">
 		<div class="form-group">
@@ -25,16 +31,44 @@
 		</div>
 		<div class="form-group">
 			<label for="title">제목</label>
-			<input class="form-control" type="text" name="title" id="title" />
+			<input class="form-control" type="text" name="title" id="title" value="${PopDto.title }"/>
 		</div>
 		<div class="form-group">
 			<label for="content">내용</label>
-			<textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
+			<textarea class="form-control" name="content" id="content" cols="30" rows="10">${PopDto.content }</textarea>
 		</div>
 		<button class="btn btn-primary " type="submit" onclick="submitContents(this);">저장</button>
-		<a class="btn btn-warning" href="list.do">취소</a>
+		<a class="btn btn-danger" href="#">취소</a>
+		<a class="btn btn-warning" href="admin.do">돌아가기</a>
 	</form>
+	<label class="switch">
+	    <input class="check" type="checkbox" <c:if test="${PopDto.state }">checked</c:if> >	
+	    <span class="slider round"></span>
+	</label>
+	<p class="onOff">OFF</p>
+	<p class="onOff" style="display:none;">ON</p> 
+	
 </div>
+	<!-- ON/OFF -->
+	<script>
+	    var check = $(".check");
+	    var tog;
+	    check.click(function(){
+	        $(".onOff").toggle();
+	        tog=$(".check").is(":checked");
+	        console.log("tog: "+tog);
+		    $.ajax({
+		      	url:"update_state.do",
+		      	method:"post",
+		      	data:{"state":tog,"writer":"${id}"}, //data : 파라미터로 전달할 문자열 
+		      	success:function(responseData){
+			        
+			     	}     
+		      	})
+		   	});
+	</script>
+
+<!-- 스마트에디터 -->
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>
 <script>
 	var oEditors = [];

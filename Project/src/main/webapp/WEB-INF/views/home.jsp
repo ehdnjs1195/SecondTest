@@ -13,7 +13,16 @@
 <!-- 공지사항 팝업 띄우기 -->
 <c:if test="${showPopup }">
 	<script>
-		window.open("notify.do","news","width=700px,height=450px,top=100px,left=100px");
+		var getCookie = function(name) {
+	        var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+	        return value? value[2] : null;
+	    };
+		console.log(getCookie("isPopup"));
+		if(getCookie("isPopup")=="no"){
+			
+		}else{		
+			window.open("notify.do","news","width=710px,height=530px,top=100px,left=100px");
+		}
 	</script>
 </c:if>
 

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,22 +20,9 @@ public class AdminServiceImpl implements AdminService{
 	private AdminDao adminDao;
 	@Override
 	public void popUp(HttpServletRequest request) {
-		//쿠키 읽어오기
-		Cookie[] cookies=request.getCookies();
-		//팝업을 띄울수 있는지 여부 
-		boolean canPopup=true;
-		if(cookies != null){
-			//반복문 돌면서 모든 쿠키를 참조해서 
-			for(Cookie tmp:cookies){
-				// "isPopup" 이라는 쿠키 이름으로 저장된 값이 있으면
-				if(tmp.getName().equals("isPopup")){
-					//팝업을 띄우지 않도록 표시한다.
-					canPopup=false;
-				}
-			}
-		}
-		System.out.println(canPopup);
-		request.getSession().setAttribute("canPopup", canPopup);
+		String writer = (String)request.getSession().getAttribute("id");
+		PopupDto dto = adminDao.getPopup(writer);
+		request.setAttribute("popupDto", dto);
 	}
 	@Override
 	public void noPopUp(HttpServletRequest request, HttpServletResponse response) {
@@ -49,13 +37,18 @@ public class AdminServiceImpl implements AdminService{
 	}
 	@Override
 	public void addPopUp(PopupDto dto) {
-		adminDao.insertPopup(dto);
+		if(adminDao.checkAdmin(dto.getWriter())) {
+			adminDao.updatePopup(dto);
+		}else {
+			adminDao.insertPopup(dto);
+		}
 	}
 	
 	@Override
-	public void getPopUPList(ModelAndView mView) {
-		List<PopupDto> list = adminDao.getPopupList();
-		mView.addObject("list", list);
+	public void getPopUp(ModelAndView mView, HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		PopupDto dto = adminDao.getPopup(id);
+		mView.addObject("PopDto",dto);
 	}
 	
 	@Override
