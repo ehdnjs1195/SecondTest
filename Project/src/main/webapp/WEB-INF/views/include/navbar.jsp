@@ -77,6 +77,7 @@
 	}
 	
 	.search-box{
+		color: black;
 		margin-top: -1.5px;
 		background: #2f3640;
 		height: 38.5px;
@@ -151,7 +152,7 @@
 				<label for="condition" style="display: none;">검색조건</label>
 				<div class="search-box">
 					<input class="search-txt" type="text" name="title" placeholder="영화 제목 검색" />
-					<a class="search-btn" type="submit">
+					<a href="#" onclick="document.getElementById('isSeach').submit()" class="search-btn" type="submit">
 						<i class="fas fa-search"></i>
 					</a>
 				</div>
@@ -159,7 +160,6 @@
 		</div>
 	</div>
 </div>
-
 
 
 
