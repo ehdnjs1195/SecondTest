@@ -16,5 +16,7 @@ public interface MovieService {
 	public void deleteComment(int num);
 	//댓글 수정하는 메소드
 	public void updateComment(MovieCommentDto dto);
+	//
+	public void plusCnt(int num,HttpServletRequest request);
 	
 }

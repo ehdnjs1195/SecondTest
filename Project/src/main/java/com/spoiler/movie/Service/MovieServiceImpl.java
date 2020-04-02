@@ -38,6 +38,7 @@ import com.spoiler.movie.Dao.MovieCommentDao;
 import com.spoiler.movie.Dao.MovieDao;
 import com.spoiler.movie.Dto.MovieCommentDto;
 import com.spoiler.movie.Dto.MovieDto;
+import com.spoiler.movie.Dto.RecommendDto;
 
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -110,5 +111,12 @@ public class MovieServiceImpl implements MovieService {
 	public void updateComment(MovieCommentDto dto) {
 		commentDao.update(dto);
 
+	}
+
+	@Override
+	public void plusCnt(int num,HttpServletRequest request) {
+	
+		commentDao.updateCnt(num);		
+		
 	}
 }

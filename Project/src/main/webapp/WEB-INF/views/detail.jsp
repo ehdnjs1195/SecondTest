@@ -219,6 +219,7 @@
 									<strong>${tmp.target_id }</strong>
 								</c:if>
 								<span style="font-weight: normal; font-family: auto;">${tmp.regdate }</span>
+								<a href="recommend.do?num=${tmp.num }">추천    ${tmp.recommendCnt}</a>
 								<a href="javascript:" class="reply_link" style="color: #70ff35;">답글</a> |
 								<c:choose>
 									<%-- 로그인된 아이디와 댓글의 작성자가 같으면 --%>
@@ -230,6 +231,7 @@
 										<a href="javascript:" style="color: #ff0000;">신고</a>
 									</c:otherwise>
 								</c:choose>
+								
 							</dt>
 							<dd>
 								<pre>${tmp.content }</pre>

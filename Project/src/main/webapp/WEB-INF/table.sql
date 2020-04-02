@@ -12,3 +12,10 @@ runtime varchar2(3),
 repRlsDate varchar2(8),
 keywords varchar2(200),
 posters varchar2(150));
+
+ALTER TABLE movie_comment 
+ADD(recommendCnt number default 0);--추천수 칼럼 추가
+
+create table recommend 
+(id varchar2(100) primary key,
+recommend varchar2(5))--추천 했는지 확인하는 테이블

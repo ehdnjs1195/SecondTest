@@ -3,7 +3,7 @@
 <mapper namespace="movieComment">
 	<select id="getList" parameterType="int" resultType="movieCommentDto">
 		SELECT num, writer, content, target_id, ref_group,
-			comment_group, deleted, movie_comment.regdate, profile
+			comment_group, deleted, movie_comment.regdate, profile,recommendCnt
 		FROM movie_comment
 		INNER JOIN users
 		ON movie_comment.writer = users.id
@@ -24,9 +24,15 @@
 		SELECT movie_comment_seq.NEXTVAL
 		FROM DUAL
 	</select>
+	
 	<update id="update" parameterType="movieCommentDto">
 		UPDATE movie_comment
 		SET content=#{content}
+		WHERE num=#{num}
+	</update>
+	<update id="updateCnt" parameterType="int">
+		UPDATE movie_comment
+		SET recommendCnt=recommendCnt+1
 		WHERE num=#{num}
 	</update>
 </mapper>

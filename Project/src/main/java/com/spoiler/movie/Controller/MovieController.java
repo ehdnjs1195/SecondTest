@@ -1,6 +1,7 @@
 package com.spoiler.movie.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,16 +10,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spoiler.movie.Dto.MovieDto;
+import com.spoiler.movie.Dto.RecommendDto;
 import com.spoiler.movie.Service.MovieAPIService;
 import com.spoiler.movie.Service.MovieService;
+import com.spoiler.movie.Service.RecommendService;
 
 @Controller
 public class MovieController {
 	@Autowired
 	private MovieService service;
+	@Autowired
+	private RecommendService recommendService;
 	@Autowired
 	private MovieAPIService apiService;
 	
@@ -67,4 +73,11 @@ public class MovieController {
 		mView.setViewName("more_list");
 		return mView;
 	}
+	@RequestMapping("/recommend")
+	public ModelAndView authRecommend(@RequestParam int num, HttpServletRequest request) {
+		service.plusCnt(num,request);
+		recommendService.recommendDataInsert(request);
+		return new ModelAndView("redirect:/home.do"); 
+	}
+	
 }

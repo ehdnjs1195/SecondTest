@@ -20,11 +20,13 @@ public class MovieDto {
 	private int startRowNum;
 	private int endRowNum;
 	
+	
 	public MovieDto() {}
-
+	
 	public MovieDto(int rank, String movieId, String movieSeq, String title, String titleEng, String genre,
 			String nation, String director, String actor, String plot, String runtime, String repRlsDate,
-			String keywords, float starPoint, String posters, String videoLink, int startRowNum, int endRowNum) {
+			String keywords, float starPoint, String posters, String videoLink, int startRowNum, int endRowNum
+			) {
 		super();
 		this.rank = rank;
 		this.movieId = movieId;
@@ -44,6 +46,7 @@ public class MovieDto {
 		this.videoLink = videoLink;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
+
 	}
 
 	public int getRank() {
@@ -190,7 +193,5 @@ public class MovieDto {
 		this.endRowNum = endRowNum;
 	}
 
-	
-	
 
 }
