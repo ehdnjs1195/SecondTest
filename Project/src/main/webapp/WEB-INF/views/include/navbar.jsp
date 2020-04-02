@@ -93,6 +93,7 @@
 	}
 	
 	.search-btn{
+		color: black;
 	    margin-top: -1.5px;
 		float: right;
 		width: 40px;
