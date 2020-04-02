@@ -42,6 +42,7 @@
 </head>
 <body>
 	<div class="container">
+		<h1>영화 랭킹(평점순)</h1>
 		<table class="table table-hover">
 			<thead>
 				<tr>
