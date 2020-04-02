@@ -24,4 +24,18 @@
 			ORDER BY num DESC) result1
 		WHERE num=#{num }
 	</select>
+	
+	<select id="getRankList" resultType="movieRankDto">
+		SELECT * from movie_rank
+		order by starPoint desc
+	</select>
+	<insert id="updateRank" parameterType="movieRankDto">
+		insert into movie_rank
+		values(
+			#{rank}, #{title}, #{starPoint}
+		)
+	</insert>
+	<delete id="deleteRank">
+		delete movie_rank
+	</delete>
 </mapper>

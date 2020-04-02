@@ -8,6 +8,7 @@
 		<typeAlias type="com.spoiler.movie.Dto.MovieDto" alias="movieDto"/>
 		<typeAlias type="com.spoiler.movie.Dto.MovieCommentDto" alias="movieCommentDto"/>
 		<typeAlias type="com.spoiler.movie.users.Dto.UsersDto" alias="usersDto"/>
+		<typeAlias type="com.spoiler.movie.Dto.MovieRankDto" alias="movieRankDto"/>
 	</typeAliases>
 	
 	<!-- mapper 설정 -->

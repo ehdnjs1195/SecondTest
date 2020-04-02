@@ -13,5 +13,8 @@ public interface MovieService {
 	public void deleteComment(int num);
 	//댓글 수정하는 메소드
 	public void updateComment(MovieCommentDto dto);
-	
+	//영화 랭킹 리스트
+	public void getRankList(HttpServletRequest request);
+	//영화 업데이트
+	public void updateRank(HttpServletRequest request);
 }

@@ -72,5 +72,19 @@ public class HomeController {
 		Map<String, Object> map=new HashMap<>();
 		map.put("isSuccess", true);
 		return map;
-	}	
+	}
+	//영화 랭킹 리스트
+	@RequestMapping("/movie_Rank")
+	public String rank_list(HttpServletRequest request) {
+		service.getRankList(request);
+		return "movie_Rank";
+	}
+	
+	//영화 실시간 업데이트
+	@RequestMapping("/updateRankMovie")
+	public String rank_update(HttpServletRequest request) {
+		service.updateRank(request);
+		service.homeList(request);
+		return "home";
+	}
 }

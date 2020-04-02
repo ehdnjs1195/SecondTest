@@ -1,6 +1,7 @@
 package com.spoiler.movie.Service;
 
-import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,8 +16,10 @@ import org.springframework.stereotype.Service;
 
 import com.spoiler.movie.Dao.MovieCommentDao;
 import com.spoiler.movie.Dao.MovieDao;
+import com.spoiler.movie.Dao.MovieRankDao;
 import com.spoiler.movie.Dto.MovieCommentDto;
 import com.spoiler.movie.Dto.MovieDto;
+import com.spoiler.movie.Dto.MovieRankDto;
 
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -26,6 +29,8 @@ public class MovieServiceImpl implements MovieService {
 	private MovieCommentDao commentDao;
 	@Autowired
 	private MovieAPIService apiService;
+	@Autowired
+	private MovieRankDao rankDao;
 
 	@Override
 	public void homeList(HttpServletRequest request) {
@@ -91,5 +96,70 @@ public class MovieServiceImpl implements MovieService {
 	public void updateComment(MovieCommentDto dto) {
 		commentDao.update(dto);
 
+	}
+	//영화 랭킹 리스트
+	@Override
+	public void getRankList(HttpServletRequest request) {
+		List<MovieRankDto> list=rankDao.movieRankList();
+		request.setAttribute("list", list);
+	}
+
+	@Override
+	public void updateRank(HttpServletRequest request) {
+		rankDao.deleteRank();
+		MovieRankDto dto = new MovieRankDto();
+		try{
+			String URL="https://movie.naver.com/movie/sdb/rank/rmovie.nhn?sel=pnt";
+			String dateParam="&date=";
+			
+			SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMdd");	
+			Date time = new Date();
+			String time1 = format1.format(time);
+
+			Document doc=Jsoup.connect(URL+dateParam+time1).get();
+			Elements elements=doc.select("tbody tr");
+			Iterator<Element> titles = elements.select("td.title a").iterator();
+			Iterator<Element> points = elements.select("td.point").iterator();
+			int count=0;
+				while (titles.hasNext()) {
+					count = count+1;
+					dto.setRank(Integer.toString(count));
+					dto.setTitle(titles.next().text());
+					dto.setStarPoint(points.next().text());
+					rankDao.updateRank(dto);
+				}
+		}catch(Exception e){
+			System.out.println("크롤링 실패 : "+e);
+		}
+		
+		// 네이버 영화 평점
+		try{
+			String URL="https://movie.naver.com/movie/sdb/rank/rmovie.nhn?sel=pnt";
+			String dateParam="&date=";
+			
+			SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMdd");	
+			Date time = new Date();
+			String time1 = format1.format(time);
+			
+			String pageParam="&page=";
+			int PAGE=2;
+			for(PAGE=2; PAGE<=40; PAGE++){
+				Document doc=Jsoup.connect(URL+dateParam+time1+pageParam+PAGE).get();
+				Elements elements=doc.select("tbody tr");
+				Iterator<Element> rankings = elements.select("td.order").iterator();
+				Iterator<Element> titles = elements.select("td.title a").iterator();
+				Iterator<Element> points = elements.select("td.point").iterator();
+
+				while (titles.hasNext()) {
+					dto.setRank(rankings.next().text());
+					dto.setTitle(titles.next().text());
+					dto.setStarPoint(points.next().text());
+					rankDao.updateRank(dto);
+				}
+				
+			}//for end
+		}catch(Exception e){
+			System.out.println("크롤링 실패 : "+e);
+		}//try end
 	}
 }
