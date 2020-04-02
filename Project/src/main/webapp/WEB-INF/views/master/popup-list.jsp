@@ -40,9 +40,7 @@
 				    <p class="onOff_${tmp.num }" style="display:none;">ON</p> 
       			</td>
 			</tr>	
-			<script type="text/javascript">
 			
-			</script>	
 			<script>
 			    var check = $(".check_${tmp.num}");
 			    var tog;
