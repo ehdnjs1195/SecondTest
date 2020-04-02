@@ -36,13 +36,24 @@
 	    height: 17px;
 	    background: url(//i1.daumcdn.net/img-contents/movie/2016/pc/bg_star_170614_v2.png) no-repeat 0 0;
 	}
+	#h1{
+		color: white;
+	    margin-bottom: 50px;
+	}
+	table{
+		color: white;
+	}
+	.container{
+		height: 61.781px !important;
+	}
 </style>
-<%-- <jsp:include page="include/resource.jsp"></jsp:include> --%>
+<jsp:include page="include/resource.jsp"></jsp:include>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 </head>
 <body>
+	<jsp:include page="include/navbar.jsp"></jsp:include>
 	<div class="container">
-		<h1>영화 랭킹(평점순)</h1>
+		<h1 id="h1">영화 랭킹(평점순)</h1>
 		<table class="table table-hover">
 			<thead>
 				<tr>
