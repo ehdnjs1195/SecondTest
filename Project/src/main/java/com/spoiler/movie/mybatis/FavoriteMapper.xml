@@ -6,8 +6,8 @@
 	
 	
 	<select id="favoriteList" resultType="FavoriteDto">
-		select * from favorite
-		order by movieSeq asc
+		select movieSeq from favorite
+		where id=#{id} and movieSeq=#{movieSeq}
 	</select>
 	
 	

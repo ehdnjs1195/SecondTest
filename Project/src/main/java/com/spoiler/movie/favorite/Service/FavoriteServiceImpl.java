@@ -1,13 +1,11 @@
 package com.spoiler.movie.favorite.Service;
 
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.spoiler.movie.Dto.MovieCommentDto;
 import com.spoiler.movie.favorite.Dao.FavoriteDao;
 import com.spoiler.movie.favorite.Dto.FavoriteDto;
 
@@ -42,9 +40,15 @@ public class FavoriteServiceImpl implements FavoriteService{
 
 	
 	@Override
-	public List<FavoriteDto> favoriteList(String id) {
+	public void favoriteList(HttpServletRequest request) {
+		String id = (String) request.getSession().getAttribute("id");
+		String movieSeq = request.getParameter("movieSeq");
 		
-		return dao.favoriteList(id);
+		FavoriteDto dto = new FavoriteDto();
+		dto.setId(id);
+		dto.setMovieSeq(movieSeq);
+		
+		dao.favoriteList(dto);
 	}
 
 	@Override
@@ -52,10 +56,7 @@ public class FavoriteServiceImpl implements FavoriteService{
 		return dao.getCount(id);
 	}
 
-	@Override
-	public List<FavoriteDto> getData(String id) {
-		return dao.getData(id);
-	}
+	
 
 
 	@Override
@@ -68,9 +69,17 @@ public class FavoriteServiceImpl implements FavoriteService{
 
 	@Override
 	public FavoriteDto getMovieInfo(String id) {
-		return (FavoriteDto) dao.getData(id);
-		
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+
+
+	
+
+
+
+	
 
 	
 }

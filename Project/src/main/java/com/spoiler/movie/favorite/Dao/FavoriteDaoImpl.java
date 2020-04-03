@@ -1,7 +1,6 @@
 package com.spoiler.movie.favorite.Dao;
 
 
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +21,10 @@ public class FavoriteDaoImpl implements FavoriteDao{
 	}
 
 
-	@Override
-	public List<FavoriteDto> getData(String id) {
-		
-		return session.selectList("favorite.getData",id);
-	}
-
-
 
 	@Override
-	public List<FavoriteDto> favoriteList(String id) {
-        return session.selectList("favorite.favoritelist", id);
+	public void favoriteList(FavoriteDto dto) {
+       session.selectOne("favorite.favoriteList", dto);
 
 	}
 
@@ -47,6 +39,9 @@ public class FavoriteDaoImpl implements FavoriteDao{
 	public int getCount(String id) {
 		return session.selectOne("favorite.getCount",id);
 	}
+
+
+
 
 
 

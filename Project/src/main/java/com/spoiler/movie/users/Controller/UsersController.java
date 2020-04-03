@@ -159,11 +159,7 @@ public class UsersController {
 		@RequestMapping("/users/favorite/insert")
 		public ModelAndView isExistMovie(HttpServletRequest request, 
 					ModelAndView mView) {
-			//로그인된 아이디 읽어오기
-			String id=(String)request.getSession().getAttribute("id");
 			//UsersService 객체를 이용해서 개인정보를 ModelAndView 객체에 담기도록 한다.
-			List<FavoriteDto> getData=favoriteService.getData(id);
-			mView.addObject("getData", getData);
 			//view page 정보를 담고 
 			mView.setViewName("users/favorite/insert");
 			return mView;//ModelAndView 객체를 리턴해주기 

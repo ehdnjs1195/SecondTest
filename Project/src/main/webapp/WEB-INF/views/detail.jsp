@@ -282,6 +282,37 @@
 </div>
 <script>
 
+$(document).ready(function(){
+	//로그인 여부
+	var isLogin=${not empty id};
+	if(isLogin){
+		$.ajax({
+			
+			url: "favorite_list.do"
+			, method:"POST"
+			, data:{'movieSeq': '${dto.movieSeq}'}
+			, dataType: 'json'   // 데이터 타입을 Json으로 변경
+	 		, success: function(responseData){ 
+	 			if('${dto.movieSeq }'== responseData){
+	 				
+					$("#add_btn").attr('disabled', true);
+					
+	 			}else{
+	 				
+	 				$("#add_btn").attr('disabled', false);
+	 			}
+			}, 
+			error: function(){
+	 				return false;
+			}
+		})
+	}
+	
+
+});
+
+
+
 	//댓글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".comment-update-link").click(function(){
 		$(this)
@@ -386,12 +417,13 @@
 				/* cache:false, */
 				data:data,
 				success: function(responseData){
+					
 					alert(responseData+"\n 을(를) 관심목록에 추가하였습니다.");
+					$("#add_btn").attr('disabled', true);
 				}, 
 				error: function(){
 					alert("실패했습니다.");
 				}
-
 			})
 		}
 	});
