@@ -42,44 +42,110 @@
 	}
 	table{
 		color: white;
+		font-family: fantasy;
 	}
 	.container{
 		height: 61.781px !important;
 	}
+	strong{
+	    font-size: 15px;
+	    color: white;
+    }
+    #title:hover{
+   	    color: darkorange;
+    }
+    /*
+	    #background{
+	    	display: none;
+	    }
+    */
 </style>
 <jsp:include page="include/resource.jsp"></jsp:include>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 </head>
-<body>
+<body style="background-color: #212529;">
 	<jsp:include page="include/navbar.jsp"></jsp:include>
 	<div class="container">
-		<h1 id="h1">영화 랭킹(평점순)</h1>
-		<table class="table table-hover">
+		<h1 id="h1">네이버 모든 영화 랭킹 (평점순)</h1>
+		<table class="table table-bordered bordertable">
+			<colgroup>
+		    		<col class="col-xs-1"/>
+		    		<col class="col-xs-9"/>
+		    		<col class="col-xs-2"/>
+	    	</colgroup>
 			<thead>
-				<tr>
-					<th>순위</th>
-					<th>영화명</th>
-					<th>평점</th>
+				<tr style="background-color: tomato;">
+					<th style="text-align: center;"><strong>순위</strong></th>
+					<th><strong>영화명</strong></th>
+					<th style="text-align: center;"><strong>평점</strong></th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="tmp" items="${requestScope.list }"> <%-- request에 담긴 list --%>
+				<c:forEach var="tmp" items="${list }"> <%-- request에 담긴 list --%>
 					<tr>
-						<td>${tmp.rank }</td>
-						<td>${tmp.title }</td>							
+						<td style="font-size: 15px; text-align: center;">${tmp.rank }</td>
 						<td>
-							<a href="#" class="raking_grade">
+							<a id="title" href="${tmp.link }">
+								<strong>${tmp.title }</strong>
+							</a>
+						</td>							
+						<td>
+							<span class="raking_grade">
 								<span class="bg_star star_grade">
 									<span class="bg_star inner_star" style="width:${tmp.starPoint *10 }%">평점</span>
 								</span>
-								<em class="emph_grade">${tmp.starPoint }</em>
-								<span class="txt_grade">/10</span>
-							</a>
+								<em class="emph_grade" style="color: white; font-size: 13px;">${tmp.starPoint }</em>
+								<span class="txt_grade" style="color: white; font-size: 13px;">/10</span>
+							</span>
 						</td>
 					</tr>				
 				</c:forEach>
 			</tbody>
 		</table>
+		
+		<div class="page-display">
+			<ul class="pagination pagination-sm" style="padding-left: 36%;">
+				<c:choose>
+					<c:when test="${startPageNum ne 1 }"> <%-- startPageNum != 1 --%>
+						<li>
+							<a href="movie_Rank.do?pageNum=${requestScope.startPageNum-1 }">&laquo;</a>
+						</li>
+					</c:when>
+					<c:otherwise>
+						<li class="disabled">
+							<a href="javascript:">&laquo;</a> <%-- : 아무것도 적지 않으면  동작하지 않는 링크가 된다. --%>
+						</li>
+					</c:otherwise>
+				</c:choose>
+				<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }"> 	
+					<c:choose>
+						<c:when test="${i eq requestScope.pageNum }">
+							<li class="active">
+								<a href="movie_Rank.do?pageNum=${i }">${i }</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li>
+								<a href="movie_Rank.do?pageNum=${i }">${i }</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				
+				<c:choose>
+					<c:when test="${endPageNum lt totalPageCount }">
+						<li>
+							<a href="movie_Rank.do?pageNum=${endPageNum+1 }">&raquo;</a>
+						</li>
+					</c:when>
+					<c:otherwise>
+						<li class="disabled">
+							<a href="javascript:">&raquo;</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+		</div>
 	</div>
 </body>
 </html>

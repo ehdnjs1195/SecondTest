@@ -14,7 +14,8 @@ keywords varchar2(200),
 posters varchar2(150));
 
 CREATE TABLE movie_rank(
-	rank number not null,
-	title VARCHAR2(200) not null,
-	starPoint number(3,2) not null
+	rank number,
+	title VARCHAR2(200),
+	starPoint number(3,2),
+	link VARCHAR2(300)
 );

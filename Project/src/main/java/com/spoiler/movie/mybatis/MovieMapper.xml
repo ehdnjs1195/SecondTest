@@ -25,17 +25,24 @@
 		WHERE num=#{num }
 	</select>
 	
-	<select id="getRankList" resultType="movieRankDto">
-		SELECT * from movie_rank
-		order by rank asc
+	<select id="getRankList" resultType="movieRankDto" parameterType="MovieRankDto">
+		SELECT rank, title, starPoint, link
+		from movie_rank
+		WHERE rank BETWEEN #{startRowNum} AND #{endRowNum} <!-- 파라미터에서 startRowNum, endRowNum 을 가져온다. -->
 	</select>
 	<insert id="updateRank" parameterType="movieRankDto">
 		insert into movie_rank
 		values(
-			#{rank}, #{title}, #{starPoint}
+			#{rank}, #{title}, #{starPoint}, #{link}
 		)
 	</insert>
 	<delete id="deleteRank">
 		delete movie_rank
 	</delete>
+	
+	<!-- 글 전체의 갯수를 리턴하는 메소드 -->
+	<select id="getCount" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0) <!-- NVL 를 안적어주면 resultType 이 int 인데 ROWNUM 에 null이 들어가므로 Exception 이 발생한다 -->
+		FROM movie_rank
+	</select>
 </mapper>

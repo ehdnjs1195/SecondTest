@@ -13,8 +13,8 @@ public class MovieRankDaoImpl implements MovieRankDao{
 	private SqlSession session;
 	
 	@Override
-	public List<MovieRankDto> movieRankList() {
-		return session.selectList("movie.getRankList");
+	public List<MovieRankDto> movieRankList(MovieRankDto dto) {
+		return session.selectList("movie.getRankList", dto);
 	}
 
 	@Override
@@ -25,6 +25,12 @@ public class MovieRankDaoImpl implements MovieRankDao{
 	@Override
 	public void deleteRank() {
 		session.delete("movie.deleteRank");
+	}
+	
+	//글 전체의 갯수를 리턴하는 메소드
+	@Override
+	public int getCount() {
+		return session.selectOne("movie.getCount");
 	}
 
 }
