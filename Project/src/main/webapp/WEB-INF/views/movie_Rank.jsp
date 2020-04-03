@@ -103,8 +103,8 @@
 			</tbody>
 		</table>
 		
-		<div class="page-display">
-			<ul class="pagination pagination-sm" style="padding-left: 36%;">
+		<div class="page-display" style="text-align: center;">
+			<ul class="pagination pagination-sm">
 				<c:choose>
 					<c:when test="${startPageNum ne 1 }"> <%-- startPageNum != 1 --%>
 						<li>

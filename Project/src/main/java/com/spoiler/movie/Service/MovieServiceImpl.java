@@ -35,7 +35,7 @@ public class MovieServiceImpl implements MovieService {
 	//한 페이지에 나타낼 row 의 갯수 
 	static final int PAGE_ROW_COUNT=20;
 	//하단 디스플레이 페이지 갯수 
-	static final int PAGE_DISPLAY_COUNT=10; // 페이지 하단에 
+	static final int PAGE_DISPLAY_COUNT=30; // 페이지 하단에 
 	
 	@Override
 	public void homeList(HttpServletRequest request) {
