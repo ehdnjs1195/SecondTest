@@ -2,6 +2,8 @@ package com.spoiler.movie.Service;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,14 +35,37 @@ public class RecommendServiceImpl implements RecommendService{
 	}
 
 	@Override
-	public void recommendDataSelect(HttpServletRequest request) {
+	public int recommendDataSelect(HttpServletRequest request) {
+		
 		String id = (String) request.getSession().getAttribute("id");
 		int num=Integer.parseInt(request.getParameter("num"));
+		
 		RecommendDto dto=new RecommendDto();
 		dto.setId(id);
 		dto.setNum(num);
+		
+		int result= recommentDao.isExist(dto);
+		if(result!=0) {
+			commentDao.downCnt(num);
+			recommentDao.delete(dto);
+			return 0;
+		}else {
+			commentDao.upCnt(num);
+			recommentDao.insert(dto);
+			return 1;
+		}
+	}
 
-
+	@Override
+	public void recommendDataDelete(HttpServletRequest request) {
+		String id = (String) request.getSession().getAttribute("id");
+		int num=Integer.parseInt(request.getParameter("num"));
+				
+		RecommendDto dto=new RecommendDto();
+		dto.setId(id);
+		dto.setNum(num);
+		
+		recommentDao.delete(dto);		
 	}
 
 }

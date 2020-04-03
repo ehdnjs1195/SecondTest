@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.spoiler.movie.Dto.RecommendDto;
 
 public interface RecommendService {
-	public void recommendDataSelect(HttpServletRequest request);
+	public int recommendDataSelect(HttpServletRequest request);
 	public void recommendDataInsert(HttpServletRequest request);
+	public void recommendDataDelete(HttpServletRequest request);
 }

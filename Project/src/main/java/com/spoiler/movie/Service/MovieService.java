@@ -18,5 +18,5 @@ public interface MovieService {
 	public void updateComment(MovieCommentDto dto);
 	//
 	public void plusCnt(int num,HttpServletRequest request);
-	
+	public void minusCnt(int num,HttpServletRequest request);
 }

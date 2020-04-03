@@ -4,13 +4,14 @@
 	
 	<insert id="insert" parameterType="recommendDto">
 		insert into recommend
-		values(#{id},#{recommend},#{num})
+		values(#{id},#{num})
 	</insert>
-	<select id="select" parameterType="String" resultType="String">
-		select id
-		from recommend
+	
+	<select id="select" resultType="int">
+		select count(*) from recommend
 		where id=#{id} and num=#{num}
 	</select>
+	
 	<delete id="delete" parameterType="recommendDto">
 		delete from recommend
 		where id=#{id} and num=#{num}

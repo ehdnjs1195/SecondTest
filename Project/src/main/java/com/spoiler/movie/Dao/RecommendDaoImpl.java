@@ -1,6 +1,7 @@
 package com.spoiler.movie.Dao;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,11 @@ public class RecommendDaoImpl implements RecommendDao{
 	}
 	
 	@Override
-	public void select(RecommendDto dto) {
-		session.selectOne("recommend.select",dto);
+	public int isExist(RecommendDto dto) {
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("num", dto.getNum());
+		map.put("id", dto.getId());
+		return session.selectOne("recommend.select",dto);
 	}
 
 	@Override

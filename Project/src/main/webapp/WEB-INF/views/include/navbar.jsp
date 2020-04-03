@@ -55,7 +55,7 @@
 	    filter: blur(40px);
 	}
 </style>
-<jsp:include page="slidebar.jsp"/>
+
 <div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
 	<div class="container">
 		<!-- 홈페이지 링크와 버튼을 넣어둘 div -->

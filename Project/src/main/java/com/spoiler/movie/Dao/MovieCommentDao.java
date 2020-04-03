@@ -11,5 +11,6 @@ public interface MovieCommentDao {
 	public int getSequence(); //저장할 댓글의 글 번호를 리턴하는 메소드
 	public int getNum(MovieCommentDto dto);
 	public void update(MovieCommentDto dto);
-	public void updateCnt(int num);//추천수 증가할 메소드
+	public void upCnt(int num);//추천수 증가할 메소드
+	public void downCnt(int num);//추천수 감소할 메소드
 }

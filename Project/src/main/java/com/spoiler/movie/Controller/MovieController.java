@@ -75,8 +75,12 @@ public class MovieController {
 	}
 	@RequestMapping("/recommend")
 	public ModelAndView authRecommend(@RequestParam int num, HttpServletRequest request) {
-		service.plusCnt(num,request);
-		recommendService.recommendDataInsert(request);
+		int result=recommendService.recommendDataSelect(request);
+		if(result==0) {
+			recommendService.recommendDataDelete(request);
+		}else {
+			recommendService.recommendDataInsert(request);
+		}
 		return new ModelAndView("redirect:/home.do"); 
 	}
 	

@@ -110,13 +110,16 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public void updateComment(MovieCommentDto dto) {
 		commentDao.update(dto);
-
 	}
 
 	@Override
 	public void plusCnt(int num,HttpServletRequest request) {
-	
-		commentDao.updateCnt(num);		
-		
+		commentDao.upCnt(num);		
 	}
+
+	@Override
+	public void minusCnt(int num, HttpServletRequest request) {
+		commentDao.downCnt(num);		
+	}
+	
 }

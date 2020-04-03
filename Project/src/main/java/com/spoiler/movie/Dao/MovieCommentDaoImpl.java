@@ -51,8 +51,12 @@ public class MovieCommentDaoImpl implements MovieCommentDao{
 	}
 
 	@Override
-	public void updateCnt(int num) {
-		session.update("movieComment.updateCnt",num);
-		
+	public void upCnt(int num) {
+		session.update("movieComment.upCnt",num);
+	}
+
+	@Override
+	public void downCnt(int num) {
+		session.update("movieComment.downCnt",num);		
 	}
 }
