@@ -117,7 +117,11 @@
 				</c:forEach>
 			</tbody>
 		</table>
+<<<<<<< yuSeok5
 		<!-- 페이징 처리 -->
+=======
+		
+>>>>>>> 7ab14dd [yuSeok] 랭킹 리스트 페이징처리 디스플레이 페이지 갯수 수정 및 가운데 정렬 적용
 		<div class="page-display" style="text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:choose>
