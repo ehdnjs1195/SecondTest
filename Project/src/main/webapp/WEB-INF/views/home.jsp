@@ -53,8 +53,6 @@
 	    top: 40px;
 	    width: 91px;
 	    height: 53px;
-	    background: url(/static/web/dist/images/common/kinolights_logo.png) no-repeat;
-	    background-size: cover;
         text-align: center;
 	}
 	body #kn-footer .container .kn-info-wrapper .kn-copyright {
@@ -87,6 +85,13 @@
 	    font-size: 14px;
 	    font-weight: normal;
 	    color: #b3bfdd;
+	}
+	.footer-menu-items{
+		padding-left: 0px;
+		font-family: auto;
+	}
+	.items img {
+	    height: 263.469px !important;
 	}
 </style>
 <jsp:include page="include/resource.jsp"></jsp:include>
@@ -152,15 +157,15 @@
 			<a class="btn btn-primary" href="genredetaillist.do?genre=옴니버스">옴니버스</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=에로">에로</a>
 			<a class="btn btn-primary" href="movie_Rank.do">영화 랭킹 보러가기</a>
-			<a class="btn btn-primary" href="updateRankMovie.do">영화 랭킹 업데이트</a>
-			<!-- <a class="btn btn-primary" href="updateMovie.do">영화 실시간 업데이트</a> -->
+			<!-- <a class="btn btn-primary" href="updateRankMovie.do">영화 랭킹 업데이트</a>
+			<a class="btn btn-primary" href="updateMovie.do">영화 실시간 업데이트</a> -->
 		</div>
     
     	<!-- 추천 TOP10 -->
         <h1 style="color: honeydew;">TOP 10</h1>
         <jsp:include page="include/bestlist.jsp"/>
     </div>
-    <footer id="kn-footer">
+    <footer id="kn-footer" style="font-family: auto;">
     <div class="container">
       <div class="kn-info-wrapper">
         <div class="kinolights-ci"></div>

@@ -3,9 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 .items{
-cursor: pointer;
-    position:relative;
-   transition:all .2s ease-out 0s
+	cursor: pointer;
+	position:relative;
+	transition:all .2s ease-out 0s
    }
 .items .box-content, 
 .items:after{position:absolute;left:20px;right:20px}
@@ -69,12 +69,6 @@ top:20px;bottom:20px;opacity:0;transform:rotate3d(-1,1,0,100deg);transition:all 
 						</div>
 					</div>
 				</div>
-				<%-- <div class="modal-footer">
-					<iframe src="${tmp.videoLink }"
-						frameborder="0"
-						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-						allowfullscreen></iframe>
-				</div> --%>
 			</div>
 			<!-- /.modal-content -->
 		</div>

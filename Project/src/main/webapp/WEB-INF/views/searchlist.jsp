@@ -78,6 +78,7 @@
 		<a class="btn btn-primary" href="genredetaillist.do?genre=종교">종교</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=옴니버스">옴니버스</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=에로">에로</a>
+		<a class="btn btn-primary" href="movie_Rank.do">영화 랭킹 보러가기</a>
 	</div>
 	<c:if test="${not empty param.title }">
 		<h2>검색어 <strong><span style="color: yellow;">${param.title }</span></strong>에 관한 검색결과 입니다</h2>
