@@ -45,4 +45,11 @@
 		SELECT NVL(MAX(ROWNUM), 0) <!-- NVL 를 안적어주면 resultType 이 int 인데 ROWNUM 에 null이 들어가므로 Exception 이 발생한다 -->
 		FROM movie_rank
 	</select>
+	
+	<!-- 영화의 제목, 랭킹, 별점 얻어오는 메소드 -->
+	<select id="getInfo" parameterType="movieDto" resultType="movieRankDto">
+		SELECT rank, title, starPoint
+		FROM movie_rank
+		WHERE title=#{title}
+	</select>
 </mapper>

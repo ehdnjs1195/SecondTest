@@ -49,10 +49,15 @@ public class MovieServiceImpl implements MovieService {
 		String movieSeq = request.getParameter("movieSeq");
 		System.out.println(movieSeq);
 		String movieId = request.getParameter("movieId");
+		String rank = request.getParameter("rank");
+		request.setAttribute("rank", rank);
 		// MovieDto 객체 생성 (select 할때 필요한 정보를 담기 위해)
 		MovieDto dto = apiService.getMovieInfo(movieSeq, movieId);
 		// request 에 글정보를 담고
 		request.setAttribute("dto", dto);
+		MovieRankDto rDto=rankDao.getInfo(dto.getTitle());
+		System.out.println(rDto);
+		request.setAttribute("rDto", rDto);
 		// 댓글 목록을 얻어와서 request 에 담아준다.
 		List<MovieCommentDto> commentList = commentDao.getList(Integer.parseInt(movieSeq));
 		request.setAttribute("commentList", commentList);

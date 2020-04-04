@@ -104,16 +104,7 @@
 	</script>
 <%} %>
 <jsp:include page="include/navbar.jsp"></jsp:include>
-<!-- 왼쪽 슬라이드 바?(sidebar 말고?) -->
-<%-- <jsp:include page="include/slidebar.jsp"/> --%>
     <div class="container">
-    	<!-- 서치바(임시) -->
-    	<%-- <form action="searchlist.do" method="get">
-			<label for="condition" style="display: none;">검색조건</label>
-			<input type="text" name="keyword" id="keyword" placeholder="검색어를 입력하세요..." value="${keyword }" />
-			<button type="submit" >검색</button>
-		</form>
-		--%>
 		<div>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=액션">액션</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=SF">SF</a>

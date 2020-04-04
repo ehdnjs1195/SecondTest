@@ -155,9 +155,20 @@
 		</div>
 		<a href="#" class="raking_grade">
 			<span class="bg_star star_grade">
-				<span class="bg_star inner_star" style="width:${point2}%">평점</span>
+				<span class="bg_star inner_star" 
+					<c:choose>
+						<c:when test="${empty rDto.starPoint}">style="width:${point2}%"</c:when>
+						<c:otherwise>style="width:${rDto.starPoint *10}%"</c:otherwise>
+					</c:choose>>
+					평점
+				</span>
 			</span>
-			<em class="emph_grade">${point }</em>
+			<em class="emph_grade">
+				<c:choose>
+					<c:when test="${empty rDto.starPoint}">${point}</c:when>
+					<c:otherwise>${rDto.starPoint}</c:otherwise>
+				</c:choose>
+			</em>
 			<span class="txt_grade">/10</span>
 		</a>
 		<dl class="list_movie list_main" style="clear: left;">
@@ -175,9 +186,20 @@
 		<dl class="list_placing">
 		<dt class="screen_out">예매순위</dt>
 		<dd>
-			예매율 
-			<em class="emph_g"><strong>${random}</strong></em>&nbsp;위
-			<span class="txt_bar"></span>
+			<c:choose>
+				<c:when test="${rank ne 0}">
+					예매율
+					<em class="emph_g"><strong>${rank}</strong></em>&nbsp;위
+				</c:when>
+				<c:when test="${not empty rDto.rank}">
+					역대 평점
+					<em class="emph_g"><strong>${rDto.rank}</strong></em>&nbsp;위
+				</c:when>
+				<c:otherwise>
+					예상 순위
+					<em class="emph_g"><strong>${random}</strong></em>&nbsp;위
+				</c:otherwise>
+			</c:choose>
 		</dd>
 		<dt>누적관객</dt>
 		<dd id="totalAudience"><fmt:formatNumber value="${random2 }"/>명</dd>
@@ -363,8 +385,6 @@
 			}
 		}
 	});
-	
-	
 	
 	//답글 달기 링크를 클릭했을때 실행할 함수 등록
 	$(".comment .reply_link").click(function(){

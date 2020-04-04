@@ -9,4 +9,5 @@ public interface MovieRankDao {
 	public void updateRank(MovieRankDto dto);
 	public void deleteRank();
 	public int getCount();
+	public MovieRankDto getInfo(String title);
 }

@@ -32,5 +32,13 @@ public class MovieRankDaoImpl implements MovieRankDao{
 	public int getCount() {
 		return session.selectOne("movie.getCount");
 	}
+	//영화의 제목, 랭킹, 별점 얻어오는 메소드
+	@Override
+	public MovieRankDto getInfo(String title) {
+		//제목에 공백 포함 제거하는 메소드
+		title = title.replaceAll("(^\\p{Z}+|\\p{Z}+$)", "");
+		System.out.println(title);
+		return session.selectOne("movie.getInfo", title);
+	}
 
 }
