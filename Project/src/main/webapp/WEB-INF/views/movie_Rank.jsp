@@ -84,7 +84,7 @@
 				<tr style="background-color: tomato;">
 					<th style="text-align: center;"><strong>순위</strong></th>
 					<th><strong>영화명</strong></th>
-					<th>네이버 자세히 보기 링크</th>
+					<th style="text-align: center;"><strong>네이버 링크</strong></th>
 					<th style="text-align: center;"><strong>평점</strong></th>
 				</tr>
 			</thead>
@@ -99,9 +99,9 @@
 								</strong>
 							</a>
 						</td>
-						<td>
-							<a id="naver" href="${tmp.link }">
-									네이버로 보러가기
+						<td style="text-align: center;">
+							<a href="${tmp.link }">
+								<strong id="naver" style="font-family: auto;">Click</strong>
 							</a>
 						</td>							
 						<td>
