@@ -66,21 +66,23 @@
 }
 
 #backgroundImage:before {
-   content: "";
-   position: absolute;
-   z-index: -1;
-   top: 0;
-   bottom: 0;
-   left: 0;
-   right: 0;
-   background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8) ),url(${pageContext.request.contextPath }/resources/images/bg.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    filter: grayscale(80%);
-    height:100%;
-    width:100%;
-    opacity:0.3;
- }
+	content: "";
+	position: fixed;
+	z-index: -1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+		url(${pageContext.request.contextPath }/resources/images/bg.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size : auto;
+	filter: grayscale(80%);
+	height: auto;
+	width: auto;
+	opacity: 0.3;
+}
 /* 제목*/	
 h1 {
     line-height: 1.66;
@@ -390,7 +392,7 @@ input[type="checkbox"]:checked + label:before {
 			</div>
 			<p class="help-block" id="id_notusable">이미 사용중인 아이디 입니다.</p>
 			<p class="help-block" id="id_required">필수 정보입니다.</p>
-			<p class="help-block" id="id_mix">4자리이상 20이하 영문, 숫자 조합으로 입력 하세요.</p>
+			<p class="help-block" id="id_mix">5자리이상 20이하 영문, 숫자 조합으로 입력 하세요.</p>
 			<p class="help-block" id="noSpace_id">공백은 입력 할 수 없습니다.</p>
 		</div>
 		

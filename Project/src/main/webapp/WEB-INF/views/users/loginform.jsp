@@ -63,7 +63,7 @@ div.scroll-wrapper {
 
 #backgroundImage:before {
 	content: "";
-	position: absolute;
+	position: fixed;
 	z-index: -1;
 	top: 0;
 	bottom: 0;
@@ -72,10 +72,11 @@ div.scroll-wrapper {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
 		url(${pageContext.request.contextPath }/resources/images/bg.jpg);
 	background-repeat: no-repeat;
-	background-size: 100%;
+	background-attachment: fixed;
+	background-size : auto;
 	filter: grayscale(80%);
-	height: 100%;
-	width: 100%;
+	height: auto;
+	width: auto;
 	opacity: 0.3;
 }
 /* 제목*/

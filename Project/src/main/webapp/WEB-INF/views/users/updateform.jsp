@@ -67,21 +67,23 @@
 }
 
 #backgroundImage:before {
-   content: "";
-   position: absolute;
-   z-index: -1;
-   top: 0;
-   bottom: 0;
-   left: 0;
-   right: 0;
-   background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8) ),url(${pageContext.request.contextPath }/resources/images/bg.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    filter: grayscale(80%);
-    height:100%;
-    width:100%;
-    opacity:0.3;
- }
+	content: "";
+	position: static;
+	z-index: -1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+		url(${pageContext.request.contextPath }/resources/images/bg.jpg);
+	background-repeat: no-repeat;
+	background-attachment: local;
+	background-size : 100%;
+	filter: grayscale(80%);
+	height: auto;
+	width: 100%;
+	opacity: 0.3;
+}
 /* 제목*/	
 h3 {
     line-height: 1.66;

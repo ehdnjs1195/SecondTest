@@ -34,6 +34,7 @@ public class MovieController {
 	@Autowired
 	private RecommendService recommendService;
 	@Autowired
+
 	private MovieAPIService apiService;
 	@Autowired
 	private AdminService adminService;

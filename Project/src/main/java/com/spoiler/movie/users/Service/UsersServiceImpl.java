@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spoiler.movie.favorite.Dao.FavoriteDao;
+import com.spoiler.movie.favorite.Dto.FavoriteDto;
 import com.spoiler.movie.users.Dao.UsersDao;
 import com.spoiler.movie.users.Dto.UsersDto;
 
@@ -23,6 +25,9 @@ public class UsersServiceImpl implements UsersService{
 	
 	@Autowired
 	private UsersDao dao;
+	@Autowired
+	private FavoriteDao favoriteDao;
+	
 	//인자로 전달된 아이디가 존재하는지 여부를 Map 에 담아서 리턴하는 메소드 
 	@Override
 	public Map<String, Object> isExistId(String inputId) {

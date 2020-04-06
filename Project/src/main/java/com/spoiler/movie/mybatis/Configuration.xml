@@ -10,6 +10,7 @@
 		<typeAlias type="com.spoiler.movie.Dto.RecommendDto" alias="recommendDto"/>
 		<typeAlias type="com.spoiler.movie.users.Dto.UsersDto" alias="usersDto"/>
 		<typeAlias type="com.spoiler.movie.Dto.PopupDto" alias="popupDto"/>
+		<typeAlias type="com.spoiler.movie.favorite.Dto.FavoriteDto" alias="favoriteDto"/>
 
 	</typeAliases>
 	
@@ -20,6 +21,7 @@
 		<mapper resource="com/spoiler/movie/mybatis/RecommendMapper.xml"/>
 		<mapper resource="com/spoiler/movie/mybatis/UsersMapper.xml"/>
 		<mapper resource="com/spoiler/movie/mybatis/AdminMapper.xml"/>
+		<mapper resource="com/spoiler/movie/mybatis/FavoriteMapper.xml"/>
 	</mappers>
 </configuration>
 

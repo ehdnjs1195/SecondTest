@@ -153,7 +153,7 @@ header img {
     -ms-border-radius: 10px;
     padding: 50px 85px;
     opacity:0.9;
-     width: 480px;
+     width: 500px;
 }
 
 p{
@@ -190,7 +190,17 @@ p{
 		</c:choose>
 			</a>
 		<h1 class="tm-title bold shadow">${dto.id }</h1>
-		<h4><span style="font-weight:bold;">관심목록 : </span> </h4>
+		<h4><span style="font-weight:bold;">관심목록 |</span>
+		<span>
+		<c:choose>
+			<c:when test="${count eq 0 }" >
+				아직 추가한 영화가 없습니다.
+			</c:when>
+			<c:otherwise>
+				<a href="list.do">${count }개가 있습니다.</a>
+			</c:otherwise>
+		</c:choose>
+		</span> </h4>
 		<p>
 		
 		

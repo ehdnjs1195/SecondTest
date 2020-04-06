@@ -1,11 +1,9 @@
 package com.spoiler.movie.Service;
 
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.spoiler.movie.Dto.MovieCommentDto;
-import com.spoiler.movie.Dto.MovieDto;
 
 public interface MovieService {
 	public void homeList(HttpServletRequest request);
