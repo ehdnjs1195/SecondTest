@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -87,80 +87,97 @@
 	font-family: auto;
 }
 
-.plot{
+.plot {
 	font-weight: lighter;
 	font-style: normal;
 	font-family: auto;
 	color: #ff83c2;
 }
-.list_placing{
-    overflow: hidden;
-    padding-top: 11px;
-    border-top: 2px solid #f5f5f5;
+
+.list_placing {
+	overflow: hidden;
+	padding-top: 11px;
+	border-top: 2px solid #f5f5f5;
 }
+
 .list_placing .txt_bar {
-    width: 1px;
-    height: 12px;
-    margin: 4px 7px 0 11px;
-    background-color: #eaeaea;
-    display: inline-block;
-    vertical-align: top;
+	width: 1px;
+	height: 12px;
+	margin: 4px 7px 0 11px;
+	background-color: #eaeaea;
+	display: inline-block;
+	vertical-align: top;
 }
+
 .screen_out {
-    overflow: hidden;
-    position: absolute;
-    width: 0;
-    height: 0;
-    line-height: 0;
-    text-indent: -9999px;
+	overflow: hidden;
+	position: absolute;
+	width: 0;
+	height: 0;
+	line-height: 0;
+	text-indent: -9999px;
 }
-.emph_g{
+
+.emph_g {
 	color: #f32276;
 }
+
 .list_placing dt {
-    float: left;
-    padding-right: 5px;
+	float: left;
+	padding-right: 5px;
 }
+
 .list_placing dd {
-    float: left;
-    margin-right: 5px;
+	float: left;
+	margin-right: 5px;
 }
-#moreComment, #allComment{
+
+#moreComment, #allComment {
 	background-color: #b0b0b000 !important;
 	font-family: initial;
-    font-style: italic;
+	font-style: italic;
 }
-#moreComment:hover, #allComment:hover{
+
+#moreComment:hover, #allComment:hover {
 	background-color: #8686867a !important;
 }
+
 .movie_summary .raking_grade {
-    padding-top: 1px;
-    line-height: 22px;
+	padding-top: 1px;
+	line-height: 22px;
 }
+
 .raking_grade {
-    display: inline-block;
-    line-height: 22px;
+	display: inline-block;
+	line-height: 22px;
 }
+
 .raking_grade .bg_star {
-    display: block;
-    float: left;
-    width: 108px;
-    height: 17px;
-    background: url(//i1.daumcdn.net/img-contents/movie/2016/pc/bg_star_170614_v2.png) no-repeat 0 0;
+	display: block;
+	float: left;
+	width: 108px;
+	height: 17px;
+	background:
+		url(//i1.daumcdn.net/img-contents/movie/2016/pc/bg_star_170614_v2.png)
+		no-repeat 0 0;
 }
+
 .raking_grade .bg_star .inner_star {
-    overflow: hidden;
-    font-size: 0;
-    line-height: 0;
-    background-position: 0 -20px;
-    text-indent: -9999px;
+	overflow: hidden;
+	font-size: 0;
+	line-height: 0;
+	background-position: 0 -20px;
+	text-indent: -9999px;
 }
+
 .raking_grade .bg_star {
-    display: block;
-    float: left;
-    width: 108px;
-    height: 17px;
-    background: url(//i1.daumcdn.net/img-contents/movie/2016/pc/bg_star_170614_v2.png) no-repeat 0 0;
+	display: block;
+	float: left;
+	width: 108px;
+	height: 17px;
+	background:
+		url(//i1.daumcdn.net/img-contents/movie/2016/pc/bg_star_170614_v2.png)
+		no-repeat 0 0;
 }
 </style>
 <link rel="stylesheet"
@@ -182,29 +199,22 @@
 				<!-- 영어 원본 제목 -->
 				<span class="txt_origin">${dto.titleEng }</span>
 			</div>
-			<a href="#" class="raking_grade">
-				<span class="bg_star star_grade">
-					<span class="bg_star inner_star" 
-						<c:choose>
+			<a href="#" class="raking_grade"> <span
+				class="bg_star star_grade"> <span class="bg_star inner_star"
+					<c:choose>
 							<c:when test="${empty rDto.starPoint}">style="width:${point2}%"</c:when>
 							<c:otherwise>style="width:${rDto.starPoint *10}%"</c:otherwise>
 						</c:choose>>
-						평점
-					</span>
-				</span>
-				<em class="emph_grade">
-					<c:choose>
+						평점 </span>
+			</span> <em class="emph_grade"> <c:choose>
 						<c:when test="${empty rDto.starPoint}">${point}</c:when>
 						<c:otherwise>${rDto.starPoint}</c:otherwise>
 					</c:choose>
-				</em>
-				<span class="txt_grade">/10</span>
+			</em> <span class="txt_grade">/10</span>
 			</a>
 			<dl class="list_movie list_main" style="clear: left;">
 				<dd class="txt_main">${dto.genre }</dd>
-				<dd class="txt_main">
-					(개봉) ${dto.repRlsDate }
-				</dd>
+				<dd class="txt_main">(개봉) ${dto.repRlsDate }</dd>
 				<dd class="type_ellipsis">
 					(감독) <a href="#" style="color: #70ff35;">${dto.director }</a>
 				</dd>
@@ -231,7 +241,10 @@
 					</c:choose>
 				</dd>
 				<dt>누적관객</dt>
-				<dd id="totalAudience"><fmt:formatNumber value="${random2 }"/>명</dd>
+				<dd id="totalAudience">
+					<fmt:formatNumber value="${random2 }" />
+					명
+				</dd>
 			</dl>
 
 			<form id="favorite_form" class="favorite_form" action=""
@@ -284,6 +297,7 @@
 			<ul>
 				<c:forEach items="${commentList }" var="tmp">
 					<c:choose>
+
 						<c:when test="${tmp.deleted ne 'yes' }">
 							<li class="comment" id="comment${tmp.num }"
 								<c:if test="${tmp.num ne tmp.comment_group }">style="padding-left:50px;"</c:if>>
@@ -311,8 +325,47 @@
 										</c:if>
 										<span style="font-weight: normal; font-family: auto;">${tmp.regdate }</span>
 
-										<a id="recommed" href="recommend.do?num=${tmp.num }">추천
-											${tmp.recommendCnt}</a> <a href="javascript:" class="reply_link"
+										<!-- 추천기능 -->
+										<script>
+							$(function(){
+								$("#recommend${tmp.num }").click(function(){
+									var num=$(this).attr("value");
+									var cnt=parseInt($("#recommendCnt${tmp.num}").text());
+									console.log(num);
+									$.ajax({
+										url:"recommend.do",
+										method:"post",
+										data:{"id":"${id}","num":num},
+										success:function(responseData){
+											// responseData : {isSuccess:true}
+											if(responseData.isSuccess){	//down
+												$("#recommend${tmp.num }").css("color","#ff0000")
+												var a = cnt;
+												a -= 1;
+												$("#recommendCnt${tmp.num}").text(a);
+												console.log("success");
+											
+											}else{	//up
+												$("#recommend${tmp.num }").css("color","#00ff00")
+												var a = cnt;
+												a += 1;
+												$("#recommendCnt${tmp.num}").text(a);
+												console.log("false");
+											
+											}
+										}
+									});
+								})
+							})
+								</script>
+										<button id="recommend${tmp.num }"
+											style="color: #ff0000; cursor: pointer;" value="${tmp.num}">
+											추천: <span id="recommendCnt${tmp.num }">${tmp.recommendCnt }</span>
+										</button>
+
+
+
+										<a href="javascript:" class="reply_link"
 											style="color: #70ff35;">답글</a> |
 										<c:choose>
 											<%-- 로그인된 아이디와 댓글의 작성자가 같으면 --%>
@@ -354,6 +407,7 @@
 									</form>
 								</c:if>
 							</li>
+
 						</c:when>
 						<c:otherwise>
 							<li
@@ -365,10 +419,9 @@
 			</ul>
 		</div>
 	</div>
+
 	<script>
-$(".recommend").click(function(){
-	
-})
+
 $(document).ready(function(){
 	var isLogin=${not empty id};
 	if(isLogin){
@@ -392,6 +445,7 @@ $(document).ready(function(){
 	})
 	}
 });
+
 	//댓글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".comment-update-link").click(function(){
 		$(this)

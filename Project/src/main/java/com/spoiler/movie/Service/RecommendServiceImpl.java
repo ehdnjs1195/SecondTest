@@ -31,7 +31,7 @@ public class RecommendServiceImpl implements RecommendService{
 		dto.setId(id);
 		dto.setNum(num);
 		
-		recommentDao.insert(dto);
+		
 	}
 
 	@Override
@@ -65,7 +65,6 @@ public class RecommendServiceImpl implements RecommendService{
 		dto.setId(id);
 		dto.setNum(num);
 		
-		recommentDao.delete(dto);		
 	}
 
 }

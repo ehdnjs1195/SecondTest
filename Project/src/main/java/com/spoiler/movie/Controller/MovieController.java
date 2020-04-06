@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spoiler.movie.Dto.MovieCommentDto;
 import com.spoiler.movie.Dto.MovieDto;
 
 import com.spoiler.movie.Dto.PopupDto;
@@ -85,6 +86,7 @@ public class MovieController {
 		return mView;
 	}
 
+
 	@RequestMapping("/master/popup")
 	public ModelAndView popupList(ModelAndView mView,HttpSession session) {
 		adminService.getPopUp(mView, session);
@@ -110,14 +112,22 @@ public class MovieController {
 		return map;
 	}
 
+	
+	@ResponseBody
 	@RequestMapping("/recommend")
-	public ModelAndView authRecommend(@RequestParam int num, HttpServletRequest request) {
+	public Map<String, Object> authRecommend(HttpServletRequest request) {
+		
+		Map<String, Object> map=new HashMap<>();
+		
 		int result=recommendService.recommendDataSelect(request);
 		if(result==0) {
 			recommendService.recommendDataDelete(request);
+			map.put("isSuccess", true);	
 		}else {
 			recommendService.recommendDataInsert(request);
+			map.put("isSuccess", false);
 		}
-		return new ModelAndView("redirect:/home.do"); 
+		
+		return map;
 	}
 }

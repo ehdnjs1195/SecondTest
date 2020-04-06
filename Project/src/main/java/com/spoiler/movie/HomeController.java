@@ -83,7 +83,7 @@ public class HomeController {
 	}
 	
 	//영화 실시간 업데이트
-	@RequestMapping("/updateRankMovie")
+	@RequestMapping("/master/updateRankMovie")
 	public String rank_update(HttpServletRequest request) {
 		service.updateRank(request);
 		service.homeList(request);
