@@ -148,8 +148,8 @@
 			<a class="btn btn-primary" href="genredetaillist.do?genre=옴니버스">옴니버스</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=에로">에로</a>
 			<a class="btn btn-primary" href="movie_Rank.do">영화 랭킹 보러가기</a>
-			<!-- <a class="btn btn-primary" href="updateRankMovie.do">영화 랭킹 업데이트</a>
-			<a class="btn btn-primary" href="updateMovie.do">영화 실시간 업데이트</a> -->
+			<a class="btn btn-primary" href="updateRankMovie.do">영화 랭킹 업데이트</a>
+			<a class="btn btn-primary" href="updateMovie.do">영화 실시간 업데이트</a>
 		</div>
     
     	<!-- 추천 TOP10 -->
