@@ -55,6 +55,7 @@ public class AdminServiceImpl implements AdminService{
 			// 마스터이름+Popup을 추가.
 			Cookie cook=new Cookie("Popup", dto.getWriter());
 			cook.setPath("/movie");
+			cook.setMaxAge(60*60*24*31); //한달
 			response.addCookie(cook);
 		}else {
 			Cookie cook=new Cookie("Popup", dto.getWriter());

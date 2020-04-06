@@ -21,8 +21,6 @@ import com.spoiler.movie.Dto.MovieDto;
 import com.spoiler.movie.Dto.PopupDto;
 import com.spoiler.movie.Service.AdminService;
 
-import com.spoiler.movie.Dto.RecommendDto;
-
 import com.spoiler.movie.Service.MovieAPIService;
 import com.spoiler.movie.Service.MovieService;
 import com.spoiler.movie.Service.RecommendService;
