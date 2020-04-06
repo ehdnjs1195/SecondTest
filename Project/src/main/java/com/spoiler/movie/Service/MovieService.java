@@ -17,4 +17,8 @@ public interface MovieService {
 	//
 	public void plusCnt(int num,HttpServletRequest request);
 	public void minusCnt(int num,HttpServletRequest request);
+	//영화 랭킹 리스트
+	public void getRankList(HttpServletRequest request);
+	//영화 업데이트
+	public void updateRank(HttpServletRequest request);
 }
