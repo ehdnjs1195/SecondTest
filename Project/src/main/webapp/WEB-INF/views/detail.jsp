@@ -220,8 +220,43 @@
 								</c:if>
 								<span style="font-weight: normal; font-family: auto;">${tmp.regdate }</span>
 								
-					<a id="recommed" href="recommend.do?num=${tmp.num }">추천    ${tmp.recommendCnt}</a>
-							
+								<!-- 추천기능 -->
+							<script>
+							$(function(){
+								$("#recommend${tmp.num }").click(function(){
+									var num=$(this).attr("value");
+									var cnt=parseInt($("#recommendCnt${tmp.num}").text());
+									console.log(num);
+									$.ajax({
+										url:"recommend.do",
+										method:"post",
+										data:{"id":"${id}","num":num},
+										success:function(responseData){
+											// responseData : {isSuccess:true}
+											if(responseData.isSuccess){	//down
+												$("#recommend${tmp.num }").css("color","#ff0000")
+												var a = cnt;
+												a -= 1;
+												$("#recommendCnt${tmp.num}").text(a);
+												console.log("success");
+											
+											}else{	//up
+												$("#recommend${tmp.num }").css("color","#00ff00")
+												var a = cnt;
+												a += 1;
+												$("#recommendCnt${tmp.num}").text(a);
+												console.log("false");
+											
+											}
+										}
+									});
+								})
+							})
+								</script>
+							<button id="recommend${tmp.num }" style="color:#ff0000; cursor:pointer;" value="${tmp.num}">추천: <span id="recommendCnt${tmp.num }">${tmp.recommendCnt }</span></button>
+								
+									
+								
 								<a href="javascript:" class="reply_link" style="color: #70ff35;">답글</a> |
 								<c:choose>
 									<%-- 로그인된 아이디와 댓글의 작성자가 같으면 --%>
@@ -268,10 +303,9 @@
 		</ul>	
 	</div>
 </div>
+
+
 <script>
-$(".recommend").click(function(){
-	
-})
 	//댓글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".comment-update-link").click(function(){
 		$(this)

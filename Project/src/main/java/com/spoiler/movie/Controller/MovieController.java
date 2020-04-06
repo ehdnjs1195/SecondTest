@@ -1,5 +1,6 @@
 package com.spoiler.movie.Controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spoiler.movie.Dto.MovieCommentDto;
 import com.spoiler.movie.Dto.MovieDto;
 import com.spoiler.movie.Dto.RecommendDto;
 import com.spoiler.movie.Service.MovieAPIService;
@@ -73,15 +75,23 @@ public class MovieController {
 		mView.setViewName("more_list");
 		return mView;
 	}
+	
+	@ResponseBody
 	@RequestMapping("/recommend")
-	public ModelAndView authRecommend(@RequestParam int num, HttpServletRequest request) {
+	public Map<String, Object> authRecommend(HttpServletRequest request) {
+		
+		Map<String, Object> map=new HashMap<>();
+		
 		int result=recommendService.recommendDataSelect(request);
 		if(result==0) {
 			recommendService.recommendDataDelete(request);
+			map.put("isSuccess", true);	
 		}else {
 			recommendService.recommendDataInsert(request);
+			map.put("isSuccess", false);
 		}
-		return new ModelAndView("redirect:/home.do"); 
+		
+		return map;
 	}
 	
 }

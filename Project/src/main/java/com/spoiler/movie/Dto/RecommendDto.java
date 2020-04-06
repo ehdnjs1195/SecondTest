@@ -2,15 +2,15 @@ package com.spoiler.movie.Dto;
 
 public class RecommendDto {
 	private String id;
-	private String recommend;
+	private boolean isRecommend;
 	private int num;
 	
 	public RecommendDto() {}
 
-	public RecommendDto(String id, String recommend, int num) {
+	public RecommendDto(String id, boolean isRecommend, int num) {
 		super();
 		this.id = id;
-		this.recommend = recommend;
+		this.isRecommend = isRecommend;
 		this.num = num;
 	}
 
@@ -22,12 +22,12 @@ public class RecommendDto {
 		this.id = id;
 	}
 
-	public String getRecommend() {
-		return recommend;
+	public boolean getisRecommend() {
+		return isRecommend;
 	}
 
-	public void setRecommend(String recommend) {
-		this.recommend = recommend;
+	public void setisRecommend(boolean isRecommend) {
+		this.isRecommend = isRecommend;
 	}
 
 	public int getNum() {

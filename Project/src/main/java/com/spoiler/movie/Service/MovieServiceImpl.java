@@ -114,7 +114,7 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public void plusCnt(int num,HttpServletRequest request) {
-		commentDao.upCnt(num);		
+		commentDao.upCnt(num);	
 	}
 
 	@Override
