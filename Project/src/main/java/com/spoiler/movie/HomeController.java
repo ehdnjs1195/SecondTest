@@ -1,11 +1,10 @@
 package com.spoiler.movie;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,19 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spoiler.movie.Dto.MovieCommentDto;
 import com.spoiler.movie.Service.MovieService;
-import com.spoiler.movie.favorite.Dto.FavoriteDto;
-import com.spoiler.movie.favorite.Service.FavoriteService;
 @Controller
 public class HomeController {
 	@Autowired
 	private MovieService service;
 
-	
 	@RequestMapping("/home")
 	public String home(HttpServletRequest request) {
 		service.homeList(request);
@@ -34,13 +29,19 @@ public class HomeController {
 	}
 	//글 자세히 보기 요청 처리
 	@RequestMapping("/detail")
-	public String detail(HttpServletRequest request){
-		
-		
+	public ModelAndView detail(HttpServletRequest request, ModelAndView mView){
 		service.getDetail(request);
-		
-		//view page 로 forward 이동해서 글 자세히 보기 
-		return "detail";
+		double ran=Math.random()*7+3;
+		double point=Math.round(ran*10)/10.0;
+		double point2 = point*10;
+		Random random=new Random();
+		System.out.println(random.nextInt(1000)+2001);
+		mView.addObject("random", random.nextInt(1000)+2001);
+		mView.addObject("random2", random.nextInt(710000));
+		mView.addObject("point", point);
+		mView.addObject("point2", point2);
+		mView.setViewName("detail");
+		return mView;
 	}
 	//댓글 저장 요청 처리
 	@RequestMapping(value = "/comment_insert", method = RequestMethod.POST)
@@ -73,4 +74,19 @@ public class HomeController {
 		map.put("isSuccess", true);
 		return map;
 	}	
+	
+	//영화 랭킹 리스트
+	@RequestMapping("/movie_Rank")
+	public String rank_list(HttpServletRequest request) {
+		service.getRankList(request);
+		return "movie_Rank";
+	}
+	
+	//영화 실시간 업데이트
+	@RequestMapping("/updateRankMovie")
+	public String rank_update(HttpServletRequest request) {
+		service.updateRank(request);
+		service.homeList(request);
+		return "home";
+	}
 }

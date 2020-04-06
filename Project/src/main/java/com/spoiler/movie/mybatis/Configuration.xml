@@ -11,7 +11,7 @@
 		<typeAlias type="com.spoiler.movie.users.Dto.UsersDto" alias="usersDto"/>
 		<typeAlias type="com.spoiler.movie.Dto.PopupDto" alias="popupDto"/>
 		<typeAlias type="com.spoiler.movie.favorite.Dto.FavoriteDto" alias="favoriteDto"/>
-
+		<typeAlias type="com.spoiler.movie.Dto.MovieRankDto" alias="movieRankDto"/>
 	</typeAliases>
 	
 	<!-- mapper 설정 -->

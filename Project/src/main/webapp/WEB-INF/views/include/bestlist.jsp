@@ -2,21 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
-.items{
-cursor: pointer;
-    position:relative;
-   transition:all .2s ease-out 0s
-   }
-.items .box-content, 
-.items:after{position:absolute;left:20px;right:20px}
-.items:after{content:"";display:block;background:#2d3436;
-top:20px;bottom:20px;opacity:0;transform:rotate3d(-1,1,0,100deg);transition:all .4s ease-in-out 0s}
-.items:hover:after{opacity:.9;transform:rotate3d(0,0,0,0deg)}
-.items .box-content{top:45%;opacity:0;z-index:1;-webkit-transform:translate(10%,-30%);transform:translate(10%,-30%);transition:all .2s ease-out 0s}
-.items:hover .box-content{opacity:1;transform:translate(0,-50%);transition-delay:.2s}
-.items .title{display:block;font-size:22px;font-weight:700;color:#FFC300;margin:0 0 10px}
-.items .post{display:block;font-size:15px;color:#f7f7b9;margin-bottom:20px}
-@media only screen and (max-width:990px){.box13{margin-bottom:30px}
+	.items{
+		cursor: pointer;
+		position:relative;
+		transition:all .2s ease-out 0s
+	}
+	.items .box-content, 
+	.items:after{position:absolute;left:20px;right:20px}
+	.items:after{content:"";display:block;background:#2d3436;
+	top:20px;bottom:20px;opacity:0;transform:rotate3d(-1,1,0,100deg);transition:all .4s ease-in-out 0s}
+	.items:hover:after{opacity:.9;transform:rotate3d(0,0,0,0deg)}
+	.items .box-content{top:45%;opacity:0;z-index:1;-webkit-transform:translate(10%,-30%);transform:translate(10%,-30%);transition:all .2s ease-out 0s}
+	.items:hover .box-content{opacity:1;transform:translate(0,-50%);transition-delay:.2s}
+	.items .title{display:block;font-size:22px;font-weight:700;color:#FFC300;margin:0 0 10px}
+	.items .post{display:block;font-size:15px;color:#f7f7b9;margin-bottom:20px}
+	@media only screen and (max-width:990px){.box13{margin-bottom:30px}
 </style>
 
 <div>
@@ -42,7 +42,7 @@ top:20px;bottom:20px;opacity:0;transform:rotate3d(-1,1,0,100deg);transition:all 
 		<!-- modal-lg  | default | modal-sm -->
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-body" style="display: flex;">
+				<div class="modal-body" style="display: flex; font-family: auto;">
 					<img src="${tmp.posters }" id="${tmp.movieSeq }">
 					<div class="imgBox">
 						<h2>${tmp.title }</h2>
@@ -65,16 +65,10 @@ top:20px;bottom:20px;opacity:0;transform:rotate3d(-1,1,0,100deg);transition:all 
 						<h3>줄거리</h3>
 						<h4>${tmp.plot }</h4>
 						<div>
-							<a href="detail.do?movieSeq=${tmp.movieSeq }&movieId=${tmp.movieId}" type="button" class="btn btn-info">네티즌 평점 보러가기</a>
+							<a href="detail.do?movieSeq=${tmp.movieSeq }&movieId=${tmp.movieId}&rank=${tmp.rank}" type="button" class="btn btn-info">네티즌 평점 보러가기</a>
 						</div>
 					</div>
 				</div>
-				<%-- <div class="modal-footer">
-					<iframe src="${tmp.videoLink }"
-						frameborder="0"
-						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-						allowfullscreen></iframe>
-				</div> --%>
 			</div>
 			<!-- /.modal-content -->
 		</div>
