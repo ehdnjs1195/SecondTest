@@ -29,7 +29,7 @@
 			<tr>
 				<td>${tmp.num }</td>
 				<td>${tmp.writer }</td>
-				<td>${tmp.title }</td>
+				<td><a href="popup.do?num=${tmp.num }" style="color:white;">${tmp.title }</a></td>
 				<td>${tmp.regdate }</td>
 				<td>
 					<label class="switch">

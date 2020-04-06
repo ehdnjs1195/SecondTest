@@ -1,9 +1,11 @@
 package com.spoiler.movie.Service;
 
+
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +20,9 @@ public class AdminServiceImpl implements AdminService{
 	private AdminDao adminDao;
 	@Override
 	public void popUp(HttpServletRequest request) {
+		
 		String writer = request.getParameter("Popup");
-		PopupDto dto = adminDao.getPopup(writer);
+		PopupDto dto = adminDao.getPopup(1);
 		request.setAttribute("popupDto", dto);
 	}
 	@Override
@@ -35,34 +38,37 @@ public class AdminServiceImpl implements AdminService{
 	}
 	@Override
 	public void addPopUp(PopupDto dto) {
-		if(adminDao.checkAdmin(dto.getWriter())) {
-			adminDao.updatePopup(dto);
-		}else {
-			adminDao.insertPopup(dto);
-		}
+		adminDao.insertPopup(dto);
 	}
 	
 	@Override
-	public void getPopUp(ModelAndView mView, HttpSession session) {
-		String id = (String) session.getAttribute("id");
-		PopupDto dto = adminDao.getPopup(id);
+	public void getPopUp(ModelAndView mView, int num) {
+		PopupDto dto = adminDao.getPopup(num);
 		mView.addObject("PopDto",dto);
 	}
 	
 	@Override
 	public void updateState(PopupDto dto, HttpServletRequest request, HttpServletResponse response) {
+		String num = Integer.toString(dto.getNum());
 		if(dto.getState().equals("true")) {
 			// 마스터이름+Popup을 추가.
-			Cookie cook=new Cookie("Popup", dto.getWriter());
+			Cookie cook=new Cookie("Popup"+num, num);
 			cook.setPath("/movie");
 			cook.setMaxAge(60*60*24*31); //한달
 			response.addCookie(cook);
 		}else {
-			Cookie cook=new Cookie("Popup", dto.getWriter());
+			Cookie cook=new Cookie("Popup"+num, num);
 			cook.setPath("/movie");
 			cook.setMaxAge(0);//쿠키 삭제
 			response.addCookie(cook);
 		}
 		adminDao.updateState(dto);
+	}
+	
+	@Override
+	public void getPopUp_list(HttpServletRequest request) {
+		List<PopupDto> list = adminDao.getPopupList();
+		request.setAttribute("list", list);
+		
 	}
 }

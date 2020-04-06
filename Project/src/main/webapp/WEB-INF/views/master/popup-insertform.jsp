@@ -1,20 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>POPUP</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/toggle.css" />
+<title>Insert title here</title>
+<jsp:include page="../include/resource.jsp"/>
 <style>
-	/* textarea의 크기가 SmartEditer의 크기가 된다. */
-	#content{
-		display: none;
-		width: 100%;
-		height: 400px;
-	}
 	body{
 		color: #fff;
 	}
@@ -42,7 +34,6 @@
 		<a class="btn btn-warning" href="popup-list.do">돌아가기</a>
 	</form>
 </div>
-
 <!-- 스마트에디터 -->
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>
 <script>
