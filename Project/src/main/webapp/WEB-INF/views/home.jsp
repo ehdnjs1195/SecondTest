@@ -8,32 +8,42 @@
 <meta charset="UTF-8">
 <title>SPOILER</title>
 <jsp:include page="include/resource.jsp"></jsp:include>
+<style>
+	.slide_right{
+			text-decoration: none;
+			position: fixed;
+			top: 100px;
+			left: 90%;
+			width: 130px;
+			height: 100%;
+			z-index:10;
+		}
+		.slide_right img{
+			margin: 5px;
+		}
+</style>
 </head>
 <body>
 <!-- 공지사항 팝업 띄우기 -->
-<c:if test="${showPopup }">
 	<script>
 		var getCookie = function(name) {
 	        var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
 	        return value? value[2] : null;
 	    };
-		console.log(getCookie("isPopup"));
-		if(getCookie("isPopup")=="no"){
-			
-		}else{		
-			window.open("notify.do","news","width=710px,height=530px,top=100px,left=100px");
+		if(getCookie("Popup") != null){
+			if(getCookie("isPopup")=="no"){
+				
+			}else{		
+				window.open("notify.do?Popup="+getCookie("Popup"),"news","width=710px,height=530px,top=100px,left=100px");
+			}			
 		}
 	</script>
-</c:if>
 
-<div style="position: fixed; top: 100px; left: 50%; z-index: -1;">
-	<div style="position: relative; top: 0; left: 700px;">
+	<div class="slide_right">
 		<img src="${pageContext.request.contextPath }/resources/images/제목 없음.png" alt="" style="width: 130px; height: auto;">
+		<img onclick="window.open('map.do','Movie Theater','width=700px,height=450px,top=200px,left=200px')" src="${pageContext.request.contextPath }/resources/images/mapimg.png" alt="" style="width: 130px; height: auto; display: block;" >
 	</div>
-</div>
 <jsp:include page="include/navbar.jsp"></jsp:include>
-<!-- 왼쪽 슬라이드 바?(sidebar 말고?) -->
-<jsp:include page="include/slidebar.jsp"/>
     <div class="container">
     	<!-- 서치바(임시) -->
     	<form action="searchlist.do" method="get">
@@ -49,11 +59,16 @@
     	<!-- 추천 TOP10 -->
         <h1 style="color: honeydew;">추천 TOP10</h1>
         <jsp:include page="include/bestlist.jsp"/>
-        
-      
     </div>
-    <div class="container">
-         <jsp:include page="include/map.jsp"/>
-    </div>
+    <script>
+    $( window ).resize(function() {
+		 var windowWidth = $( window ).width();
+		 if(windowWidth > 1600) {
+			 $(".slide_right").show(300);
+		 } else {
+			 $(".slide_right").hide(300);
+		 }
+	});
+    </script>
 </body>
 </html>

@@ -54,7 +54,11 @@ public class MovieController {
 		apiService.updateMovie();
 		return "redirect:/home.do";
 	}
-	
+	@RequestMapping("/map")
+	public ModelAndView map(ModelAndView mView, HttpServletRequest request) {
+		mView.setViewName("include/map");
+		return mView;
+	}
 	@RequestMapping("/notify")
 	public ModelAndView popup(ModelAndView mView, HttpServletRequest request) {
 		adminService.popUp(request);
@@ -93,8 +97,8 @@ public class MovieController {
 	}
 	@ResponseBody
 	@RequestMapping("/master/update_state")
-	public Map<String,Object> updateStatement(@ModelAttribute PopupDto dto, HttpServletRequest request) {
-		adminService.updateState(dto, request);
+	public Map<String,Object> updateStatement(@ModelAttribute PopupDto dto, HttpServletRequest request, HttpServletResponse response) {
+		adminService.updateState(dto, request, response);
 		Map<String, Object> map = new HashMap<>();
 		
 		return map;

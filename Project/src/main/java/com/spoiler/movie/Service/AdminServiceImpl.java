@@ -1,7 +1,5 @@
 package com.spoiler.movie.Service;
 
-import java.util.List;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +18,7 @@ public class AdminServiceImpl implements AdminService{
 	private AdminDao adminDao;
 	@Override
 	public void popUp(HttpServletRequest request) {
-		String writer = (String)request.getSession().getAttribute("id");
+		String writer = request.getParameter("Popup");
 		PopupDto dto = adminDao.getPopup(writer);
 		request.setAttribute("popupDto", dto);
 	}
@@ -52,14 +50,18 @@ public class AdminServiceImpl implements AdminService{
 	}
 	
 	@Override
-	public void updateState(PopupDto dto, HttpServletRequest request) {
-		boolean showPopup = false;
+	public void updateState(PopupDto dto, HttpServletRequest request, HttpServletResponse response) {
 		if(dto.getState().equals("true")) {
-			showPopup = true;
+			// 마스터이름+Popup을 추가.
+			Cookie cook=new Cookie("Popup", dto.getWriter());
+			cook.setPath("/movie");
+			response.addCookie(cook);
 		}else {
-			showPopup = false;
+			Cookie cook=new Cookie("Popup", dto.getWriter());
+			cook.setPath("/movie");
+			cook.setMaxAge(0);//쿠키 삭제
+			response.addCookie(cook);
 		}
-		request.getSession().setAttribute("showPopup", showPopup);
 		adminDao.updateState(dto);
 	}
 }

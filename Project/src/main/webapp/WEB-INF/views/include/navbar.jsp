@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <style>
+	#navbar{
+		z-index: 1;
+	}
 	.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
 	    background-color: #2d3436 !important;
 	    border: #FBFCFC ;
@@ -52,8 +55,8 @@
 	    filter: blur(40px);
 	}
 </style>
-
-<div class="navbar navbar-inverse navbar-fixed-top">
+<jsp:include page="slidebar.jsp"/>
+<div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
 	<div class="container">
 		<!-- 홈페이지 링크와 버튼을 넣어둘 div -->
 		<div class="navbar-header">

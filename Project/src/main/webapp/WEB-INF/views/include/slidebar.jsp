@@ -3,84 +3,79 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
 <style>
-   .slide_left{
-           text-decoration: none;
-           position: fixed;
-           top: 0;
-           left: 0px;
-           width: 10px;
-           height: 100%;
-			z-index:100;
-           
-       }
-       .smenu{
-           width: 250px;
-           left:0;
-           height: 100%;
-           margin-top : 70px;
-           background: #3498db;
-           text-align: center;
-           overflow: auto;
-           margin-left: -40px;
-       }
-       .slide_btn a{
-           text-decoration: none;
-       }
-       li{
-       	list-style: none;
-       }
-       ul.depth02{
-       	display: none;
-       	margin-left: -40px;	
-       }
-       .smenu a{
-           display: block;
-           padding: 16px 26px;
-           color: white;
-           font-size: 14px;
-           margin: 4px 0;
-           position: relative;
-       }
-       
-       .slide_btn{
-           display: block;
-           padding: 16px 20px;
-           background: #333;
-           color : white;
-           position: relative;
-           font-size: 25px;
-           font-weight: bold; 
-       }
-       .smenu a:before{
-           content: "";
-           position: relative;;
-           width: 100%;
-           height: 100%;
-           left: 0;
-           top: 0;
-           transition: 0.3s;
-           opacity: 0;
-       }
-        .smenu a:hover{
-   	     background: #333;
-        }
+	.slide_left{
+		text-decoration: none;
+		position: fixed;
+		top: 0;
+		left: 0px;
+		width: 10px;
+		height: 100%;
+		z-index:10;
+	}
+	.smenu{
+		width: 250px;
+		left:0;
+		height: 100%;
+		background: #3498db;
+		text-align: center;
+		overflow: auto;
+		margin-left: -40px;
+	}
+	.slide_btn a{
+		text-decoration: none;	
+	}
+	li{
+		list-style: none;
+	}
+	ul.depth02{
+		display: none;
+		margin-left: -40px;	
+	}
+	.smenu a{
+		display: block;
+		padding: 16px 26px;
+		color: white;
+		font-size: 14px;
+		margin: 4px 0;
+		position: relative;
+	} 
+	.slide_btn{
+		display: block;
+		padding: 16px 20px;
+		background: #333;
+		color : white;
+		position: relative;
+		font-size: 25px;
+		font-weight: bold; 
+	}
+	.smenu a:before{
+		content: "";
+		position: relative;;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		transition: 0.3s;
+		opacity: 0;
+	}
+	.smenu a:hover{
+		background: #333;	
+	 }
 	#showBtn,#hideBtn{
 		display: block;
 		background: #273c75;
+		width : 220px;
+		padding: 16px 26px;
+		margin-top : 6px;
 		color : white;
 		position: relative;
 		font-size: 13px;
+		text-align: center;
 	}
-	
-
-	
 	#style-3::-webkit-scrollbar
 	{
 		width: 0px;
-	
 	}
-	
-
 </style>
 <div class="slide_left">
 	<div class="smenu scrollbar" id="style-3">
@@ -127,7 +122,7 @@
 			</li>
 		</ul>
 	</div>
-	<a href="#" class="slide_btn" id="showBtn"style="margin-top: 70px; font-weight: normal; ;">장르메뉴 펼치기▼</a>
+	<a href="#" class="slide_btn" id="showBtn"style="font-weight: normal; width: 100px;">장르▼</a>
 </div>
 <script>
 	$('ul.depth01>li').mouseup(function(){
@@ -150,6 +145,8 @@
 			 $(".smenu").hide(300);
 		 }
 	});
+	 
+
 </script>
 
 
