@@ -119,6 +119,9 @@
 #moreComment:hover, #allComment:hover{
 	background-color: #868686 !important;
 }
+#add_btn{
+	background-color:blue;
+}
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/detail_custom.css" />
 <jsp:include page="include/resource.jsp"/>
@@ -175,7 +178,7 @@
 		<input type="hidden" name="genre" value="${dto.genre }"/>
 		<input type="hidden" name="posters" value="${dto.posters }"/>			
 			
-		<button id="add_btn" class="btn btn-danger" type="submit">관심목록 추가</button>
+		<button id="add_btn" class="btn" type="submit">관심목록 추가</button>
 		</form> 
 		
 	</div>
@@ -283,35 +286,30 @@
 <script>
 
 $(document).ready(function(){
-	//로그인 여부
 	var isLogin=${not empty id};
 	if(isLogin){
-		$.ajax({
-			
-			url: "favorite_list.do"
-			, method:"POST"
-			, data:{'movieSeq': '${dto.movieSeq}'}
-			, dataType: 'json'   // 데이터 타입을 Json으로 변경
-	 		, success: function(responseData){ 
-	 			if('${dto.movieSeq }'== responseData){
-	 				
-					$("#add_btn").attr('disabled', true);
-					
-	 			}else{
-	 				
-	 				$("#add_btn").attr('disabled', false);
-	 			}
-			}, 
-			error: function(){
-	 				return false;
+	$.ajax({
+									
+		url: "favorite_list2.do",
+		method: "POST",
+		data:{
+			 'movieSeq':'${dto.movieSeq}'
+		},
+		success: function(data){
+			if(data.result){
+				 $("#add_btn").css('background-color', 'red');
+				$("#add_btn").text('관심목록 삭제')
+			}else{
+				
+				 $("#add_btn").css('background-color', 'blue');
+				 $("#add_btn").text('관심목록 추가')
 			}
-		})
-	}
+			
+		}
 	
-
+	})
+	}
 });
-
-
 
 	//댓글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".comment-update-link").click(function(){
@@ -412,17 +410,21 @@ $(document).ready(function(){
 			var data = $(this).serialize();
 			$.ajax({
 											
-				url: "favorite_insert.do",
+				url: "favorite_list.do",
 				method: "POST",
-				/* cache:false, */
 				data:data,
-				success: function(responseData){
+				success: function(data){
+					if(data.result){
+						alert(data.title+"을(를) 관심목록에서 삭제하였습니다.");
+						 $("#add_btn").css('background-color', 'blue');
+						$("#add_btn").text('관심목록 추가')
+					}else{
+						
+						alert(data.title+"을(를) 관심목록에 추가하였습니다.");
+						 $("#add_btn").css('background-color', 'red');
+						 $("#add_btn").text('관심목록 삭제')
+					}
 					
-					alert(responseData+"\n 을(를) 관심목록에 추가하였습니다.");
-					$("#add_btn").attr('disabled', true);
-				}, 
-				error: function(){
-					alert("실패했습니다.");
 				}
 			})
 		}

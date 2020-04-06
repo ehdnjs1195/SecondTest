@@ -5,7 +5,7 @@
 
 	
 	
-	<select id="favoriteList" resultType="FavoriteDto">
+	<select id="isExist" parameterType="FavoriteDto" resultType="String">
 		select movieSeq from favorite
 		where id=#{id} and movieSeq=#{movieSeq}
 	</select>
@@ -35,9 +35,9 @@
 		WHERE id=#{id}
 	</select>
 	
-	<update id="delete" parameterType="String">
+	<delete id="delete" parameterType="FavoriteDto">
 		DELETE FROM favorite
-		WHERE movieSeq=#{movieSeq, jdbcType=VARCHAR}
-	</update>
+		WHERE movieSeq=#{movieSeq} and id=#{id}
+	</delete>
 	
 </mapper>

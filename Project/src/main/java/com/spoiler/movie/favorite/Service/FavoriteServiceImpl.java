@@ -1,6 +1,9 @@
 package com.spoiler.movie.favorite.Service;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,18 +41,7 @@ public class FavoriteServiceImpl implements FavoriteService{
 }
 		
 
-	
-	@Override
-	public void favoriteList(HttpServletRequest request) {
-		String id = (String) request.getSession().getAttribute("id");
-		String movieSeq = request.getParameter("movieSeq");
-		
-		FavoriteDto dto = new FavoriteDto();
-		dto.setId(id);
-		dto.setMovieSeq(movieSeq);
-		
-		dao.favoriteList(dto);
-	}
+
 
 	@Override
 	public int getCount(String id) {
@@ -58,20 +50,60 @@ public class FavoriteServiceImpl implements FavoriteService{
 
 	
 
-
-	@Override
-	public void delete(String id) {
-		dao.delete(id);
-		
-	}
-
-
-
 	@Override
 	public FavoriteDto getMovieInfo(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+	@Override
+	public Map<String, Object> isExistMovie(FavoriteDto dto) {
+		boolean isExist=dao.isExist(dto);
+		Map<String, Object> map=new HashMap<>();
+		if(isExist) {
+			dao.delete(dto);
+			map.put("result", true);
+			
+		}else {
+			dao.insert(dto);
+		map.put("result", false);
+		}
+		
+		return map;
+	}
+
+	@Override
+	public Map<String, Object> checkMovie(FavoriteDto dto) {
+		boolean isExist=dao.isExist(dto);
+		Map<String, Object> map=new HashMap<>();
+		if(isExist) {
+			map.put("result", true);
+			
+		}else {
+		map.put("result", false);
+		}
+		
+		return map;
+	}
+
+
+	@Override
+	public void delete(HttpServletRequest request) {
+		String id = (String) request.getSession().getAttribute("id");
+		String movieSeq = request.getParameter("movieSeq");
+		FavoriteDto dto = new FavoriteDto();
+		dto.setId(id);
+		dto.setMovieSeq(movieSeq);
+		
+		dao.delete(dto);
+		
+	}
+
+
+
+
 
 
 

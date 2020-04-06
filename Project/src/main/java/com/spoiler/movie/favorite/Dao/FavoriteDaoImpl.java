@@ -23,21 +23,27 @@ public class FavoriteDaoImpl implements FavoriteDao{
 
 
 	@Override
-	public void favoriteList(FavoriteDto dto) {
-       session.selectOne("favorite.favoriteList", dto);
-
-	}
-
-
-	@Override
-	public void delete(String id) {
-		session.delete("favorite.delete", id);
+	public void delete(FavoriteDto dto) {
+		session.delete("favorite.delete", dto);
 		
 	}
 
 
 	public int getCount(String id) {
 		return session.selectOne("favorite.getCount",id);
+	}
+
+
+
+	@Override
+	public boolean isExist(FavoriteDto dto) {
+		String isExistMovie=session.selectOne("favorite.isExist", dto);
+		//만일 select 된 결과가 null 이면 존재하지 않는 아이디이다.
+		if(isExistMovie==null) {
+			return false;
+		}else {
+			return true;
+		}		
 	}
 
 
