@@ -51,8 +51,14 @@
 	    font-size: 15px;
 	    color: white;
     }
-    #title:hover{
+    #naver{
+    	color: white;
+    }
+    #naver:hover{
    	    color: darkorange;
+    }
+    #search:hover{
+   	    color: chartreuse;
     }
     /*
 	    #background{
@@ -70,13 +76,15 @@
 		<table class="table table-bordered bordertable">
 			<colgroup>
 		    		<col class="col-xs-1"/>
-		    		<col class="col-xs-9"/>
+		    		<col class="col-xs-7"/>
+		    		<col class="col-xs-2"/>
 		    		<col class="col-xs-2"/>
 	    	</colgroup>
 			<thead>
 				<tr style="background-color: tomato;">
 					<th style="text-align: center;"><strong>순위</strong></th>
 					<th><strong>영화명</strong></th>
+					<th>네이버 자세히 보기 링크</th>
 					<th style="text-align: center;"><strong>평점</strong></th>
 				</tr>
 			</thead>
@@ -85,8 +93,15 @@
 					<tr>
 						<td style="font-size: 15px; text-align: center;">${tmp.rank }</td>
 						<td>
-							<a id="title" href="${tmp.link }">
-								<strong>${tmp.title }</strong>
+							<a href="searchlist.do?title=${tmp.title }">
+								<strong id="search">
+									${tmp.title }
+								</strong>
+							</a>
+						</td>
+						<td>
+							<a id="naver" href="${tmp.link }">
+									네이버로 보러가기
 							</a>
 						</td>							
 						<td>
@@ -102,7 +117,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		
+		<!-- 페이징 처리 -->
 		<div class="page-display" style="text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:choose>

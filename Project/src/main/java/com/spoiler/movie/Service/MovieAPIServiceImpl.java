@@ -120,7 +120,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 				String postersStr = (String) obj3.get("posters");
 				String[] posts = postersStr.split("\\|");
 				String posters = posts[0];
-				String default_poster = "https://lh3.googleusercontent.com/proxy/2rS7TKgkNx6XefvzWnkmqLKFAjNI9CNEmmu4RtiCxS4byT8gQPW4bdz5izP4CR_jtWwYNAbmv0INX_lI-ELO7PEwpeRUI7A";
+				String default_poster = "http://www.printnroll.in/images/noimg.png";
 				if (posters.equals("")) {
 					posters = default_poster;
 				}
@@ -219,7 +219,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 			String postersStr = (String) obj3.get("posters");
 			String[] posts = postersStr.split("\\|");
 			String posters = posts[0];
-			String default_poster = "http://liberaldead.com/blog/wp-content/uploads/no-poster.jpg";
+			String default_poster = "http://www.printnroll.in/images/noimg.png";
 			if (posters.equals("")) {
 				posters = default_poster;
 			}
@@ -327,7 +327,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 					String postersStr = (String) obj3.get("posters");
 					String[] posts = postersStr.split("\\|");
 					String posters = posts[0];
-					String default_poster = "http://liberaldead.com/blog/wp-content/uploads/no-poster.jpg";
+					String default_poster = "http://www.printnroll.in/images/noimg.png";
 					if (posters.equals("")) {
 						posters = default_poster;
 					}
@@ -433,7 +433,7 @@ public class MovieAPIServiceImpl implements MovieAPIService{
 				String postersStr = (String) obj3.get("posters");
 				String[] posts = postersStr.split("\\|");
 				String posters = posts[0];
-				String default_poster = "http://liberaldead.com/blog/wp-content/uploads/no-poster.jpg";
+				String default_poster = "http://www.printnroll.in/images/noimg.png";
 				if (posters.equals("")) {
 					posters = default_poster;
 				}
