@@ -311,11 +311,8 @@ $(document).ready(function(){
 			}else{
 				
 				 $("#add_btn").css('background-color', 'blue');
-				 $("#add_btn").text('관심목록 추가')
+				 $("#add_btn").text('관심목록 추가');
 			}
-
-		})
-
 		}
 	})
 	}
