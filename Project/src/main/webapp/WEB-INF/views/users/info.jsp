@@ -197,7 +197,7 @@ p{
 				아직 추가한 영화가 없습니다.
 			</c:when>
 			<c:otherwise>
-				<a href="list.do">${count }개가 있습니다.</a>
+				<a href="${pageContext.request.contextPath }/users/favorite/list.do">${count }개가 있습니다.</a>
 			</c:otherwise>
 		</c:choose>
 		</span> </h4>
