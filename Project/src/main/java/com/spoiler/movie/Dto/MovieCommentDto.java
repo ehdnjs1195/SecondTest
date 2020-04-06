@@ -10,10 +10,11 @@ public class MovieCommentDto {
 	private String deleted; // 삭제한 댓글인지 여부  "no" | "yes"
 	private String regdate; 
 	private String profile; //댓글 작성자의 프로필 이미지 경로를 담을 필드 
+	private int recommendCnt;
 	//생성자
 	public MovieCommentDto() {}
 	public MovieCommentDto(int num, String writer, String content, String target_id, int ref_group, int comment_group,
-			String deleted, String regdate, String profile) {
+			String deleted, String regdate, String profile, int recommendCnt) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -24,6 +25,7 @@ public class MovieCommentDto {
 		this.deleted = deleted;
 		this.regdate = regdate;
 		this.profile = profile;
+		this.recommendCnt = recommendCnt;
 	}
 	public int getNum() {
 		return num;
@@ -79,5 +81,12 @@ public class MovieCommentDto {
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
+	public int getRecommendCnt() {
+		return recommendCnt;
+	}
+	public void setRecommendCnt(int recommendCnt) {
+		this.recommendCnt = recommendCnt;
+	}
+	
 		
 }

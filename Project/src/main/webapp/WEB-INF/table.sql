@@ -13,7 +13,6 @@ repRlsDate varchar2(8),
 keywords varchar2(200),
 posters varchar2(150));
 
-
 create table users
 (id varchar2(50) primary key,
 pwd varchar2(100) not null,
@@ -25,4 +24,11 @@ master number(2) default 0 )
 update users
 set master = 1
 where id = 'master00';
+
+ALTER TABLE movie_comment 
+ADD(recommendCnt number default 0);
+
+create table recommend 
+(id varchar2(100) primary key,
+recommend varchar2(5))
 

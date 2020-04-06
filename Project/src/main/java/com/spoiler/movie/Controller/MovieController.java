@@ -17,15 +17,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spoiler.movie.Dto.MovieDto;
+
 import com.spoiler.movie.Dto.PopupDto;
 import com.spoiler.movie.Service.AdminService;
+
+import com.spoiler.movie.Dto.RecommendDto;
+
 import com.spoiler.movie.Service.MovieAPIService;
 import com.spoiler.movie.Service.MovieService;
+import com.spoiler.movie.Service.RecommendService;
 
 @Controller
 public class MovieController {
 	@Autowired
 	private MovieService service;
+	@Autowired
+	private RecommendService recommendService;
 	@Autowired
 	private MovieAPIService apiService;
 	@Autowired
@@ -78,7 +85,7 @@ public class MovieController {
 		mView.setViewName("more_list");
 		return mView;
 	}
-	
+
 	@RequestMapping("/master/popup")
 	public ModelAndView popupList(ModelAndView mView,HttpSession session) {
 		adminService.getPopUp(mView, session);
@@ -102,5 +109,16 @@ public class MovieController {
 		Map<String, Object> map = new HashMap<>();
 		
 		return map;
+	}
+
+	@RequestMapping("/recommend")
+	public ModelAndView authRecommend(@RequestParam int num, HttpServletRequest request) {
+		int result=recommendService.recommendDataSelect(request);
+		if(result==0) {
+			recommendService.recommendDataDelete(request);
+		}else {
+			recommendService.recommendDataInsert(request);
+		}
+		return new ModelAndView("redirect:/home.do"); 
 	}
 }

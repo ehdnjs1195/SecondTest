@@ -37,9 +37,26 @@ public class MovieCommentDaoImpl implements MovieCommentDao{
 		//리턴해준다.
 		return seq;
 	}
+	@Override
+	public int getNum(MovieCommentDto dto) {
+		//시퀀스 값을 얻어내서 
+		int num=session.selectOne("movieComment.getNum",dto);
+		//리턴해준다.
+		return num;
+	}
 	
 	@Override
 	public void update(MovieCommentDto dto) {
 		session.update("movieComment.update", dto);
+	}
+
+	@Override
+	public void upCnt(int num) {
+		session.update("movieComment.upCnt",num);
+	}
+
+	@Override
+	public void downCnt(int num) {
+		session.update("movieComment.downCnt",num);		
 	}
 }
