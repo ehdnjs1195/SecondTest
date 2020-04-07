@@ -51,7 +51,7 @@ ADD(recommendCnt number default 0);
 
 create table recommend 
 (id varchar2(100) primary key,
-recommend varchar2(5))
+num number)
 
 
 CREATE TABLE favorite(num NUMBER PRIMARY KEY,

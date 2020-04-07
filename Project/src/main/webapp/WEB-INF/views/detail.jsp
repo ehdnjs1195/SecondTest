@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -327,43 +328,77 @@
 
 										<!-- 추천기능 -->
 										<script>
-							$(function(){
-								$("#recommend${tmp.num }").click(function(){
-									var num=$(this).attr("value");
-									var cnt=parseInt($("#recommendCnt${tmp.num}").text());
-									console.log(num);
-									$.ajax({
-										url:"recommend.do",
-										method:"post",
-										data:{"id":"${id}","num":num},
-										success:function(responseData){
-											// responseData : {isSuccess:true}
-											if(responseData.isSuccess){	//down
-												$("#recommend${tmp.num }").css("color","#ff0000")
-												var a = cnt;
-												a -= 1;
-												$("#recommendCnt${tmp.num}").text(a);
-												console.log("success");
 											
-											}else{	//up
-												$("#recommend${tmp.num }").css("color","#00ff00")
-												var a = cnt;
-												a += 1;
-												$("#recommendCnt${tmp.num}").text(a);
-												console.log("false");
+											$(function(){
+												$("#recommend${tmp.num }").click(function(){
+													var isLogin=${not empty id};
+													if(isLogin==false){
+														var isMove=confirm("추천하려면 로그인이 필요합니다.\n로그인 페이지로 이동 하시겠습니까?");
+														if(isMove){
+															location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/detail.do?movieSeq=${dto.movieSeq}%26movieId=${dto.movieId}";
+															return false;
+														}
+													}else{
+													var num=$(this).attr("value");
+													var cnt=parseInt($("#recommendCnt${tmp.num}").text());
+													console.log(num);
+													$.ajax({
+														url:"recommend.do",
+														method:"post",
+														data:{"id":"${id}","num":num},
+														success:function(responseData){
+															// responseData : {isSuccess:true}
+															if(responseData.isSuccess){	//down
+																$("#heartShow${tmp.num }").hide();
+																$("#heartHide${tmp.num }").show();
+																var a = cnt;
+																a -= 1;
+																$("#recommendCnt${tmp.num}").text(a);
+																console.log("success");
+															
+															}else{	//up
+																$("#heartShow${tmp.num }").show();
+																$("#heartHide${tmp.num }").hide();
+																var a = cnt;
+																a += 1;
+																$("#recommendCnt${tmp.num}").text(a);
+																console.log("false");
+															
+															}
+														}
+													});
+													}
+												})
+											})
 											
-											}
-										}
-									});
-								})
-							})
-								</script>
+											$(document).ready(function(){
+													var num="${tmp.num}";
+												$.ajax({
+													url: "recommend2.do",
+													method: "POST",
+													data:{"id":"${id}","num":num},
+													
+													success: function(responseData){
+														if(responseData.isExist){	//down
+															$("#heartShow${tmp.num }").hide();
+															$("#heartHide${tmp.num }").show();
+															console.log("is Exist : true");
+														}else{	//up
+															$("#heartShow${tmp.num }").show();
+															$("#heartHide${tmp.num }").hide();
+															console.log("is Exist : false");
+														}
+													}
+												})
+											});
+									</script>
 										<button id="recommend${tmp.num }"
-											style="color: #ff0000; cursor: pointer;" value="${tmp.num}">
-											추천: <span id="recommendCnt${tmp.num }">${tmp.recommendCnt }</span>
+											style="background:none; border:none; cursor: pointer;" value="${tmp.num}">
+											<span id="heartShow${tmp.num }" class="glyphicon glyphicon-heart" style="color: red;" aria-hidden="true" ></span>
+											<span id="heartHide${tmp.num }" class="glyphicon glyphicon-heart" style="color: #a5b1c2;" aria-hidden="true"></span>
+											<span id="recommendCnt${tmp.num }">${tmp.recommendCnt }</span>
 										</button>
-
-
+	
 
 										<a href="javascript:" class="reply_link"
 											style="color: #70ff35;">답글</a> |
@@ -421,7 +456,7 @@
 	</div>
 
 	<script>
-
+	
 $(document).ready(function(){
 	var isLogin=${not empty id};
 	if(isLogin){

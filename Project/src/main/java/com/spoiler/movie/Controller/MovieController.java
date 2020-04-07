@@ -115,11 +115,12 @@ public class MovieController {
 	
 	@ResponseBody
 	@RequestMapping("/recommend")
-	public Map<String, Object> authRecommend(HttpServletRequest request) {
+	public Map<String, Object> recommend(HttpServletRequest request) {
 		
 		Map<String, Object> map=new HashMap<>();
 		
 		int result=recommendService.recommendDataSelect(request);
+		
 		if(result==0) {
 			recommendService.recommendDataDelete(request);
 			map.put("isSuccess", true);	
@@ -127,7 +128,23 @@ public class MovieController {
 			recommendService.recommendDataInsert(request);
 			map.put("isSuccess", false);
 		}
-		
+	
+		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/recommend2")
+	public Map<String, Object> recommend2(HttpServletRequest request) {
+		Map<String, Object> map=new HashMap<>();
+		int result=recommendService.recommendDataExist(request);
+
+		if(result!=0) {
+			map.put("isExist", true);	
+			System.out.println("is Exist : true");
+		}else {
+			map.put("isExist", false);	
+			System.out.println("is Exist : false");
+		}
 		return map;
 	}
 }
