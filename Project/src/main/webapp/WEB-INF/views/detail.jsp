@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <title>SPOILER/detail</title>
 <jsp:include page="include/resource.jsp"></jsp:include>
-</head>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/detail_custom.css" />
 <style>
 .txt_origin {
 	display: -webkit-box;
@@ -182,9 +182,6 @@
 	background-color: mediumslateblue;
 }
 </style>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/detail_custom.css" />
-<jsp:include page="include/resource.jsp" />
 </head>
 <body>
 	<jsp:include page="include/navbar.jsp" />
@@ -288,9 +285,7 @@
 					<!-- 댓글의 대상자는 원글의 작성자가 된다. -->
 					<input type="hidden" name="target_id" value="${dto.movieSeq }" />
 					<!-- 정보를 받아와서 뿌려주므로 원글의 작성자를 dto.movieSeq 으로 넣어줬다. -->
-					<textarea class="form-control" name="content" style="color: black;">
-						<c:if test="${empty id }">로그인이 필요합니다.</c:if>
-					</textarea>
+					<textarea class="form-control" name="content" style="color: black;"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
 					<button type="submit" style="color: black;">등록</button>
 				</form>
 			</div>
@@ -379,9 +374,7 @@
 									<!-- 덧글 대상 -->
 									<input type="hidden" name="target_id" value="${tmp.writer }" />
 									<input type="hidden" name="comment_group" value="${tmp.comment_group }" />
-									<textarea name="content" style="color: black;">
-										<c:if test="${empty id }">로그인이 필요합니다.</c:if>
-									</textarea>
+									<textarea name="content" style="color: black;"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
 									<button type="submit" style="color: black;">등록</button>
 								</form>
 								<!-- 로그인한 아이디와 댓글의 작성자와 같으면 수정폼 출력 -->

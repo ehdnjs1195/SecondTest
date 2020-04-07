@@ -6,10 +6,7 @@
     background-color: #2d3436 !important;
     border: #FBFCFC ;
 }
-/* .btn-warning, .btn-warning:hover, .btn-warning:active, .btn-warning:visited {
-    background-color: #2d3436 !important;
-    border: #FBFCFC ;
-} */
+
 body{
     margin-top: 90px;
     padding: 0;
@@ -113,7 +110,6 @@ body{
 	width: 0px;
 }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 <!-- 배경화면 -->
 <div id="background"></div>
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -123,33 +119,31 @@ body{
 			<a class="navbar-brand" href="${pageContext.request.contextPath }/home.do">
 				<span class="neon" data-text="SPOILER">SPOILER</span>
 			</a>
-			<button class="navbar-toggle" data-toggle="collapse" data-target="#one">
-			
-			</button>
+			<button class="navbar-toggle" data-toggle="collapse" data-target="#one"></button>
 		</div>
 		<c:choose>
-				<c:when test="${empty sessionScope.id }">	<!-- sessionScope. 는 생략 가능 -->
-					<div class="pull-right">
-						<a class="btn btn-primary navbar-btn btn-xs" style="color:#A6A6A5;" href="${pageContext.request.contextPath }/users/loginform.do">Login</a>	<%-- 어디에 포함될지 모르니 절대경로를 넣어준다. --%>
-						<a class="btn btn-primary navbar-btn btn-xs" style="color:#A6A6A5;" href="${pageContext.request.contextPath }/users/signup_form.do">Sign Up</a>
-					</div>
-				</c:when>
-				<c:otherwise>
-					<div class="pull-right">
-						<strong>
-						<a class="navbar-link" href="${pageContext.request.contextPath }/users/info.do">
-						<c:choose>
-							<c:when test="${empty profile }">
-								<img src="${pageContext.request.contextPath }/resources/images/default_user.png" style="width:50px; height:50px; border-radius:50%;" /> ${id }
-							</c:when>
-							<c:otherwise>
-								<img src="${pageContext.request.contextPath }${profile}" style="width:50px; height:50px; border-radius:50%;" /> ${id }							
-							</c:otherwise>
-						</c:choose>
-						</a></strong>
-						<a class="btn btn-primary navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/logout.do">Logout</a>
-					</div>
-				</c:otherwise>
+			<c:when test="${empty sessionScope.id }">	<!-- sessionScope. 는 생략 가능 -->
+				<div class="pull-right">
+					<a class="btn btn-primary navbar-btn btn-xs" style="color:#A6A6A5;" href="${pageContext.request.contextPath }/users/loginform.do">Login</a>	<%-- 어디에 포함될지 모르니 절대경로를 넣어준다. --%>
+					<a class="btn btn-primary navbar-btn btn-xs" style="color:#A6A6A5;" href="${pageContext.request.contextPath }/users/signup_form.do">Sign Up</a>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="pull-right">
+					<strong>
+					<a class="navbar-link" href="${pageContext.request.contextPath }/users/info.do">
+					<c:choose>
+						<c:when test="${empty profile }">
+							<img src="${pageContext.request.contextPath }/resources/images/default_user.png" style="width:50px; height:50px; border-radius:50%;" /> ${id }
+						</c:when>
+						<c:otherwise>
+							<img src="${pageContext.request.contextPath }${profile}" style="width:50px; height:50px; border-radius:50%;" /> ${id }							
+						</c:otherwise>
+					</c:choose>
+					</a></strong>
+					<a class="btn btn-primary navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/logout.do">Logout</a>
+				</div>
+			</c:otherwise>
 		</c:choose>  
 		<div class="pull-right" style="margin-top:15px; margin-right:40px;">
 			<form action="searchlist.do" method="get" id="isSeach">
@@ -164,4 +158,4 @@ body{
 		</div>
 	</div>
 </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
