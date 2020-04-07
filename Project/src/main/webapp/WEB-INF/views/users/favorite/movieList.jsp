@@ -238,6 +238,9 @@ body {
 	color: #009ac9;
 	border-color: #009ac9;
 }
+#background{
+	display: none;
+}
 </style>
 
 <script src="../../resources/js/jquery-3.3.1.js"></script>

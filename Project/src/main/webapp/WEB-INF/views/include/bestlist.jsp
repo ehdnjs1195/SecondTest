@@ -23,7 +23,7 @@
 	<c:forEach var="tmp" items="${list }">
 		<c:if test="${tmp.rank le 10 }">
 			<div class="items" id="best_${tmp.movieSeq}" >
-				<img id="best_${tmp.movieSeq}" src="${tmp.posters }" />
+				<img id="best_${tmp.movieSeq}" src="${tmp.posters }" style="height: 300px !important;"/>
 	               <div class="box-content" style="text-align:center">
 	                <h3 class="title">${tmp.title}</h3>
 	                <p class="post">개봉일 : ${tmp.repRlsDate }</p>
@@ -44,7 +44,7 @@
 			<div class="modal-content">
 				<div class="modal-body" style="display: flex; font-family: auto;">
 					<img src="${tmp.posters }" id="${tmp.movieSeq }">
-					<div class="imgBox">
+					<div class="imgBox" style="width: 87%;">
 						<h2>${tmp.title }</h2>
 						<dl class="movie_info">
 							<dt>개봉</dt>

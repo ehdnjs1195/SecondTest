@@ -90,6 +90,12 @@ body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-
 .items img {
     height: 263.469px !important;
 }
+/* Media Queries by. 유석 */
+@media screen and (min-width: 389px) and (max-width: 767px){
+	#genre{
+		margin-top:30px;
+	}
+}
 </style>
 </head>
 <body>
@@ -125,7 +131,7 @@ body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-
 	</div>
 <jsp:include page="include/navbar.jsp"></jsp:include>
     <div class="container">
-    	<div>
+    	<div id="genre">
 			<a class="btn btn-primary" href="genredetaillist.do?genre=액션">액션</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=SF">SF</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=판타지">판타지</a>
