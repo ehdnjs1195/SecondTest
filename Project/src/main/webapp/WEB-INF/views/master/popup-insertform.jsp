@@ -25,9 +25,9 @@
 			<label for="title">제목</label>
 			<input class="form-control" type="text" name="title" id="title" value="${PopDto.title }"/>
 		</div>
-		<div class="form-group">
+		<div class="form-group" >
 			<label for="content">내용</label>
-			<textarea class="form-control" name="content" id="content" cols="30" rows="10">${PopDto.content }</textarea>
+			<textarea class="form-control" name="content" id="content" cols="30" rows="10" >${PopDto.content }</textarea>
 		</div>
 		<button class="btn btn-primary " type="submit" onclick="submitContents(this);">저장</button>
 		<a class="btn btn-danger" href="#">취소</a>

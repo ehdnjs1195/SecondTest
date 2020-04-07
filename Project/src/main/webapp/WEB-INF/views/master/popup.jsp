@@ -15,9 +15,6 @@
 		width: 100%;
 		height: 400px;
 	}
-	body{
-		color: #fff;
-	}
 </style>
 </head>
 <body>
