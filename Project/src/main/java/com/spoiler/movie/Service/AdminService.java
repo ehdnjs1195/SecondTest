@@ -15,6 +15,6 @@ public interface AdminService {
 	public void getPopUp(ModelAndView mView, int num);
 	public void getPopUp_list(HttpServletRequest request);
 	public void updateState(PopupDto dto, HttpServletRequest request, HttpServletResponse response);
-	public void deletePopup(HttpServletRequest request);
+	public void deletePopup(HttpServletRequest request,HttpServletResponse response);
 	public void updatePopup(PopupDto dto);
 }

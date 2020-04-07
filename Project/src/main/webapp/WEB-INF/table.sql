@@ -60,3 +60,13 @@ movieSeq VARCHAR2(5),
 repRlsDate VARCHAR2(150), genre VARCHAR2(150), title VARCHAR2(400) NOT NULL, posters VARCHAR2(150), isDeleted VARCHAR2(10));
 
 CREATE SEQUENCE Favorite_Seq;
+
+create table popup
+(num number primary key,
+writer varchar2(50) not null,
+title varchar2(100),
+content clob,
+regdate date,
+state varchar2(10) default 'false');
+
+create sequence popup_seq;

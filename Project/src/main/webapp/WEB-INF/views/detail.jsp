@@ -360,25 +360,30 @@
 											})
 											
 											$(document).ready(function(){
-													var num="${tmp.num}";
-												$.ajax({
-													url: "recommend2.do",
-													method: "POST",
-													data:{"id":"${id}","num":num},
-													
-													success: function(responseData){
-														if(responseData.isExist){	//down
-															$("#heartShow${tmp.num }").hide();
-															$("#heartHide${tmp.num }").show();
-															console.log("is Exist : true");
-														}else{	//up
-															$("#heartShow${tmp.num }").show();
-															$("#heartHide${tmp.num }").hide();
-															console.log("is Exist : false");
-														}
-													}
-												})
-											});
+		                                       var num="${tmp.num}";
+		                                       var isLogin=${not empty id};
+		                                       if(isLogin==false){
+		                                          $("#heartShow${tmp.num }").hide();
+		                                       }else{
+		                                          $.ajax({
+		                                             url: "recommend2.do",
+		                                             method: "POST",
+		                                             data:{"id":"${id}","num":num},
+		                                             
+		                                             success: function(responseData){
+		                                                if(responseData.isExist){   //down
+		                                                   $("#heartShow${tmp.num }").hide();
+		                                                   $("#heartHide${tmp.num }").show();
+		                                                   console.log("is Exist : true");
+		                                                }else{   //up
+		                                                   $("#heartShow${tmp.num }").show();
+		                                                   $("#heartHide${tmp.num }").hide();
+		                                                   console.log("is Exist : false");
+		                                                }
+		                                             }
+		                                          })
+		                                       }//else
+		                                    });
 									</script>
 										<button id="recommend${tmp.num }"
 											style="background:none; border:none; cursor: pointer;" value="${tmp.num}">

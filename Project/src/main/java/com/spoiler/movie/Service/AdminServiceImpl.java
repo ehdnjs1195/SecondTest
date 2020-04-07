@@ -73,9 +73,13 @@ public class AdminServiceImpl implements AdminService{
 	}
 	
 	@Override
-	public void deletePopup(HttpServletRequest request) {
-		int num = Integer.parseInt(request.getParameter("num"));
-		adminDao.deletePop(num);
+	public void deletePopup(HttpServletRequest request, HttpServletResponse response) {
+		String num = request.getParameter("num");
+		Cookie cook=new Cookie("Popup"+num, num);
+		cook.setPath("/movie");
+		cook.setMaxAge(0);//쿠키 삭제
+		response.addCookie(cook);
+		adminDao.deletePop(Integer.parseInt(request.getParameter("num")));
 	}
 	@Override
 	public void updatePopup(PopupDto dto) {

@@ -117,8 +117,8 @@ public class MovieController {
 	}
 	
 	@RequestMapping("/master/delete")
-	public String deletePopup(HttpServletRequest request) {
-		adminService.deletePopup(request);
+	public String deletePopup(HttpServletRequest request, HttpServletResponse response) {
+		adminService.deletePopup(request, response);
 		return "redirect:/master/popup-list.do";
 	}
 	
