@@ -50,7 +50,7 @@ ALTER TABLE movie_comment
 ADD(recommendCnt number default 0);
 
 create table recommend 
-(id varchar2(100) primary key,
+(id varchar2(100),
 num number)
 
 
