@@ -16,7 +16,6 @@
 <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
 </head>
 <style>
-
 /* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
 	.help-block, .form-control-feedback{
 		display: none;
@@ -182,6 +181,18 @@ p{
 .btn-block {
     display: block;
     width: 100%;
+}
+.neon{
+    font-family: fantasy;
+}
+#navbarContainer{
+	height: 61.781px;
+}
+#update-form{
+    margin-top: 10px;
+}
+.pull-right{
+	margin-top: 5px;
 }
 </style>
 

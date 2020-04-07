@@ -164,7 +164,21 @@ p {
 	margin: 0px auto;
 }
 
-
+#background{
+	display: none;
+}
+.neon{
+    font-family: fantasy;
+}
+#navbarContainer{
+	height: 61.781px;
+}
+.pull-right{
+	margin-top: 5px;
+}
+#pwd-form{
+	margin-top: 10px;
+}
 </style>
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.js"></script>

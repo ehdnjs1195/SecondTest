@@ -8,10 +8,7 @@
 <title>/users/loginform.jsp</title>
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <jsp:include page="../include/navbar.jsp" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 </head>
-
 <style>
 .neon{
 	font-family: fantasy, sans-serif;
@@ -27,6 +24,13 @@
 	border-color: #2d3436;
 	margin-bottom: 0.5em;
 	border-radius: 0;
+}
+.btn{
+	font-size: smaller !important;
+	font-family: fantasy;
+}
+.btn-primary:hover {
+   	color: #00ffd0 !important;
 }
 
 .input-group .form-control {
@@ -171,11 +175,18 @@ body {
 	padding-top: 60px;
 	background-color: #2d3436;
 }
+#background{
+	display: none;
+}
+#navbarContainer{
+	height: 61.781px;
+}
+.login-content{
+    margin-top: 10px;
+}
 </style>
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.js"></script>
-<script
-	src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
 <body>
 	<div id="backgroundImage"></div>
 	<div class="main">
@@ -197,8 +208,7 @@ body {
 							<div class="input-group-addon">
 								<i class="fa fa-user" style="width: 10px;"></i>
 							</div>
-							<input type="text" id="id" required name="id"
-								class="form-control" placeholder="아이디" value="${savedId }" />
+							<input type="text" id="id" required name="id" class="form-control" placeholder="아이디" value="${savedId }" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -206,31 +216,30 @@ body {
 							<div class="input-group-addon">
 								<i class="fa fa-lock" style="width: 10px;"></i>
 							</div>
-							<input type="password" required id="pwd" name="pwd"
-								class="form-control" placeholder="비밀번호" value="${savedPwd }">
+							<input type="password" required id="pwd" name="pwd" class="form-control" placeholder="비밀번호" value="${savedPwd }">
 						</div>
 					</div>
-
 					<div class="form-group form-check">
-						<input type="checkbox" name="isSave" value="yes"
-							class="form-check-input" id="idPwdSave" <c:if test="${not empty savedId }">checked</c:if>> <label
-							class="form-check-label" for="idPwdSave" style="color: black"  >아이디,비밀번호 
-							저장</label> 
+						<input type="checkbox" name="isSave" value="yes" class="form-check-input" id="idPwdSave"
+							<c:if test="${not empty savedId }">
+								checked
+							</c:if>
+						> 
+						<label class="form-check-label" for="idPwdSave" style="color: black">
+							아이디,비밀번호 저장
+						</label> 
 					</div>
-
 					<div>
 						<button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
-						<hr style="background-color: #FA8072">
-						<p class="signuphere"
-							style="margin-top: 6px; font-weight: bold; text-align: center">
-							<a href="signup_form.do" class="signuphere-link">회원가입</a>
-						</p>
 					</div>
 				</form>
+				<hr style="background-color: #FA8072">
+				<p class="signuphere" style="margin-top: 6px; font-weight: bold; text-align: center">
+					<a href="signup_form.do" class="signuphere-link">회원가입</a>
+				</p>
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
 
