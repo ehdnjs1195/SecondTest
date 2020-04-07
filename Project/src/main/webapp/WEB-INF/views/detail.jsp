@@ -226,7 +226,7 @@
 				<dt class="screen_out">예매순위</dt>
 				<dd>
 					<c:choose>
-						<c:when test="${rank ne 0}">
+						<c:when test="${not empty rank}">
 							예매율
 							<em class="emph_g"><strong>${rank}</strong></em>&nbsp;위
 						</c:when>
@@ -327,36 +327,36 @@
 
 										<!-- 추천기능 -->
 										<script>
-							$(function(){
-								$("#recommend${tmp.num }").click(function(){
-									var num=$(this).attr("value");
-									var cnt=parseInt($("#recommendCnt${tmp.num}").text());
-									console.log(num);
-									$.ajax({
-										url:"recommend.do",
-										method:"post",
-										data:{"id":"${id}","num":num},
-										success:function(responseData){
-											// responseData : {isSuccess:true}
-											if(responseData.isSuccess){	//down
-												$("#recommend${tmp.num }").css("color","#ff0000")
-												var a = cnt;
-												a -= 1;
-												$("#recommendCnt${tmp.num}").text(a);
-												console.log("success");
-											
-											}else{	//up
-												$("#recommend${tmp.num }").css("color","#00ff00")
-												var a = cnt;
-												a += 1;
-												$("#recommendCnt${tmp.num}").text(a);
-												console.log("false");
-											
-											}
-										}
-									});
-								})
-							})
+											$(function(){
+												$("#recommend${tmp.num }").click(function(){
+													var num=$(this).attr("value");
+													var cnt=parseInt($("#recommendCnt${tmp.num}").text());
+													console.log(num);
+													$.ajax({
+														url:"recommend.do",
+														method:"post",
+														data:{"id":"${id}","num":num},
+														success:function(responseData){
+															// responseData : {isSuccess:true}
+															if(responseData.isSuccess){	//down
+																$("#recommend${tmp.num }").css("color","#ff0000")
+																var a = cnt;
+																a -= 1;
+																$("#recommendCnt${tmp.num}").text(a);
+																console.log("success");
+															
+															}else{	//up
+																$("#recommend${tmp.num }").css("color","#00ff00")
+																var a = cnt;
+																a += 1;
+																$("#recommendCnt${tmp.num}").text(a);
+																console.log("false");
+															
+															}
+														}
+													});
+												})
+											})
 								</script>
 										<button id="recommend${tmp.num }"
 											style="color: #ff0000; cursor: pointer;" value="${tmp.num}">
