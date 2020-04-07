@@ -55,6 +55,25 @@ public class RecommendServiceImpl implements RecommendService{
 			return 1;
 		}
 	}
+	
+	@Override
+	public int recommendDataExist(HttpServletRequest request) {
+		
+		String id = (String) request.getSession().getAttribute("id");
+		int num=Integer.parseInt(request.getParameter("num"));
+		
+		RecommendDto dto=new RecommendDto();
+		dto.setId(id);
+		dto.setNum(num);
+		
+		int result= recommentDao.isExist(dto);
+		
+		if(result!=0) {
+			return 0;
+		}else {
+			return 1;
+		}
+	}
 
 	@Override
 	public void recommendDataDelete(HttpServletRequest request) {
