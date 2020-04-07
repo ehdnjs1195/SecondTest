@@ -85,22 +85,26 @@ public class MovieController {
 		mView.setViewName("more_list");
 		return mView;
 	}
-
-
-	@RequestMapping("/master/popup")
-	public ModelAndView popupList(ModelAndView mView,HttpSession session) {
-		adminService.getPopUp(mView, session);
-		mView.setViewName("master/popup");
+	@RequestMapping("/master/popup-list")
+	public ModelAndView popupList(ModelAndView mView, HttpServletRequest request) {
+		adminService.getPopUp_list(request);
+		mView.setViewName("master/popup-list");
 		return mView;
 	}
-	
-	
+	@RequestMapping("/master/popup")
+	public ModelAndView popup(ModelAndView mView, @RequestParam int num) {
+		adminService.getPopUp(mView, num);
+		mView.setViewName("/master/popup");
+		return mView;
+	}
+	@RequestMapping("/master/popup-insertform")
+	public String popupInsertForm() {
+		return "master/popup-insertform";
+	}
 	@RequestMapping("/master/popup-insert")
 	public ModelAndView popupInsert(ModelAndView mView, @ModelAttribute("dto") PopupDto dto) {
-		System.out.println(dto.getWriter()+dto.getTitle()+dto.getState());
 		adminService.addPopUp(dto);
-		
-		mView.setViewName("redirect:/master/popup.do");
+		mView.setViewName("redirect:/master/popup-list.do");
 		return mView;
 	}
 	@ResponseBody
@@ -110,6 +114,18 @@ public class MovieController {
 		Map<String, Object> map = new HashMap<>();
 		
 		return map;
+	}
+	
+	@RequestMapping("/master/delete")
+	public String deletePopup(HttpServletRequest request) {
+		adminService.deletePopup(request);
+		return "redirect:/master/popup-list.do";
+	}
+	
+	@RequestMapping("/master/popup-update")
+	public String updatePopup(@ModelAttribute PopupDto dto) {
+		adminService.updatePopup(dto);
+		return "redirect:/master/popup.do?num="+dto.getNum();
 	}
 
 	

@@ -1,20 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>POPUP</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/toggle.css" />
+<title>Insert title here</title>
+<jsp:include page="../include/resource.jsp"/>
 <style>
-	/* textarea의 크기가 SmartEditer의 크기가 된다. */
-	#content{
-		display: none;
-		width: 100%;
-		height: 400px;
-	}
 	body{
 		color: #fff;
 	}
@@ -23,7 +15,7 @@
 <body>
 <jsp:include page="../include/navbar.jsp"/>
 <div class="container">
-	<form action="popup-update.do" method="post">
+	<form action="popup-insert.do" method="post">
 		<div class="form-group">
 			<label for="writer">작성자</label>
 			<input class="form-control" type="text" value="${id }" disabled />
@@ -37,13 +29,11 @@
 			<label for="content">내용</label>
 			<textarea class="form-control" name="content" id="content" cols="30" rows="10">${PopDto.content }</textarea>
 		</div>
-		<input type="hidden" name="num" value="${PopDto.num }" />
-		<button class="btn btn-primary " type="submit" onclick="submitContents(this);">수정</button>
+		<button class="btn btn-primary " type="submit" onclick="submitContents(this);">저장</button>
 		<a class="btn btn-danger" href="#">취소</a>
 		<a class="btn btn-warning" href="popup-list.do">돌아가기</a>
 	</form>
 </div>
-
 <!-- 스마트에디터 -->
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>
 <script>

@@ -1,6 +1,8 @@
 package com.spoiler.movie.Dao;
 
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,8 +20,8 @@ public class AdminDaoImpl implements AdminDao{
 	}
 	
 	@Override
-	public PopupDto getPopup(String writer) {
-		return session.selectOne("admin.getPopup", writer);
+	public PopupDto getPopup(int num) {
+		return session.selectOne("admin.getPopup", num);
 	}
 	@Override
 	public void updateState(PopupDto dto) {
@@ -36,5 +38,15 @@ public class AdminDaoImpl implements AdminDao{
 	@Override
 	public void updatePopup(PopupDto dto) {
 		session.update("admin.updatePopup",dto);
+	}
+	
+	@Override
+	public List<PopupDto> getPopupList() {
+		return session.selectList("admin.getList");
+	}
+	
+	@Override
+	public void deletePop(int num) {
+		session.delete("admin.delete", num);
 	}
 }

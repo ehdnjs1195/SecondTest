@@ -24,12 +24,13 @@
 			<th>제목</th>
 			<th>작성날짜</th>
 			<th>게시상태(ON/OFF)</th>
+			<th>삭제</th>
 		</tr>
 		<c:forEach var="tmp" items="${list }">
 			<tr>
 				<td>${tmp.num }</td>
 				<td>${tmp.writer }</td>
-				<td>${tmp.title }</td>
+				<td><a href="popup.do?num=${tmp.num }" style="color:white;">${tmp.title }</a></td>
 				<td>${tmp.regdate }</td>
 				<td>
 					<label class="switch">
@@ -39,6 +40,7 @@
 				    <p class="onOff_${tmp.num }">OFF</p>
 				    <p class="onOff_${tmp.num }" style="display:none;">ON</p> 
       			</td>
+      			<td><a href="delete.do?num=${tmp.num }" style="color:white;">삭제</a></td>
 			</tr>	
 			
 			<script>
