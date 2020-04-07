@@ -6,7 +6,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spoiler.movie.Dto.MovieCommentDto;
 import com.spoiler.movie.Dto.MovieDto;
 
 import com.spoiler.movie.Dto.PopupDto;
@@ -28,6 +26,7 @@ import com.spoiler.movie.Service.RecommendService;
 
 @Controller
 public class MovieController {
+	
 	@Autowired
 	private MovieService service;
 	@Autowired
@@ -55,6 +54,7 @@ public class MovieController {
 		mView.setViewName("genredetaillist");
 		return mView;
 	}
+	
 	
 	@RequestMapping("/updateMovie")
 	public String updateMovieList() {

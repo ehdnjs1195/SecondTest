@@ -198,37 +198,36 @@ p{
 			관심목록 |
 		</span>
 		<span>
-			<c:choose>
-				<c:when test="${count eq 0 }" >
-					아직 추가한 영화가 없습니다.
-				</c:when>
-				<c:otherwise>
-					<a href="${pageContext.request.contextPath }/users/favorite/list.do">${count }개가 있습니다.</a>
-				</c:otherwise>
-			</c:choose>
-		</span>
-	</h4>
-	<p>
-		<span style="font-weight:bold;">개인정보 | </span>
-		<a href="updateform.do"> 수정하기</a>
-	</p>
-	<p>
-		<span style="font-weight:bold;">비밀번호 | </span> 
-		<span>
-			<a href="pwd_updateform.do">수정하기</a>
-		</span>
-	</p>
-	<p>
-		<span style="font-weight:bold;">이메일 |</span>
-		<span>${dto.email }</span> 
-	</p>
-	<p>
-		<span style="font-weight:bold;">가입일 |</span> 
-		<span>${dto.regdate }</span>
-	</p>	
-	<p>
-		<a href="javascript:deleteConfirm()">회원 탈퇴</a>
-	</p>
+		<c:choose>
+			<c:when test="${count eq 0 }" >
+				아직 추가한 영화가 없습니다.
+			</c:when>
+			<c:otherwise>
+			<form action="/movieList">
+				<a id="movieList" href="${pageContext.request.contextPath }/users/favorite/movieList.do">${count }개가 있습니다.</a>
+				</form>
+			</c:otherwise>
+		</c:choose>
+		</span> </h4>
+		<p>
+		
+		
+		</p>
+		<p><span style="font-weight:bold;">개인정보 | </span>
+		<a href="updateform.do"> 수정하기</a></p>
+		<p><span style="font-weight:bold;">비밀번호 | </span> 
+			<span><a href="pwd_updateform.do">수정하기</a></span>
+			</p>
+		<p>
+			<span style="font-weight:bold;">이메일 |</span>
+			<span>${dto.email }</span> </p>
+		
+		<p>
+			<span style="font-weight:bold;">가입일 |</span> 
+			<span>${dto.regdate }</span>
+			</p>
+	
+	<p><a href="javascript:deleteConfirm()">회원 탈퇴</a></p>
 </div>
 <form action="profile_upload.do" method="post" enctype="multipart/form-data" id="profileForm">
 	<label for="profileImage">프로필 이미지 선택</label>
@@ -237,6 +236,12 @@ p{
 <%-- jquery form  플러그인 javascript 로딩 --%>
 <script src="${pageContext.request.contextPath }/resources/js/jquery.form.min.js"></script>
 <script>
+	
+	document.getElementById("#movieList").onclick = function() {
+    document.getElementById("#movieList").submit();
+}
+
+
 	//프로파일 이미지를 클릭하면 
 	$("#profileLink").click(function(){
 		//강제로 <input type="file" /> 을 클릭해서 파일 선택창을 띄우고
