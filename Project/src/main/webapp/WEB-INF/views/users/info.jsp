@@ -160,12 +160,15 @@ p{
 	font:15px;
 }
 
-
 .img-responsive{
 	display: block;
     max-width: 200px;
     height: 200px;
     margin: 0px auto;
+}
+
+#background{
+	display: none;
 }
 </style>
 </head>
