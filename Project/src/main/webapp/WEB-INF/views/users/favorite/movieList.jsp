@@ -29,7 +29,9 @@
 }
 
 h1 {
-	margin-top: 50px; font-family : 'Droid Sans', sans-serif;
+	margin-top: 50px; 
+	margin-bottom: 50px;
+	font-family : 'Droid Sans', sans-serif;
 	font-size: 30px;
 	font-weight: 400;
 	font-weight: bold;
@@ -151,12 +153,9 @@ a:hover {
 }
 
 .ratings {
-	width: 50px;
-	height: 15px;
 	background-size: contain;
-	display: table-cell;
 	margin-top: 5px;
-	text-align: center;
+	margin-bottom: 5px;
 	font-weight: 600;
 }
 
@@ -182,10 +181,12 @@ body {
 }
 
 .row {
-	margin-top: 5rem;
-	padding-left: 4rem !important;
+	margin-top: 12rem;
+	
 }
-
+.title{
+	text-align:center;
+}
 .movie_container {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -194,6 +195,7 @@ body {
 	flex-wrap: wrap;
 	max-width: 60%;
 	margin-left: auto;
+	margin-top: -130px;
 	margin-right: auto;
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
@@ -243,10 +245,11 @@ body {
 </head>
 <body>
 	<div id="backgroundImage"></div>
-	<div class="movie_container">
 		<div class="title">
 			<h1>관심목록 영화 리스트</h1>
 		</div>
+	<div class="movie_container">
+		
 		<div class="row">
 			<c:forEach var="tmp" items="${list }">
 				<div class="card-view">
@@ -256,14 +259,15 @@ body {
 							<img style="width: 200px; height: 300px;" class="posters"
 							id="${tmp.genre }_${tmp.movieSeq}" src="${tmp.posters }" />
 						</a>
-						<h4 style="font-size: 16px; color: #2980B9; font-weight: 400">${tmp.title }</h4>
+						<h4 style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; font-size: 16px; color: #2980B9; font-weight: 400">${tmp.title }</h4>
 					</div>
 					<div class="ratings">
 						<span>6.1</span>/10
 					</div>
-					<div class="genre">
+					<div class="genre" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
 						<span>장르 : ${tmp.genre }</span>
 					</div>
+					<br>
 					<div class="repRlsDate">
 						<span> <c:choose>
 								<c:when test="${tmp.repRlsDate eq null}">
@@ -275,6 +279,7 @@ body {
 							</c:choose>
 						</span>
 					</div>
+					
 					<br>
 					<form id="delete-form" action="${pageContext.request.contextPath }/users/favorite/delete.do" method="post">
 						<button id="delete_btn" type="submit">제거</button>
