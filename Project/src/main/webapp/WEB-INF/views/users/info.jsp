@@ -24,6 +24,12 @@
 	margin-bottom: 0.5em;
 	border-radius: 0;
 }
+.btn{
+	font-size: smaller !important;
+}
+.btn-primary:hover {
+   	color: #00ffd0 !important;
+}
  
 .input-group .form-control {
     margin: 0px !important;
@@ -115,8 +121,8 @@ body {
 	text-shadow: 1px 1px #000;
 }
 header img {
-  display: inline-block !important;
-  text-align: center;
+	display: inline-block !important;
+	text-align: center;
 }
 .tm-title {
 	color: #1F618D;
@@ -162,6 +168,10 @@ p{
 #navbarContainer{
 	height: 61.781px;
 }
+.pull-right{
+	margin-top: 5px;
+}
+
 </style>
 </head>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.js"></script>

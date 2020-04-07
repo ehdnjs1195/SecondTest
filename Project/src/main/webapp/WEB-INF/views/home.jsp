@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,89 +7,89 @@
 <title>SPOILER</title>
 <jsp:include page="include/resource.jsp"></jsp:include>
 <style>
-	.slide_right{
-			text-decoration: none;
-			position: fixed;
-			top: 100px;
-			left: 90%;
-			width: 130px;
-			height: 100%;
-			z-index:10;
-	}
-	.slide_right img{
-		margin: 5px;
-	}
-		
-	.row{
-   		margin-top: 100px;
-	}
-	.btn{
-		font-size: smaller !important;
-	}
-	.btn-primary:hover {
-    	color: #00ffd0 !important;
-    }
-    
-    @media (min-width: 992px)
-	.container {
-	    width: 970px;
-	}
-	.clearfix, .clearfix:before, .clearfix:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after {
-	    content: " ";
-	    display: table;
-	}
-    body #kn-footer .container .kn-info-wrapper {
-	    position: relative;
-	    padding: 50px 0;
-	    margin: 0 auto;
-	    text-align: center;
-	}
-	body #kn-footer .container .kn-info-wrapper .kinolights-ci {
-	    position: absolute;
-	    left: 0;
-	    top: 40px;
-	    width: 91px;
-	    height: 53px;
-        text-align: center;
-	}
-	body #kn-footer .container .kn-info-wrapper .kn-copyright {
-	    margin-top: 15px;
-	    font-size: 12px;
-	    font-weight: normal;
-	    color: #546cb2;
-	}
-	body #kn-footer .container .kn-info-wrapper .sns-items {
-	    position: absolute;
-	    right: 0;
-	    top: 55px;
-	    display: inline-block;
-	    vertical-align: middle;
-	}
-	ol, ul {
-	    list-style: none;
-	}
-	body #kn-footer .container .kn-info-wrapper .sns-items .sns-item {
-	    float: left;
-	    margin-right: 15px;
-	    margin-bottom: 12px;
-	    line-height: 24px;
-	}
-	body #kn-footer .container .kn-info-wrapper .sns-items .sns-item:last-of-type {
-	    margin-right: 0;
-	}
-	body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-menu-item a {
-	    text-decoration: none;
-	    font-size: 14px;
-	    font-weight: normal;
-	    color: #b3bfdd;
-	}
-	.footer-menu-items{
-		padding-left: 0px;
-		font-family: auto;
-	}
-	.items img {
-	    height: 263.469px !important;
-	}
+.slide_right{
+		text-decoration: none;
+		position: fixed;
+		top: 100px;
+		left: 90%;
+		width: 130px;
+		height: 100%;
+		z-index:10;
+}
+.slide_right img{
+	margin: 5px;
+}
+	
+.row{
+  		margin-top: 100px;
+}
+.btn{
+	font-size: smaller !important;
+}
+.btn-primary:hover {
+   	color: #00ffd0 !important;
+}
+   
+@media (min-width: 992px)
+.container {
+    width: 970px;
+}
+.clearfix, .clearfix:before, .clearfix:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after {
+    content: " ";
+    display: table;
+}
+body #kn-footer .container .kn-info-wrapper {
+	position: relative;
+	padding: 50px 0;
+	margin: 0 auto;
+	text-align: center;
+}
+body #kn-footer .container .kn-info-wrapper .kinolights-ci {
+	position: absolute;
+	left: 0;
+	top: 40px;
+	width: 91px;
+	height: 53px;
+	text-align: center;
+}
+body #kn-footer .container .kn-info-wrapper .kn-copyright {
+    margin-top: 15px;
+    font-size: 12px;
+    font-weight: normal;
+    color: #546cb2;
+}
+body #kn-footer .container .kn-info-wrapper .sns-items {
+    position: absolute;
+    right: 0;
+    top: 55px;
+    display: inline-block;
+    vertical-align: middle;
+}
+ol, ul {
+    list-style: none;
+}
+body #kn-footer .container .kn-info-wrapper .sns-items .sns-item {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 12px;
+    line-height: 24px;
+}
+body #kn-footer .container .kn-info-wrapper .sns-items .sns-item:last-of-type {
+    margin-right: 0;
+}
+body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-menu-item a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: normal;
+    color: #b3bfdd;
+}
+.footer-menu-items{
+	padding-left: 0px;
+	font-family: auto;
+}
+.items img {
+    height: 263.469px !important;
+}
 </style>
 </head>
 <body>

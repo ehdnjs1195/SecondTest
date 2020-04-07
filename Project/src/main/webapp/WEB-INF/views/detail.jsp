@@ -178,6 +178,9 @@
 		url(//i1.daumcdn.net/img-contents/movie/2016/pc/bg_star_170614_v2.png)
 		no-repeat 0 0;
 }
+#add_btn{
+	background-color: mediumslateblue;
+}
 </style>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/detail_custom.css" />
@@ -416,9 +419,9 @@ $(document).ready(function(){
 		success: function(data){
 			if(data.result){
 				 $("#add_btn").css('background-color', 'red');
-				$("#add_btn").text('관심목록 삭제')
+				 $("#add_btn").text('관심목록 삭제')
 			}else{				
-				 $("#add_btn").css('background-color', 'blue');
+				 $("#add_btn").css('background-color', 'mediumslateblue');
 				 $("#add_btn").text('관심목록 추가');
 			}//else
 		}//success: function(data){
@@ -524,7 +527,7 @@ $(".favorite_form").on("submit",function(event){
 			success: function(data){
 				if(data.result){
 					alert(data.title+"을(를) 관심목록에서 삭제하였습니다.");
-					$("#add_btn").css('background-color', 'blue');
+					$("#add_btn").css('background-color', 'mediumslateblue');
 					$("#add_btn").text('관심목록 추가')
 				}else{		
 					alert(data.title+"을(를) 관심목록에 추가하였습니다.");
