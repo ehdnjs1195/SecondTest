@@ -118,6 +118,18 @@ public class MovieController {
 		
 		return map;
 	}
+	
+	@RequestMapping("/master/delete")
+	public String deletePopup(HttpServletRequest request) {
+		adminService.deletePopup(request);
+		return "redirect:/master/popup-list.do";
+	}
+	
+	@RequestMapping("/master/popup-update")
+	public String updatePopup(@ModelAttribute PopupDto dto) {
+		adminService.updatePopup(dto);
+		return "redirect:/master/popup.do?num="+dto.getNum();
+	}
 
 	@RequestMapping("/recommend")
 	public ModelAndView authRecommend(@RequestParam int num, HttpServletRequest request) {

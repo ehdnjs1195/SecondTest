@@ -12,4 +12,5 @@ public interface AdminDao {
 	public boolean checkAdmin(String id);
 	public void updatePopup(PopupDto dto);
 	public List<PopupDto> getPopupList();
+	public void deletePop(int num);
 }

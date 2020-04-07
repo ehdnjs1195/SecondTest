@@ -30,13 +30,24 @@
 	        var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
 	        return value? value[2] : null;
 	    };
-		if(getCookie("Popup") != null){
-			if(getCookie("isPopup")=="no"){
-				
-			}else{		
-				window.open("notify.do?Popup="+getCookie("Popup"),"news","width=710px,height=530px,top=100px,left=100px");
-			}			
-		}
+	    var cookies = document.cookie.split(';');
+	    if(cookies[0]!=""){
+		    for(var i = 0 ; i < cookies.length; i++){
+			    var cookie = cookies[i].split('=');
+			    var cookieName = cookie[0].trim();
+			    var num = cookieName.substring(5);
+				var position = 100 + i*30 ;
+			    if(getCookie("isPopup"+num)==num){
+					
+				}else{	
+					if(cookieName.indexOf('P') == 0){
+						window.open("notify.do?Popup="+getCookie(cookieName),"news"+cookieName,"width=710px,height=530px, top="+position+"px,left="+position+"px");						
+					}
+				}			
+		    }	    	
+	    }
+		
+
 	</script>
 
 	<div class="slide_right">

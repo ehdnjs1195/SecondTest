@@ -23,7 +23,7 @@
 <body>
 <jsp:include page="../include/navbar.jsp"/>
 <div class="container">
-	<form action="popup-insert.do" method="post">
+	<form action="popup-update.do" method="post">
 		<div class="form-group">
 			<label for="writer">작성자</label>
 			<input class="form-control" type="text" value="${id }" disabled />
@@ -37,7 +37,8 @@
 			<label for="content">내용</label>
 			<textarea class="form-control" name="content" id="content" cols="30" rows="10">${PopDto.content }</textarea>
 		</div>
-		<button class="btn btn-primary " type="submit" onclick="submitContents(this);">저장</button>
+		<input type="hidden" name="num" value="${PopDto.num }" />
+		<button class="btn btn-primary " type="submit" onclick="submitContents(this);">수정</button>
 		<a class="btn btn-danger" href="#">취소</a>
 		<a class="btn btn-warning" href="popup-list.do">돌아가기</a>
 	</form>

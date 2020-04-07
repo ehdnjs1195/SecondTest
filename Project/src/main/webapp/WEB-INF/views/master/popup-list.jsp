@@ -24,6 +24,7 @@
 			<th>제목</th>
 			<th>작성날짜</th>
 			<th>게시상태(ON/OFF)</th>
+			<th>삭제</th>
 		</tr>
 		<c:forEach var="tmp" items="${list }">
 			<tr>
@@ -39,6 +40,7 @@
 				    <p class="onOff_${tmp.num }">OFF</p>
 				    <p class="onOff_${tmp.num }" style="display:none;">ON</p> 
       			</td>
+      			<td><a href="delete.do?num=${tmp.num }" style="color:white;">삭제</a></td>
 			</tr>	
 			
 			<script>

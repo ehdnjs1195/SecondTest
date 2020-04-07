@@ -44,4 +44,9 @@ public class AdminDaoImpl implements AdminDao{
 	public List<PopupDto> getPopupList() {
 		return session.selectList("admin.getList");
 	}
+	
+	@Override
+	public void deletePop(int num) {
+		session.delete("admin.delete", num);
+	}
 }
