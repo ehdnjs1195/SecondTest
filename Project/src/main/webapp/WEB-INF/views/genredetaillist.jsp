@@ -33,8 +33,9 @@
 </head>
 <body>
 <jsp:include page="include/navbar.jsp"/>
-<div class="container">
 <jsp:include page="include/slidebar.jsp"/>
+<div class="container">
+
 	<div>
 		<a class="btn btn-primary" href="${pageContext.request.contextPath }/home.do">돌아가기</a>
 		<a class="btn btn-primary" href="genredetaillist.do?genre=액션">액션</a>

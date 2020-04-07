@@ -373,28 +373,33 @@
 											
 											$(document).ready(function(){
 													var num="${tmp.num}";
-												$.ajax({
-													url: "recommend2.do",
-													method: "POST",
-													data:{"id":"${id}","num":num},
-													
-													success: function(responseData){
-														if(responseData.isExist){	//down
-															$("#heartShow${tmp.num }").hide();
-															$("#heartHide${tmp.num }").show();
-															console.log("is Exist : true");
-														}else{	//up
-															$("#heartShow${tmp.num }").show();
-															$("#heartHide${tmp.num }").hide();
-															console.log("is Exist : false");
-														}
-													}
-												})
-											});
+													var isLogin=${not empty id};
+													if(isLogin==false){
+														$("#heartShow${tmp.num }").hide();
+													}else{
+														$.ajax({
+															url: "recommend2.do",
+															method: "POST",
+															data:{"id":"${id}","num":num},
+															
+															success: function(responseData){
+																if(responseData.isExist){	//down
+																	$("#heartShow${tmp.num }").hide();
+																	$("#heartHide${tmp.num }").show();
+																	console.log("is Exist : true");
+																}else{	//up
+																	$("#heartShow${tmp.num }").show();
+																	$("#heartHide${tmp.num }").hide();
+																	console.log("is Exist : false");
+																}
+															}
+														})
+													}//else
+												});
 									</script>
 										<button id="recommend${tmp.num }"
 											style="background:none; border:none; cursor: pointer;" value="${tmp.num}">
-											<span id="heartShow${tmp.num }" class="glyphicon glyphicon-heart" style="color: red;" aria-hidden="true" ></span>
+											<span id="heartShow${tmp.num }" class="glyphicon glyphicon-heart" style="color: #e84118;" aria-hidden="true" ></span>
 											<span id="heartHide${tmp.num }" class="glyphicon glyphicon-heart" style="color: #a5b1c2;" aria-hidden="true"></span>
 											<span id="recommendCnt${tmp.num }">${tmp.recommendCnt }</span>
 										</button>
