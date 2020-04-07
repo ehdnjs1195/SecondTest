@@ -4,6 +4,11 @@
 
 
 	
+	<select id="movieList" parameterType="FavoriteDto" resultType="FavoriteDto">
+		select movieId, movieSeq, repRlsDate, genre, title, posters from favorite
+		where id=#{id}
+	</select>
+	
 	
 	<select id="isExist" parameterType="FavoriteDto" resultType="String">
 		select movieSeq from favorite

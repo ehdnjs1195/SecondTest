@@ -197,7 +197,9 @@ p{
 				아직 추가한 영화가 없습니다.
 			</c:when>
 			<c:otherwise>
-				<a href="${pageContext.request.contextPath }/users/favorite/list.do">${count }개가 있습니다.</a>
+			<form action="/movieList">
+				<a id="movieList" href="${pageContext.request.contextPath }/users/favorite/movieList.do">${count }개가 있습니다.</a>
+				</form>
 			</c:otherwise>
 		</c:choose>
 		</span> </h4>
@@ -231,6 +233,12 @@ p{
 <script src="${pageContext.request.contextPath }/resources/js/jquery.form.min.js"></script>
 
 <script>
+	
+	document.getElementById("#movieList").onclick = function() {
+    document.getElementById("#movieList").submit();
+}
+
+
 	//프로파일 이미지를 클릭하면 
 	$("#profileLink").click(function(){
 		//강제로 <input type="file" /> 을 클릭해서 파일 선택창을 띄우고

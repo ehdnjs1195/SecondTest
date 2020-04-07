@@ -11,7 +11,7 @@ public class FavoriteDto {
 	private String title;
 	private String posters;
 	private String isDeleted;
-	
+
 	
 	public FavoriteDto() {}
 

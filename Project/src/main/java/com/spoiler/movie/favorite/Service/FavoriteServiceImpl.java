@@ -2,6 +2,7 @@ package com.spoiler.movie.favorite.Service;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -100,6 +101,20 @@ public class FavoriteServiceImpl implements FavoriteService{
 		dao.delete(dto);
 		
 	}
+
+
+
+
+	@Override
+	public List<FavoriteDto> movieList(String id) {
+		FavoriteDto dto = new FavoriteDto();
+		dto.setId(id);
+		return	dao.movieList(id);
+	}
+
+
+
+
 
 
 

@@ -13,10 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spoiler.movie.Dto.MovieDto;
 import com.spoiler.movie.Service.MovieAPIService;
-import com.spoiler.movie.Service.MovieService;
 
 @Controller
 public class MovieController {
+	
 	@Autowired
 	private MovieAPIService apiService;
 	
@@ -36,6 +36,7 @@ public class MovieController {
 		mView.setViewName("genredetaillist");
 		return mView;
 	}
+	
 	
 	@RequestMapping("/updateMovie")
 	public String updateMovieList() {

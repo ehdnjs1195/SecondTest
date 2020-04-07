@@ -1,6 +1,7 @@
 package com.spoiler.movie.favorite.Controller;
 
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,10 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spoiler.movie.Dto.MovieDto;
 import com.spoiler.movie.favorite.Dto.FavoriteDto;
 import com.spoiler.movie.favorite.Service.FavoriteService;
 
@@ -33,14 +34,16 @@ public class FavoriteController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/favorite_delete.do", method = RequestMethod.POST)
-	public void authDelete(@ModelAttribute FavoriteDto dto, HttpSession session, HttpServletRequest request) {
+	@RequestMapping(value = "/users/favorite/delete.do", method = RequestMethod.POST)
+	public ModelAndView authDelete(ModelAndView mView, @ModelAttribute("dto") FavoriteDto dto, HttpSession session, HttpServletRequest request) {
 		String id = (String) session.getAttribute("id");
 		String movieSeq=(String) request.getAttribute("movieSeq");
 		dto.setId(id);
 		dto.setMovieSeq(movieSeq);
 		service.delete(request);
-		
+		mView.setViewName("redirect:/users/favorite/movieList.do");
+		System.out.println("체크 2");
+		return mView;
 
 	}
 
@@ -74,4 +77,17 @@ public class FavoriteController {
 		return map;
 
 	}
+	
+	@RequestMapping("/users/favorite/movieList")
+	public ModelAndView movieList(ModelAndView mView, HttpSession session, @ModelAttribute FavoriteDto dto) {
+		String id = (String) session.getAttribute("id");
+		dto.setId(id);
+		List<FavoriteDto> list = service.movieList(id);
+		mView.addObject("list", list);
+		mView.setViewName("users/favorite/movieList");
+		return mView;
+	}
+	
+	
+	
 }
