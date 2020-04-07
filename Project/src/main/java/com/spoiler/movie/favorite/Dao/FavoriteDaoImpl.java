@@ -2,6 +2,8 @@ package com.spoiler.movie.favorite.Dao;
 
 
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -44,6 +46,14 @@ public class FavoriteDaoImpl implements FavoriteDao{
 		}else {
 			return true;
 		}		
+	}
+
+
+
+	@Override
+	public List<FavoriteDto> movieList(String id) {
+		
+		return session.selectList("favorite.movieList",id);
 	}
 
 

@@ -6,14 +6,14 @@
 		(num, writer, title, content, regdate, state)
 		values(popup_seq.nextval, #{writer}, #{title}, #{content}, sysdate, default)
 	</insert>
-	<select id="getPopup" parameterType="String" resultType="popupDto">
+	<select id="getPopup" parameterType="int" resultType="popupDto">
 		select * from popup
-		where writer = #{writer}
+		where num = #{num}
 	</select>
 	<update id="updateState" parameterType="popupDto">
 		update popup
 		set state=#{state}
-		where writer = #{writer}
+		where num = #{num}
 	</update>
 	<select id="checkAdmin" parameterType="String" resultType="String">
 		select writer from popup
@@ -22,6 +22,14 @@
 	<update id="updatePopup" parameterType="popupDto">
 		update popup
 		set title = #{title}, content = #{content}, regdate = sysdate
-		where writer = #{writer}
+		where num = #{num}
 	</update>
+	<select id="getList" resultType="popupDto">
+		select * from popup
+		order by num asc
+	</select>
+	<delete id="delete" parameterType="int">
+		delete from popup
+		where num = #{num}
+	</delete>
 </mapper>
