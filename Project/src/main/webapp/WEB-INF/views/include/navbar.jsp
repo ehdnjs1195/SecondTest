@@ -123,7 +123,7 @@
 <!-- 배경화면 -->
 <div id="background"></div>
 <div class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
+	<div class="container" id="navbarContainer">
 		<!-- 홈페이지 링크와 버튼을 넣어둘 div -->
 		<div class="navbar-header">
 			<a class="navbar-brand" href="${pageContext.request.contextPath }/home.do">

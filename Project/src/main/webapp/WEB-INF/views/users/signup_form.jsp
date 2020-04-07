@@ -18,9 +18,9 @@
 
 /* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
 .help-block, .form-control-feedback{
-		display: none;
-	}
-	.btn btn-primary {
+	display: none;
+}
+.btn btn-primary {
 	width: 100%;
 	background-color: #2d3436;
 	border-color: #2d3436;
@@ -31,38 +31,28 @@
 .input-group .form-control {
     margin: 0px !important;
 }
-	div.scroll-wrapper{
-
+div.scroll-wrapper{
     overflow: auto;
-
     border:solid 1px gray;
-
     height: 200px;
-
     width: 460px;
-    
 	overflow-x: auto;
 	overflow-y: auto;
 }
 
-.agreement-title{
-}
-
 .scroll-wrapper:hover{
-
-		background-color:#FEF9E7;
+	background-color:#FEF9E7;
 }
 
 .h4 {
-  background-color: lightgrey;
-  width: 460px;
-  padding: 0px;
-  margin: 0px;
+	background-color: lightgrey;
+	width: 460px;
+	padding: 0px;
+	margin: 0px;
 }
 /* 배경화면*/
 #backgroundImage{
 	z-index: 1;
-	
 }
 
 #backgroundImage:before {
@@ -120,33 +110,34 @@ h1 {
 input[type="checkbox"] { display: none; }
 
 input[type="checkbox"] + label {
-
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 20px;
-  font: 14px/20px 'Open Sans', Arial, sans-serif;
-  color: #ddd;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 20px;
+	font: 14px/20px 'Open Sans', Arial, sans-serif;
+	color: #ddd;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 }
 
-input[type="checkbox"] + label:last-child { margin-bottom: 0; margin-top: 3px;}
+input[type="checkbox"] + label:last-child { 
+	margin-bottom: 0; margin-top: 3px;
+}
 
 input[type="checkbox"] + label:before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #6cc0e5;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: .6;
-  -webkit-transition: all .12s, border-color .08s;
-  transition: all .12s, border-color .08s;
+	content: '';
+	display: block;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #6cc0e5;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: .6;
+	-webkit-transition: all .12s, border-color .08s;
+	transition: all .12s, border-color .08s;
 }
 
 input[type="checkbox"]:checked + label:before {
@@ -160,17 +151,17 @@ input[type="checkbox"]:checked + label:before {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }	
-
+#background{
+	display: none;
+}
 </style>
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
 </head>
 <body>
-<div id="backgroundImage">
-
-    </div>
-    <div class="main">
+<div id="backgroundImage"></div>
+<div class="main">
 <div class="container" id="signup-form">
 	<div class="signup-content">
 	<h1 class="form-title">회원가입</h1>
@@ -181,16 +172,15 @@ input[type="checkbox"]:checked + label:before {
 				<li>
 				<h4 class="agreement-title"
 				style="text-align:center; font-weight:bold; font-size:13px">회원가입 약관(필수)</h4>	
-				
 				<div class="scroll-wrapper agreement_box scrollbar-macosx" style="position:relative;">
 				<div class="agreement_box scrollbar-macosx scroll-content scroll-scrolly_visible"
 				style="height: auto; margin-bottom: 0px; margin-right:0px; max-height:200px;">
-					<div class="inner" style="font-size:13px">
-					<div>&nbsp;</div>
-					<div>제3조(회원 가입)</div>
-					<div><span style="line-height:1.5;">이용약관 (Spoiler)</span></div>
-					<div>--------------------------------------------------------------------------------</div>
-					<div class="agreement-content">
+				<div class="inner" style="font-size:13px">
+				<div>&nbsp;</div>
+				<div>제3조(회원 가입)</div>
+				<div><span style="line-height:1.5;">이용약관 (Spoiler)</span></div>
+				<div>--------------------------------------------------------------------------------</div>
+				<div class="agreement-content">
 					제 1 장 총 칙
 
  
