@@ -1,6 +1,5 @@
 package com.spoiler.movie.favorite.Service;
 
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +13,8 @@ import com.spoiler.movie.favorite.Dao.FavoriteDao;
 import com.spoiler.movie.favorite.Dto.FavoriteDto;
 
 @Service
-public class FavoriteServiceImpl implements FavoriteService{
-	
+public class FavoriteServiceImpl implements FavoriteService {
+
 	@Autowired
 	private FavoriteDao dao;
 
@@ -25,9 +24,14 @@ public class FavoriteServiceImpl implements FavoriteService{
 		String movieId = request.getParameter("movieId");
 		String movieSeq = request.getParameter("movieSeq");
 		String title = request.getParameter("title");
-		String genre= request.getParameter("genre");
-		String repRlsDate=request.getParameter("repRlsDate");
-		String posters=request.getParameter("posters");
+		String genre = request.getParameter("genre");
+		String repRlsDate = request.getParameter("repRlsDate");
+		String posters = request.getParameter("posters");
+		String starPoint = request.getParameter("starPoint");
+		System.out.println("--------------------------");
+		String randomStarPoint = request.getParameter("randomStarPoint");
+		System.out.println(randomStarPoint);
+		
 		FavoriteDto dto = new FavoriteDto();
 		dto.setId(id);
 		dto.setMovieId(movieId);
@@ -36,20 +40,16 @@ public class FavoriteServiceImpl implements FavoriteService{
 		dto.setGenre(genre);
 		dto.setRepRlsDate(repRlsDate);
 		dto.setPosters(posters);
-		
+		dto.setStarPoint(Float.parseFloat(starPoint));
+		dto.setRandomStarPoint(Float.parseFloat(randomStarPoint));
+
 		dao.insert(dto);
-		
-}
-		
-
-
+	}
 
 	@Override
 	public int getCount(String id) {
 		return dao.getCount(id);
 	}
-
-	
 
 	@Override
 	public FavoriteDto getMovieInfo(String id) {
@@ -57,38 +57,35 @@ public class FavoriteServiceImpl implements FavoriteService{
 		return null;
 	}
 
-
-
 	@Override
 	public Map<String, Object> isExistMovie(FavoriteDto dto) {
-		boolean isExist=dao.isExist(dto);
-		Map<String, Object> map=new HashMap<>();
-		if(isExist) {
+		boolean isExist = dao.isExist(dto);
+		Map<String, Object> map = new HashMap<>();
+		if (isExist) {
 			dao.delete(dto);
 			map.put("result", true);
-			
-		}else {
+
+		} else {
 			dao.insert(dto);
-		map.put("result", false);
+			map.put("result", false);
 		}
-		
+
 		return map;
 	}
 
 	@Override
 	public Map<String, Object> checkMovie(FavoriteDto dto) {
-		boolean isExist=dao.isExist(dto);
-		Map<String, Object> map=new HashMap<>();
-		if(isExist) {
+		boolean isExist = dao.isExist(dto);
+		Map<String, Object> map = new HashMap<>();
+		if (isExist) {
 			map.put("result", true);
-			
-		}else {
-		map.put("result", false);
+
+		} else {
+			map.put("result", false);
 		}
-		
+
 		return map;
 	}
-
 
 	@Override
 	public void delete(HttpServletRequest request) {
@@ -97,36 +94,14 @@ public class FavoriteServiceImpl implements FavoriteService{
 		FavoriteDto dto = new FavoriteDto();
 		dto.setId(id);
 		dto.setMovieSeq(movieSeq);
-		
+
 		dao.delete(dto);
-		
 	}
-
-
-
 
 	@Override
 	public List<FavoriteDto> movieList(String id) {
-		FavoriteDto dto = new FavoriteDto();
-		dto.setId(id);
-		return	dao.movieList(id);
+		
+		return dao.movieList(id);
 	}
 
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-	
-
-	
 }

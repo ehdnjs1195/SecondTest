@@ -20,7 +20,7 @@
 	height: 25px;
 	font-size: 14px;
 	line-height: 25px;
-	color: #989898;
+	color: #a2a0a0;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 1;
 	font-family: auto;
@@ -199,7 +199,7 @@
 				<!-- 영어 원본 제목 -->
 				<span class="txt_origin">${dto.titleEng }</span>
 			</div>
-			<a href="#" class="raking_grade">
+			<span class="raking_grade">
 				<span class="bg_star star_grade">
 					<span class="bg_star inner_star"
 						<c:choose>
@@ -216,15 +216,15 @@
 					</c:choose>
 				</em>
 				<span class="txt_grade">/10</span>
-			</a>
+			</span>
 			<dl class="list_movie list_main" style="clear: left;">
 				<dd class="txt_main">${dto.genre }</dd>
 				<dd class="txt_main">(개봉) ${dto.repRlsDate }</dd>
 				<dd class="type_ellipsis">
-					(감독) <a href="#" style="color: #70ff35;">${dto.director }</a>
+					(감독) <span style="color: #70ff35;">${dto.director }</span>
 				</dd>
 				<dd class="type_ellipsis">
-					(배우) <a href="#" style="color: #70ff35;">${dto.actor }</a>
+					(배우) <span style="color: #70ff35;">${dto.actor }</span>
 				</dd>
 			</dl>
 			<dl class="list_placing">
@@ -258,7 +258,15 @@
 				<input type="hidden" name="title" value="${dto.title }" /> 
 				<input type="hidden" name="genre" value="${dto.genre }" /> 
 				<input type="hidden" name="posters" value="${dto.posters }" />
-				<button id="add_btn" class="btn" type="submit">관심목록 추가</button>
+				<c:choose>
+					<c:when test="${rDto.starPoint eq null}">
+						<input type="hidden" name="randomStarPoint" value="${point }"/>
+					</c:when>
+					<c:otherwise>
+						<input type="hidden" name="starPoint" value="${rDto.starPoint}"/>
+					</c:otherwise>
+				</c:choose>
+				<button id="add_btn" class="btn" type="submit" style="display:none;">관심목록 추가</button>
 			</form>
 		</div>
 		<!-- 줄거리 -->
@@ -475,11 +483,13 @@ $(document).ready(function(){
 		data:{'movieSeq':'${dto.movieSeq}'},
 		success: function(data){
 			if(data.result){
-				 $("#add_btn").css('background-color', 'red');
-				 $("#add_btn").text('관심목록 삭제')
+				$("#add_btn").removeAttr("style"); 
+				$("#add_btn").css('background-color', 'red');
+				$("#add_btn").text('관심목록 삭제')
 			}else{				
-				 $("#add_btn").css('background-color', 'mediumslateblue');
-				 $("#add_btn").text('관심목록 추가');
+				$("#add_btn").removeAttr("style"); 
+				$("#add_btn").css('background-color', 'mediumslateblue');
+				$("#add_btn").text('관심목록 추가');
 			}//else
 		}//success: function(data){
 	})//$.ajax({

@@ -109,6 +109,9 @@ body{
 	line-height: 40px;
 	width: 0px;
 }
+.navbar-link{
+	margin-right: 10px;
+}
 </style>
 <!-- 배경화면 -->
 <div id="background"></div>
@@ -125,7 +128,7 @@ body{
 				<c:when test="${empty sessionScope.id }">	<!-- sessionScope. 는 생략 가능 -->
 					<div class="pull-right">
 						<a class="btn btn-primary navbar-btn btn-xs" style="color:#A6A6A5;" href="${pageContext.request.contextPath }/users/loginform.do">Login</a>	<%-- 어디에 포함될지 모르니 절대경로를 넣어준다. --%>
-						<a class="btn btn-warning navbar-btn btn-xs" style="color:#A6A6A5;" href="${pageContext.request.contextPath }/users/signup_form.do">Sign Up</a>
+						<a class="btn btn-primary navbar-btn btn-xs" style="color:#A6A6A5;" href="${pageContext.request.contextPath }/users/signup_form.do">Sign Up</a>
 					</div>
 				</c:when>
 				<c:otherwise>
@@ -141,13 +144,13 @@ body{
 							</c:otherwise>
 						</c:choose>
 						</a></strong>
-						<a class="btn btn-warning navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/logout.do">Logout</a>
+						<a class="btn btn-primary navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/logout.do">Logout</a>
 						<c:if test="${master eq 1 }"><a class="btn btn-danger" href="${pageContext.request.contextPath }/master/admin.do">관리자</a></c:if>
 					</div>
 				</c:otherwise>
 		</c:choose>  
 		<div class="pull-right" style="margin-top:15px; margin-right:40px;">
-			<form action="searchlist.do" method="get" id="isSeach">
+			<form action="${pageContext.request.contextPath }/searchlist.do" method="get" id="isSeach">
 				<label for="condition" style="display: none;">검색조건</label>
 				<div class="search-box">
 					<input class="search-txt" type="text" name="title" placeholder="영화 제목 검색" />

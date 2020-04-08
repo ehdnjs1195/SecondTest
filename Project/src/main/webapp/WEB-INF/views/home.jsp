@@ -7,43 +7,46 @@
 <title>SPOILER</title>
 <jsp:include page="include/resource.jsp"></jsp:include>
 <style>
-.slide_right{
-		text-decoration: none;
-		position: fixed;
-		top: 100px;
-		left: 90%;
-		width: 130px;
-		height: 100%;
-		z-index:10;
+.slide_right {
+	text-decoration: none;
+	position: fixed;
+	top: 100px;
+	left: 90%;
+	width: 130px;
+	height: 100%;
+	z-index: 10;
 }
-.slide_right img{
+
+.slide_right img {
 	margin: 5px;
 }
-	
-.row{
-  		margin-top: 100px;
+
+.row {
+	margin-top: 100px;
 }
-.btn{
+
+.btn {
 	font-size: smaller !important;
 }
+
 .btn-primary:hover {
-   	color: #00ffd0 !important;
+	color: #00ffd0 !important;
 }
-   
-/* @media (min-width: 992px)
-.container {
-    width: 970px;
-} */
-.clearfix, .clearfix:before, .clearfix:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after {
-    content: " ";
-    display: table;
+
+.clearfix, .clearfix:before, .clearfix:after, .container:before,
+	.container:after, .container-fluid:before, .container-fluid:after, .row:before,
+	.row:after {
+	content: " ";
+	display: table;
 }
+
 body #kn-footer .container .kn-info-wrapper {
 	position: relative;
 	padding: 50px 0;
 	margin: 0 auto;
 	text-align: center;
 }
+
 body #kn-footer .container .kn-info-wrapper .kinolights-ci {
 	position: absolute;
 	left: 0;
@@ -52,43 +55,59 @@ body #kn-footer .container .kn-info-wrapper .kinolights-ci {
 	height: 53px;
 	text-align: center;
 }
+
 body #kn-footer .container .kn-info-wrapper .kn-copyright {
-    margin-top: 15px;
-    font-size: 12px;
-    font-weight: normal;
-    color: #546cb2;
+	margin-top: 15px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #546cb2;
 }
+
 body #kn-footer .container .kn-info-wrapper .sns-items {
-    position: absolute;
-    right: 0;
-    top: 55px;
-    display: inline-block;
-    vertical-align: middle;
+	position: absolute;
+	right: 0;
+	top: 55px;
+	display: inline-block;
+	vertical-align: middle;
 }
+
 ol, ul {
-    list-style: none;
+	list-style: none;
 }
+
 body #kn-footer .container .kn-info-wrapper .sns-items .sns-item {
-    float: left;
-    margin-right: 15px;
-    margin-bottom: 12px;
-    line-height: 24px;
+	float: left;
+	margin-right: 15px;
+	margin-bottom: 12px;
+	line-height: 24px;
 }
-body #kn-footer .container .kn-info-wrapper .sns-items .sns-item:last-of-type {
-    margin-right: 0;
+
+body #kn-footer .container .kn-info-wrapper .sns-items .sns-item:last-of-type
+	{
+	margin-right: 0;
 }
-body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-menu-item a {
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: normal;
-    color: #b3bfdd;
+
+body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-menu-item a
+	{
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: normal;
+	color: #b3bfdd;
 }
-.footer-menu-items{
+
+.footer-menu-items {
 	padding-left: 0px;
 	font-family: auto;
 }
+
 .items img {
-    height: 263.469px !important;
+	height: 263.469px !important;
+}
+/* Media Queries by. 유석 */
+@media screen and (min-width: 389px) and (max-width: 767px) {
+	#genre {
+		margin-top: 30px;
+	}
 }
 </style>
 </head>
@@ -127,7 +146,7 @@ body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-
 	
 <jsp:include page="include/navbar.jsp"></jsp:include>
     <div class="container">
-    	<div>
+    	<div id="genre">
 			<a class="btn btn-primary" href="genredetaillist.do?genre=액션">액션</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=SF">SF</a>
 			<a class="btn btn-primary" href="genredetaillist.do?genre=판타지">판타지</a>
@@ -172,8 +191,8 @@ body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-
 			<a class="btn btn-primary" href="movie_Rank.do">영화 랭킹 보러가기</a>
 		</div>
     	
-    	<!-- 추천 TOP10 -->
-        <h1 style="color: honeydew;">추천 TOP10</h1>
+    	<!-- TOP10 -->
+        <h1 style="color: honeydew;">TOP 10</h1>
         <jsp:include page="include/bestlist.jsp"/>
     </div>
     <!-- footer -->

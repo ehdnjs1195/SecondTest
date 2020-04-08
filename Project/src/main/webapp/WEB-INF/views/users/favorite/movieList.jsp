@@ -238,6 +238,9 @@ body {
 	color: #009ac9;
 	border-color: #009ac9;
 }
+#background{
+	display: none;
+}
 </style>
 
 <script src="../../resources/js/jquery-3.3.1.js"></script>
@@ -262,7 +265,12 @@ body {
 						<h4 style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; font-size: 16px; color: #2980B9; font-weight: 400">${tmp.title }</h4>
 					</div>
 					<div class="ratings">
-						<span>6.1</span>/10
+						<span>
+							<c:choose>
+								<c:when test="${tmp.starPoint != 0}">${tmp.starPoint}</c:when>
+								<c:otherwise>${tmp.randomStarPoint}</c:otherwise>
+							</c:choose>
+						</span>/10
 					</div>
 					<div class="genre" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
 						<span>장르 : ${tmp.genre }</span>

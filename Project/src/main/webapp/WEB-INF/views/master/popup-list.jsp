@@ -63,7 +63,7 @@
 		</c:forEach>
 		
 	</table>
-	<a href="popup-insertform.do">공지사항 추가하기</a>
+	<a class="btn btn-primary" href="popup-insertform.do">공지사항 추가하기</a>
 </div>
 </body>
 </html>

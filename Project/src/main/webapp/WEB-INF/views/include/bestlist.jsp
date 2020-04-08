@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <style>
 	.items{
 		cursor: pointer;
@@ -23,12 +25,16 @@
 	<c:forEach var="tmp" items="${list }">
 		<c:if test="${tmp.rank le 10 }">
 			<div class="items" id="best_${tmp.movieSeq}" >
-				<img id="best_${tmp.movieSeq}" src="${tmp.posters }" />
+				<img id="best_${tmp.movieSeq}" src="${tmp.posters }" style="height: 300px !important;"/>
 	               <div class="box-content" style="text-align:center">
-	                <h3 class="title">${tmp.title}</h3>
-	                <p class="post">개봉일 : ${tmp.repRlsDate }</p>
+	                <h3 class="title" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${tmp.title}</h3>
+	                <p class="post" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">개봉일 : 
+	                <fmt:parseDate var="dateFmt" pattern="yyyyMMdd" value="${tmp.repRlsDate }" />
+	                <fmt:formatDate var="dateParse" pattern="yyyy년 MM월 dd일" value="${dateFmt }" />
+	                <c:out value="${dateParse }"/>
+	                </p>
 	                <p class="post">${tmp.genre }</p>
-	                <hr width="170px">
+	                <hr width="60%">
 	                  	<a style="color:white">자세히보기</a>
 	             	</div>
 	       	</div>
@@ -44,11 +50,15 @@
 			<div class="modal-content">
 				<div class="modal-body" style="display: flex; font-family: auto;">
 					<img src="${tmp.posters }" id="${tmp.movieSeq }">
-					<div class="imgBox">
+					<div class="imgBox" style="width: 87%;">
 						<h2>${tmp.title }</h2>
 						<dl class="movie_info">
 							<dt>개봉</dt>
-							<dd>${tmp.repRlsDate }</dd>
+							<dd>
+								<fmt:parseDate var="dateFmt" pattern="yyyyMMdd" value="${tmp.repRlsDate }" />
+				                <fmt:formatDate var="dateParse" pattern="yyyy년 MM월 dd일" value="${dateFmt }" />
+				                <c:out value="${dateParse }"/>
+							</dd>
 							<dt>장르</dt>
 							<dd class="movie_genre">
 								<p>${tmp.genre }</p>

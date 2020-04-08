@@ -5,7 +5,8 @@
 
 	
 	<select id="movieList" parameterType="FavoriteDto" resultType="FavoriteDto">
-		select movieId, movieSeq, repRlsDate, genre, title, posters from favorite
+		select movieId, movieSeq, repRlsDate, genre, title, posters, starPoint, randomStarPoint 
+		from favorite
 		where id=#{id}
 	</select>
 	
@@ -17,14 +18,13 @@
 	
 	
 	<insert id="insert" parameterType="FavoriteDto">
-		INSERT INTO favorite
-		(num, id, movieId, movieSeq, repRlsDate, genre, title, posters)
-		VALUES(Favorite_Seq.NEXTVAL, 
-		#{id}, 
-		#{movieId}, 
-		#{movieSeq}, #{repRlsDate}, #{genre}, #{title}, 
-		#{posters})
-	
+		INSERT INTO favorite(
+			num, id, movieId, movieSeq, repRlsDate, genre, title, posters, starPoint, randomStarPoint
+		)
+		VALUES(
+			Favorite_Seq.NEXTVAL,
+			#{id}, #{movieId}, #{movieSeq}, #{repRlsDate}, #{genre}, #{title}, #{posters}, #{starPoint}, #{randomStarPoint}
+		)
 	</insert>
 	
 	
