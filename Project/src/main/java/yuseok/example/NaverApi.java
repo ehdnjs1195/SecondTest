@@ -1,13 +1,22 @@
 package yuseok.example;
 
 //네이버 검색 API 예제 - blog 검색
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class NaverApi {
 	public static void main(String[] args) {
@@ -17,7 +26,7 @@ public class NaverApi {
         //query 에 들어갈 것
         String text = null;
         try {
-            text = URLEncoder.encode("인비저블맨", "UTF-8");
+            text = URLEncoder.encode("아바타", "UTF-8");
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException("검색어 인코딩 실패",e);
         }
@@ -28,8 +37,29 @@ public class NaverApi {
         requestHeaders.put("X-Naver-Client-Id", clientId);
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
         String responseBody = get(apiURL,requestHeaders);
-
         System.out.println(responseBody);
+        
+        try {
+            JSONParser jsonParser = new JSONParser();
+            JSONObject jsonObj = (JSONObject) jsonParser.parse(responseBody);
+            JSONArray memberArray = (JSONArray) jsonObj.get("items");
+
+            for(int i=0 ; i<memberArray.size() ; i++){
+                JSONObject tempObj = (JSONObject) memberArray.get(i);
+                System.out.println(""+(i+1)+"번째 영화 : "+tempObj.get("title"));
+                System.out.println(""+(i+1)+"번째 링크: "+tempObj.get("link"));
+                System.out.println(""+(i+1)+"번째 이미지: "+tempObj.get("image"));
+                System.out.println(""+(i+1)+"번째 부제목: "+tempObj.get("subtitle"));
+                System.out.println(""+(i+1)+"번째 제작년도: "+tempObj.get("pubDate"));
+                System.out.println(""+(i+1)+"번째 감독: "+tempObj.get("director"));
+                System.out.println(""+(i+1)+"번째 배우: "+tempObj.get("actor"));
+                System.out.println(""+(i+1)+"번째 평점: "+tempObj.get("userRating"));
+                System.out.println("-------------------------------------------");
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     private static String get(String apiUrl, Map<String, String> requestHeaders){

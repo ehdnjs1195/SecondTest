@@ -109,6 +109,9 @@ body{
 	line-height: 40px;
 	width: 0px;
 }
+.navbar-link{
+	margin-right: 10px;
+}
 </style>
 <!-- 배경화면 -->
 <div id="background"></div>

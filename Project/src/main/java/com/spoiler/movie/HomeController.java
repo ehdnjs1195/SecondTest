@@ -33,9 +33,9 @@ public class HomeController {
 		service.getDetail(request);
 		double ran=Math.random()*7+3;
 		double point=Math.round(ran*10)/10.0;
+		System.out.println(point);
 		double point2 = point*10;
 		Random random=new Random();
-		System.out.println(random.nextInt(1000)+2001);
 		mView.addObject("random", random.nextInt(1000)+2001);
 		mView.addObject("random2", random.nextInt(710000));
 		mView.addObject("point", point);

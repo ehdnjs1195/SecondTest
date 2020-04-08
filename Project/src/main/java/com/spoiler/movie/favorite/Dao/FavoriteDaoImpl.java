@@ -1,7 +1,5 @@
 package com.spoiler.movie.favorite.Dao;
 
-
-
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -9,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spoiler.movie.favorite.Dto.FavoriteDto;
-
 
 @Repository
 public class FavoriteDaoImpl implements FavoriteDao{
@@ -22,20 +19,15 @@ public class FavoriteDaoImpl implements FavoriteDao{
 		session.insert("favorite.insert",dto);
 	}
 
-
-
 	@Override
 	public void delete(FavoriteDto dto) {
 		session.delete("favorite.delete", dto);
 		
 	}
 
-
 	public int getCount(String id) {
 		return session.selectOne("favorite.getCount",id);
 	}
-
-
 
 	@Override
 	public boolean isExist(FavoriteDto dto) {
@@ -47,8 +39,6 @@ public class FavoriteDaoImpl implements FavoriteDao{
 			return true;
 		}		
 	}
-
-
 
 	@Override
 	public List<FavoriteDto> movieList(String id) {
