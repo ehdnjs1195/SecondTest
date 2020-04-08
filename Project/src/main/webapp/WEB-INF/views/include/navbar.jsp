@@ -150,7 +150,7 @@ body{
 				</c:otherwise>
 		</c:choose>  
 		<div class="pull-right" style="margin-top:15px; margin-right:40px;">
-			<form action="searchlist.do" method="get" id="isSeach">
+			<form action="${pageContext.request.contextPath }/searchlist.do" method="get" id="isSeach">
 				<label for="condition" style="display: none;">검색조건</label>
 				<div class="search-box">
 					<input class="search-txt" type="text" name="title" placeholder="영화 제목 검색" />
