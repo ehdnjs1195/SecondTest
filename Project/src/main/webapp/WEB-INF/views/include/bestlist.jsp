@@ -30,7 +30,7 @@
 	                <h3 class="title" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${tmp.title}</h3>
 	                <p class="post" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">개봉일 : 
 	                <fmt:parseDate var="dateFmt" pattern="yyyyMMdd" value="${tmp.repRlsDate }" />
-	                <fmt:formatDate var="dateParse" pattern="yyyy년MM월dd일" value="${dateFmt }" />
+	                <fmt:formatDate var="dateParse" pattern="yyyy년 MM월 dd일" value="${dateFmt }" />
 	                <c:out value="${dateParse }"/>
 	                </p>
 	                <p class="post">${tmp.genre }</p>
@@ -54,7 +54,11 @@
 						<h2>${tmp.title }</h2>
 						<dl class="movie_info">
 							<dt>개봉</dt>
-							<dd>${tmp.repRlsDate }</dd>
+							<dd>
+								<fmt:parseDate var="dateFmt" pattern="yyyyMMdd" value="${tmp.repRlsDate }" />
+				                <fmt:formatDate var="dateParse" pattern="yyyy년 MM월 dd일" value="${dateFmt }" />
+				                <c:out value="${dateParse }"/>
+							</dd>
 							<dt>장르</dt>
 							<dd class="movie_genre">
 								<p>${tmp.genre }</p>

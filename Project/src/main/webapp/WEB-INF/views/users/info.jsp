@@ -173,7 +173,9 @@ p{
     width: -webkit-fill-available;
     color: #3272a9;
 }
-
+#deleteBtn{
+    width: -webkit-fill-available;
+}
 /* Media Queries by. 유석 */
 @media screen and (min-width: 398px) and (max-width: 767px) {
 	#info-form {
@@ -239,7 +241,7 @@ p{
 		</p>
 
 		<p>
-			<a href="javascript:deleteConfirm()">회원 탈퇴</a>
+			<a id="deleteBtn" class="btn btn-danger" href="javascript:deleteConfirm()">회원 탈퇴</a>
 		</p>
 		<p>
 			<a href="/movie/home.do" class="btn" id="home">돌아가기</a>
