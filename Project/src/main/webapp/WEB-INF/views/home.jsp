@@ -189,8 +189,8 @@ body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-
 			<a class="btn btn-primary" href="movie_Rank.do">영화 랭킹 보러가기</a>
 		</div>
     	
-    	<!-- 추천 TOP10 -->
-        <h1 style="color: honeydew;">추천 TOP10</h1>
+    	<!-- TOP10 -->
+        <h1 style="color: honeydew;">TOP 10</h1>
         <jsp:include page="include/bestlist.jsp"/>
     </div>
     <!-- footer -->
