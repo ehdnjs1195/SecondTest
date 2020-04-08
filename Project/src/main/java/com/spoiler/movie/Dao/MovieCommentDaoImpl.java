@@ -59,4 +59,14 @@ public class MovieCommentDaoImpl implements MovieCommentDao{
 	public void downCnt(int num) {
 		session.update("movieComment.downCnt",num);		
 	}
+
+	@Override
+	public List<MovieCommentDto> getBestList(int ref_group) {
+		return session.selectList("movieComment.getBestList", ref_group);
+	}
+
+	@Override
+	public String getBestListWriter(int ref_group) {
+		return session.selectOne("movieComment.getBestListWriter", ref_group);
+	}
 }

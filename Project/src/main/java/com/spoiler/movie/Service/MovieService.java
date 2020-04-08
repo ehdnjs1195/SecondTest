@@ -7,7 +7,7 @@ import com.spoiler.movie.Dto.MovieCommentDto;
 
 public interface MovieService {
 	public void homeList(HttpServletRequest request);
-	public void getDetail(HttpServletRequest request);
+	public void getDetail(HttpServletRequest request,MovieCommentDto dto);
 	//댓글 저장하는 메소드
 	public void saveComment(HttpServletRequest request);
 	//댓글 삭제하는 메소드

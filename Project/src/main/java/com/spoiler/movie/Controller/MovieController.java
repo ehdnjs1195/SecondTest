@@ -161,6 +161,7 @@ public class MovieController {
 			map.put("isExist", false);	
 			System.out.println("is Exist : false");
 		}
+		
 		return map;
 	}
 }

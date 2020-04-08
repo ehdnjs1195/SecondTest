@@ -29,8 +29,8 @@ public class HomeController {
 	}
 	//글 자세히 보기 요청 처리
 	@RequestMapping("/detail")
-	public ModelAndView detail(HttpServletRequest request, ModelAndView mView){
-		service.getDetail(request);
+	public ModelAndView detail(HttpServletRequest request, ModelAndView mView,@ModelAttribute MovieCommentDto dto){
+		service.getDetail(request, dto);
 		double ran=Math.random()*7+3;
 		double point=Math.round(ran*10)/10.0;
 		double point2 = point*10;

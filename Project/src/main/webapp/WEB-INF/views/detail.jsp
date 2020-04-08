@@ -268,6 +268,28 @@
 		</div>
 		<!-- Comments -->
 		<h3 style="font-style: oblique;">네티즌 댓글</h3>
+		<div style="margin: 5px;">
+			<!-- 추천수 높은 댓글 3개 -->
+			<c:forEach items="${commentBestList }" var="tmp">
+				<table>
+				<colgroup>
+					<col class="col-xs-2"/>
+					<col class="col-xs-9"/>
+					<col class="col-xs-1"/>
+				</colgroup>
+				<tr>
+					<td style="text-align: center; font-size: 15px;"><img style="width: 30px; height: 20px; margin-right: 5px;" src="${pageContext.request.contextPath}/resources/images/best.png"/>  ${tmp.writer } </td>
+					<td>${tmp.content }</td>
+					<td style="text-align: center; font-size: 15px;">
+						<button id="recommend" style="background:none; border:none; cursor: pointer;" value="${tmp.num}">
+								<span class="glyphicon glyphicon-heart" style="color: #5352ed;" aria-hidden="true" ></span>
+								<span id="recommendCnt">${tmp.recommendCnt }</span>
+							</button></td>
+				</tr>
+				</table>
+			</c:forEach>
+		</div>
+		
 		<div class="comments">
 			<!-- 원글에 댓글을 작성할수 있는 폼 -->
 			<c:choose>
@@ -297,7 +319,7 @@
 							<li class="comment" id="comment${tmp.num }"
 								<c:if test="${tmp.num ne tmp.comment_group }">style="padding-left:50px;"</c:if>>
 								<c:if test="${tmp.num ne tmp.comment_group }">
-									<img class="reply_icon" src="${pageContext.request.contextPath}/resources/images/re.gif" />
+									<img class="reply_icon" src="${pageContext.request.contextPath}/resources/images/aaaa.png" />
 								</c:if>
 								<dl>
 									<dt>
@@ -360,34 +382,34 @@
 											})
 											
 											$(document).ready(function(){
-		                                       var num="${tmp.num}";
-		                                       var isLogin=${not empty id};
-		                                       if(isLogin==false){
-		                                          $("#heartShow${tmp.num }").hide();
-		                                       }else{
-		                                          $.ajax({
-		                                             url: "recommend2.do",
-		                                             method: "POST",
-		                                             data:{"id":"${id}","num":num},
-		                                             
-		                                             success: function(responseData){
-		                                                if(responseData.isExist){   //down
-		                                                   $("#heartShow${tmp.num }").hide();
-		                                                   $("#heartHide${tmp.num }").show();
-		                                                   console.log("is Exist : true");
-		                                                }else{   //up
-		                                                   $("#heartShow${tmp.num }").show();
-		                                                   $("#heartHide${tmp.num }").hide();
-		                                                   console.log("is Exist : false");
-		                                                }
-		                                             }
-		                                          })
-		                                       }//else
-		                                    });
+													var num="${tmp.num}";
+													var isLogin=${not empty id};
+													if(isLogin==false){
+														$("#heartShow${tmp.num }").hide();
+													}else{
+														$.ajax({
+															url: "recommend2.do",
+															method: "POST",
+															data:{"id":"${id}","num":num},
+															
+															success: function(responseData){
+																if(responseData.isExist){	//down
+																	$("#heartShow${tmp.num }").hide();
+																	$("#heartHide${tmp.num }").show();
+																	console.log("is Exist : true");
+																}else{	//up
+																	$("#heartShow${tmp.num }").show();
+																	$("#heartHide${tmp.num }").hide();
+																	console.log("is Exist : false");
+																}
+															}
+														})
+													}//else
+												});
 									</script>
 										<button id="recommend${tmp.num }"
 											style="background:none; border:none; cursor: pointer;" value="${tmp.num}">
-											<span id="heartShow${tmp.num }" class="glyphicon glyphicon-heart" style="color: red;" aria-hidden="true" ></span>
+											<span id="heartShow${tmp.num }" class="glyphicon glyphicon-heart" style="color: #e84118;" aria-hidden="true" ></span>
 											<span id="heartHide${tmp.num }" class="glyphicon glyphicon-heart" style="color: #a5b1c2;" aria-hidden="true"></span>
 											<span id="recommendCnt${tmp.num }">${tmp.recommendCnt }</span>
 										</button>

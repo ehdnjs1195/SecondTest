@@ -1,7 +1,9 @@
 package com.spoiler.movie.Service;
 
 
+import java.io.Console;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -45,7 +47,7 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public void getDetail(HttpServletRequest request) {
+	public void getDetail(HttpServletRequest request,MovieCommentDto dto1) {
 		// 파라미터로 전달되는 글번호
 		String movieSeq = request.getParameter("movieSeq");
 		String movieId = request.getParameter("movieId");
@@ -59,7 +61,15 @@ public class MovieServiceImpl implements MovieService {
 		request.setAttribute("rDto", rDto);
 		// 댓글 목록을 얻어와서 request 에 담아준다.
 		List<MovieCommentDto> commentList = commentDao.getList(Integer.parseInt(movieSeq));
-		request.setAttribute("commentList", commentList);
+		request.setAttribute("commentList", commentList);		
+		
+		
+		List<MovieCommentDto> commentBestList = commentDao.getBestList(Integer.parseInt(movieSeq));
+		System.out.println("commentBestList"+commentBestList);
+		for(int i=0;i<commentBestList.size();i++) {
+			commentBestList.get(i).setWriter(commentBestList.get(i).getWriter().substring(0,3)+"****");
+		}
+		request.setAttribute("commentBestList", commentBestList);		
 	}
 
 	// 댓글 저장하는 메소드
@@ -225,5 +235,6 @@ public class MovieServiceImpl implements MovieService {
 			System.out.println("크롤링 실패 : "+e);
 		}//try end
 	}
+
 	
 }

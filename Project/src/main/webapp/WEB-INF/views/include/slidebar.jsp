@@ -10,16 +10,17 @@
 		left: 0px;
 		width: 10px;
 		height: 100%;
-		z-index:10;
+		z-index:100000;
 	}
 	.smenu{
-		width: 250px;
+		width: 180px;
 		left:0;
 		height: 100%;
 		background: #3498db;
 		text-align: center;
 		overflow: auto;
 		margin-left: -40px;
+		
 	}
 	.slide_btn a{
 		text-decoration: none;	
@@ -64,8 +65,7 @@
 	#showBtn,#hideBtn{
 		display: block;
 		background: #273c75;
-		width : 220px;
-		padding: 16px 26px;
+		padding: 16px 20px;
 		margin-top : 6px;
 		color : white;
 		position: relative;
@@ -122,7 +122,7 @@
 			</li>
 		</ul>
 	</div>
-	<a href="#" class="slide_btn" id="showBtn"style="font-weight: normal; width: 100px;">장르▼</a>
+	<a href="#" class="slide_btn" id="showBtn" style="font-weight: normal; width: 100px;">장르▼</a>
 </div>
 <script>
 	$('ul.depth01>li').mouseup(function(){
