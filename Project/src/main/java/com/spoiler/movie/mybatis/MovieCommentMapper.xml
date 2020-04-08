@@ -40,6 +40,14 @@
 		SET recommendCnt=recommendCnt-1
 		WHERE num=#{num}
 	</update>
+	<select id="getBestList" parameterType="int" resultType="movieCommentDto">
+		select result.*
+		from (select num, writer, content, recommendCnt ,rownum
+	  		from movie_comment 
+	  		WHERE ref_group=#{ref_group}
+	  		order by recommendCnt desc) result
+		where rownum between 1 and 3
+	</select>
 </mapper>
 
 

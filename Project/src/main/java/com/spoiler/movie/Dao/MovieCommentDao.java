@@ -6,6 +6,8 @@ import com.spoiler.movie.Dto.MovieCommentDto;
 
 public interface MovieCommentDao {
 	public List<MovieCommentDto> getList(int ref_group);
+	public List<MovieCommentDto> getBestList(int ref_group);
+	public String getBestListWriter(int ref_group);
 	public void delete(int num);
 	public void insert(MovieCommentDto dto);
 	public int getSequence(); //저장할 댓글의 글 번호를 리턴하는 메소드

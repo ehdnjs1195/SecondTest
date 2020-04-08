@@ -122,7 +122,7 @@
 			</li>
 		</ul>
 	</div>
-	<a href="#" class="slide_btn" id="showBtn"style="font-weight: normal; width: 100px;">장르▼</a>
+	<a href="#" class="slide_btn" id="showBtn" style="font-weight: normal; width: 100px;">장르▼</a>
 </div>
 <script>
 	$('ul.depth01>li').mouseup(function(){
