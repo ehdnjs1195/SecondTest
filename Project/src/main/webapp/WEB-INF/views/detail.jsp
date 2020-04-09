@@ -182,6 +182,9 @@
 #add_btn{
 	background-color: mediumslateblue;
 }
+/* .ytp-cued-thumbnail-overlay-image{
+	background-size: 100% !important;
+} */
 </style>
 </head>
 <body>
@@ -280,22 +283,22 @@
 				<span style="color:#ff382e">
 					5
 				</span> 개의 관련 영상
-			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000" style="width: 964px;">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0" style="width: 100%;">
 				<div class="carousel-inner">
 					<div class="item active">
-						<iframe src="https://www.youtube.com/embed/${videoId0}"></iframe>
+						<iframe src="https://www.youtube.com/embed/${videoId0}" style="width:100%"></iframe>
 					</div>
 					<div class="item">
-						<iframe src="https://www.youtube.com/embed/${videoId1}"></iframe>
+						<iframe src="https://www.youtube.com/embed/${videoId1}" style="width:100%"></iframe>
 					</div>
 					<div class="item">
-						<iframe src="https://www.youtube.com/embed/${videoId2}"></iframe>
+						<iframe src="https://www.youtube.com/embed/${videoId2}" style="width:100%"></iframe>
 					</div>
 					<div class="item">
-						<iframe src="https://www.youtube.com/embed/${videoId3}"></iframe>
+						<iframe src="https://www.youtube.com/embed/${videoId3}" style="width:100%"></iframe>
 					</div>
 					<div class="item">
-						<iframe src="https://www.youtube.com/embed/${videoId4}"></iframe>
+						<iframe src="https://www.youtube.com/embed/${videoId4}" style="width:100%"></iframe>
 					</div>
 				</div>
 				<!-- 이전, 다음 control UI -->
@@ -660,6 +663,12 @@ function deleteConfirm(){
 		location.href="delete.do?movieSeq=${dto.movieSeq}";
 	}
 }
+//유튜브 백그라운드 사이즈 조절하는 스크립트
+$(document).ready(function () {
+    $('iframe').on('load', function() {
+        $("iframe").contents().find(".ytp-cued-thumbnail-overlay-image").css("background-size", "100%");
+    }); 
+});
 </script>
 </body>
 

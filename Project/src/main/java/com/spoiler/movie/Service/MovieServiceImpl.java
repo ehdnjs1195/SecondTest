@@ -81,7 +81,7 @@ public class MovieServiceImpl implements MovieService {
 		try {
 			String text = null;
 	        try {
-	            text = URLEncoder.encode(dto.getTitle(), "UTF-8");
+	            text = URLEncoder.encode("영화"+dto.getTitle()+"리뷰", "UTF-8");
 	        } catch (UnsupportedEncodingException e) {
 	            throw new RuntimeException("검색어 인코딩 실패",e);
 	        }
