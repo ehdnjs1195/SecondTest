@@ -34,11 +34,19 @@
 				<td>${tmp.regdate }</td>
 				<td>
 					<label class="switch">
-				        <input class="check_${tmp.num}" type="checkbox" <c:if test="${tmp.state }">checked</c:if> >	
+				        <input class="check_${tmp.num}" type="checkbox" <c:if test="${tmp.state eq 'true' }">checked</c:if> >	
 				        <span class="slider round"></span>
 				    </label>
-				    <p class="onOff_${tmp.num }">OFF</p>
-				    <p class="onOff_${tmp.num }" style="display:none;">ON</p> 
+				    <c:choose>
+				    	<c:when test="${tmp.state eq 'true' }">
+				    		<p class="onOff_${tmp.num }" style="display:none;">OFF</p>
+				    		<p class="onOff_${tmp.num }" >ON</p> 
+				    	</c:when>
+				    	<c:otherwise>
+				    		<p class="onOff_${tmp.num }">OFF</p>
+				    		<p class="onOff_${tmp.num }" style="display:none;">ON</p> 
+				    	</c:otherwise>
+				    </c:choose>
       			</td>
       			<td><a href="delete.do?num=${tmp.num }" style="color:white;">삭제</a></td>
 			</tr>	

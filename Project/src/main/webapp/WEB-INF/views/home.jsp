@@ -147,9 +147,8 @@ body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-
 
 	<div class="slide_right">
 		<%-- <img src="${pageContext.request.contextPath }/resources/images/제목없음.png" alt="" style="width: 130px; height: auto;"> --%>
-		<img onclick="window.open('map.do','Movie Theater','width=700px,height=450px,top=200px,left=200px')" src="${pageContext.request.contextPath }/resources/images/kmap.png" alt="" style="width: 130px; height: auto; display: block;" >
+		<img onclick="window.open('map.do','Movie Theater','width=700px,height=450px,top=200px,left=200px')" src="${pageContext.request.contextPath }/resources/images/kmap.png" alt="" style="width: 130px; height: auto; display: block; cursor:pointer;" >
 	</div>
-	
 	
 <jsp:include page="include/navbar.jsp"></jsp:include>
     <div class="container">
