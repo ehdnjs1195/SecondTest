@@ -266,7 +266,7 @@
 						<input type="hidden" name="starPoint" value="${rDto.starPoint}"/>
 					</c:otherwise>
 				</c:choose>
-				<button id="add_btn" class="btn" type="submit" style="display:none;">관심목록 추가</button>
+				<button id="add_btn" class="btn" type="submit" >관심목록 추가</button>
 			</form>
 		</div>
 		<!-- 줄거리 -->
@@ -274,8 +274,43 @@
 			<h3 style="font-style: oblique; margin-top: 0; color: #ff83c2;">줄거리</h3>
 			<p class="plot">${dto.plot }</p>
 		</div>
+		<!-- 유튜브 관련 영상 제공 -->
+		<div style="margin-top: 30px;">
+			<h4>${dto.title}</h4>
+				<span style="color:#ff382e">
+					5
+				</span> 개의 관련 영상
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000" style="width: 964px;">
+				<div class="carousel-inner">
+					<div class="item active">
+						<iframe src="https://www.youtube.com/embed/${videoId0}"></iframe>
+					</div>
+					<div class="item">
+						<iframe src="https://www.youtube.com/embed/${videoId1}"></iframe>
+					</div>
+					<div class="item">
+						<iframe src="https://www.youtube.com/embed/${videoId2}"></iframe>
+					</div>
+					<div class="item">
+						<iframe src="https://www.youtube.com/embed/${videoId3}"></iframe>
+					</div>
+					<div class="item">
+						<iframe src="https://www.youtube.com/embed/${videoId4}"></iframe>
+					</div>
+				</div>
+				<!-- 이전, 다음 control UI -->
+				<a href="#myCarousel" class="left carousel-control" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					<span class="sr-only">이전</span>
+				</a>
+				<a href="#myCarousel" class="right carousel-control" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+					<span class="sr-only">다음</span>
+				</a>
+			</div>
+		</div>
 		<!-- Comments -->
-		<h3 style="font-style: oblique;">네티즌 댓글</h3>
+		<h3 style="font-style: oblique; margin-top: 30px;">네티즌 댓글</h3>
 		<div style="margin: 5px;">
 			<!-- 추천수 높은 댓글 3개 -->
 			<c:forEach items="${commentBestList }" var="tmp">
@@ -297,7 +332,6 @@
 				</table>
 			</c:forEach>
 		</div>
-		
 		<div class="comments">
 			<!-- 원글에 댓글을 작성할수 있는 폼 -->
 			<c:choose>
