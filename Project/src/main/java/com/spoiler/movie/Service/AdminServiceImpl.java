@@ -3,6 +3,7 @@ package com.spoiler.movie.Service;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -50,19 +51,51 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public void updateState(PopupDto dto, HttpServletRequest request, HttpServletResponse response) {
 		String num = Integer.toString(dto.getNum());
+		ServletContext app = request.getServletContext();
+		adminDao.updateState(dto);
 		if(dto.getState().equals("true")) {
 			// 마스터이름+Popup을 추가.
 			Cookie cook=new Cookie("Popup"+num, num);
 			cook.setPath("/movie");
 			cook.setMaxAge(60*60*24*31); //한달
 			response.addCookie(cook);
+			
 		}else {
 			Cookie cook=new Cookie("Popup"+num, num);
 			cook.setPath("/movie");
 			cook.setMaxAge(0);//쿠키 삭제
 			response.addCookie(cook);
+			app.removeAttribute("Popup"+num);
 		}
-		adminDao.updateState(dto);
+		
+		List<PopupDto> list = adminDao.getPopupList();
+		for(PopupDto tmp:list) {
+			if(tmp.getState().equals("true")) {
+				app.setAttribute("Popup"+num, num);					
+			}else {
+				app.removeAttribute("Popup"+num);
+			}
+		}
+		
+	}
+	@Override	
+	public void checkPopup(HttpServletRequest request,HttpServletResponse response) {
+		List<PopupDto> list = adminDao.getPopupList();
+		for(PopupDto tmp:list) {
+			String num = Integer.toString(tmp.getNum());
+			if(tmp.getState().equals("true")) {	//팝업이 있는 상태
+				// 마스터이름+Popup을 추가.
+				Cookie cook=new Cookie("Popup"+num, num);
+				cook.setPath("/movie");
+				cook.setMaxAge(60*60*24*31); //한달
+				response.addCookie(cook);
+			}else {	//팝업이 없는 상태
+				Cookie cook=new Cookie("Popup"+num, num);
+				cook.setPath("/movie");
+				cook.setMaxAge(0);//쿠키 삭제
+				response.addCookie(cook);
+			}
+		}
 	}
 	
 	@Override

@@ -118,6 +118,10 @@ body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-
 	        var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
 	        return value? value[2] : null;
 	    };
+	    
+	    //팝업상태 확인하고 있으면 쿠키 생성하기
+		$(document).load("checkPopup.do");
+	    //팝업 있는지 확인한 후 띄우기
 	    var cookies = document.cookie.split(';');
 	    if(cookies[0]!=""){
 		    for(var i = 0 ; i < cookies.length; i++){
@@ -134,9 +138,12 @@ body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-
 				}			
 		    }	    	
 	    }
-		
-
 	</script>
+	<c:if test="">
+		<script>
+		
+		</script>
+	</c:if>
 
 	<div class="slide_right">
 		<%-- <img src="${pageContext.request.contextPath }/resources/images/제목없음.png" alt="" style="width: 130px; height: auto;"> --%>

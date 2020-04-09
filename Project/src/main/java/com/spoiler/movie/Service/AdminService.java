@@ -17,4 +17,5 @@ public interface AdminService {
 	public void updateState(PopupDto dto, HttpServletRequest request, HttpServletResponse response);
 	public void deletePopup(HttpServletRequest request,HttpServletResponse response);
 	public void updatePopup(PopupDto dto);
+	public void checkPopup(HttpServletRequest request,HttpServletResponse response);
 }

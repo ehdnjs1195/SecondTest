@@ -107,6 +107,13 @@ public class MovieController {
 		mView.setViewName("redirect:/master/popup-list.do");
 		return mView;
 	}
+	
+	//클라이언트 컴퓨터에서 접속했을 때 팝업을 띄울 수 있도록 확인하기
+	@RequestMapping("/checkPopup")
+	public void checkExistPopup(HttpServletRequest request, HttpServletResponse response) {
+		adminService.checkPopup(request, response);
+	}
+	
 	@ResponseBody
 	@RequestMapping("/master/update_state")
 	public Map<String,Object> updateStatement(@ModelAttribute PopupDto dto, HttpServletRequest request, HttpServletResponse response) {
