@@ -129,7 +129,7 @@ body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-
 					
 				}else{	
 					if(cookieName.indexOf('P') == 0){
-						window.open("notify.do?Popup="+getCookie(cookieName),"news"+cookieName,"width=710px,height=530px, top="+position+"px,left="+position+"px");						
+						window.open("notify.do?Popup="+getCookie(cookieName),"news"+cookieName,"width=710px,height=800px, top="+position+"px,left="+position+"px");						
 					}
 				}			
 		    }	    	
