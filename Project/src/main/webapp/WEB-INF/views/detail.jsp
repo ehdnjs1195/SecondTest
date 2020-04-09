@@ -276,12 +276,10 @@
 		</div>
 		<!-- 유튜브 관련 영상 제공 -->
 		<div style="margin-top: 30px;">
-			<h4>
-				${dto.title}&nbsp;총
+			<h4>${dto.title}</h4>
 				<span style="color:#ff382e">
-					10
+					5
 				</span> 개의 관련 영상
-			</h4>
 			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000" style="width: 964px;">
 				<div class="carousel-inner">
 					<div class="item active">

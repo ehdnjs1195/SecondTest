@@ -72,33 +72,37 @@ public class MovieServiceImpl implements MovieService {
 		request.setAttribute("dto", dto);
 		MovieRankDto rDto=rankDao.getInfo(dto.getTitle());
 		request.setAttribute("rDto", rDto);
-		
+		/* 유튜브 추가 코드 */
 		//query 에 들어갈 것
-        String text = null;
-        try {
-            text = URLEncoder.encode(dto.getTitle(), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException("검색어 인코딩 실패",e);
-        }
-        // json 결과
-        String apiURL = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyBfnZOb2CBf1zDnW4TBlQ9CKaGK2CspqiE&part=snippet&maxResults=10&q=" + text;
-        Map<String, String> requestHeaders = new HashMap<>();
-        String responseBody = get(apiURL,requestHeaders);
-        System.out.println(responseBody);
-        try {
-            JSONParser jsonParser = new JSONParser();
-            JSONObject jsonObj = (JSONObject) jsonParser.parse(responseBody);
-            JSONArray memberArray = (JSONArray) jsonObj.get("items");
-            System.out.println(memberArray);
-            for(int i=0 ; i<memberArray.size() ; i++){
-                JSONObject tempObj = (JSONObject) memberArray.get(i);
-                JSONObject temp2Obj = (JSONObject) tempObj.get("id");
-                request.setAttribute("videoId"+Integer.toString(i), temp2Obj.get("videoId"));
-            }
+		try {
+			String text = null;
+	        try {
+	            text = URLEncoder.encode(dto.getTitle(), "UTF-8");
+	        } catch (UnsupportedEncodingException e) {
+	            throw new RuntimeException("검색어 인코딩 실패",e);
+	        }
+	        // json 결과
+	        String apiURL = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyBfnZOb2CBf1zDnW4TBlQ9CKaGK2CspqiE&part=snippet&maxResults=10&q=" + text;
+	        Map<String, String> requestHeaders = new HashMap<>();
+	        String responseBody = get(apiURL,requestHeaders);
+	        System.out.println(responseBody);
+	        try {
+	            JSONParser jsonParser = new JSONParser();
+	            JSONObject jsonObj = (JSONObject) jsonParser.parse(responseBody);
+	            JSONArray memberArray = (JSONArray) jsonObj.get("items");
+	            System.out.println(memberArray);
+	            for(int i=0 ; i<memberArray.size() ; i++){
+	                JSONObject tempObj = (JSONObject) memberArray.get(i);
+	                JSONObject temp2Obj = (JSONObject) tempObj.get("id");
+	                request.setAttribute("videoId"+Integer.toString(i), temp2Obj.get("videoId"));
+	            }
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+	        } catch (ParseException e) {
+	            e.printStackTrace();
+	        }
+		}catch(Exception e){
+			e.printStackTrace();
+		}
         
         // 댓글 목록을 얻어와서 request 에 담아준다.
  		List<MovieCommentDto> commentList = commentDao.getList(Integer.parseInt(movieSeq));
