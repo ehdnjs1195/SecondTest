@@ -131,7 +131,7 @@ body{
 						<a class="btn btn-primary navbar-btn btn-xs" style="color:#A6A6A5;" href="${pageContext.request.contextPath }/users/signup_form.do">Sign Up</a>
 					</div>
 				</c:when>
-				<c:otherwise>
+				<c:otherwise>F
 					<div class="pull-right">
 						<strong>
 						<a class="navbar-link" href="${pageContext.request.contextPath }/users/info.do">

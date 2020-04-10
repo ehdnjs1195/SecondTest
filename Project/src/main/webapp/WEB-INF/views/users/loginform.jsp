@@ -7,11 +7,38 @@
 <meta charset="UTF-8">
 <title>/users/loginform.jsp</title>
 <jsp:include page="../include/resource.jsp"></jsp:include>
-<jsp:include page="../include/navbar.jsp" />
 </head>
 <style>
+
 .neon{
 	font-family: fantasy, sans-serif;
+	padding: 0px 72px;
+	top: -20px;	
+	position: relative;
+	font-size: 3em;
+    color: dimgrey;
+}
+.neon:after{
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 20px;
+    z-index: -1;
+    color: #ff005b;
+    filter: blur(15px);
+}
+.neon::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fe3a80;
+    z-index: -2;
+    opacity: .5;
+    filter: blur(40px);
 }
 /* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
 .help-block, .form-control-feedback {
@@ -184,6 +211,83 @@ body {
 .login-content{
     margin-top: 10px;
 }
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #2d3436 !important;
+    border: #FBFCFC ;
+}
+// footer CSS
+.footer-menu-items {
+	padding-left: 0px;
+	font-family: auto;
+}
+.items img {
+	height: 263.469px !important;
+}
+
+body #kn-footer .container .kn-info-wrapper {
+	position: relative;
+	padding: 50px 0;
+	margin: 0 auto;
+	text-align: center;
+}
+
+body #kn-footer .container .kn-info-wrapper .kinolights-ci {
+	position: absolute;
+	left: 0;
+	top: 40px;
+	width: 91px;
+	height: 53px;
+	text-align: center;
+}
+
+body #kn-footer .container .kn-info-wrapper .kn-copyright {
+	margin-top: 15px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #546cb2;
+}
+
+body #kn-footer .container .kn-info-wrapper .sns-items {
+	position: absolute;
+	right: 0;
+	top: 55px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+ol, ul {
+	list-style: none;
+	text-align: center;
+	padding:0;
+}
+
+body #kn-footer .container .kn-info-wrapper .sns-items .sns-item {
+	float: left;
+	margin-right: 15px;
+	margin-bottom: 12px;
+	line-height: 24px;
+}
+
+body #kn-footer .container .kn-info-wrapper .sns-items .sns-item:last-of-type
+	{
+	margin-right: 0;
+}
+
+body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-menu-item a
+	{
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: normal;
+	color: #b3bfdd;
+}
+
+
+/* Media Queries by. 유석 */
+@media screen and (min-width: 389px) and (max-width: 767px) {
+	#genre {
+		margin-top: 30px;
+	}
+}
 </style>
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.js"></script>
@@ -195,14 +299,13 @@ body {
 				<form class="form-signin" action="login.do" method="post">
 					<%-- 폼 제출할때 목적지 정보도 같이 보내준다. --%>
 					<input type="hidden" name="url" value="${url }" />
-
-					<p style="left: 50%">
-						<img
-							src="${pageContext.request.contextPath }/resources/images/acorn.png"
-							alt="logo" class="img-responsive"
-							onclick="location.href='../home.do'"
-							style="margin: 0px 0px 20px 0px; cursor: pointer; width: 210px; heigh: 180px;" />
-					</p>
+						<!-- 홈페이지 링크와 버튼을 넣어둘 div -->
+			<div class="loginform-header">
+					<a class="loginform-brand" href="${pageContext.request.contextPath }/home.do">
+				<span class="neon" data-text="SPOILER">SPOILER</span>
+								</a>
+			<button class="navbar-toggle" data-toggle="collapse" data-target="#one"></button>
+			</div>
 					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon">
@@ -240,6 +343,51 @@ body {
 			</div>
 		</div>
 	</div>
+	<!-- footer -->
+    <footer id="kn-footer" style="font-family: auto;">
+    <div class="container">
+      <div class="kn-info-wrapper">
+        <div class="kinolights-ci"></div>
+        <div class="kn-info">
+            <ul class="footer-menu-items">
+            	<li class="footer-menu-item">
+            		<a href="#" target="_blank">이용약관</a>
+           		</li>
+           		<li class="footer-menu-item">
+           			<a href="#" target="_blank">개인정보취급방침</a>
+         		</li>
+         		<li class="footer-menu-item">
+         			<a href="#">사용 설명서</a>
+        		</li>
+        		<li class="footer-menu-item">
+        			<a href="#" class="btn-kn-report-db">이용문의 및 DB제보</a>
+        		</li>
+       		</ul>
+        </div>
+        <div class="kn-copyright">
+          <p><strong style="color:#b3bfdd;">업무 제휴 문의 : <a href="mailto:znql16@gmail.com" style="color:#b3bfdd;">znql16@gmail.com</a></strong></p>
+          <br>
+          <span style="color:#b3bfdd;">Copyright © 스포일러 Spoiler  ALL RIGHTS RESERVED.</span>
+        </div>
+        <ul class="sns-items">
+          <li class="sns-item">
+            <a href="https://post.naver.com/my.nhn?memberNo=43999716" target="_blank" rel="noopener" aria-label="네이버 포스트" title="네이버 포스트">
+              <i class="icon-post"></i>
+            </a>
+          </li>
+          <li class="sns-item">
+            <a href="https://www.facebook.com/KINOLIGHTS/" target="_blank" rel="noopener" aria-label="페이스북" title="페이스북">
+              <i class="icon-facebook"></i>
+            </a>
+          </li>
+          <li class="sns-item">
+            <a href="https://www.instagram.com/kinolights/" target="_blank" rel="noopener" aria-label="인스타그램" title="인스타그램">
+              <i class="icon-instagram"></i>
+            </a>
+          </li>
+       	 </ul>
+      </div>
+    </div>
 </body>
 </html>
 

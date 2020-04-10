@@ -286,10 +286,10 @@
 			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0" style="width: 100%;">
 				<div class="carousel-inner">
 					<div class="item active">
-						<iframe src="https://www.youtube.com/embed/${videoId0}" style="width:100%"></iframe>
+						<iframe src="https://www.youtube.com/embed/${videoId0}" style="width:100%;"></iframe>
 					</div>
 					<div class="item">
-						<iframe src="https://www.youtube.com/embed/${videoId1}" style="width:100%"></iframe>
+						<iframe  src="https://www.youtube.com/embed/${videoId1}" style="width:100%"></iframe>
 					</div>
 					<div class="item">
 						<iframe src="https://www.youtube.com/embed/${videoId2}" style="width:100%"></iframe>
@@ -510,6 +510,10 @@
 	</div>
 
 <script>
+$('iframe').load( function() {
+    $('iframe').contents().find("head")
+    .append($("<style type='text/css'>  .my-class{background-size:100%;}  </style>"));
+ });
 // 관심록록 추가
 $(document).ready(function(){
 	var isLogin=${not empty id};
