@@ -44,7 +44,7 @@
 		select result.*
 		from (select num, writer, content, recommendCnt ,rownum
 	  		from movie_comment 
-	  		WHERE ref_group=#{ref_group}
+	  		WHERE ref_group=#{ref_group} and recommendCnt > 0
 	  		order by recommendCnt desc) result
 		where rownum between 1 and 3
 	</select>

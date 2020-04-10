@@ -20,7 +20,7 @@
 	height: 25px;
 	font-size: 14px;
 	line-height: 25px;
-	color: #a2a0a0;
+	color: #989898;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 1;
 	font-family: auto;
@@ -202,7 +202,7 @@
 				<!-- 영어 원본 제목 -->
 				<span class="txt_origin">${dto.titleEng }</span>
 			</div>
-			<span class="raking_grade">
+			<a href="#" class="raking_grade">
 				<span class="bg_star star_grade">
 					<span class="bg_star inner_star"
 						<c:choose>
@@ -219,15 +219,15 @@
 					</c:choose>
 				</em>
 				<span class="txt_grade">/10</span>
-			</span>
+			</a>
 			<dl class="list_movie list_main" style="clear: left;">
 				<dd class="txt_main">${dto.genre }</dd>
 				<dd class="txt_main">(개봉) ${dto.repRlsDate }</dd>
 				<dd class="type_ellipsis">
-					(감독) <span style="color: #70ff35;">${dto.director }</span>
+					(감독) <a href="#" style="color: #70ff35;">${dto.director }</a>
 				</dd>
 				<dd class="type_ellipsis">
-					(배우) <span style="color: #70ff35;">${dto.actor }</span>
+					(배우) <a href="#" style="color: #70ff35;">${dto.actor }</a>
 				</dd>
 			</dl>
 			<dl class="list_placing">
@@ -520,13 +520,11 @@ $(document).ready(function(){
 		data:{'movieSeq':'${dto.movieSeq}'},
 		success: function(data){
 			if(data.result){
-				$("#add_btn").removeAttr("style"); 
-				$("#add_btn").css('background-color', 'red');
-				$("#add_btn").text('관심목록 삭제')
+				 $("#add_btn").css('background-color', 'red');
+				 $("#add_btn").text('관심목록 삭제')
 			}else{				
-				$("#add_btn").removeAttr("style"); 
-				$("#add_btn").css('background-color', 'mediumslateblue');
-				$("#add_btn").text('관심목록 추가');
+				 $("#add_btn").css('background-color', 'mediumslateblue');
+				 $("#add_btn").text('관심목록 추가');
 			}//else
 		}//success: function(data){
 	})//$.ajax({

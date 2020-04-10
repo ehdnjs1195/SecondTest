@@ -130,6 +130,16 @@
 	        $(this).children('ul.depth02').toggle();
     })
     
+    $("#hideBtn").ready(function () {
+         $(".smenu").hide(0);
+     });
+	
+	$( window ).resize(function() {
+		 var windowHeight = $( window ).height();
+		 if(windowHeight > 5000) {
+			 $(".smenu").show(300);
+		 } 
+	});
      $("#hideBtn").on("click", function () {
          $(".smenu").hide(500);
      });
@@ -137,9 +147,9 @@
          $(".smenu").show(500);
      });
 	 
-	 $( window ).resize(function() {
+	 $( window ).scroll(function() {
 		 var windowWidth = $( window ).width();
-		 if(windowWidth > 1600) {
+		 if(windowWidth > 1000) {
 			 $(".smenu").show(300);
 		 } else {
 			 $(".smenu").hide(300);
