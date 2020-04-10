@@ -211,7 +211,7 @@ p{
 				아직 추가한 영화가 없습니다.
 			</c:when>
 					<c:otherwise>
-						<form action="/movieList">
+						<form action="/movieList" style="display:inline;">
 							<a id="movieList"
 								href="${pageContext.request.contextPath }/users/favorite/movieList.do">${count }개의 관심영화가 있습니다.</a>
 						</form>

@@ -30,13 +30,12 @@
 
 h1 {
 	margin-top: 50px; 
-	margin-bottom: 50px;
 	font-family : 'Droid Sans', sans-serif;
-	font-size: 30px;
-	font-weight: 400;
-	font-weight: bold;
-	color: #D6EAF8;
-	font-family: 'Droid Sans', sans-serif;
+	font-size: 35px;
+	color: white;
+    font-weight: bolder;
+    line-height: 128px;
+    letter-spacing: 3px;
 }
 
 .h4 {
@@ -44,7 +43,7 @@ h1 {
 	width: 460px;
 	padding: 0px;
 	margin: 0px;
-	font-size: 11px;
+	
 }
 
 #backgroundImage {
@@ -180,10 +179,55 @@ body {
 	transition: 300ms;
 }
 
+
+
 .row {
-	margin-top: 12rem;
-	
+	margin-top: 11rem;
+	text-align: left;
+	 --borderWidth: 3px;
+  background: #1D1F20;
+  position: relative;
+  border-radius: var(--borderWidth);
 }
+
+
+.row:after {
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 3s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#empty_list {
+font-size:30px;
+color: white;
+text-align: center;
+padding: 55px;
+}
+
+
+
+
+
 .title{
 	text-align:center;
 }
@@ -252,10 +296,15 @@ body {
 			<h1>관심목록 영화 리스트</h1>
 		</div>
 	<div class="movie_container">
-		
 		<div class="row">
+			
+				<p id="empty_list" hidden="true">관심영화를 모두 삭제하였습니다.</p>
 			<c:forEach var="tmp" items="${list }">
+		
+			
+			
 				<div class="card-view">
+				
 					<div class="card-header">
 						<a
 							href="../../detail.do?movieSeq=${tmp.movieSeq }&movieId=${tmp.movieId}">
@@ -287,19 +336,28 @@ body {
 							</c:choose>
 						</span>
 					</div>
-					
+				
 					<br>
 					<form id="delete-form" action="${pageContext.request.contextPath }/users/favorite/delete.do" method="post">
 						<button id="delete_btn" type="submit">제거</button>
 						<input type="hidden" name="movieSeq" value="${tmp.movieSeq }" />
 					</form>
+					
 				</div>
-
+					
 			</c:forEach>
-		</div>
+				</div>
 	</div>
+	
 	<script>
-
+	$(function(){
+		
+		if($('#delete-form').text() == ''){
+			document.getElementById( 'empty_list' ).removeAttribute("hidden");
+		}
+		
+		
+	});
 </script>
 </body>
 </html>
