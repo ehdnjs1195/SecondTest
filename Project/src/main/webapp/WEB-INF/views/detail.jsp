@@ -91,7 +91,7 @@
 	font-weight: lighter;
 	font-style: normal;
 	font-family: auto;
-	color: #ff83c2;
+	color: ffffff;
 }
 
 .list_placing {
@@ -274,7 +274,7 @@
 		</div>
 		<!-- 줄거리 -->
 		<div class="desc_movie" style="clear: left; font-weight: bold; padding-top: 28px;">
-			<h3 style="font-style: oblique; margin-top: 0; color: #ff83c2;">줄거리</h3>
+			<h3 style="margin-top: 0; color: ffffff;">줄거리</h3>
 			<p class="plot">${dto.plot }</p>
 		</div>
 		<!-- 유튜브 관련 영상 제공 -->
@@ -313,7 +313,7 @@
 			</div>
 		</div>
 		<!-- Comments -->
-		<h3 style="font-style: oblique; margin-top: 30px;">네티즌 댓글</h3>
+		<h3 style="margin-top: 30px;">네티즌 댓글</h3>
 		<div style="margin: 5px;">
 			<!-- 추천수 높은 댓글 3개 -->
 			<c:forEach items="${commentBestList }" var="tmp">
@@ -663,12 +663,14 @@ function deleteConfirm(){
 		location.href="delete.do?movieSeq=${dto.movieSeq}";
 	}
 }
-//유튜브 백그라운드 사이즈 조절하는 스크립트
-$(document).ready(function () {
-    $('iframe').on('load', function() {
-        $("iframe").contents().find(".ytp-cued-thumbnail-overlay-image").css("background-size", "100%");
-    }); 
-});
+/*
+	유튜브 백그라운드 사이즈 조절하는 스크립트
+	$(document).ready(function () {
+	    $('iframe').on('load', function() {
+	        $("iframe").contents().find(".ytp-cued-thumbnail-overlay-image").css("background-size", "100%");
+	    }); 
+	});
+*/
 </script>
 </body>
 
