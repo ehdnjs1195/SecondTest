@@ -400,6 +400,7 @@ input[type="checkbox"]:checked + label:before {
 			이미 계정이 있으신가요?
 			<a href="loginform.do" class="loginhere-link">로그인</a>
 		</p>
+		<p style="text-align:center; margin-top:6px"><a href="${pageContext.request.contextPath }/home.do">메인 페이지</a></p>
 		</div>
 	</div>	
 </div>

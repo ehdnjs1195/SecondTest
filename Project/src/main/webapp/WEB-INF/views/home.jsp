@@ -7,6 +7,10 @@
 <title>SPOILER</title>
 <jsp:include page="include/resource.jsp"></jsp:include>
 <style>
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800');
+body {
+font-family: 'Nanum Gothic';
+}
 .slide_right {
 	text-decoration: none;
 	position: fixed;
