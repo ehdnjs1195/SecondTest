@@ -510,7 +510,7 @@ function chkId(){
 	var id = $("#id").val();
 	var num = id.search(/[0-9]/g);
 	var eng = id.search(/[a-z]/ig);
-	var spe = id.search(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi);
+	var spe = id.search(/[^A-Za-z0-9_\`\~\!\@\#\$\%\^\&\*\(\)\-\=\+\\\{\}\[\]\'\"\;\:\<\,\>\.\?\/\s]/gm);
 	
 	 if(id.length < 5 || id.length > 19 ){
 		 	return false;
@@ -520,7 +520,6 @@ function chkId(){
 			 return false;
 		 }else {
 			
-			 console.log("아이디통과");
 
 			return true;				 
 		}
@@ -539,7 +538,6 @@ function chkPw(){
 		 }else if(num < 0 || eng < 0 || spe < 0 ){
 			 return false;
 		 }else {
-			 console.log("통과");
 			return true;				 
 		}
 };
@@ -634,6 +632,7 @@ function setState(sel, isError){
 		$("#id_required").hide();
 	}
 	
+	
 	if(($("#pwd").val().search(/\s/) != -1) && isPwdDirty){
 		 $("#noSpace_required").show();
 
@@ -680,7 +679,7 @@ function setState(sel, isError){
 		$("#pwdChk_required").hide();
 	}
 	
-	if($("#id").val().search(/\s/) != -1 && isPwdDirty){
+	if($("#id").val().search(/\s/) != -1 && isIdDirty){
 		 $("#noSpace_id").show();
 
 	}else{

@@ -510,10 +510,7 @@
 	</div>
 
 <script>
-$('iframe').load( function() {
-    $('iframe').contents().find("head")
-    .append($("<style type='text/css'>  .my-class{background-size:100%;}  </style>"));
- });
+
 // 관심록록 추가
 $(document).ready(function(){
 	var isLogin=${not empty id};
