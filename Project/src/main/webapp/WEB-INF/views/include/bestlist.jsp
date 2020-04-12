@@ -116,7 +116,7 @@ font-family: 'Nanum Gothic' auto;
 	                </p>
 	                <p class="post">${tmp.genre }</p>
 	                <hr width="60%">
-	                  	<a style="color:white">자세히보기</a>
+	                  	<a style="color:white">줄거리 보기</a>
 	             	</div>
 	       	</div>
 		</c:if>
