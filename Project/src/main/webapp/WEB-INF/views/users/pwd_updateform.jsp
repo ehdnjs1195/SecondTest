@@ -179,22 +179,79 @@ p {
 #pwd-form{
 	margin-top: 10px;
 }
+/* footer */
+body #kn-footer .container .kn-info-wrapper {
+	position: relative;
+	padding: 50px 0;
+	margin: 0 auto;
+	text-align: center;
+}
+
+body #kn-footer .container .kn-info-wrapper .kinolights-ci {
+	position: absolute;
+	left: 0;
+	top: 40px;
+	width: 91px;
+	height: 53px;
+	text-align: center;
+}
+
+body #kn-footer .container .kn-info-wrapper .kn-copyright {
+	margin-top: 15px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #546cb2;
+}
+
+body #kn-footer .container .kn-info-wrapper .sns-items {
+	position: absolute;
+	right: 0;
+	top: 55px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+body #kn-footer .container .kn-info-wrapper .sns-items .sns-item {
+	float: left;
+	margin-right: 15px;
+	margin-bottom: 12px;
+	line-height: 24px;
+}
+
+body #kn-footer .container .kn-info-wrapper .sns-items .sns-item:last-of-type
+	{
+	margin-right: 0;
+}
+
+body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-menu-item a
+	{
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: normal;
+	color: #b3bfdd;
+}
+
+.footer-menu-items {
+	padding-left: 0px;
+	font-family: auto;
+}
 </style>
 <script
 	src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.js"></script>
 <script
 	src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
 <body>
-
 	<div id="backgroundImage"></div>
 
 	<div class="main">
 		<div class="container" id="pwd-form">
 			<div class="signin-content">
-
 				<form class="form-signin" action="pwd_update.do" method="post">
 					<%-- 폼 제출할때 목적지 정보도 같이 보내준다. --%>
-
 					<h3 style="font-weight: bold; text-align: center">회원 비밀번호 변경</h3>
 					<div class="form-group">
 						<div class="input-group">
@@ -202,11 +259,9 @@ p {
 								<i class="fa fa-lock"></i>
 							</div>
 							<input type="password" required id="pwd" name="pwd"
-								class="form-control" placeholder="현재 비밀번호"> 
-								<span>
-								<span
-								class="glyphicon glyphicon-remove form-control-feedback"></span>
-							<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+								class="form-control" placeholder="현재 비밀번호"> <span>
+								<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+								<span class="glyphicon glyphicon-ok form-control-feedback"></span>
 							</span>
 
 						</div>
@@ -219,15 +274,15 @@ p {
 							</div>
 							<input type="password" required id="newPwd" name="newPwd"
 								class="form-control" placeholder="새 비밀번호"> <span>
-								<span
-								class="glyphicon glyphicon-remove form-control-feedback"></span>
-							<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+								<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+								<span class="glyphicon glyphicon-ok form-control-feedback"></span>
 							</span>
 						</div>
 						<p class="help-block" id="newPwd_required">필수 정보입니다.</p>
 						<p class="help-block" id="noSpace_required">공백은 입력할수없습니다.</p>
 						<p class="help-block" id="newPwd_notequal">아래의 확인란과 동일하게 입력하세요</p>
-						<p class="help-block" id="pwdChk_required">영문, 숫자, 특수문자 조합 8자리~20자리 이내로 입력하세요.</p>
+						<p class="help-block" id="pwdChk_required">영문, 숫자, 특수문자 조합
+							8자리~20자리 이내로 입력하세요.</p>
 					</div>
 					<div class="form-group">
 						<div class="input-group">
@@ -238,39 +293,75 @@ p {
 								class="form-control" placeholder="새 비밀번호 확인">
 						</div>
 					</div>
-
 					<div>
-
 						<button disabled="disabled" class="btn btn-primary" type="submit"
-						style="width:100%;">비밀번호
-							변경</button>
-
+							style="width: 100%;">비밀번호 변경</button>
 					</div>
-
 				</form>
 				<p style="margin-top: 6px; font-weight: bold; text-align: center">
 					<a href="info.do">되돌아가기</a>
 				</p>
 			</div>
 		</div>
-
-
 	</div>
-	<script>
-	//비밀번호를 확인란과 같게 입력 했는지 여부 
-	var isPwdEqual=false;
-	//비밀번호를 입력했는지 여부 
-	var isPwdInput1=false;
-	var isPwdInput2=false;
-	// 비밀번호 정규식 
-	var rightPw = false;
-	// 아이디 정규식
-	//비밀번호를 입력할때 실행할 함수 등록
-	var isPwdDirty1=false;
-	var isPwdDirty2=false;
-	var isPwdDirty3=false;
-	
-	var isPwdright=false;
+	<!-- footer -->
+	<footer id="kn-footer" style="font-family: auto;">
+		<div class="container">
+			<div class="kn-info-wrapper">
+				<div class="kinolights-ci"></div>
+				<div class="kn-info">
+					<ul class="footer-menu-items">
+						<li class="footer-menu-item"><a href="#" target="_blank">이용약관</a>
+						</li>
+						<li class="footer-menu-item"><a href="#" target="_blank">개인정보취급방침</a>
+						</li>
+						<li class="footer-menu-item"><a href="#">사용 설명서</a></li>
+						<li class="footer-menu-item"><a href="#"
+							class="btn-kn-report-db">이용문의 및 DB제보</a></li>
+					</ul>
+				</div>
+				<div class="kn-copyright">
+					<p>
+						<strong style="color: #b3bfdd;">업무 제휴 문의 : <a
+							href="mailto:znql16@gmail.com" style="color: #b3bfdd;">znql16@gmail.com</a></strong>
+					</p>
+					<br> Copyright © 스포일러 Spoiler ALL RIGHTS RESERVED.
+				</div>
+				<ul class="sns-items">
+					<li class="sns-item"><a
+						href="https://post.naver.com/my.nhn?memberNo=43999716"
+						target="_blank" rel="noopener" aria-label="네이버 포스트"
+						title="네이버 포스트"> <i class="icon-post"></i>
+					</a></li>
+					<li class="sns-item"><a
+						href="https://www.facebook.com/KINOLIGHTS/" target="_blank"
+						rel="noopener" aria-label="페이스북" title="페이스북"> <i
+							class="icon-facebook"></i>
+					</a></li>
+					<li class="sns-item"><a
+						href="https://www.instagram.com/kinolights/" target="_blank"
+						rel="noopener" aria-label="인스타그램" title="인스타그램"> <i
+							class="icon-instagram"></i>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+<script>
+//비밀번호를 확인란과 같게 입력 했는지 여부 
+var isPwdEqual=false;
+//비밀번호를 입력했는지 여부 
+var isPwdInput1=false;
+var isPwdInput2=false;
+// 비밀번호 정규식 
+var rightPw = false;
+// 아이디 정규식
+//비밀번호를 입력할때 실행할 함수 등록
+var isPwdDirty1=false;
+var isPwdDirty2=false;
+var isPwdDirty3=false;
+
+var isPwdright=false;
 var Message=false;
 	
 	if(Message){

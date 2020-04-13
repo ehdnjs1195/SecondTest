@@ -194,6 +194,66 @@ p{
 .pull-right{
 	margin-top: 5px;
 }
+/* footer */
+body #kn-footer .container .kn-info-wrapper {
+	position: relative;
+	padding: 50px 0;
+	margin: 0 auto;
+	text-align: center;
+}
+
+body #kn-footer .container .kn-info-wrapper .kinolights-ci {
+	position: absolute;
+	left: 0;
+	top: 40px;
+	width: 91px;
+	height: 53px;
+	text-align: center;
+}
+
+body #kn-footer .container .kn-info-wrapper .kn-copyright {
+	margin-top: 15px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #546cb2;
+}
+
+body #kn-footer .container .kn-info-wrapper .sns-items {
+	position: absolute;
+	right: 0;
+	top: 55px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+body #kn-footer .container .kn-info-wrapper .sns-items .sns-item {
+	float: left;
+	margin-right: 15px;
+	margin-bottom: 12px;
+	line-height: 24px;
+}
+
+body #kn-footer .container .kn-info-wrapper .sns-items .sns-item:last-of-type
+	{
+	margin-right: 0;
+}
+
+body #kn-footer .container .kn-info-wrapper .kn-info .footer-menu-items .footer-menu-item a
+	{
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: normal;
+	color: #b3bfdd;
+}
+
+.footer-menu-items {
+	padding-left: 0px;
+	font-family: auto;
+}
 </style>
 
 <body>
@@ -224,6 +284,50 @@ p{
 		<button class="btn btn-lg btn-primary btn-block" type="submit">수정확인</button>
 		<p style="text-align:center; margin-top:10px;"><a href="info.do">되돌아가기</a></p>
 	</form>
+	
+	<!-- footer -->
+	<footer id="kn-footer" style="font-family: auto;">
+		<div class="container">
+			<div class="kn-info-wrapper">
+				<div class="kinolights-ci"></div>
+				<div class="kn-info">
+					<ul class="footer-menu-items">
+						<li class="footer-menu-item"><a href="#" target="_blank">이용약관</a>
+						</li>
+						<li class="footer-menu-item"><a href="#" target="_blank">개인정보취급방침</a>
+						</li>
+						<li class="footer-menu-item"><a href="#">사용 설명서</a></li>
+						<li class="footer-menu-item"><a href="#"
+							class="btn-kn-report-db">이용문의 및 DB제보</a></li>
+					</ul>
+				</div>
+				<div class="kn-copyright">
+					<p>
+						<strong style="color: #b3bfdd;">업무 제휴 문의 : <a
+							href="mailto:znql16@gmail.com" style="color: #b3bfdd;">znql16@gmail.com</a></strong>
+					</p>
+					<br> Copyright © 스포일러 Spoiler ALL RIGHTS RESERVED.
+				</div>
+				<ul class="sns-items">
+					<li class="sns-item"><a
+						href="https://post.naver.com/my.nhn?memberNo=43999716"
+						target="_blank" rel="noopener" aria-label="네이버 포스트"
+						title="네이버 포스트"> <i class="icon-post"></i>
+					</a></li>
+					<li class="sns-item"><a
+						href="https://www.facebook.com/KINOLIGHTS/" target="_blank"
+						rel="noopener" aria-label="페이스북" title="페이스북"> <i
+							class="icon-facebook"></i>
+					</a></li>
+					<li class="sns-item"><a
+						href="https://www.instagram.com/kinolights/" target="_blank"
+						rel="noopener" aria-label="인스타그램" title="인스타그램"> <i
+							class="icon-instagram"></i>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
 </div>
 </div>
 </body>
