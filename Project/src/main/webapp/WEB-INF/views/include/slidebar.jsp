@@ -16,11 +16,10 @@
 		width: 180px;
 		left:0;
 		height: 100%;
-		background: #3498db;
+		background: #030304b3;
 		text-align: center;
 		overflow: auto;
-		margin-left: -40px;
-		
+		margin-left: -40px;	
 	}
 	.slide_btn a{
 		text-decoration: none;	
@@ -43,7 +42,7 @@
 	.slide_btn{
 		display: block;
 		padding: 16px 20px;
-		background: #333;
+		background: #ff005b94;
 		color : white;
 		position: relative;
 		font-size: 25px;
@@ -60,11 +59,12 @@
 		opacity: 0;
 	}
 	.smenu a:hover{
-		background: #333;	
+		background: #ff005b;
+		opacity: 0.7;	
 	 }
 	#showBtn,#hideBtn{
 		display: block;
-		background: #273c75;
+		background: #ff005b;
 		padding: 16px 20px;
 		margin-top : 6px;
 		color : white;
@@ -93,7 +93,7 @@
 			<li><a href="genredetaillist.do?genre=미스터리">미스터리</a></li>
 			<li><a href="genredetaillist.do?genre=뮤직">뮤직</a></li>
 			<li><a href="genredetaillist.do?genre=뮤지컬">뮤지컬</a></li>
-			<li><a href="#" class="slide_btn" >더보기</a>
+			<li><a href="#" class="slide_btn">더보기</a>
 			<ul class="depth02">
 				<li><a href="genredetaillist.do?genre=멜로드라마">멜로드라마</a></li>
 				<li><a href="genredetaillist.do?genre=전쟁">전쟁</a></li>
@@ -116,8 +116,8 @@
 				<li><a href="genredetaillist.do?genre=인물">인물</a></li>
 				<li><a href="genredetaillist.do?genre=자연ㆍ환경">자연ㆍ환경</a></li>
 				<li><a href="genredetaillist.do?genre=인권">인권</a></li>
-				<li><a href="genredetaillist.do?genre=에로">에로</a></li>
 				<li><a href="genredetaillist.do?genre=계몽">계몽</a></li>
+				<li><a href="genredetaillist.do?genre=에로">에로</a></li>
 			</ul>
 			</li>
 		</ul>
@@ -145,16 +145,19 @@
      });
 	 $("#showBtn").on("click", function () {
          $(".smenu").show(500);
+         $(".depth02").hide(100);
+         
      });
 	 
 	 $( window ).scroll(function() {
-		 var windowWidth = $( window ).width();
-		 if(windowWidth > 1000) {
+		 var windowWidth = $(window).scrollTop();
+		 if(windowWidth > 10) {
 			 $(".smenu").show(300);
 		 } else {
 			 $(".smenu").hide(300);
 		 }
 	});
+	
 	 
 
 </script>
