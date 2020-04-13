@@ -105,7 +105,7 @@
 	</c:if>
 	<c:choose>
 		<c:when test="${not empty param.genre }">
-			<h2><strong><span style="color: yellow;">${param.genre }</span></strong>에 관한 목록 입니다</h2>
+			<h2><strong><span style="color: #FFC300;font-weight: bold;">${param.genre }</span></strong>에 관한 목록 입니다</h2>
 		</c:when>
 		<c:otherwise>
 			<h2>모든 검색결과 입니다</h2>
