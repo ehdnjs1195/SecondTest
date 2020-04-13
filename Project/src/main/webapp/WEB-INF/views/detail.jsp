@@ -508,7 +508,8 @@
 			</ul>
 		</div>
 	</div>
-
+		 <jsp:include page="include/footer.jsp"></jsp:include>
+	
 <script>
 
 // 관심록록 추가

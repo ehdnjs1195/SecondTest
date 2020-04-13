@@ -1,57 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<!----------- Footer ------------>
-<div class="container">
-    <footer class="footer-bs">
-        <div class="row">
-        	<div class="col-md-3 footer-brand animated fadeInLeft">
-            	<h2>Logo</h2>
-                <p>Suspendisse hendrerit tellus laoreet luctus pharetra. Aliquam porttitor vitae orci nec ultricies. Curabitur vehicula, libero eget faucibus faucibus, purus erat eleifend enim, porta pellentesque ex mi ut sem.</p>
-                <p>© 2014 BS3 UI Kit, All rights reserved</p>
-            </div>
-        	<div class="col-md-4 footer-nav animated fadeInUp">
-            	<h4>Menu —</h4>
-            	<div class="col-md-6">
-                    <ul class="pages">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Nature</a></li>
-                        <li><a href="#">Explores</a></li>
-                        <li><a href="#">Science</a></li>
-                        <li><a href="#">Advice</a></li>
-                    </ul>
-                </div>
-            	<div class="col-md-6">
-                    <ul class="list">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contacts</a></li>
-                        <li><a href="#">Terms & Condition</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-        	<div class="col-md-2 footer-social animated fadeInDown">
-            	<h4>Follow Us</h4>
-            	<ul>
-                	<li><a href="#">Facebook</a></li>
-                	<li><a href="#">Twitter</a></li>
-                	<li><a href="#">Instagram</a></li>
-                	<li><a href="#">RSS</a></li>
-                </ul>
-            </div>
-        	<div class="col-md-3 footer-ns animated fadeInRight">
-            	<h4>Newsletter</h4>
-                <p>A rover wearing a fuzzy suit doesn’t alarm the real penguins</p>
-                <p>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search for...">
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
-                      </span>
-                    </div><!-- /input-group -->
-                 </p>
-            </div>
+<style>
+	#kn-footer{
+		text-align:center;
+		margin-top: 30px;
+	}
+li{
+	display:inline;
+}
+</style>
+<footer id="kn-footer" style="font-family: auto;">
+    <div class="container">
+      <div class="kn-info-wrapper">
+        <div class="kinolights-ci"></div>
+        <div class="kn-info">
+            <ul class="footer-menu-items">
+            	<li class="footer-menu-item">
+            		<a href="#" target="_blank">이용약관 | </a>
+           		</li>
+           		<li class="footer-menu-item">
+           			<a href="#" target="_blank">개인정보취급방침 |</a>
+         		</li>
+         		<li class="footer-menu-item">
+         			<a href="#">사용 설명서 | </a>
+        		</li>
+        		<li class="footer-menu-item">
+        			<a href="#" class="btn-kn-report-db">이용문의 및 DB제보</a>
+        		</li>
+       		</ul>
         </div>
+        <div class="kn-copyright">
+          <p><strong style="color:#b3bfdd;">업무 제휴 문의 : <a href="mailto:znql16@gmail.com" style="color:#b3bfdd;">znql16@gmail.com</a></strong></p>
+          <br>
+          <span style="color:#b3bfdd;">Copyright © 스포일러 Spoiler  ALL RIGHTS RESERVED.</span>
+        </div>
+        <ul class="sns-items">
+          <li class="sns-item">
+            <a href="https://post.naver.com/my.nhn?memberNo=43999716" target="_blank" rel="noopener" aria-label="네이버 포스트" title="네이버 포스트">
+              <i class="icon-post"></i>
+            </a>
+       
+       	 </ul>
+      </div>
+    </div>
     </footer>
-    <section style="text-align:center; margin:10px auto;"><p>Designed by <a href="192.168.0.13:8888/Step05_Login/index.jsp"> <strong>A</strong>ragon <strong>D</strong>osigas<strong>W</strong>illiam </a></p></section>
-</div>
+	</div>
+	<!-- footer -->

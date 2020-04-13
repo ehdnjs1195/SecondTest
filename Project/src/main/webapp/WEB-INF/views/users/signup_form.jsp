@@ -404,6 +404,9 @@ input[type="checkbox"]:checked + label:before {
 		</div>
 	</div>	
 </div>
+<jsp:include page="../include/footer.jsp"></jsp:include>
+
+
 <script>
 //체크박스 체크되있는지 여부
 var isChecked=false;
@@ -694,6 +697,8 @@ function setState(sel, isError){
 		$("button[type=submit]").attr("disabled","disabled");
 	}
 }
+
+
 </script>
 </body>
 </html>

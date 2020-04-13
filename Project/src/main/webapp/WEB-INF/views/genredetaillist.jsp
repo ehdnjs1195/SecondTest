@@ -107,8 +107,9 @@
 				<input type="radio" name="nation" id="nation" value="홍콩" <c:if test="${param.nation eq '홍콩' }">checked="checked"</c:if>> 홍콩
 				<button class="btn btn-primary" type="submit" style="color: yellow;">검색</button>
 			</form>
+			
 		</div>
-
+	
 	<table>
 		<c:forEach var="tmp" items="${list }">
 		<c:if test="${fn:contains(tmp.nation,param.nation)}">
@@ -140,6 +141,7 @@
 	</table>
 	<button class="btn btn-primary" style="width:100%;background-color: yellow;" id="moreBtn">더보기 ▼</button>
 </div>
+<jsp:include page="include/footer.jsp"></jsp:include>
 <script>
 //댓글 스크롤로 보이기
 var idx = 0;

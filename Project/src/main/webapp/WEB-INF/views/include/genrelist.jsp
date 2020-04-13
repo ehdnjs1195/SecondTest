@@ -76,6 +76,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<script>
 			$("#${param.genre }_${tmp.movieSeq}").click(function() {
 				$("#myModal${tmp.movieSeq}").modal("show");
