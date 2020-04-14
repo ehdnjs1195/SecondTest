@@ -5,9 +5,7 @@
 		text-align:center;
 		margin-top: 30px;
 	}
-li{
-	display:inline;
-}
+
 </style>
 <footer id="kn-footer" style="font-family: auto;">
     <div class="container">
@@ -15,16 +13,16 @@ li{
         <div class="kinolights-ci"></div>
         <div class="kn-info">
             <ul class="footer-menu-items">
-            	<li class="footer-menu-item">
+            	<li class="footer-menu-item" style="display:inline;">
             		<a href="#" target="_blank">이용약관 | </a>
            		</li>
-           		<li class="footer-menu-item">
+           		<li class="footer-menu-item" style="display:inline;">
            			<a href="#" target="_blank">개인정보취급방침 |</a>
          		</li>
-         		<li class="footer-menu-item">
+         		<li class="footer-menu-item" style="display:inline;">
          			<a href="#">사용 설명서 | </a>
         		</li>
-        		<li class="footer-menu-item">
+        		<li class="footer-menu-item" style="display:inline;">
         			<a href="#" class="btn-kn-report-db">이용문의 및 DB제보</a>
         		</li>
        		</ul>
