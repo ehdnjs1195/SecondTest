@@ -82,7 +82,7 @@
 		<a class="btn btn-primary" href="movie_Rank.do">영화 랭킹 보러가기</a>
 	</div>
 	<c:if test="${not empty param.title }">
-		<h2>검색어 <strong><span style="color: yellow;">${param.title }</span></strong>에 관한 검색결과 입니다</h2>
+		<h2>검색어 <strong><span style="color: #FFC300;font-weight: bold;">${param.title }</span></strong>에 관한 검색결과 입니다</h2>
 	</c:if>
 	<table>
 		<c:forEach var="tmp" items="${list }">

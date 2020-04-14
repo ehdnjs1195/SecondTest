@@ -29,6 +29,25 @@
     .btn{
 		font-size: smaller !important;
 	}
+	.box-radio-input input[type="radio"]{
+	    display:none;
+	}
+	
+	.box-radio-input input[type="radio"] + span{
+	    display:inline-block;
+	    background:none;
+	    padding:0px 10px;
+	    text-align:center;
+	    height:35px;
+	    line-height:33px;
+	    font-weight:500;
+	    cursor:pointer;
+	}
+	
+	.box-radio-input input[type="radio"]:checked + span{
+	    background:#ff005b94;
+	    color:#fff;
+	}
 </style>
 </head>
 <body>
@@ -86,7 +105,7 @@
 	</c:if>
 	<c:choose>
 		<c:when test="${not empty param.genre }">
-			<h2><strong><span style="color: yellow;">${param.genre }</span></strong>에 관한 목록 입니다</h2>
+			<h2><strong><span style="color: #FFC300;font-weight: bold;">${param.genre }</span></strong>에 관한 목록 입니다</h2>
 		</c:when>
 		<c:otherwise>
 			<h2>모든 검색결과 입니다</h2>
@@ -96,16 +115,24 @@
 	<div class="container">
 			<form action="genredetaillist.do" method="get">
 				<input type="hidden" name="genre" value="${param.genre }" />
-				<input type="radio" name="nation" id="nation" value="대한민국" <c:if test="${param.nation eq '대한민국' }">checked="checked"</c:if>> 한국
-				<input type="radio" name="nation" id="nation" value="영국" <c:if test="${param.nation eq '영국' }">checked="checked"</c:if>> 영국
-				<input type="radio" name="nation" id="nation" value="미국" <c:if test="${param.nation eq '미국' }">checked="checked"</c:if>> 미국
-				<input type="radio" name="nation" id="nation" value="중국" <c:if test="${param.nation eq '중국' }">checked="checked"</c:if>>중국
-				<input type="radio" name="nation" id="nation" value="일본" <c:if test="${param.nation eq '일본' }">checked="checked"</c:if>> 일본
-				<input type="radio" name="nation" id="nation" value="덴마크" <c:if test="${param.nation eq '덴마크' }">checked="checked"</c:if>> 덴마크
-				<input type="radio" name="nation" id="nation" value="인도" <c:if test="${param.nation eq '인도' }">checked="checked"</c:if>> 인도
-				<input type="radio" name="nation" id="nation" value="싱가포르" <c:if test="${param.nation eq '싱가포르' }">checked="checked"</c:if>> 싱가포르
-				<input type="radio" name="nation" id="nation" value="홍콩" <c:if test="${param.nation eq '홍콩' }">checked="checked"</c:if>> 홍콩
-				<button class="btn btn-primary" type="submit" style="color: yellow;">검색</button>
+				<label class="box-radio-input"><input type="radio" name="nation" id="nation" value="대한민국" <c:if test="${param.nation eq '대한민국' }">checked="checked"</c:if>><span>한국</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value="영국" <c:if test="${param.nation eq '영국' }">checked="checked"</c:if>><span>영국</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value="미국" <c:if test="${param.nation eq '미국' }">checked="checked"</c:if>><span>미국</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value="중국" <c:if test="${param.nation eq '중국' }">checked="checked"</c:if>><span>중국</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value="일본" <c:if test="${param.nation eq '일본' }">checked="checked"</c:if>><span>일본</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value="덴마크" <c:if test="${param.nation eq '덴마크' }">checked="checked"</c:if>><span>덴마크</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value="홍콩" <c:if test="${param.nation eq '홍콩' }">checked="checked"</c:if>><span>홍콩</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value="독일" <c:if test="${param.nation eq '독일' }">checked="checked"</c:if>><span>독일</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value="뉴질랜드" <c:if test="${param.nation eq '뉴질랜드' }">checked="checked"</c:if>><span>뉴질랜드</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value="프랑스" <c:if test="${param.nation eq '프랑스' }">checked="checked"</c:if>><span>프랑스</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value="러시아" <c:if test="${param.nation eq '러시아' }">checked="checked"</c:if>><span>러시아</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value="캐나다" <c:if test="${param.nation eq '캐나다' }">checked="checked"</c:if>><span>캐나다</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value="덴마크" <c:if test="${param.nation eq '덴마크' }">checked="checked"</c:if>><span>덴마크</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value="태국" <c:if test="${param.nation eq '태국' }">checked="checked"</c:if>><span>태국</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value="오스트리아" <c:if test="${param.nation eq '오스트리아' }">checked="checked"</c:if>><span>오스트리아</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value=인도 <c:if test="${param.nation eq '인도' }">checked="checked"</c:if>><span>인도</span></label>
+				<label class="box-radio-input"><input type="radio"  name="nation" id="nation" value="나이지리아" <c:if test="${param.nation eq '나이지리아' }">checked="checked"</c:if>><span>나이지리아</span></label>
+				<button class="btn" type="submit" style="color: yellow; background-color:#ff005b94 ">검색</button>
 			</form>
 			
 		</div>

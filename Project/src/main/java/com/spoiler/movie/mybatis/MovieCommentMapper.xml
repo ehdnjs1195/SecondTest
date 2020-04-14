@@ -12,7 +12,7 @@
 	</select>
 	<update id="delete" parameterType="int">
 		UPDATE movie_comment
-		SET deleted='yes'
+		SET deleted='yes', recommendCnt=0
 		WHERE num=#{num}
 	</update>
 	<insert id="insert" parameterType="movieCommentDto">
