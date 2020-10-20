@@ -158,6 +158,7 @@
 			<artifactId>spring-aop</artifactId>
 			<version>4.0.0.RELEASE</version>
 		</dependency>
+		
 	  	<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
@@ -205,6 +206,7 @@
                     <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
+            
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>

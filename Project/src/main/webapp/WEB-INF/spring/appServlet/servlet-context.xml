@@ -71,7 +71,4 @@
 	<!-- web.xml 에서 설정된 error 관련된 요청 처리 -->
 	<view-controller path="/error/404.do" view-name="error/404"/>
 	<view-controller path="/error/500.do" view-name="error/500"/>
-	
-	
-	
 </beans:beans>
